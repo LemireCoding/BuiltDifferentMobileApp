@@ -30,7 +30,7 @@ jobs:
         cd BuiltDifferentMobileApp
         nuget restore
         cd BuiltDifferentMobileApp.Android
-        msbuild Blank.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+        MSBuild.exe BuiltDifferentMobileApp.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
         
   iOS:
     runs-on: macos-latest
@@ -40,4 +40,4 @@ jobs:
       run: |
         cd BuiltDifferentMobileApp
         nuget restore
-        msbuild BuiltDifferentMobileApp.iOS/BuiltDifferentMobileApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
+        MSBuild.exe BuiltDifferentMobileApp.iOS/BuiltDifferentMobileApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
