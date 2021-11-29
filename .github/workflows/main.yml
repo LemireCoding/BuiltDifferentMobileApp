@@ -28,7 +28,7 @@ jobs:
     - name: Android
       run: |
         cd BuiltDifferentMobileApp
-        nuget.exe restore
+        nuget restore
         cd BuiltDifferentMobileApp.Android
         msbuild Blank.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
         
@@ -39,5 +39,5 @@ jobs:
     - name: iOS
       run: |
         cd BuiltDifferentMobileApp
-        nuget.exe restore
+        nuget restore
         msbuild BuiltDifferentMobileApp.iOS/BuiltDifferentMobileApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
