@@ -1,60 +1,43 @@
-name: CI
+name: CI on Push and Pull Request
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-  workflow_dispatch:
+on: [push, pull_request]
 
 jobs:
-  
-  build:
+  Practice:
     runs-on: macos-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup iOS Provisioning Profiles
-        uses: apple-actions/download-provisioning-profiles@v1
-        with: 
-          bundle-id: 'dev.sbyte.github-actions-xamarin'
-          profile-type: 'IOS_APP_ADHOC'
-          issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
-          api-key-id: ${{ secrets.APPSTORE_KEY_ID }}
-          api-private-key: ${{ secrets.APPSTORE_PRIVATE_KEY }}
-
-      - name: Setup Android signing
-        run: (echo ${{ secrets.KEYSTORE }} | base64 --decode) > ./GitHubActions.Android/keystore.jks
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
+    - name: Show what's in the directory
+      run: |
+        ls
+    - name: Show what all is in the parent directory
+      run: |
+        cd ..
+        ls
         
-      - name: Set iOS version
-        run: |
-          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${{ secrets.APP_VERSION }}" ./GitHubActions.iOS/Info.plist
-          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${{ github.run_number }}" ./GitHubActions.iOS/Info.plist
-      - name: Set Android version
-        uses: damienaicheh/update-android-version-manifest-action@v1.0.0
-        with:
-          android-manifest-path: ./GitHubActions.Android/Properties/AndroidManifest.xml
-          version-name: ${{ secrets.APP_VERSION }}
-          version-code: ${{ github.run_number }}
-          print-file: true
-
-      - name: Restore NuGet packages
-        run: nuget restore
-
-      - name: Build iOS
-        run: MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true ./GitHubActions.iOS/GitHubActions.iOS.csproj
+  Android:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Android
+      run: |
+        cd BuiltDifferentMobileApp
+        nuget restore
+        cd BuiltDifferentMobileApp.Android
+        msbuild BuiltDifferentMobileApp.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
         
-      - name: Build Android
-        run: MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias=githubactionsxamarin /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyStore=keystore.jks /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} ./GitHubActions.Android/GitHubActions.Android.csproj
-        
-      - name: Setup App Center CLI
-        run: npm install -g appcenter-cli
-        
-      - name: Upload iOS app to App Center
-        run: appcenter distribute release --silent --file ./GitHubActions.iOS/bin/iPhone/Release/GitHubActions.iOS.ipa --app SByteDev/GitHubActions.Xamarin-iOS --group Collaborators --token ${{ secrets.APP_CENTER_TOKEN }}
-          
-      - name: Upload Android app to App Center
-        run: appcenter distribute release --silent --file ./GitHubActions.Android/bin/Release/dev.sbyte.github_actions_xamarin-Signed.apk --app SByteDev/GitHubActions.Xamarin-Android --group Collaborators --token ${{ secrets.APP_CENTER_TOKEN }}
+  iOS:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: iOS
+      run: |
+        cd BuiltDifferentMobileApp
+        nuget restore
+        msbuild BuiltDifferentMobileApp.iOS/BuiltDifferentMobileApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
