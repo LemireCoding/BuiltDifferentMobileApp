@@ -27,6 +27,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Android
       run: |
+        cd BuiltDifferentMobileApp
         nuget restore
         cd BuiltDifferentMobileApp.Android
         msbuild BuiltDifferentMobileApp.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
@@ -37,5 +38,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: iOS
       run: |
+        cd BuiltDifferentMobileApp
         nuget restore
         msbuild BuiltDifferentMobileApp.iOS/BuiltDifferentMobileApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
