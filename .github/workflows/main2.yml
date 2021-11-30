@@ -1,0 +1,26 @@
+name: CI on Push and Pull Request
+
+on: [push, pull_request]
+
+jobs:       
+  Android:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Android
+      run: |
+        cd BuiltDifferentMobileApp
+
+        nuget restore
+        cd Blank.Android
+        msbuild BuiltDifferentMobileApp.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+        
+  iOS:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: iOS
+      run: |
+        cd BuiltDifferentMobileApp
+        nuget restore
+        msbuild Blank.iOS/BuiltDifferentMobileApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
