@@ -1,26 +1,28 @@
-name: CI on Push and Pull Request
+name: CI
 
 on: [push, pull_request]
 
-jobs:       
-  Android:
+jobs:
+  build:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Android
-      run: |
-        cd BuiltDifferentMobileApp
-
-        nuget restore
-        cd Blank.Android
-        msbuild BuiltDifferentMobileApp.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Restore NuGet packages
+      run: nuget restore
+      
+    - name: Setup Xamarin
+      uses: maxim-lobanov/setup-xamarin@v1
+      with:
+        mono-version: '6.6' # specify version in '<major>.<minor>' format
+        xamarin-ios-version: '13' # specify version in '<major>' format
+        xamarin-mac-version: latest # specify 'latest' keyword to pick up the latest available version
+        xamarin-android-version: '11' # specify full version; it is not recomended option because your pipeline can be broken suddenly in future
+        xcode-version: '11.x' # set the latest available Xcode 11
         
-  iOS:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: iOS
-      run: |
-        cd BuiltDifferentMobileApp
-        nuget restore
-        msbuild Blank.iOS/BuiltDifferentMobileApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
+    - name: Build iOS
+      run: MSBuild BuiltDifferentMobileApp/BuiltDifferentMobileApp.iOS/BuiltDifferentMobileApp.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
+        
+    - name: Build Android
+      run: MSBuild BuiltDifferentMobileApp/BuiltDifferentMobileApp.Android/BuiltDifferentMobileApp.Android.csproj /verbosity:normal /t:PackageForAndroid /p:Configuration=Debug
