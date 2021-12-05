@@ -3,10 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BuiltDifferentMobileApp.Views.ManageExercisePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <StackLayout Padding="50">
+                    <Label Text="Create / Edit Workout" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold"/>
+                    <Entry Text="{Binding ExerciseName}" Placeholder="Exercise Name" Keyboard="Text"/>
+                    <Entry Text="{Binding Reps}" Placeholder="Reps" Keyboard="Numeric"/>
+                    <Entry Text="{Binding Sets}" Placeholder="Sets" Keyboard="Numeric"/>
+                    <Entry Text="{Binding RestTime}" Placeholder="Rest Time(seconds)" Keyboard="Numeric"/>
+                    <Entry Text="{Binding Weight}" Placeholder="Weight(in lbs)" Keyboard="Numeric"/>
+                    <Entry Text="{Binding VideoLink}" Placeholder="Video Linnk -> youtube embeded link only" Keyboard="Text"/>
+                    <Button Grid.Row="0" BorderColor="#2b3c3c" BorderWidth="1" FontAttributes="Bold" BackgroundColor="#1968B3" BorderRadius="35" TextColor="White" 
+                            HorizontalOptions="End" VerticalOptions="End" WidthRequest="70" HeightRequest="70" Margin="0,0,20,22" Command="{Binding SaveCommand}"/>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
