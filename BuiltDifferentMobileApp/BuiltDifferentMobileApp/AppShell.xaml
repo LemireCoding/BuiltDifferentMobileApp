@@ -73,6 +73,14 @@
         </ResourceDictionary>
     </Shell.Resources>
 
+    <FlyoutItem Title="Main" FlyoutDisplayOptions="AsMultipleItems"  Route="Home" Style="{StaticResource BaseStyle}">
+        <Tab Title="Browse" Icon="tab_feed.png">
+        </Tab>
+        <Tab Title="About" Icon="tab_about.png">
+        </Tab>
+
+    </FlyoutItem>
+
     <TabBar>
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     </TabBar>
