@@ -35,7 +35,6 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
                 HttpHeaders header = response.Headers;
                 //Add auth 
             }
-
             return (T)response;
         }
     }
