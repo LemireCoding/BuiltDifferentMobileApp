@@ -1,41 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
-             x:Class="BuiltDifferentMobileApp.Views.WorkoutPage">
-    <ContentPage.Content>
+             x:Class="BuiltDifferentMobileApp.Views.WorkoutPage"
+             x:Name="TheWorkoutPage">
+    <ContentPage.Content >
         <StackLayout Margin="20">
-            <SwipeView>
-                <SwipeView.RightItems>
-                    <SwipeItems>
-                        <SwipeItem Text="Edit"
-                       BackgroundColor="LightPink"/>
-                    </SwipeItems>
-                </SwipeView.RightItems>
-                <Grid>
-                    <behaviors:Expander>
-                        <behaviors:Expander.Header>
-                            <FlexLayout>
-                                <Label Text="Exercise(click to expand)  "
-                                               FontAttributes="Bold"
-                                               FontSize="Medium" />
-                                <Label Text="Set      "
-                                               FontAttributes="Bold"
-                                               FontSize="Medium" />
-                                <Label Text="Reps"
-                                               FontAttributes="Bold"
-                                               FontSize="Medium" />
-                            </FlexLayout>
-                        </behaviors:Expander.Header>
-                        <behaviors:Expander.ContentTemplate>
-                            <DataTemplate>
-                                <FlexLayout >
-                                    <Button Text="Edit"/>
-                                </FlexLayout>
-                            </DataTemplate>
-                        </behaviors:Expander.ContentTemplate>
-                    </behaviors:Expander>
-                </Grid>
-            </SwipeView>
+            <Label Text="Client Name Workouts" TextColor="{StaticResource TextPrimary}" FontSize="Title" HorizontalTextAlignment="Center"/>
+            <Button Text="Manange Meals" Command=""/>
+            <!--InsertCommand when rerteieved -->
+            <Grid BackgroundColor="#B1A7A6">
+                <behaviors:Expander>
+                    <behaviors:Expander.Header>
+                        <Grid
+                                Padding="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label 
+                                    Grid.Column="0" 
+                                    Text="Workout Name (click to expand)"
+                                    
+                                    FontAttributes="Bold"
+                                    FontSize="Medium" />
+                            <!-- ="{Binding Sets, StringFormat='Sets {0}'}" -->
+                            <Label 
+                                    Grid.Column="1"
+                                    HorizontalTextAlignment="End"
+                                    Text="Sets"
+                                    FontAttributes="Bold"
+                                    FontSize="Medium" />
+                            <!-- ="{Binding Reps, StringFormat='Sets {0}'}" -->
+                            <Label 
+                                    Grid.Column="2"
+                                    HorizontalTextAlignment="End"
+                                    Text="Reps"
+                                    FontAttributes="Bold"
+                                    FontSize="Medium" />
+                            <Label 
+                                    Grid.Column="3"
+                                    HorizontalTextAlignment="End"
+                                    FontSize="Large"
+                                    FontFamily="FAS" 
+                                    Text="&#xf107;"/>
+                        </Grid>
+                    </behaviors:Expander.Header>
+                    <behaviors:Expander.ContentTemplate>
+                        <DataTemplate>
+                            <Grid 
+                                    Padding="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Button 
+                                        Text="Edit"
+                                        Grid.Column="3"
+                                        Padding="2"
+                                        CornerRadius="10"
+                                        Command="{Binding Source={x:Reference TheWorkoutPage}, Path=BindingContext.EditCommand}" CommandParameter="{Binding .}"
+                                        />
+                            </Grid>
+                        </DataTemplate>
+                    </behaviors:Expander.ContentTemplate>
+                </behaviors:Expander>
+            </Grid>
+            <StackLayout Margin="10">
+                <Button 
+                Text="Add New"
+                Grid.Column="3"
+                Padding="2"
+                CornerRadius="10"
+                />
+            </StackLayout>
+            
         </StackLayout>
 
     </ContentPage.Content>
