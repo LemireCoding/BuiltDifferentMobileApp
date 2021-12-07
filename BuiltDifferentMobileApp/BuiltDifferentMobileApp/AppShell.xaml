@@ -72,23 +72,11 @@
             </Style>
         </ResourceDictionary>
     </Shell.Resources>
-    
-    <Shell.ToolbarItems>
-        <ToolbarItem Text="Profile" Command="{Binding GoToProfile}">
-            <ToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
-            </ToolbarItem.IconImageSource>        </ToolbarItem>
-    </Shell.ToolbarItems>
-    
-    <FlyoutItem Title="Login" >
+
+    <TabBar>
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="Manage Workout" >
-        <ShellContent Route="ManageWorkoutPage" ContentTemplate="{DataTemplate local:ManageWorkoutPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="Workout" >
-        <ShellContent Route="WorkoutPage" ContentTemplate="{DataTemplate local:WorkoutPage}" />
-    </FlyoutItem>
+    </TabBar>
+    
     <!-- 
         When the Flyout is visible this defines the content to display in the flyout.
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
