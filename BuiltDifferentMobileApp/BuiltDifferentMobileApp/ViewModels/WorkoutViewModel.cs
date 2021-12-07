@@ -14,6 +14,7 @@ namespace BuiltDifferentMobileApp.ViewModels
     public class WorkoutViewModel:ViewModelBase
     {
         private int clientId;
+        public AsyncCommand AddCommand { get; }
         public AsyncCommand EditCommand { get; }
         public ObservableRangeCollection<Workout> Workouts { get; set; }
 
@@ -21,8 +22,15 @@ namespace BuiltDifferentMobileApp.ViewModels
         public WorkoutViewModel()
         {
             EditCommand = new AsyncCommand(EditWorkout);
+            AddCommand = new AsyncCommand(AddWorkout);
             this.clientId = clientId;
 
+        }
+
+        private async Task AddWorkout()
+        {
+            var route = $"{nameof(ManageWorkoutPage)}";
+            await Shell.Current.GoToAsync(route);
         }
 
         private async Task EditWorkout()

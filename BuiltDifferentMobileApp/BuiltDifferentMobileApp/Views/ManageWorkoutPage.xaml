@@ -19,13 +19,13 @@
                 <StackLayout Padding="50">
                     <Label Text="Create / Edit Workout" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="{StaticResource TextSecondary}"/>
                     <Entry Text="{Binding WorkoutName}" Placeholder="Exercise Name" Keyboard="Text"/>
-                    <Entry Text="{Binding WorkoutType}" Placeholder="Workout Type" Keyboard="Text"/>
+                    <Picker SelectedItem="{Binding WorkoutType}" ItemsSource="{Binding Types}" ItemDisplayBinding="{Binding Path=Name}"/>
                     <Entry Text="{Binding Sets}" Placeholder="Sets" Keyboard="Numeric"/>
                     <Entry Text="{Binding Reps}" Placeholder="Reps" Keyboard="Numeric"/>
                     <Entry Text="{Binding Duration}" Placeholder="Duration (in minutes)" Keyboard="Numeric"/>
                     <Entry Text="{Binding RestTime}" Placeholder="Rest Time(seconds)" Keyboard="Numeric"/>
                     <Entry Text="{Binding Weight}" Placeholder="Weight(in lbs)" Keyboard="Numeric"/>
-                    <Entry Text="{Binding Description}" Placeholder="Description" Keyboard="Text"/>
+                    <Entry Text="{Binding Description}" HeightRequest="100" Placeholder="Description" Keyboard="Text"/>
                     <Label Text="Date"/>
                     <DatePicker MinimumDate="{x:Static sys:DateTime.Now}" Date="{Binding Date}" HorizontalOptions="Center"/>
                     <Entry Text="{Binding VideoLink}" Placeholder="Youtube Video Link" Keyboard="Text"/>

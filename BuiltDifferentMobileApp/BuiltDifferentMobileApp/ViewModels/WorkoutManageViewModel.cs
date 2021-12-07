@@ -30,13 +30,22 @@ namespace BuiltDifferentMobileApp.ViewModels
         public bool IsCompleted { get; set; }
         public string VideoLink { get; set; }
 
+
+        public List<WorkoutType> Types { get; set; }
+
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
         public AsyncCommand SaveCommand { get; }
         public WorkoutManageViewModel()
         {
-
             SaveCommand = new AsyncCommand(SaveWorkout);
-        }
+
+            Types=new List<WorkoutType>
+        {
+            new WorkoutType("Warm Up"),
+            new WorkoutType("Cardio"),
+            new WorkoutType("Weight Training")
+        };
+    }
 
         private async Task SaveWorkout()
         {

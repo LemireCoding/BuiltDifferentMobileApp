@@ -94,7 +94,9 @@
             <StackLayout Margin="10">
                 <Button 
                 Text="Add New"
+                 
                 Grid.Column="3"
+                Command="{Binding AddCommand}"
                 Padding="2"
                 CornerRadius="10"
                 />
