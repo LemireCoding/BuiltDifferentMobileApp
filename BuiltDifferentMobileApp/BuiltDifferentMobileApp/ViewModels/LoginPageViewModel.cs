@@ -3,6 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace BuiltDifferentMobileApp.ViewModels {
-    class LoginPageViewModel {
+    public class LoginPageViewModel:ViewModelBase {
     }
 }
