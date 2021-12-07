@@ -33,7 +33,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             {
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpHeaders header = response.Headers;
-                //Add auth 
+                //Add auth once implementned
             }
             return (T)response;
         }
