@@ -8,6 +8,26 @@
         <StackLayout Margin="20">
             <Label Text="Client Name Workouts" TextColor="Black" FontSize="Title" HorizontalTextAlignment="Center"/>
             <Button Text="Manange Meals"/>
+            <CollectionView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <FlexLayout>
+                            <Button Text="12"/>
+                        </FlexLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <FlexLayout BackgroundColor="Gray" Padding="5">
+                <Button Text="12" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
+                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
+                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
+                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
+                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
+                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
+                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
+            </FlexLayout>
+
             <!--InsertCommand when rerteieved -->
             <CollectionView 
                 ItemsSource="{Binding Workouts}"
