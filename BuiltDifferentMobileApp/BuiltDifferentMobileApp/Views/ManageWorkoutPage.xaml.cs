@@ -11,12 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace BuiltDifferentMobileApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ManageExercisePage : ContentPage
+    public partial class ManageWorkoutPage : ContentPage
     {
-        public ManageExercisePage()
+        public ManageWorkoutPage()
         {
             InitializeComponent();
-            BindingContext = new ExerciseManageViewModel();
+            BindingContext = new WorkoutManageViewModel();
         }
     }
 }

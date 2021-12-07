@@ -18,7 +18,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             httpClient = new HttpClient();
         }
 
-        public async Task<T> PostExercise(string uri)
+        public async Task<T> PostWorkout(string uri)
         {
             throw new NotImplementedException();
         }
