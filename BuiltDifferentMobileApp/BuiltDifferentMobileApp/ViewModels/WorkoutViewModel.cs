@@ -23,7 +23,6 @@ namespace BuiltDifferentMobileApp.ViewModels
         {
             EditCommand = new AsyncCommand(EditWorkout);
             AddCommand = new AsyncCommand(AddWorkout);
-            this.clientId = clientId;
 
         }
 
