@@ -7,16 +7,17 @@
     -->
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#660708</Color>
-            <Color x:Key="Secondary">#BA181B</Color>
-            <Color x:Key="ExtraRed">#A4161A</Color>
-            <Color x:Key="TextPrimary">#0B090A</Color>
-            <Color x:Key="TextSecondary">#B1A7A6</Color>
-            <Color x:Key="TextThird">#FFFFFF</Color>
-            
-            
-            
-            
+            <Color x:Key="RedPrimary">#660708</Color>
+            <Color x:Key="RedExtra">#A4161A</Color>
+            <Color x:Key="RedSecondary">#BA181B</Color>
+            <Color x:Key="Black">#0B090A</Color>
+            <Color x:Key="Grey">#B1A7A6</Color>
+            <Color x:Key="LightGrey">#D3D3D3</Color>
+            <Color x:Key="ExtraLightGrey">#F5F3F4</Color>
+
+
+
+
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
@@ -24,7 +25,7 @@
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
+                                    <Setter Property="BackgroundColor" Value="{StaticResource RedSecondary}" />
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Disabled">

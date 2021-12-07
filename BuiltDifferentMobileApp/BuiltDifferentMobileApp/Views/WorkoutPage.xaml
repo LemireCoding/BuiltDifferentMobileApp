@@ -6,7 +6,7 @@
              x:Name="TheWorkoutPage">
     <ContentPage.Content >
         <StackLayout Margin="20">
-            <Label Text="Client Name Workouts" TextColor="{StaticResource TextPrimary}" FontSize="Title" HorizontalTextAlignment="Center"/>
+            <Label Text="Client Name Workouts" TextColor="Black" FontSize="Title" HorizontalTextAlignment="Center"/>
             <Button Text="Manange Meals"/>
             <!--InsertCommand when rerteieved -->
             <CollectionView 
@@ -15,7 +15,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                        
-                        <Grid BackgroundColor="#B1A7A6">
+                        <Grid>
                             <behaviors:Expander>
                                 <behaviors:Expander.Header>
                                     <Grid
