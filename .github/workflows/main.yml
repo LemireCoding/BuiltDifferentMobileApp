@@ -15,10 +15,10 @@ jobs:
     - name: Setup Xamarin
       uses: maxim-lobanov/setup-xamarin@v1
       with:
-        mono-version: 'latest' # specify version in '<major>.<minor>' format
+        mono-version: '6' # specify version in '<major>.<minor>' format
         xamarin-ios-version: '13' # specify version in '<major>' format
         xamarin-mac-version: latest # specify 'latest' keyword to pick up the latest available version
-        xamarin-android-version: 'latest' # specify full version; it is not recomended option because your pipeline can be broken suddenly in future
+        xamarin-android-version: '12' # specify full version; it is not recomended option because your pipeline can be broken suddenly in future
         xcode-version: '11.x' # set the latest available Xcode 11
         
     - name: Build iOS
