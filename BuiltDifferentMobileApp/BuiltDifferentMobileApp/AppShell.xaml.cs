@@ -8,6 +8,10 @@ namespace BuiltDifferentMobileApp {
     public partial class AppShell : Xamarin.Forms.Shell {
         public AppShell() {
             InitializeComponent();
+            
+            Routing.RegisterRoute(nameof(ManageWorkoutPage), typeof(ManageWorkoutPage));
+            Routing.RegisterRoute(nameof(WorkoutPage), typeof(WorkoutPage));
+            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
         }
     }
 }
