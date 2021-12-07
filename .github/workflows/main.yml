@@ -15,7 +15,7 @@ jobs:
     - name: Setup Xamarin
       uses: maxim-lobanov/setup-xamarin@v1
       with:
-        mono-version: '6.6' # specify version in '<major>.<minor>' format
+        mono-version: '6' # specify version in '<major>.<minor>' format
         xamarin-ios-version: '13' # specify version in '<major>' format
         xamarin-mac-version: latest # specify 'latest' keyword to pick up the latest available version
         xamarin-android-version: '11' # specify full version; it is not recomended option because your pipeline can be broken suddenly in future
