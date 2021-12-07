@@ -1,6 +1,9 @@
-﻿using System;
+﻿using BuiltDifferentMobileApp.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,9 +21,22 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             httpClient = new HttpClient();
         }
 
-        public async Task<T> PostWorkout(string uri)
+        public async Task<T> PostWorkoutAsync(string uri, Workout workout)
         {
-            throw new NotImplementedException();
+            var json = JsonConvert.SerializeObject(workout);
+
+            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await httpClient.PostAsync(uri, content);
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpHeaders header = response.Headers;
+                //Add auth 
+            }
+
+            return (T)response;
         }
     }
 }
