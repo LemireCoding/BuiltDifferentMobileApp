@@ -1,28 +1,61 @@
-﻿using System;
+﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Services.NetworkServices;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.ObjectModel;
+using Xamarin.Forms;
 
 namespace BuiltDifferentMobileApp.ViewModels
 {
     public class WorkoutManageViewModel:ViewModelBase
     {
-        public int workoutId { get; set; }
-        public int coachId { get; set; }
-        public int clientId { get; set; }
-        public string workoutType { get; set; }
-        public string workoutName { get; set; }
-        public int sets { get; set; }
-        public int reps { get; set; }
-        public int weight { get; set; }
-        public int duration { get; set; }
-        public int restTime { get; set; }
-        public DateTime day { get; set; }
+        public int WorkoutId { get; set; }
+        public int CoachId { get; set; }
+        public int ClientId { get; set; }
+        public string WorkoutType { get; set; }
+        public string WorkoutName { get; set; }
+        public int Sets { get; set; }
+        public int Reps { get; set; }
+        public int Weight { get; set; }
+        public int Duration { get; set; }
+        public int RestTime { get; set; }
+        public DateTime Day { get; set; }
 
         //Optional fields below
-        public string description { get; set; }
-        public bool isCompleted { get; set; }
-        public string videoLink { get; set; }
+        public string Description { get; set; }
+        public bool IsCompleted { get; set; }
+        public string VideoLink { get; set; }
 
+        private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
+        public AsyncCommand SaveCommand { get; }
+        public WorkoutManageViewModel()
+        {
+
+            SaveCommand = new AsyncCommand(SaveWorkout);
+        }
+
+        private async Task SaveWorkout()
+        {
+            if (string.IsNullOrEmpty(WorkoutName) || string.IsNullOrEmpty(WorkoutType))
+            {
+                await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
+                return;
+            }
+
+            var vet = new Workout();
+            var test = JsonConvert.SerializeObject(vet);
+            var result = await networkService.PostWorkoutAsync(APIConstants.PostWorkoutUri(), vet);
+            var httpCode = result.StatusCode;
+
+            if (httpCode == System.Net.HttpStatusCode.OK)
+            {
+                await Application.Current.MainPage.DisplayAlert("Good", "Vet Saved", "OK");
+            }
+        }
 
     }
 }

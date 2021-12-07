@@ -37,5 +37,15 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             }
             return (T)response;
         }
+
+        public async Task<T> GetAsync(string uri)
+        {
+            //var authHeader = new AuthenticationHeaderValue("Bearer", JWTToken);
+            //httpClient.DefaultRequestHeaders.Authorization = authHeader;
+            //httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = await httpClient.GetAsync(uri);
+            return (T)response;
+
+        }
     }
 }

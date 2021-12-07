@@ -7,7 +7,6 @@ namespace BuiltDifferentMobileApp.Models {
         public int workoutId { get; set; }
         public int coachId { get; set; }
         public int clientId { get; set; }
-
         public string workoutType { get; set; }
         public string workoutName { get; set; }
         public int sets { get; set; }
@@ -21,6 +20,8 @@ namespace BuiltDifferentMobileApp.Models {
         public string description { get; set; }
         public bool isCompleted { get; set; }
         public string videoLink { get; set; }
+
+
 
     }
 }
