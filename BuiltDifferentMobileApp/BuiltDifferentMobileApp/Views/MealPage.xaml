@@ -51,7 +51,7 @@
                                         <Label Text="{Binding mealName}"
                                                FontAttributes="Bold"
                                                FontSize="Medium"  VerticalTextAlignment="Center"/>
-                                        <Label Grid.Column="1"  VerticalTextAlignment="Center" Text="{Binding Calories, StringFormat='{0} Calories'}"
+                                        <Label Grid.Column="1"  VerticalTextAlignment="Center" Text="{Binding calories, StringFormat='{0} Calories'}"
                                                FontAttributes="Bold"
                                                FontSize="Medium" />
                                     </Grid>

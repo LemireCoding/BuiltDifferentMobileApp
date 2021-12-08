@@ -37,7 +37,6 @@ namespace BuiltDifferentMobileApp.ViewModels
             Meals = new ObservableRangeCollection<Meal>();
             MealGroups = new ObservableRangeCollection<Grouping<string, Meal>>();
             getMeals();
-            OnPropertyChanged("Items");
             createMealGroups();
            
         }
@@ -62,13 +61,14 @@ namespace BuiltDifferentMobileApp.ViewModels
             MealGroups.Clear();
 
             MealGroups.Add(new Grouping<string, Meal>("Breakfast", Meals.Where(x =>
-                x.MealType.Contains("Breakfast"))));
+                x.mealType.Contains("Breakfast"))));
             MealGroups.Add(new Grouping<string, Meal>("Lunch", Meals.Where(x =>
-                x.MealType.Contains("Lunch"))));
+                x.mealType.Contains("Lunch"))));
             MealGroups.Add(new Grouping<string, Meal>("Dinner", Meals.Where(x =>
-                x.MealType.Contains("Dinner"))));
+                x.mealType.Contains("Dinner"))));
             MealGroups.Add(new Grouping<string, Meal>("Snack", Meals.Where(x =>
-                x.MealType.Contains("Snack"))));
+                x.mealType.Contains("Snack"))));
+           
             
         }
         private async Task getMeals()
@@ -80,7 +80,7 @@ namespace BuiltDifferentMobileApp.ViewModels
                 return;
             }
             Meals = result;
-            OnPropertyChanged("Meals");
+            
         }
 
         
