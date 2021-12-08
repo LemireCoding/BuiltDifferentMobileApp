@@ -4,18 +4,18 @@ using System.Text;
 
 namespace BuiltDifferentMobileApp.Models {
     public class Meal {
-        public int MealId { get; set; }
-        public string Name { get; set; }
-        public double Calories { get; set; }
-        public double Protein { get; set; }
-        public double Carbs { get; set; }
-        public double Fat { get; set; }
-        public string Recipe { get; set; }
-        public int ClientId { get; set; }
-        public int CoachId { get; set; }
-        public string ImageLink { get; set; }
-        public string MealType { get; set; }
-        public DateTime Day { get; set; }
+        public int id { get; set; }
+        public string mealName { get; set; }
+        public int calories { get; set; }
+        public int protein { get; set; }
+        public double carbs { get; set; }
+        public double fat { get; set; }
+        public string recipe { get; set; }
+        public int clientId { get; set; }
+        public int coachId { get; set; }
+        public string imageLink { get; set; }
+        public string mealType { get; set; }
+        public DateTime day { get; set; }
         public bool isEaten { get; set; }
     }
 }

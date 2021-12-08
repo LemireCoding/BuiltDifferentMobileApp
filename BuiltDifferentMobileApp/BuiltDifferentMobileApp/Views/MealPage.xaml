@@ -48,7 +48,7 @@
                                             <ColumnDefinition/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Text="{Binding Name}"
+                                        <Label Text="{Binding mealName}"
                                                FontAttributes="Bold"
                                                FontSize="Medium"  VerticalTextAlignment="Center"/>
                                         <Label Grid.Column="1"  VerticalTextAlignment="Center" Text="{Binding Calories, StringFormat='{0} Calories'}"
@@ -71,21 +71,21 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <StackLayout>
-                                                    <Image  Source="{Binding ImageLink}"/>
+                                                    <Image  Source="{Binding imageLink}"/>
                                                 </StackLayout>
                                                 
                                                 <StackLayout Grid.Column="1" >
-                                                    <Label  VerticalTextAlignment="Center" Text="{Binding Protein, StringFormat='{0} Proteins'}"
+                                                    <Label  VerticalTextAlignment="Center" Text="{Binding protein, StringFormat='{0} Proteins'}"
                                                FontAttributes="Bold"
                                                FontSize="Medium" />
-                                                    <Label  VerticalTextAlignment="Center" Text="{Binding Carbs, StringFormat='{0} Carbs'}"
+                                                    <Label  VerticalTextAlignment="Center" Text="{Binding carbs, StringFormat='{0} Carbs'}"
                                                FontAttributes="Bold"
                                                FontSize="Medium" />
-                                                    <Label VerticalTextAlignment="Center" Text="{Binding Fat, StringFormat='{0} Fat'}"
+                                                    <Label VerticalTextAlignment="Center" Text="{Binding fat, StringFormat='{0} Fat'}"
                                                FontAttributes="Bold"
                                                FontSize="Medium" />
                                                     <Button  CornerRadius="12" Text="Edit" Command="{Binding Source={x:Reference mealsPage},
-                                    Path=BindingContext.EditCommand}" CommandParameter="{Binding MealId}"/>
+                                    Path=BindingContext.EditCommand}" CommandParameter="{Binding id}"/>
                                                 </StackLayout>
 
                                                 
