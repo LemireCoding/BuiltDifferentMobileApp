@@ -1,6 +1,7 @@
 ﻿using BuiltDifferentMobileApp.Models;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using BuiltDifferentMobileApp.Views;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -14,6 +15,7 @@ namespace BuiltDifferentMobileApp.ViewModels
     public class WorkoutViewModel:ViewModelBase
     {
         private int clientId;
+        private int workoutId;
         public AsyncCommand AddCommand { get; }
         public AsyncCommand EditCommand { get; }
         public AsyncCommand WeekdayCommand { get; }
@@ -26,6 +28,7 @@ namespace BuiltDifferentMobileApp.ViewModels
             AddCommand = new AsyncCommand(AddWorkout);
             WeekdayCommand = new AsyncCommand(WeekdayDisplay);
             //Mock data for View
+            clientId = 1;
             Workouts = new ObservableRangeCollection<Workout>()
             {
                 new Workout(111,121,123,"Cardio", "Running", 3,10,0,20,120,new DateTime(2020, 12, 22),"description", false,"http://link.com"),
@@ -35,7 +38,16 @@ namespace BuiltDifferentMobileApp.ViewModels
 
         private async Task WeekdayDisplay()
         {
-            
+            //will need to add field day of week to retrieve in uri 
+            var result = await networkService.GetAsync(APIConstants.GetWorkoutsUri(this.clientId));
+            var httpCode = result.StatusCode;
+            if (httpCode == System.Net.HttpStatusCode.OK)
+            {
+                string serialized = await result.Content.ReadAsStringAsync();
+                Workouts = new ObservableRangeCollection<Workout>(JsonConvert.DeserializeObject<List<Workout>>(serialized));
+                OnPropertyChanged("Workouts");
+            }
+
         }
             
 
@@ -47,11 +59,11 @@ namespace BuiltDifferentMobileApp.ViewModels
 
         private async Task EditWorkout()
         {
-            var result = await networkService.GetAsync(APIConstants.GetWorkoutsUri());
+            var result = await networkService.GetAsync(APIConstants.GetWorkoutsUri(clientId));
             var httpCode = result.StatusCode;
             if (httpCode == System.Net.HttpStatusCode.OK)
             {
-                var route = $"{nameof(ManageWorkoutPage)}?clientId={clientId}";
+                var route = $"{nameof(ManageWorkoutPage)}?WorkoutId={workoutId}";
                 await Shell.Current.GoToAsync(route);
             }
         }
