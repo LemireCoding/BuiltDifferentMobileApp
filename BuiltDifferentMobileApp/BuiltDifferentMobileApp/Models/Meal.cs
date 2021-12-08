@@ -16,5 +16,6 @@ namespace BuiltDifferentMobileApp.Models {
         public string ImageLink { get; set; }
         public string MealType { get; set; }
         public DateTime Day { get; set; }
+        public bool isEaten { get; set; }
     }
 }

@@ -55,9 +55,9 @@ namespace BuiltDifferentMobileApp.ViewModels
                 return;
             }
 
-            var vet = new Workout();
-            var test = JsonConvert.SerializeObject(vet);
-            var result = await networkService.PostWorkoutAsync(APIConstants.PostWorkoutUri(), vet);
+            var workout = new Workout();
+            var test = JsonConvert.SerializeObject(workout);
+            var result = await networkService.PostAsync(APIConstants.PostWorkoutUri(), workout);
             var httpCode = result.StatusCode;
 
             if (httpCode == System.Net.HttpStatusCode.OK)

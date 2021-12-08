@@ -1,10 +1,12 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Services.NetworkServices;
 using BuiltDifferentMobileApp.Views;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -13,6 +15,8 @@ namespace BuiltDifferentMobileApp.ViewModels
 {
      public class MealViewModel: ViewModelBase
     {
+        private int clientId;
+
         public ObservableRangeCollection<Meal> Meals { get; set; }
         public ObservableRangeCollection<Grouping<string, Meal>> MealGroups { get; set; }
         private Meal selectedMeal;
@@ -21,15 +25,19 @@ namespace BuiltDifferentMobileApp.ViewModels
             get => selectedMeal;
             set => SetProperty(ref selectedMeal, value);
         }
+       
         public AsyncCommand AddCommand { get; }
         public AsyncCommand <int>EditCommand { get; }
+        private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
         public MealViewModel()
         {
+            clientId = 1;
             EditCommand = new AsyncCommand<int>(EditMeal);
             AddCommand = new AsyncCommand(AddMeal);
             Meals = new ObservableRangeCollection<Meal>();
             MealGroups = new ObservableRangeCollection<Grouping<string, Meal>>();
-            initMeals();
+            getMeals();
+            OnPropertyChanged("Items");
             createMealGroups();
            
         }
@@ -50,7 +58,7 @@ namespace BuiltDifferentMobileApp.ViewModels
 
         public void createMealGroups()
         {
-
+            
             MealGroups.Clear();
 
             MealGroups.Add(new Grouping<string, Meal>("Breakfast", Meals.Where(x =>
@@ -63,92 +71,18 @@ namespace BuiltDifferentMobileApp.ViewModels
                 x.MealType.Contains("Snack"))));
             
         }
-        private void initMeals()
+        private async Task getMeals()
         {
-            Meals.Add(new Meal
+
+            var result = await networkService.GetAsync<ObservableRangeCollection<Meal>>(APIConstants.GetMealsByClientId(clientId));
+            if (result.Count == 0)
             {
-                MealId = 1,
-                Name = "Chicken and Rice",
-                Calories = 200,
-                Protein = 60.66,
-                Carbs = 30.22,
-                Fat = 20.12,
-                Recipe = "LONG TEXT",
-                ClientId = 1,
-                CoachId = 1,
-                ImageLink = "https://www.recipetineats.com/wp-content/uploads/2018/06/Oven-Baked-Chicken-and-Rice_0.jpg",
-                MealType = "Lunch"
-
-            });
-
-            Meals.Add(new Meal
-            {
-                MealId = 2,
-                Name = "Chicken and Rice",
-                Calories = 200,
-                Protein = 60.66,
-                Carbs = 30.22,
-                Fat = 20.12,
-                Recipe = "LONG TEXT",
-                ClientId = 1,
-                CoachId = 1,
-                ImageLink = "https://www.recipetineats.com/wp-content/uploads/2018/06/Oven-Baked-Chicken-and-Rice_0.jpg",
-                MealType = "Lunch"
-
-            });
-
-            Meals.Add(new Meal
-            {
-                MealId = 3,
-                Name = "Chicken and Rice",
-                Calories = 200,
-                Protein = 60.66,
-                Carbs = 30.22,
-                Fat = 20.12,
-                Recipe = "LONG TEXT",
-                ClientId = 1,
-                CoachId = 1,
-                ImageLink = "https://www.recipetineats.com/wp-content/uploads/2018/06/Oven-Baked-Chicken-and-Rice_0.jpg",
-                MealType = "Breakfast"
-
-            });
-
-            Meals.Add(new Meal
-            {
-                MealId = 4,
-                Name = "Chicken and Rice",
-                Calories = 200,
-                Protein = 60.66,
-                Carbs = 30.22,
-                Fat = 20.12,
-                Recipe = "LONG TEXT",
-                ClientId = 1,
-                CoachId = 1,
-                ImageLink = "https://www.recipetineats.com/wp-content/uploads/2018/06/Oven-Baked-Chicken-and-Rice_0.jpg",
-                MealType = "Snack"
-
-            });
-
-
-            Meals.Add(new Meal
-            {
-                MealId = 5,
-                Name = "Chicken and Rice",
-                Calories = 200,
-                Protein = 60.66,
-                Carbs = 30.22,
-                Fat = 20.12,
-                Recipe = "LONG TEXT",
-                ClientId = 1,
-                CoachId = 1,
-                ImageLink = "https://www.recipetineats.com/wp-content/uploads/2018/06/Oven-Baked-Chicken-and-Rice_0.jpg",
-                MealType = "Dinner"
-
-            });
-
-            
-            
-
+                return;
+            }
+            Meals = result;
+            OnPropertyChanged("Meals");
         }
+
+        
     }
 }

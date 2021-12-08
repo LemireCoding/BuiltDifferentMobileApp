@@ -7,7 +7,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 {
     public static class APIConstants
     {
-        public static string BaseAddress = DeviceInfo.Platform == DevicePlatform.Android ? "http://10.0.2.2:80" : "http://localhost:8080";
+        public static string BaseAddress = DeviceInfo.Platform == DevicePlatform.Android ? "http://10.0.2.2:8080" : "http://localhost:8080";
 
         public static string PostWorkoutUri()
         {
@@ -17,7 +17,12 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         public static string GetWorkoutsUri()
         {
             //will need to add client id , etc...
-            return $"{BaseAddress}/api/gateway/workouts";
+            return $"{BaseAddress}/api/workouts";
+        }
+
+        public static string GetMealsByClientId(int clientId)
+        {
+            return $"{BaseAddress}/api/meals/client/{clientId}";
         }
     }
 }
