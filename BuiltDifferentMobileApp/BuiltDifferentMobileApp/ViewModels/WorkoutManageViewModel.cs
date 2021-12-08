@@ -31,6 +31,7 @@ namespace BuiltDifferentMobileApp.ViewModels
         public string Description { get; set; }
         public bool IsCompleted { get; set; }
         public string VideoLink { get; set; }
+        public string Title { get; set; }
 
 
         public List<WorkoutType> Types { get; set; }
@@ -42,11 +43,11 @@ namespace BuiltDifferentMobileApp.ViewModels
             this.workoutId = workoutId;
             if (workoutId == 0)
             {
-                Title = "Add Meal";
+                Title = "Add Workout";
             }
             else
             {
-                Title = "Edit Meal";
+                Title = "Edit Workout";
             }
             SaveCommand = new AsyncCommand(SaveWorkout);
 
@@ -56,25 +57,43 @@ namespace BuiltDifferentMobileApp.ViewModels
             new WorkoutType("Cardio"),
             new WorkoutType("Weight Training")
         };
+            //to populate field on edit request
+            OnPropertyChanged("");
     }
 
         private async Task SaveWorkout()
         {
+            var workout = new Workout(WorkoutId, CoachId, ClientId, WorkoutType, WorkoutName, Sets, Reps, Weight, Duration, RestTime, Day, Description, IsCompleted, VideoLink);
+            
+            
             if (string.IsNullOrEmpty(WorkoutName) || string.IsNullOrEmpty(WorkoutType))
             {
                 await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
                 return;
             }
 
-            //var workout = new Workout();
-            //var test = JsonConvert.SerializeObject(workout);
-            //var result = await networkService.PostWorkoutAsync(APIConstants.PostWorkoutUri(), workout);
-            //var httpCode = result.StatusCode;
+            if (this.workoutId == 0)
+            {
+                //var result = await networkService.PostAsync(APIConstants.PostWorkoutUri(), workout);
+                //var httpCode = result.StatusCode;
 
-            //if (httpCode == System.Net.HttpStatusCode.OK)
-            //{
-            //    await Application.Current.MainPage.DisplayAlert("Good", "Vet Saved", "OK");
-            //}
+                //if (httpCode == System.Net.HttpStatusCode.OK)
+                //{
+                //    await Application.Current.MainPage.DisplayAlert("Good", "Workout Saved", "OK");
+                //}
+            }
+            else
+            {
+                //var result = await networkService.PutAsync(APIConstants.PutWorkoutUri(this.workoutId), workout);
+                //var httpCode = result.StatusCode;
+
+                //if (httpCode == System.Net.HttpStatusCode.OK)
+                //{
+                //    await Application.Current.MainPage.DisplayAlert("Good", "Workout Saved", "OK");
+                //}
+            }
+
+
         }
 
     }

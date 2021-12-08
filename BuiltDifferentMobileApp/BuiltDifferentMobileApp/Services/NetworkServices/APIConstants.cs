@@ -19,5 +19,10 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             //will need to add client id , etc...
             return $"{BaseAddress}/api/gateway/workouts";
         }
+        public static string PutWorkoutUri(int workoutId)
+        {
+            //will need to add client id , etc...
+            return $"{BaseAddress}/api/gateway/workouts/{workoutId}";
+        }
     }
 }
