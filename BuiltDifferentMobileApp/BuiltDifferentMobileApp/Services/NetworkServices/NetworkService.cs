@@ -43,6 +43,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             HttpResponseMessage response = await httpClient.GetAsync(uri);
             string serialized = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<TResult>(serialized);
+            
 
             return result;
         }

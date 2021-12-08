@@ -34,25 +34,27 @@ namespace BuiltDifferentMobileApp.ViewModels
             clientId = 1;
             EditCommand = new AsyncCommand<int>(EditMeal);
             AddCommand = new AsyncCommand(AddMeal);
-            Meals = new ObservableRangeCollection<Meal>();
+            
             MealGroups = new ObservableRangeCollection<Grouping<string, Meal>>();
             getMeals();
-            createMealGroups();
+           
            
         }
 
         private async Task AddMeal()
         {
-            var route = $"{nameof(ManageMealPage)}?mealId=0";
+            var route = $"{nameof(AddMealPage)}";
            
             await Shell.Current.GoToAsync(route);
         }
 
         private async Task EditMeal(int id)
         {
-            var route = $"{nameof(ManageMealPage)}?mealId={id}";
+            
+            var route = $"{nameof(EditMealPage)}?id={id}";
 
             await Shell.Current.GoToAsync(route);
+            
         }
 
         public void createMealGroups()
@@ -68,6 +70,8 @@ namespace BuiltDifferentMobileApp.ViewModels
                 x.mealType.Contains("Dinner"))));
             MealGroups.Add(new Grouping<string, Meal>("Snack", Meals.Where(x =>
                 x.mealType.Contains("Snack"))));
+
+            OnPropertyChanged("MealGroups");
            
             
         }
@@ -79,8 +83,10 @@ namespace BuiltDifferentMobileApp.ViewModels
             {
                 return;
             }
-            Meals = result;
             
+            Meals = new ObservableRangeCollection<Meal>(result);
+
+            createMealGroups();
         }
 
         

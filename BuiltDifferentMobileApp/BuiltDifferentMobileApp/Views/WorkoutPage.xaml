@@ -5,37 +5,23 @@
              x:Class="BuiltDifferentMobileApp.Views.WorkoutPage"
              x:Name="TheWorkoutPage">
     <ContentPage.Content >
-        <StackLayout Margin="20">
-            <Label Text="Client Name Workouts" TextColor="Black" FontSize="Title" HorizontalTextAlignment="Center"/>
-            <Button Text="Manange Meals"/>
-            <CollectionView>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <FlexLayout>
-                            <Button Text="12"/>
-                        </FlexLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+        <StackLayout Margin="5,0,5,0">
+            <Label Margin="5,20,5,10" Text="Olivier's Workout Plan"  FontSize="35"
+                   FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
-            <FlexLayout BackgroundColor="Gray" Padding="5">
-                <Button Text="12" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-            </FlexLayout>
+
+            <DatePicker HorizontalOptions="Center"/>
+            <Button Text="Add" CornerRadius="12" Margin="300,10,30,10" Command="{Binding AddCommand}" />
 
             <!--InsertCommand when rerteieved -->
-            <CollectionView 
+            <CollectionView Margin="10"
                 ItemsSource="{Binding Workouts}"
-                            SelectionMode="Single">
+                            >
+
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                       
-                        <Grid>
+                        <Grid Margin="15,15,15,15" >
                             <behaviors:Expander>
                                 <behaviors:Expander.Header>
                                     <Grid
@@ -44,25 +30,25 @@
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
                                         <Label 
                                     Grid.Column="0" 
-                                    Text="Workout Name (click to expand)"
+                                    Text="{Binding workoutName, StringFormat='{0} (Click to expand)'} "
                                     FontAttributes="Bold"
                                     FontSize="Medium" />
                                         <!-- ="{Binding Sets, StringFormat='Sets {0}'}" -->
                                         <Label 
                                     Grid.Column="1"
                                     HorizontalTextAlignment="End"
-                                    Text="Sets"
+                                    Text="{Binding sets, StringFormat='{0} Sets'} "
                                     FontAttributes="Bold"
                                     FontSize="Medium"/>
                                         <!-- ="{Binding Reps, StringFormat='Sets {0}'}" -->
                                         <Label 
                                     Grid.Column="2"
                                     HorizontalTextAlignment="End"
-                                    Text="Reps"
+                                    Text="{Binding reps, StringFormat='{0} Reps'} "
                                     FontAttributes="Bold"
                                     FontSize="Medium" />
                                         <Label 
@@ -70,8 +56,9 @@
                                     HorizontalTextAlignment="End"
                                     FontSize="Large"
                                     FontFamily="FAS" 
-                                    Text="&#xf107;"/>
+                                    Text="&#xf107;" />
                                     </Grid>
+
                                 </behaviors:Expander.Header>
                                 <behaviors:Expander.ContentTemplate>
                                     <DataTemplate>
@@ -91,12 +78,18 @@
                                                 Command="{Binding Source={x:Reference TheWorkoutPage}, Path=BindingContext.EditCommand}" CommandParameter="{Binding .}"
                                         />
                                         </Grid>
+
                                     </DataTemplate>
                                 </behaviors:Expander.ContentTemplate>
                             </behaviors:Expander>
+
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+
+
+
+               
                 <CollectionView.EmptyView>
                     <StackLayout HorizontalOptions="Center">
                         <Image 
@@ -111,16 +104,6 @@
                     </StackLayout>
                 </CollectionView.EmptyView>
             </CollectionView>
-            <StackLayout Margin="10">
-                <Button 
-                Text="Add New"
-                 
-                Grid.Column="3"
-                Command="{Binding AddCommand}"
-                Padding="2"
-                CornerRadius="10"
-                />
-            </StackLayout>
             
         </StackLayout>
 

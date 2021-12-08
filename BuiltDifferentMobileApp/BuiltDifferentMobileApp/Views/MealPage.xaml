@@ -19,7 +19,7 @@
             <Button Text="Add" CornerRadius="12" Margin="300,10,30,10" Command="{Binding AddCommand}" />
             <CollectionView ItemsSource="{Binding MealGroups}"
                            
-                SelectionMode="Single"
+               
                 IsGrouped="true">
                 
                 <CollectionView.GroupHeaderTemplate>
@@ -51,9 +51,21 @@
                                         <Label Text="{Binding mealName}"
                                                FontAttributes="Bold"
                                                FontSize="Medium"  VerticalTextAlignment="Center"/>
-                                        <Label Grid.Column="1"  VerticalTextAlignment="Center" Text="{Binding calories, StringFormat='{0} Calories'}"
+                                        <Grid Grid.Column="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label   VerticalTextAlignment="Center" Text="{Binding calories, StringFormat='{0} Calories'}"
                                                FontAttributes="Bold"
                                                FontSize="Medium" />
+                                            <Label 
+                                        Grid.Column="2"
+                                        HorizontalTextAlignment="End"
+                                        FontSize="Large"
+                                        FontFamily="FAS" 
+                                        Text="&#xf107;"/>
+                                        </Grid>
                                     </Grid>
                                    
                                 </behaviors:Expander.Header>
@@ -70,7 +82,7 @@
                                                     <ColumnDefinition/>
                                                 </Grid.ColumnDefinitions>
 
-                                                <StackLayout>
+                                                <StackLayout >
                                                     <Image  Source="{Binding imageLink}"/>
                                                 </StackLayout>
                                                 
@@ -99,7 +111,19 @@
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-        
+                <CollectionView.EmptyView>
+                    <StackLayout HorizontalOptions="Center">
+                        <Image 
+                            IsAnimationPlaying="True"
+                            WidthRequest="200"
+                            HeightRequest="200" />
+                        <Label 
+                            Text="Add Some Meals"
+                            HorizontalTextAlignment="Center"
+                            Padding="20,10,10,10"
+                            />
+                    </StackLayout>
+                </CollectionView.EmptyView>
             </CollectionView>
         </StackLayout>
     </ContentPage.Content>

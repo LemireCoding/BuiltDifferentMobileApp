@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BuiltDifferentMobileApp.ViewModels
 {
-    public class MealManageViewModel:ViewModelBase
+    public class AddMealViewModel:ViewModelBase
     {
        
-        private int mealId;
+       
         private string name;
         public string Name { get => name; set => SetProperty(ref name, value); }
 
@@ -30,21 +30,14 @@ namespace BuiltDifferentMobileApp.ViewModels
         private string date;
         public string Date { get => date; set => SetProperty(ref date, value); }
         public AsyncCommand SaveCommand { get; }
-        public AsyncCommand GoToProfile { get; }
+        
 
-        public MealManageViewModel(int id)
+        public AddMealViewModel()
         {
-            
-            this.mealId = id;
-            if(mealId == 0)
-            {
-                Title = "Add Meal";
-            } else
-            {
-                Title = "Edit Meal";
-            }
+
+            Title = "Add Meal";
             SaveCommand = new AsyncCommand(Save);
-            GoToProfile = new AsyncCommand(ToProfile);
+            
         }
 
         async Task Save()
@@ -55,13 +48,7 @@ namespace BuiltDifferentMobileApp.ViewModels
 
         }
 
-        async Task ToProfile()
-        {
-
-
-            await AppShell.Current.GoToAsync("..");
-
-        }
+        
 
 
     }

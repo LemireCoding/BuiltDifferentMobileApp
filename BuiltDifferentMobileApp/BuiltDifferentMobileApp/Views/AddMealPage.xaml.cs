@@ -11,19 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace BuiltDifferentMobileApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [QueryProperty(nameof(mealId), nameof(mealId))]
-    public partial class ManageMealPage : ContentPage
+    public partial class AddMealPage : ContentPage
     {
-        public int mealId { get; set; }
-        public ManageMealPage()
+        public AddMealPage()
         {
             InitializeComponent();
-       
-        }
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            BindingContext = new MealManageViewModel(mealId);
+            BindingContext = new AddMealViewModel();
         }
     }
 }

@@ -94,12 +94,17 @@
         <ShellContent Route="WorkoutPage" ContentTemplate="{DataTemplate local:WorkoutPage}" />
     </FlyoutItem>
    
-    <FlyoutItem Title="Meals" >
-        <ShellContent Route="MealPage" ContentTemplate="{DataTemplate local:MealPage}" />
-    </FlyoutItem>
+   
+
     <FlyoutItem Title="Menu" >
         <ShellContent Route="MenuPage" ContentTemplate="{DataTemplate local:MenuPage}" />
     </FlyoutItem>
+
+    <FlyoutItem Title="Meals" >
+        <ShellContent Route="MealPage" ContentTemplate="{DataTemplate local:MealPage}" />
+    </FlyoutItem>
+
+
 
     <!-- 
         When the Flyout is visible this defines the content to display in the flyout.

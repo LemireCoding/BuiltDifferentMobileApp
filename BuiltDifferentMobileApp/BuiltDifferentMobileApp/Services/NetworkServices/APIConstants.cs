@@ -25,5 +25,10 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         {
             return $"{BaseAddress}/api/meals/client/{clientId}";
         }
+
+        internal static string GetWorkoutsByClientId(int clientId)
+        {
+            return $"{BaseAddress}/api/workouts/client/{clientId}";
+        }
     }
 }
