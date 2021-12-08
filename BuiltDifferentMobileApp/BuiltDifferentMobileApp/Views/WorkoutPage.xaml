@@ -17,18 +17,21 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <StackLayout>
+                <Label Text="Week____ " HorizontalOptions="Center"/>
+                <FlexLayout BackgroundColor="Gray">
+                    <Button Text="S" TextColor="Black" BackgroundColor="White" Margin="5" CornerRadius="100" Command="{Binding WeekdayCommand}"/>
+                    <Button Text="M" TextColor="Black" BackgroundColor="White" Margin="5" CornerRadius="100" Command="{Binding WeekdayCommand}"/>
+                    <Button Text="T" TextColor="Black" BackgroundColor="White" Margin="5" CornerRadius="100" Command="{Binding WeekdayCommand}"/>
+                    <Button Text="W" TextColor="Black" BackgroundColor="White" Margin="5" CornerRadius="100" Command="{Binding WeekdayCommand}"/>
+                    <Button Text="T" TextColor="Black" BackgroundColor="White" Margin="5" CornerRadius="100" Command="{Binding WeekdayCommand}"/>
+                    <Button Text="F" TextColor="Black" BackgroundColor="White" Margin="5" CornerRadius="100" Command="{Binding WeekdayCommand}"/>
+                    <Button Text="S" TextColor="Black" BackgroundColor="White" Margin="5" CornerRadius="100" Command="{Binding WeekdayCommand}"/>
+                </FlexLayout>
 
-            <FlexLayout BackgroundColor="Gray" Padding="5">
-                <Button Text="12" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-            </FlexLayout>
+            </StackLayout>
 
-            <!--InsertCommand when rerteieved -->
+            <!--InsertCommand when rerteieved mealS-->
             <CollectionView 
                 ItemsSource="{Binding Workouts}"
                             SelectionMode="Single">
@@ -48,25 +51,23 @@
                                         </Grid.ColumnDefinitions>
                                         <Label 
                                     Grid.Column="0" 
-                                    Text="Workout Name (click to expand)"
+                                    Text="{Binding workoutName}"
                                     FontAttributes="Bold"
-                                    FontSize="Medium" />
-                                        <!-- ="{Binding Sets, StringFormat='Sets {0}'}" -->
+                                    FontSize="Small" />
                                         <Label 
                                     Grid.Column="1"
                                     HorizontalTextAlignment="End"
-                                    Text="Sets"
+                                    Text="{Binding sets, StringFormat='Sets {0}'}"
                                     FontAttributes="Bold"
-                                    FontSize="Medium"/>
-                                        <!-- ="{Binding Reps, StringFormat='Sets {0}'}" -->
+                                    FontSize="Small"/>
                                         <Label 
                                     Grid.Column="2"
                                     HorizontalTextAlignment="End"
-                                    Text="Reps"
+                                    Text="{Binding reps, StringFormat='Reps {0}'}"
                                     FontAttributes="Bold"
-                                    FontSize="Medium" />
+                                    FontSize="Small" />
                                         <Label 
-                                    Grid.Column="3"
+                                    Grid.Column="4"
                                     HorizontalTextAlignment="End"
                                     FontSize="Large"
                                     FontFamily="FAS" 
@@ -97,6 +98,7 @@
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+               
                 <CollectionView.EmptyView>
                     <StackLayout HorizontalOptions="Center">
                         <Image 
@@ -114,7 +116,6 @@
             <StackLayout Margin="10">
                 <Button 
                 Text="Add New"
-                 
                 Grid.Column="3"
                 Command="{Binding AddCommand}"
                 Padding="2"

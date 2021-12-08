@@ -18,5 +18,10 @@ namespace BuiltDifferentMobileApp.Views
             InitializeComponent();
             BindingContext = new WorkoutViewModel();
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

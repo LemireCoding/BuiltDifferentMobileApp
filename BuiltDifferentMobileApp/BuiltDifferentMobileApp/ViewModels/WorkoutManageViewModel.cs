@@ -13,6 +13,8 @@ namespace BuiltDifferentMobileApp.ViewModels
 {
     public class WorkoutManageViewModel:ViewModelBase
     {
+        private int workoutId;
+
         public int WorkoutId { get; set; }
         public int CoachId { get; set; }
         public int ClientId { get; set; }
@@ -35,8 +37,17 @@ namespace BuiltDifferentMobileApp.ViewModels
 
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
         public AsyncCommand SaveCommand { get; }
-        public WorkoutManageViewModel()
+        public WorkoutManageViewModel(int workoutId)
         {
+            this.workoutId = workoutId;
+            if (workoutId == 0)
+            {
+                Title = "Add Meal";
+            }
+            else
+            {
+                Title = "Edit Meal";
+            }
             SaveCommand = new AsyncCommand(SaveWorkout);
 
             Types=new List<WorkoutType>
@@ -55,15 +66,15 @@ namespace BuiltDifferentMobileApp.ViewModels
                 return;
             }
 
-            var vet = new Workout();
-            var test = JsonConvert.SerializeObject(vet);
-            var result = await networkService.PostWorkoutAsync(APIConstants.PostWorkoutUri(), vet);
-            var httpCode = result.StatusCode;
+            //var workout = new Workout();
+            //var test = JsonConvert.SerializeObject(workout);
+            //var result = await networkService.PostWorkoutAsync(APIConstants.PostWorkoutUri(), workout);
+            //var httpCode = result.StatusCode;
 
-            if (httpCode == System.Net.HttpStatusCode.OK)
-            {
-                await Application.Current.MainPage.DisplayAlert("Good", "Vet Saved", "OK");
-            }
+            //if (httpCode == System.Net.HttpStatusCode.OK)
+            //{
+            //    await Application.Current.MainPage.DisplayAlert("Good", "Vet Saved", "OK");
+            //}
         }
 
     }

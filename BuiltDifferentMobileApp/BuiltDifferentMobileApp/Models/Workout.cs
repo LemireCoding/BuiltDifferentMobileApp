@@ -21,7 +21,23 @@ namespace BuiltDifferentMobileApp.Models {
         public bool isCompleted { get; set; }
         public string videoLink { get; set; }
 
-
-
+        public Workout(int workoutId, int coachId, int clientId, string workoutType, string workoutName, int sets, 
+            int reps, int weight, int duration, int restTime, DateTime day, string description, bool isCompleted, string videoLink)
+        {
+            this.workoutId = workoutId;
+            this.coachId = coachId;
+            this.clientId = clientId;
+            this.workoutType = workoutType;
+            this.workoutName = workoutName;
+            this.sets = sets;
+            this.reps = reps;
+            this.weight = weight;
+            this.duration = duration;
+            this.restTime = restTime;
+            this.day = day;
+            this.description = description;
+            this.isCompleted = isCompleted;
+            this.videoLink = videoLink;
+        }
     }
 }
