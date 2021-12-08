@@ -17,9 +17,9 @@
             </Grid.RowDefinitions>
             <ScrollView Grid.Row="0">
                 <StackLayout Padding="50">
-                    <Label Text="Create / Edit Workout" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="{StaticResource TextSecondary}"/>
-                    <Entry Text="{Binding WorkoutName}" Placeholder="Exercise Name" Keyboard="Text"/>
-                    <Entry Text="{Binding WorkoutType}" Placeholder="Workout Type" Keyboard="Text"/>
+                    <Label Text="Create / Edit Workout" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="Black"/>
+                    <Entry Text="{Binding WorkoutName}" Placeholder="Exercise Name" Keyboard="Text" BackgroundColor="White" />
+                    <Picker SelectedItem="{Binding WorkoutType}" ItemsSource="{Binding Types}" ItemDisplayBinding="{Binding Path=Name}"/>
                     <Entry Text="{Binding Sets}" Placeholder="Sets" Keyboard="Numeric"/>
                     <Entry Text="{Binding Reps}" Placeholder="Reps" Keyboard="Numeric"/>
                     <Entry Text="{Binding Duration}" Placeholder="Duration (in minutes)" Keyboard="Numeric"/>
@@ -29,7 +29,7 @@
                     <Label Text="Date"/>
                     <DatePicker MinimumDate="{x:Static sys:DateTime.Now}" Date="{Binding Date}" HorizontalOptions="Center"/>
                     <Entry Text="{Binding VideoLink}" Placeholder="Youtube Video Link" Keyboard="Text"/>
-                    <Button Grid.Row="0" BorderColor="{StaticResource Primary}" BorderWidth="1" FontAttributes="Bold" BackgroundColor="{StaticResource Primary}" BorderRadius="35" TextColor="White" 
+                    <Button Grid.Row="0" BorderColor="{StaticResource RedPrimary}" BorderWidth="1" FontAttributes="Bold" BackgroundColor="{StaticResource RedPrimary}" BorderRadius="35" TextColor="White" 
                             HorizontalOptions="End" VerticalOptions="End" WidthRequest="70" HeightRequest="70" Margin="0,0,20,22" Command="{Binding SaveCommand}"/>
                 </StackLayout>
             </ScrollView>
