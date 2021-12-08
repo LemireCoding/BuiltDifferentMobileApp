@@ -24,6 +24,7 @@ namespace BuiltDifferentMobileApp.ViewModels
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
         public WorkoutViewModel()
         {
+
             EditCommand = new AsyncCommand(EditWorkout);
             AddCommand = new AsyncCommand(AddWorkout);
             WeekdayCommand = new AsyncCommand(WeekdayDisplay);
