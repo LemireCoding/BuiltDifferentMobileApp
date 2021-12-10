@@ -72,10 +72,16 @@ namespace BuiltDifferentMobileApp.ViewModels
                 return;
             }
 
+
             if (this.workoutId == 0)
             {
                 //var result = await networkService.PostAsync(APIConstants.PostWorkoutUri(), workout);
                 //var httpCode = result.StatusCode;
+
+            var workout = new Workout();
+            var test = JsonConvert.SerializeObject(workout);
+            var result = await networkService.PostAsync(APIConstants.PostWorkoutUri(), workout);
+            var httpCode = result.StatusCode;
 
                 //if (httpCode == System.Net.HttpStatusCode.OK)
                 //{

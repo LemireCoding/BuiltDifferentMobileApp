@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="BuiltDifferentMobileApp.Views.MealPage"
+              xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels"
+             x:Name="mealsPage"
+             >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Profile" >
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
+            </ToolbarItem.IconImageSource>        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Margin="5,0,5,0">
+            <Label Margin="5,20,5,10" Text="Olivier's Meal Plan"  FontSize="35"
+                   FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <DatePicker HorizontalOptions="Center"/>
+            <Button Text="Add" CornerRadius="12" Margin="300,10,30,10" Command="{Binding AddCommand}" />
+            <CollectionView ItemsSource="{Binding MealGroups}"
+                           
+               
+                IsGrouped="true">
+                
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                       
+                        
+                            <Label Text="{Binding Key}"
+                   FontSize="30"
+                   FontAttributes="Bold" VerticalTextAlignment="Center" />
+                        
+                        
+
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10,10,10,10" >
+                            <behaviors:Expander>
+                                <behaviors:Expander.Header>
+                                    <Grid  Margin="10,10,10,10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Text="{Binding mealName}"
+                                               FontAttributes="Bold"
+                                               FontSize="Medium"  VerticalTextAlignment="Center"/>
+                                        <Grid Grid.Column="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label   VerticalTextAlignment="Center" Text="{Binding calories, StringFormat='{0} Calories'}"
+                                               FontAttributes="Bold"
+                                               FontSize="Medium" />
+                                            <Label 
+                                        Grid.Column="2"
+                                        HorizontalTextAlignment="End"
+                                        FontSize="Large"
+                                        FontFamily="FAS" 
+                                        Text="&#xf107;"/>
+                                        </Grid>
+                                    </Grid>
+                                   
+                                </behaviors:Expander.Header>
+                                <behaviors:Expander.ContentTemplate>
+                                    <DataTemplate>
+                                        <StackLayout >
+                                            <Grid Margin="10,10,10,10">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                                 <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackLayout >
+                                                    <Image  Source="{Binding imageLink}"/>
+                                                </StackLayout>
+                                                
+                                                <StackLayout Grid.Column="1" >
+                                                    <Label  VerticalTextAlignment="Center" Text="{Binding protein, StringFormat='{0} Proteins'}"
+                                               FontAttributes="Bold"
+                                               FontSize="Medium" />
+                                                    <Label  VerticalTextAlignment="Center" Text="{Binding carbs, StringFormat='{0} Carbs'}"
+                                               FontAttributes="Bold"
+                                               FontSize="Medium" />
+                                                    <Label VerticalTextAlignment="Center" Text="{Binding fat, StringFormat='{0} Fat'}"
+                                               FontAttributes="Bold"
+                                               FontSize="Medium" />
+                                                    <Button  CornerRadius="12" Text="Edit" Command="{Binding Source={x:Reference mealsPage},
+                                    Path=BindingContext.EditCommand}" CommandParameter="{Binding id}"/>
+                                                </StackLayout>
+
+                                                
+                                        </Grid>
+                                        </StackLayout>
+
+                                    </DataTemplate>
+                                </behaviors:Expander.ContentTemplate>
+                            </behaviors:Expander>
+                           
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <StackLayout HorizontalOptions="Center">
+                        <Image 
+                            IsAnimationPlaying="True"
+                            WidthRequest="200"
+                            HeightRequest="200" />
+                        <Label 
+                            Text="Add Some Meals"
+                            HorizontalTextAlignment="Center"
+                            Padding="20,10,10,10"
+                            />
+                    </StackLayout>
+                </CollectionView.EmptyView>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

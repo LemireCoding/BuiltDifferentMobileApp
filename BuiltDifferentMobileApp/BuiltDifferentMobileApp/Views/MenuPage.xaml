@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BuiltDifferentMobileApp.Views.MenuPage"
+            xmlns:mypages="clr-namespace:BuiltDifferentMobileApp.Views;assembly=BuiltDifferentMobileApp"
+            BackgroundColor="#660708" BarBackgroundColor="#660708">
+    <TabbedPage.Children>
+        <mypages:MealPage Title="Meals"/>
+        <mypages:WorkoutPage Title="Workouts"/>
+        </TabbedPage.Children>
+</TabbedPage>

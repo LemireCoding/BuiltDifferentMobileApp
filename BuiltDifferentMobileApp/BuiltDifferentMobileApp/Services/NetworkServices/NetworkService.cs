@@ -21,9 +21,9 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             httpClient = new HttpClient();
         }
 
-        public async Task<T> PostWorkoutAsync(string uri, Workout workout)
+        public async Task<T> PostAsync(string uri, object obj)
         {
-            var json = JsonConvert.SerializeObject(workout);
+            var json = JsonConvert.SerializeObject(obj);
 
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync(uri, content);
@@ -38,14 +38,19 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return (T)response;
         }
 
-        public async Task<T> GetAsync(string uri)
+        public async Task<TResult> GetAsync<TResult>(string uri)
         {
-            //var authHeader = new AuthenticationHeaderValue("Bearer", JWTToken);
-            //httpClient.DefaultRequestHeaders.Authorization = authHeader;
-            //httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             HttpResponseMessage response = await httpClient.GetAsync(uri);
-            return (T)response;
+            string serialized = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<TResult>(serialized);
+            
 
+            return result;
+        }
+
+        public Task<T> GetAsync(string uri)
+        {
+            throw new NotImplementedException();
         }
     }
 }

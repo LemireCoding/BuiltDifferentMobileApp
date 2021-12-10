@@ -20,11 +20,14 @@ namespace BuiltDifferentMobileApp.ViewModels
         public AsyncCommand EditCommand { get; }
         public AsyncCommand WeekdayCommand { get; }
         public ObservableRangeCollection<Workout> Workouts { get; set; }
+        public ObservableRangeCollection<Workout> Workouts { get; set; }
+        public AsyncCommand AddCommand { get; }
+        public AsyncCommand EditCommand { get; }
 
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
         public WorkoutViewModel()
         {
-
+            clientId = 1;
             EditCommand = new AsyncCommand(EditWorkout);
             AddCommand = new AsyncCommand(AddWorkout);
             WeekdayCommand = new AsyncCommand(WeekdayDisplay);
@@ -49,15 +52,25 @@ namespace BuiltDifferentMobileApp.ViewModels
                 OnPropertyChanged("Workouts");
             }
 
+            GetWorkouts();
         }
             
 
+        private async Task GetWorkouts()
+        {
+            var result = await networkService.GetAsync<ObservableRangeCollection<Workout>>(APIConstants.GetWorkoutsByClientId(clientId));
+            if (result.Count == 0)
+            {
+                return;
+            }
+            Workouts = new ObservableRangeCollection<Workout>(result);
+            OnPropertyChanged("Workouts");
+        }
         private async Task AddWorkout()
         {
             var route = $"{nameof(ManageWorkoutPage)}";
             await Shell.Current.GoToAsync(route);
         }
-
         private async Task EditWorkout()
         {
             var result = await networkService.GetAsync(APIConstants.GetWorkoutsUri(clientId));
