@@ -5,7 +5,6 @@ using System.Runtime.CompilerServices;
 using NUnit.Framework;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
-
 /*
  * Test Ids can be found within each test method 
  * Please place TestId after first curly brace 
@@ -57,9 +56,6 @@ namespace BuiltDifferent.UITest
         {
             app.Repl();
         }
-
-
-
 
         [Test]
         public void Workout_page_visible()
