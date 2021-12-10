@@ -59,14 +59,16 @@
                                                 <ColumnDefinition Width="2.5*"/>
                                                 <ColumnDefinition/>
                                             </Grid.ColumnDefinitions>
+
                                             <Frame Padding="0" CornerRadius="10">
                                                 <WebView Source="{Binding videoLink}" 
          HorizontalOptions="Fill" VerticalOptions="Fill"
          IsVisible="True" />
                                             </Frame>
                                             <StackLayout Margin="10,10,0,10" Grid.Column="1">
-                                                
-                                                <Button 
+
+                                            <Button 
+                                        AutomationId="AddButton"
                                         Text="Edit"
                                         VerticalOptions="Center"
                                         Padding="2"
