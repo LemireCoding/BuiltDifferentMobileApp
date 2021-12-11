@@ -63,9 +63,9 @@ namespace BuiltDifferentMobileApp.ViewModels
 
         private async Task EditWorkout()
         {
-            var result = await networkService.GetAsync(APIConstants.GetWorkoutsUri());
-            var httpCode = result.StatusCode;
-            if (httpCode == System.Net.HttpStatusCode.OK)
+            var result = await networkService.GetAsync<Workout>(APIConstants.GetWorkoutsUri());
+            
+            if (result != null)
             {
                 var route = $"{nameof(ManageWorkoutPage)}?clientId={clientId}";
                 await Shell.Current.GoToAsync(route);

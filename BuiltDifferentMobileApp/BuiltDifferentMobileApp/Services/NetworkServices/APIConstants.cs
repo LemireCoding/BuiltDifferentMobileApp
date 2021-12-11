@@ -8,27 +8,41 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 {
     public static class APIConstants
     {
-        public static string BaseAddress = Device.RuntimePlatform == Device.Android ? "http://10.0.2.2:8080" : "http://localhost:8080";
+        public static readonly string HOST = Device.RuntimePlatform == Device.Android ? "10.0.2.2" : "localhost";
+        private static readonly string PORT = "8080";
 
-        public static string PostWorkoutUri()
-        {
-            //will need to add client id , etc...
-            return $"{BaseAddress}/api/gateway/workouts";
-        }
-        public static string GetWorkoutsUri()
-        {
-            //will need to add client id , etc...
-            return $"{BaseAddress}/api/workouts";
-        }
+        private static readonly string BaseAddress = $"http://{HOST}:{PORT}/api";
 
-        public static string GetMealsByClientId(int clientId)
-        {
-            return $"{BaseAddress}/api/meals/client/{clientId}";
+        /*
+         *  WORKOUT URIS
+         */
+
+        public static string GetWorkoutByIdUri(int id) {
+            return $"{BaseAddress}/workouts/{id}";
         }
 
-        internal static string GetWorkoutsByClientId(int clientId)
-        {
-            return $"{BaseAddress}/api/workouts/client/{clientId}";
+        public static string GetWorkoutsUri() {
+            return $"{BaseAddress}/workouts";
+        }
+
+        public static string GetWorkoutsByClientId(int id) {
+            return $"{BaseAddress}/workouts/client/{id}";
+        }
+
+        /*
+         *  MEAL URIS
+         */
+
+        public static string GetMealByIdUri(int id) {
+            return $"{BaseAddress}/meals/{id}";
+        }
+
+        public static string GetMealsUri() {
+            return $"{BaseAddress}/meals";
+        }
+
+        public static string GetMealsByClientId(int id) {
+            return $"{BaseAddress}/meals/client/{id}";
         }
     }
 }
