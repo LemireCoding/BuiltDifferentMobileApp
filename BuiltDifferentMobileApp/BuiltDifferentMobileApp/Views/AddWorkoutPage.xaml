@@ -19,15 +19,15 @@
             <ScrollView Grid.Row="0">
                 <StackLayout Padding="50">
                     <Label Text="Create / Edit Workout" AutomationId="AddWorkoutTitle" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="Black"/>
-                    <Entry Text="{Binding WorkoutName}" Placeholder="Exercise Name" Keyboard="Text" BackgroundColor="White" />
+                    <Entry AutomationId="WorkoutNameField" Text="{Binding WorkoutName}" Placeholder="Exercise Name" Keyboard="Text" BackgroundColor="White" />
                     <Label Text="Workout Type"/>
-                    <Picker BackgroundColor="WhiteSmoke" ItemsSource="{Binding Types}" SelectedItem="{Binding WorkoutType, Mode=TwoWay}"  ItemDisplayBinding="{Binding Path=Name}"/>
-                    <Entry Text="{Binding Sets}" Placeholder="Sets" Keyboard="Numeric"/>
-                    <Entry Text="{Binding Reps}" Placeholder="Reps" Keyboard="Numeric"/>
-                    <Entry Text="{Binding Duration}" Placeholder="Duration (in minutes)" Keyboard="Numeric"/>
-                    <Entry Text="{Binding RestTime}" Placeholder="Rest Time(seconds)" Keyboard="Numeric"/>
-                   
-                    <Entry Text="{Binding Description}" Placeholder="Description" Keyboard="Text"/>
+                    <Picker AutomationId="WorkoutTypeField" BackgroundColor="WhiteSmoke" ItemsSource="{Binding Types}" SelectedItem="{Binding WorkoutType, Mode=TwoWay}"  ItemDisplayBinding="{Binding Path=Name}"/>
+                    <Entry AutomationId="SetsField" Text="{Binding Sets}" Placeholder="Sets" Keyboard="Numeric"/>
+                    <Entry AutomationId="RepsField" Text="{Binding Reps}" Placeholder="Reps" Keyboard="Numeric"/>
+                    <Entry AutomationId="DurationField" Text="{Binding Duration}" Placeholder="Duration (in minutes)" Keyboard="Numeric"/>
+                    <Entry AutomationId="RestTimeField" Text="{Binding RestTime}" Placeholder="Rest Time(seconds)" Keyboard="Numeric"/>
+                   <Entry AutomationId="WeightField" Text="{Binding Weight}" Placeholder="Weight(in lbs)" Keyboard="Numeric"/>
+                    <Entry AutomationId="DescriptionField" Text="{Binding Description}" Placeholder="Description" Keyboard="Text"/>
                     <Label Text="Date"/>
                     <DatePicker MinimumDate="{x:Static sys:DateTime.Now}" Date="{Binding Day}" HorizontalOptions="Center"/>
                     <Entry Text="{Binding VideoLink}" Placeholder="Youtube Video Link" Keyboard="Text"/>
