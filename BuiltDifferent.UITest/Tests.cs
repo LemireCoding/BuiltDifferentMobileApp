@@ -20,6 +20,21 @@ using Xamarin.UITest.Queries;
  * 
  */
 
+/*
+ * Test Ids can be found within each test method 
+ * Please place TestId after first curly brace 
+ * Format = T.#   
+ * 
+ * exemple:
+ * 
+ *  public methodName()
+ *  {
+ *      i.e. T.1
+ *      {
+ * 
+ * 
+ */
+
 namespace BuiltDifferent.UITest
 {
     [TestFixture(Platform.Android)]
@@ -39,6 +54,23 @@ namespace BuiltDifferent.UITest
         {
             app = AppInitializer.StartApp(platform);
         }
+
+        private void SaveScreenshot([CallerMemberName] string title = "", [CallerLineNumber] int lineNumber = -1)
+        {
+            FileInfo screenshot = app.Screenshot(title);
+            if (TestEnvironment.IsTestCloud == false)
+            {
+                File.Move(screenshot.FullName, Path.Combine(screenshot.DirectoryName, $"{title}-{lineNumber}{screenshot.Extension}"));
+            }
+        }
+
+        //will look at for IOS testing(will replicate what is seen on actual physical device
+        //to find out tree and ids 
+        //[Test]
+        //public void OpenRepl()
+        //{
+        //    app.Repl();
+        //}
         private void SaveScreenshot([CallerMemberName] string title = "", [CallerLineNumber] int lineNumber = -1)
         {
             FileInfo screenshot = app.Screenshot(title);
@@ -55,25 +87,6 @@ namespace BuiltDifferent.UITest
         {
             app.Repl();
         }
-
-
-        private void SaveScreenshot([CallerMemberName] string title = "", [CallerLineNumber] int lineNumber = -1)
-        {
-            FileInfo screenshot = app.Screenshot(title);
-            if (TestEnvironment.IsTestCloud == false)
-            {
-                File.Move(screenshot.FullName, Path.Combine(screenshot.DirectoryName, $"{title}-{lineNumber}{screenshot.Extension}"));
-            }
-        }
-
-        //will look at for IOS testing(will replicate what is seen on actual physical device
-        //to find out tree and ids 
-        [Test]
-        public void OpenRepl()
-        {
-            app.Repl();
-        }
-
         [Test]
         public void Workout_page_visible()
         {
