@@ -20,6 +20,6 @@ namespace BuiltDifferent.UITest
             return ConfigureApp
                 .iOS
                 .StartApp();
-         }
+        }
     }
 }
