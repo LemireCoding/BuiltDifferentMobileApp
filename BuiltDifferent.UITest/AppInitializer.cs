@@ -10,10 +10,17 @@ namespace BuiltDifferent.UITest
         {
             if (platform == Platform.Android)
             {
-                return ConfigureApp.Android.StartApp();
+                return ConfigureApp
+                    .Android
+                    .InstalledApp("com.companyname.builtdifferentmobileapp")
+                    .EnableLocalScreenshots()
+                    .Debug()
+                    .StartApp();
             }
 
-            return ConfigureApp.iOS.StartApp();
+            return ConfigureApp
+                .iOS
+                .StartApp();
         }
     }
 }
