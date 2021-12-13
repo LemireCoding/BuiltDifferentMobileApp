@@ -18,7 +18,8 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return $"{BaseAddress}/workouts";
         }
 
-        public static string GetWorkoutsByClientId(int id) {
+        public static string GetWorkoutsByClientId(int id)
+        {
             return $"{BaseAddress}/workouts/client/{id}";
         }
 
@@ -26,11 +27,13 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
          *  MEAL URIS
          */
 
-        public static string GetMealByIdUri(int id) {
+        public static string GetMealByIdUri(int id)
+        {
             return $"{BaseAddress}/meals/{id}";
         }
 
-        public static string GetMealsUri() {
+        public static string GetMealsUri()
+        {
             return $"{BaseAddress}/meals";
         }
 
@@ -38,9 +41,6 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         {
             return $"{BaseAddress}/meals/client/{id}";
         }
-
-
-
 
         public static string GetWorkoutsByWorkoutId(int workoutId)
         {
@@ -50,6 +50,11 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         public static string UpdateWorkoutByWorkoutId(int workoutId)
         {
             return $"{BaseAddress}/workouts/{workoutId}";
+        }
+
+        public static string PostMealUri()
+        {
+            return $"{BaseAddress}/meals";
         }
     }
 }
