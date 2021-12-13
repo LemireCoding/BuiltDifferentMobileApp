@@ -21,36 +21,81 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             httpClient = new HttpClient();
         }
 
-        public async Task<T> PostAsync(string uri, object obj)
-        {
-            var json = JsonConvert.SerializeObject(obj);
+        /*
+         *  For now, we're just catching TaskCanceledException and returning null, could catch more stuff in the future
+         *  TaskCanceledException: request timed out, for example if the API is not running a request will timeout causing the app to crash
+         */
 
-            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync(uri, content);
+        public async Task<TResult> GetAsync<TResult>(string uri) {
+            try {
+                HttpResponseMessage response = await httpClient.GetAsync(uri);
 
+                if(response.IsSuccessStatusCode) {
+                    string serialized = await response.Content.ReadAsStringAsync();
 
-            if (response.IsSuccessStatusCode)
-            {
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpHeaders header = response.Headers;
-                //Add auth once implementned
+                    var result = JsonConvert.DeserializeObject<TResult>(serialized);
+
+                    return result;
+                }
+
+                return default(TResult);
+            } catch(TaskCanceledException) {
+                return default(TResult);
             }
-            return (T)response;
         }
 
-        public async Task<TResult> GetAsync<TResult>(string uri)
-        {
-            HttpResponseMessage response = await httpClient.GetAsync(uri);
-            string serialized = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<TResult>(serialized);
-            
+        public async Task<TResult> UpdateAsync<TResult>(string uri, object data) {
+            try {
+                var json = JsonConvert.SerializeObject(data);
+                var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
 
-            return result;
+                HttpResponseMessage response = await httpClient.PutAsync(uri, jsonString);
+
+                if(response.IsSuccessStatusCode) {
+                    string serialized = await response.Content.ReadAsStringAsync();
+
+                    var result = JsonConvert.DeserializeObject<TResult>(serialized);
+
+                    return result;
+                }
+
+                return default(TResult);
+            } catch(TaskCanceledException) {
+                return default(TResult);
+            }
         }
 
-        public Task<T> GetAsync(string uri)
-        {
-            throw new NotImplementedException();
+
+        public async Task<TResult> PostAsync<TResult>(string uri, object data) {
+            try {
+                var json = JsonConvert.SerializeObject(data);
+                var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await httpClient.PostAsync(uri, jsonString);
+
+                if(response.IsSuccessStatusCode) {
+                    string serialized = await response.Content.ReadAsStringAsync();
+
+                    var result = JsonConvert.DeserializeObject<TResult>(serialized);
+
+                    return result;
+                }
+
+                return default(TResult);
+            } catch(TaskCanceledException) {
+                return default(TResult);
+            }
+        }
+
+        // Returning a bool for now, change depending on if API will return what was deleted or just a status
+        public async Task<bool> DeleteAsync(string uri) {
+            try {
+                HttpResponseMessage response = await httpClient.DeleteAsync(uri);
+
+                return response.IsSuccessStatusCode;
+            } catch(TaskCanceledException) {
+                return false;
+            }
         }
     }
 }

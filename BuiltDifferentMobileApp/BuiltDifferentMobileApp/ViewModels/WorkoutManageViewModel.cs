@@ -57,10 +57,9 @@ namespace BuiltDifferentMobileApp.ViewModels
 
             var workout = new Workout();
             var test = JsonConvert.SerializeObject(workout);
-            var result = await networkService.PostAsync(APIConstants.PostWorkoutUri(), workout);
-            var httpCode = result.StatusCode;
+            var result = await networkService.PostAsync<Workout>(APIConstants.GetWorkoutsUri(), workout);
 
-            if (httpCode == System.Net.HttpStatusCode.OK)
+            if (result != null)
             {
                 await Application.Current.MainPage.DisplayAlert("Good", "Vet Saved", "OK");
             }
