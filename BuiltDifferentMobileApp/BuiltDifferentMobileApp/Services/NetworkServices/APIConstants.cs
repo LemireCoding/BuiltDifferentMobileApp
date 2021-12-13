@@ -10,6 +10,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
     {
         public static readonly string HOST = Device.RuntimePlatform == Device.Android ? "10.0.2.2" : "localhost";
         private static readonly string PORT = "8080";
+
         private static readonly string BaseAddress = $"http://{HOST}:{PORT}/api";
 
         public static string PostWorkoutUri()
