@@ -9,7 +9,8 @@ namespace BuiltDifferentMobileApp {
         public AppShell() {
             InitializeComponent();
 
-            Routing.RegisterRoute(nameof(ManageWorkoutPage), typeof(ManageWorkoutPage));
+            Routing.RegisterRoute(nameof(AddWorkoutPage), typeof(AddWorkoutPage));
+            Routing.RegisterRoute(nameof(EditWorkoutPage), typeof(EditWorkoutPage));
             Routing.RegisterRoute(nameof(AddMealPage), typeof(AddMealPage));
             Routing.RegisterRoute(nameof(EditMealPage), typeof(EditMealPage));
             Routing.RegisterRoute(nameof(MealPage), typeof(MealPage));

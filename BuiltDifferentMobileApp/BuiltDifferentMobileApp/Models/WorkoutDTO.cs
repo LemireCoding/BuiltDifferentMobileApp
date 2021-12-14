@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BuiltDifferentMobileApp.Models {
-    public class Workout {
-        
+namespace BuiltDifferentMobileApp.Models
+{
+    public class WorkoutDTO
+    {
+        public int id { get; set; }
         public int coachId { get; set; }
         public int clientId { get; set; }
         public string workoutType { get; set; }
@@ -18,10 +20,11 @@ namespace BuiltDifferentMobileApp.Models {
         public bool isCompleted { get; set; }
         public string videoLink { get; set; }
 
-       
 
-        public Workout(int coachId, int clientId, string workouttype, string workoutname, int sets, int reps, int duration, int resttime, DateTime day, string desc, bool isCompleted, string videoLink)
+
+        public WorkoutDTO(int id, int coachId, int clientId, string workouttype, string workoutname, int sets, int reps, int duration, int resttime, DateTime day, string desc, bool isCompleted, string videoLink)
         {
+            this.id = id;
             this.coachId = coachId;
             this.clientId = clientId;
             this.workoutName = workoutname;
@@ -36,8 +39,5 @@ namespace BuiltDifferentMobileApp.Models {
             this.videoLink = videoLink;
 
         }
-
-
-
     }
 }

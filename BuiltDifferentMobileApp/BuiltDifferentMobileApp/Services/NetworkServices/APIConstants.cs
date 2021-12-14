@@ -13,7 +13,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         public static string PostWorkoutUri()
         {
             //will need to add client id , etc...
-            return $"{BaseAddress}/api/gateway/workouts";
+            return $"{BaseAddress}/api/workouts";
         }
         public static string GetWorkoutsUri()
         {
@@ -26,9 +26,19 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return $"{BaseAddress}/api/meals/client/{clientId}";
         }
 
-        internal static string GetWorkoutsByClientId(int clientId)
+        public static string GetWorkoutsByClientId(int clientId)
         {
             return $"{BaseAddress}/api/workouts/client/{clientId}";
+        }
+
+        public static string GetWorkoutsByWorkoutId(int workoutId)
+        {
+            return $"{BaseAddress}/api/workouts/{workoutId}";
+        }
+
+        public static string UpdateWorkoutByWorkoutId(int workoutId)
+        {
+            return $"{BaseAddress}/api/workouts/{workoutId}";
         }
     }
 }

@@ -87,13 +87,13 @@
                                                 </StackLayout>
                                                 
                                                 <StackLayout Grid.Column="1" >
-                                                    <Label  VerticalTextAlignment="Center" Text="{Binding protein, StringFormat='{0} Proteins'}"
+                                                    <Label  VerticalTextAlignment="Center" Text="{Binding protein, StringFormat='{0}g Proteins'}"
                                                FontAttributes="Bold"
                                                FontSize="Medium" />
-                                                    <Label  VerticalTextAlignment="Center" Text="{Binding carbs, StringFormat='{0} Carbs'}"
+                                                    <Label  VerticalTextAlignment="Center" Text="{Binding carbs, StringFormat='{0}g Carbs'}"
                                                FontAttributes="Bold"
                                                FontSize="Medium" />
-                                                    <Label VerticalTextAlignment="Center" Text="{Binding fat, StringFormat='{0} Fat'}"
+                                                    <Label VerticalTextAlignment="Center" Text="{Binding fat, StringFormat='{0}g Fat'}"
                                                FontAttributes="Bold"
                                                FontSize="Medium" />
                                                     <Button  CornerRadius="12" Text="Edit" Command="{Binding Source={x:Reference mealsPage},

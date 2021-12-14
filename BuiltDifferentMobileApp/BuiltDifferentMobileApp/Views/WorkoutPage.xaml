@@ -10,7 +10,7 @@
                    FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
 
-            <DatePicker HorizontalOptions="Center"/>
+            <DatePicker HorizontalOptions="Center" Date="{Binding Day}"  />
             <Button Text="Add" CornerRadius="12" Margin="300,10,30,10" Command="{Binding AddCommand}" />
 
             <!--InsertCommand when rerteieved -->
@@ -34,23 +34,10 @@
                                         </Grid.ColumnDefinitions>
                                         <Label 
                                     Grid.Column="0" 
-                                    Text="{Binding workoutName, StringFormat='{0} (Click to expand)'} "
+                                    Text="{Binding workoutName} "
                                     FontAttributes="Bold"
                                     FontSize="Medium" />
                                         <!-- ="{Binding Sets, StringFormat='Sets {0}'}" -->
-                                        <Label 
-                                    Grid.Column="1"
-                                    HorizontalTextAlignment="End"
-                                    Text="{Binding sets, StringFormat='{0} Sets'} "
-                                    FontAttributes="Bold"
-                                    FontSize="Medium"/>
-                                        <!-- ="{Binding Reps, StringFormat='Sets {0}'}" -->
-                                        <Label 
-                                    Grid.Column="2"
-                                    HorizontalTextAlignment="End"
-                                    Text="{Binding reps, StringFormat='{0} Reps'} "
-                                    FontAttributes="Bold"
-                                    FontSize="Medium" />
                                         <Label 
                                     Grid.Column="3"
                                     HorizontalTextAlignment="End"
@@ -62,21 +49,53 @@
                                 </behaviors:Expander.Header>
                                 <behaviors:Expander.ContentTemplate>
                                     <DataTemplate>
-                                        <Grid 
+                                        <Grid  HeightRequest="180"
                                     Padding="4">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="180" />
+                                                
+                                            </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="2.5*"/>
+                                                <ColumnDefinition/>
                                             </Grid.ColumnDefinitions>
-                                            <Button 
+                                            <Frame Padding="0" CornerRadius="10">
+                                                <WebView Source="{Binding videoLink}" 
+         HorizontalOptions="Fill" VerticalOptions="Fill"
+         IsVisible="True" />
+                                            </Frame>
+                                            <StackLayout Margin="10,10,0,10" Grid.Column="1">
+                                                
+                                                <Button 
                                         Text="Edit"
-                                        Grid.Column="3"
+                                        VerticalOptions="Center"
                                         Padding="2"
                                         CornerRadius="10"
-                                                Command="{Binding Source={x:Reference TheWorkoutPage}, Path=BindingContext.EditCommand}" CommandParameter="{Binding .}"
+                                                Command="{Binding Source={x:Reference TheWorkoutPage}, Path=BindingContext.EditCommand}" CommandParameter="{Binding id}"
                                         />
+                                                <Label 
+                                    Grid.Column="1"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding sets, StringFormat='{0} Sets'} "
+                                    FontAttributes="Bold"
+                                    FontSize="Medium"/>
+                                                <!-- ="{Binding Reps, StringFormat='Sets {0}'}" -->
+                                                <Label 
+                                    Grid.Column="2"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding reps, StringFormat='{0} Reps'} "
+                                    FontAttributes="Bold"
+                                    FontSize="Medium" />
+
+                                                <Label 
+                                    Grid.Column="2"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding restTime, StringFormat='{0} Rest (s)'} "
+                                    FontAttributes="Bold"
+                                    FontSize="Medium" />
+
+                                            </StackLayout>
+                                           
                                         </Grid>
 
                                     </DataTemplate>

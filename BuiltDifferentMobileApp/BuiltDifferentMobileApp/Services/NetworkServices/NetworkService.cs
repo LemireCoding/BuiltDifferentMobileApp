@@ -38,6 +38,23 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return (T)response;
         }
 
+        public async Task<T> PutAsync(string uri, object obj)
+        {
+            var json = JsonConvert.SerializeObject(obj);
+
+            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await httpClient.PutAsync(uri, content);
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpHeaders header = response.Headers;
+                //Add auth once implementned
+            }
+            return (T)response;
+        }
+
         public async Task<TResult> GetAsync<TResult>(string uri)
         {
             HttpResponseMessage response = await httpClient.GetAsync(uri);

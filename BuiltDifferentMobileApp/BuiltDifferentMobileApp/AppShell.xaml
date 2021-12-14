@@ -87,9 +87,7 @@
     <FlyoutItem Title="Login" >
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Manage Workout" >
-        <ShellContent Route="ManageWorkoutPage" ContentTemplate="{DataTemplate local:ManageWorkoutPage}" />
-    </FlyoutItem>
+   
     <FlyoutItem Title="Workouts" >
         <ShellContent Route="WorkoutPage" ContentTemplate="{DataTemplate local:WorkoutPage}" />
     </FlyoutItem>

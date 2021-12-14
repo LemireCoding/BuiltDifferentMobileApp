@@ -18,5 +18,15 @@ namespace BuiltDifferentMobileApp.Views
             InitializeComponent();
             BindingContext = new WorkoutViewModel();
         }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            if(BindingContext != null)
+            {
+                var viewModel = (WorkoutViewModel)BindingContext;
+                await viewModel.GetWorkouts();
+            }
+        }
     }
 }

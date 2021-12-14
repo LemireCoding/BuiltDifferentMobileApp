@@ -19,7 +19,7 @@
                     <Entry Text="{Binding ImageLink}" Placeholder="Paste an image link here" Keyboard="Text"/>
                     <Entry Text="{Binding MealType}" Placeholder="MAKE DROPDOWN"/>
                     <Label Text="Date"/>
-                    <DatePicker  Date="{Binding Date}" HorizontalOptions="Center"/>
+                    <DatePicker  Date="{Binding Day}" HorizontalOptions="Center"/>
 
                     <Button Grid.Row="0" BorderColor="{StaticResource Primary}" BorderWidth="1" FontAttributes="Bold" BackgroundColor="{StaticResource Primary}" BorderRadius="35" TextColor="White" 
                             HorizontalOptions="End" VerticalOptions="End" WidthRequest="70" HeightRequest="70" Margin="0,0,20,22" Command="{Binding SaveCommand}"/>
