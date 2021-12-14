@@ -36,7 +36,6 @@ namespace BuiltDifferentMobileApp.ViewModels
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
         public ObservableRangeCollection<string> Types { get; set; }
-
         public AddMealViewModel()
         {
 
