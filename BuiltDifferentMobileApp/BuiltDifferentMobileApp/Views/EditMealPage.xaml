@@ -9,19 +9,20 @@
             </Grid.RowDefinitions>
             <ScrollView Grid.Row="0">
                 <StackLayout Padding="50">
-                    <Label Text="{Binding Title}" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="{StaticResource TextSecondary}"/>
-                    <Entry Text="{Binding Name}" Placeholder="Exercise Name" Keyboard="Text"/>
+                    <Label Text="" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="{StaticResource Grey}"/>
+                    <Entry Text="{Binding MealName}" Placeholder="Exercise Name" Keyboard="Text"/>
+                    <Picker Title="Meal Type"  ItemsSource="{Binding Types}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding MealType}"/>
                     <Entry Text="{Binding Calories}" Placeholder="Workout Type" Keyboard="Numeric"/>
                     <Entry Text="{Binding Protein}" Placeholder="Sets" Keyboard="Numeric"/>
                     <Entry Text="{Binding Carbs}" Placeholder="Sets" Keyboard="Numeric"/>
                     <Entry Text="{Binding Fat}" Placeholder="Reps" Keyboard="Numeric"/>
                     <Editor Text="{Binding Recipe}" Placeholder="Type the Ingredients and Cook Time" Keyboard="Text"/>
                     <Entry Text="{Binding ImageLink}" Placeholder="Paste an image link here" Keyboard="Text"/>
-                    <Entry Text="{Binding MealType}" Placeholder="MAKE DROPDOWN"/>
+                    
                     <Label Text="Date"/>
-                    <DatePicker  Date="{Binding Date}" HorizontalOptions="Center"/>
+                    <DatePicker  Date="{Binding Day}" HorizontalOptions="Center"/>
 
-                    <Button Grid.Row="0" BorderColor="{StaticResource Primary}" BorderWidth="1" FontAttributes="Bold" BackgroundColor="{StaticResource Primary}" BorderRadius="35" TextColor="White" 
+                    <Button Grid.Row="0" BorderColor="{StaticResource RedPrimary}" BorderWidth="1" FontAttributes="Bold" BackgroundColor="{StaticResource RedPrimary}" BorderRadius="35" TextColor="White" 
                             HorizontalOptions="End" VerticalOptions="End" WidthRequest="70" HeightRequest="70" Margin="0,0,20,22" Command="{Binding SaveCommand}"/>
                 </StackLayout>
             </ScrollView>
