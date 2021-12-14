@@ -77,9 +77,10 @@ namespace BuiltDifferentMobileApp.ViewModels
                 return;
             }
 
-            //default ids inserted for now
-            //empty strings for receipe and image link
-            var meal = new MealDTO(1, 0, MealName, MealType, Calories, Protein, Carbs, Fat, "", "", Day, false);
+            //default client/coach ids inserted for now
+
+            //filled string for image link otherwill fail
+            var meal = new MealDTO( 1, 0, MealName, MealType, Calories, Protein, Carbs, Fat, Recipe, ImageLink, Day, false);
             var test = JsonConvert.SerializeObject(meal);
             var result = await networkService.UpdateAsync<Meal>(APIConstants.PutMealUri(id), meal);
 
