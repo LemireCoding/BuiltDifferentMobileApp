@@ -18,7 +18,6 @@ namespace BuiltDifferentMobileApp.Views
         {
             InitializeComponent();
             BindingContext = new EditMealViewModel(id);
-
         }
 
         protected override async void OnAppearing()

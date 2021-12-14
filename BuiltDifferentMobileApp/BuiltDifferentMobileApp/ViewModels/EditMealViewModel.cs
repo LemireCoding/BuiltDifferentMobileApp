@@ -39,7 +39,7 @@ namespace BuiltDifferentMobileApp.ViewModels
 
         public EditMealViewModel(int id)
         {
-            id = this.id;
+            this.id = id;
             Title = "Edit Meal";
             FetchInfo();
             SaveCommand = new AsyncCommand(Save);
@@ -50,7 +50,6 @@ namespace BuiltDifferentMobileApp.ViewModels
             "Dinner",
             "Snack"
         };
-
         }
 
         private async void FetchInfo()
