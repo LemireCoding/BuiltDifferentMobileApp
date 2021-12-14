@@ -56,5 +56,9 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         {
             return $"{BaseAddress}/meals";
         }
+        public static string PutMealUri(int id)
+        {
+            return $"{BaseAddress}/meals/{id}";
+        }
     }
 }

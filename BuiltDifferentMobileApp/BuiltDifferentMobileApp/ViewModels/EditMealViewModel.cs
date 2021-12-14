@@ -1,11 +1,13 @@
 ﻿using BuiltDifferentMobileApp.Models;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using MvvmHelpers.Commands;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace BuiltDifferentMobileApp.ViewModels
 {
@@ -13,7 +15,7 @@ namespace BuiltDifferentMobileApp.ViewModels
     {
         private int id;
         private string mealName;
-        public string MealName { get => mealName; set => SetProperty(ref mealName, value); }
+        public string MealName { get => mealName; set => SetProperty(ref mealName, value);}
         private MealType mealType;
         public MealType MealType { get; set; }
         private double calories;
@@ -27,7 +29,7 @@ namespace BuiltDifferentMobileApp.ViewModels
         private string recipe;
         public string Recipe { get => recipe; set => SetProperty(ref recipe, value); }
         private string imageLink;
-        public string ImageLink { get => imageLink; set => SetProperty(ref imageLink, value); }
+        public string ImageLink { get => imageLink; set => SetProperty(ref imageLink, value) ; }
         private DateTime day;
         public DateTime Day { get => day; set => SetProperty(ref day, value); }
         public AsyncCommand SaveCommand { get; }
@@ -40,29 +42,50 @@ namespace BuiltDifferentMobileApp.ViewModels
             Title = "Edit Meal";
             FetchInfo();
             SaveCommand = new AsyncCommand(Save);
+           
         }
 
         private async void FetchInfo()
         {
             var route = APIConstants.GetMealByIdUri(id);
             var meal = await networkService.GetAsync<MealDTO>(route);
-            mealName = meal.mealName;
-            calories = meal.calories;
-            protein = meal.protein;
-            carbs = meal.carbs;
-            fat = meal.fat;
-            recipe = meal.recipe;
-            imageLink = meal.imageLink;
-            day = meal.day;
+            MealName = meal.mealName;
+            MealType = meal.mealType;
+            Calories = meal.calories;
+            Protein = meal.protein;
+            Carbs = meal.carbs;
+            Fat = meal.fat;
+            Recipe = meal.recipe;
+            ImageLink = meal.imageLink;
+            Day = meal.day;
         }
 
         public async Task Save()
         {
+            if (string.IsNullOrEmpty(MealName) || MealType.ToString().Length == 0)
+            {
+                await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
+                return;
+            }
 
+            //default ids inserted for now
+            //empty strings for receipe and image link
+            var meal = new MealDTO(1, 0, MealName, MealType.Name.ToString(), Calories, Protein, Carbs, Fat, "", "", Day, false);
+            var test = JsonConvert.SerializeObject(meal);
+            var result = await networkService.UpdateAsync<Meal>(APIConstants.PutMealUri(id), meal);
 
-            await AppShell.Current.GoToAsync("..");
+            if (result != null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Good", "Meal Updated", "OK");
+                await AppShell.Current.GoToAsync("..");
+
+            }
+            else
+                return;
 
         }
+
+       
 
     }
 }
