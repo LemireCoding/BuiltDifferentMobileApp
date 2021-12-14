@@ -57,20 +57,6 @@ namespace BuiltDifferentMobileApp.ViewModels
             await Shell.Current.GoToAsync(route);
         }
 
-        /** 
-         
-            <FlexLayout BackgroundColor="Gray" Padding="5">
-                <Button Text="12" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-                <Button Text="12 Mon" BackgroundColor="Red" Margin="5" CornerRadius="100"/>
-            </FlexLayout>
-         
-         */
-
         private async Task EditWorkout(int id)
         {
                 var route = $"{nameof(EditWorkoutPage)}?workoutId={id}";

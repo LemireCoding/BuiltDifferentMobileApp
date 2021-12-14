@@ -27,21 +27,16 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
          */
 
         public async Task<TResult> GetAsync<TResult>(string uri) {
-            try {
+           
                 HttpResponseMessage response = await httpClient.GetAsync(uri);
 
-                if(response.IsSuccessStatusCode) {
+      
                     string serialized = await response.Content.ReadAsStringAsync();
 
                     var result = JsonConvert.DeserializeObject<TResult>(serialized);
 
                     return result;
-                }
-
-                return default(TResult);
-            } catch(TaskCanceledException) {
-                return default(TResult);
-            }
+            
         }
 
         public async Task<T> PutAsync(string uri, object obj)
@@ -60,25 +55,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             }
             return (T)response;
         }
-
-        public async Task<TResult> GetAsync<TResult>(string uri)
-        {
-            HttpResponseMessage response = await httpClient.GetAsync(uri);
-            string serialized = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<TResult>(serialized);
             
-
-                    var result = JsonConvert.DeserializeObject<TResult>(serialized);
-
-                    return result;
-                }
-
-                return default(TResult);
-            } catch(TaskCanceledException) {
-                return default(TResult);
-            }
-        }
-
 
         public async Task<TResult> PostAsync<TResult>(string uri, object data) {
             try {
@@ -110,6 +87,16 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             } catch(TaskCanceledException) {
                 return false;
             }
+        }
+
+        public Task<T> PostAsync(string uri, object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TResult> UpdateAsync<TResult>(string uri, object data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

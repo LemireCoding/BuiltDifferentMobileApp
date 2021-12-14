@@ -10,12 +10,12 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
     {
         public static readonly string HOST = Device.RuntimePlatform == Device.Android ? "10.0.2.2" : "localhost";
         private static readonly string PORT = "8080";
-
+        private static readonly string BaseAddress = $"http://{HOST}:{PORT}/api";
 
         public static string PostWorkoutUri()
         {
             //will need to add client id , etc...
-            return $"{BaseAddress}/api/workouts";
+            return $"{BaseAddress}/workouts";
         }
 
         public static string GetWorkoutsByClientId(int id) {
@@ -34,20 +34,22 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return $"{BaseAddress}/meals";
         }
 
-
-        public static string GetWorkoutsByClientId(int clientId)
+        public static string GetMealsByClientId(int id)
         {
-            return $"{BaseAddress}/api/workouts/client/{clientId}";
+            return $"{BaseAddress}/meals/client/{id}";
         }
+
+
+
 
         public static string GetWorkoutsByWorkoutId(int workoutId)
         {
-            return $"{BaseAddress}/api/workouts/{workoutId}";
+            return $"{BaseAddress}/workouts/{workoutId}";
         }
 
         public static string UpdateWorkoutByWorkoutId(int workoutId)
         {
-            return $"{BaseAddress}/api/workouts/{workoutId}";
+            return $"{BaseAddress}/workouts/{workoutId}";
         }
     }
 }
