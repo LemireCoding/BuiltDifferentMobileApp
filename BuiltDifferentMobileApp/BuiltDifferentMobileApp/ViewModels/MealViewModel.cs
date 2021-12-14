@@ -25,7 +25,17 @@ namespace BuiltDifferentMobileApp.ViewModels
             get => selectedMeal;
             set => SetProperty(ref selectedMeal, value);
         }
-       
+        private DateTime day;
+        public DateTime Day
+        {
+            get => day;
+            set
+            {
+                SetProperty(ref day, value);
+                getMeals();
+            }
+        }
+
         public AsyncCommand AddCommand { get; }
         public AsyncCommand <int>EditCommand { get; }
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
@@ -34,7 +44,7 @@ namespace BuiltDifferentMobileApp.ViewModels
             clientId = 1;
             EditCommand = new AsyncCommand<int>(EditMeal);
             AddCommand = new AsyncCommand(AddMeal);
-            
+            Day = DateTime.Now.Date;
             MealGroups = new ObservableRangeCollection<Grouping<string, Meal>>();
             getMeals();
            
@@ -83,10 +93,10 @@ namespace BuiltDifferentMobileApp.ViewModels
             {
                 return;
             }
-            
-            Meals = new ObservableRangeCollection<Meal>(result);
-
+            //Meals = new ObservableRangeCollection<Meal>(result);
+            Meals = new ObservableRangeCollection<Meal>(result.Where(x => x.day.ToString("MMMM dd,yyyy") == Day.ToString("MMMM dd,yyyy")));
             createMealGroups();
+            OnPropertyChanged("Meals");
         }
 
         
