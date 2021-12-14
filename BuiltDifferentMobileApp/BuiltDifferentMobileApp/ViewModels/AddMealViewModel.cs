@@ -61,7 +61,6 @@ namespace BuiltDifferentMobileApp.ViewModels
             }
             //default ids inserted for now
             //empty strings for receipe and image link
-
             var meal = new MealDTO(1,0,MealName, MealType.Name, Calories, Protein, Carbs, Fat, "", ImageLink, day, false);
             var test = JsonConvert.SerializeObject(meal);
             var result = await networkService.PostAsync<Workout>(APIConstants.PostMealUri(), meal);
