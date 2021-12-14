@@ -35,18 +35,18 @@ namespace BuiltDifferentMobileApp.ViewModels
         public Xamarin.CommunityToolkit.ObjectModel.AsyncCommand SaveCommand { get; }
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
-        public ObservableRangeCollection<MealType> Types { get; set; }
+        public ObservableRangeCollection<string> Types { get; set; }
         public AddMealViewModel()
         {
 
             Title = "Add Meal";
             SaveCommand = new Xamarin.CommunityToolkit.ObjectModel.AsyncCommand(Save);
-            Types = new ObservableRangeCollection<MealType>
+            Types = new ObservableRangeCollection<string>
         {
-            new MealType("Breakfast"),
-            new MealType("Lunch"),
-            new MealType("Dinner"),
-            new MealType("Snack")
+            "Breakfast",
+            "Lunch",
+            "Dinner",
+            "Snack"
         };
 
         }

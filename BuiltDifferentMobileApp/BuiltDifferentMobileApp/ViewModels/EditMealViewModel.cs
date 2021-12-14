@@ -35,7 +35,7 @@ namespace BuiltDifferentMobileApp.ViewModels
         public DateTime Day { get => day; set => SetProperty(ref day, value); }
         public AsyncCommand SaveCommand { get; }
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
-        public ObservableRangeCollection<MealType> Types { get; set; }
+        public ObservableRangeCollection<string> Types { get; set; }
 
         public EditMealViewModel(int id)
         {
@@ -43,12 +43,12 @@ namespace BuiltDifferentMobileApp.ViewModels
             Title = "Edit Meal";
             FetchInfo();
             SaveCommand = new AsyncCommand(Save);
-            Types = new ObservableRangeCollection<MealType>
+            Types = new ObservableRangeCollection<string>
         {
-            new MealType("Breakfast"),
-            new MealType("Lunch"),
-            new MealType("Dinner"),
-            new MealType("Snack")
+            "Breakfast",
+            "Lunch",
+            "Dinner",
+            "Snack"
         };
 
         }

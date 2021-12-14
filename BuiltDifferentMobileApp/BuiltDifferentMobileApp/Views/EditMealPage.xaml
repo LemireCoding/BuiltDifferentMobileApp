@@ -11,7 +11,7 @@
                 <StackLayout Padding="50">
                     <Label Text="{Binding Title}" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="{StaticResource Grey}"/>
                     <Entry Text="{Binding MealName}" Placeholder="Meal Name" Keyboard="Text"/>
-                    <Picker Title="Meal Type"  ItemsSource="{Binding Types}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding MealType}"/>
+                    <Picker Title="Meal Type"  ItemsSource="{Binding Types}"  SelectedItem="{Binding MealType}"/>
                     <Entry Text="{Binding Calories}" Placeholder="Workout Type" Keyboard="Numeric"/>
                     <Entry Text="{Binding Protein}" Placeholder="Sets" Keyboard="Numeric"/>
                     <Entry Text="{Binding Carbs}" Placeholder="Sets" Keyboard="Numeric"/>
