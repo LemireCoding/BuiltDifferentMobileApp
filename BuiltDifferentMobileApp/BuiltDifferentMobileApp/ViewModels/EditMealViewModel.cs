@@ -1,5 +1,6 @@
 ﻿using BuiltDifferentMobileApp.Models;
 using BuiltDifferentMobileApp.Services.NetworkServices;
+using MvvmHelpers;
 using MvvmHelpers.Commands;
 using Newtonsoft.Json;
 using System;
@@ -16,8 +17,8 @@ namespace BuiltDifferentMobileApp.ViewModels
         private int id;
         private string mealName;
         public string MealName { get => mealName; set => SetProperty(ref mealName, value);}
-        private MealType mealType;
-        public MealType MealType { get; set; }
+        private string mealType;
+        public string MealType { get; set; }
         private double calories;
         public double Calories { get => calories; set => SetProperty(ref calories, value); }
         private double protein;
@@ -34,7 +35,7 @@ namespace BuiltDifferentMobileApp.ViewModels
         public DateTime Day { get => day; set => SetProperty(ref day, value); }
         public AsyncCommand SaveCommand { get; }
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
-
+        public ObservableRangeCollection<MealType> Types { get; set; }
 
         public EditMealViewModel(int id)
         {
@@ -42,7 +43,14 @@ namespace BuiltDifferentMobileApp.ViewModels
             Title = "Edit Meal";
             FetchInfo();
             SaveCommand = new AsyncCommand(Save);
-           
+            Types = new ObservableRangeCollection<MealType>
+        {
+            new MealType("Breakfast"),
+            new MealType("Lunch"),
+            new MealType("Dinner"),
+            new MealType("Snack")
+        };
+
         }
 
         private async void FetchInfo()
@@ -70,7 +78,7 @@ namespace BuiltDifferentMobileApp.ViewModels
 
             //default ids inserted for now
             //empty strings for receipe and image link
-            var meal = new MealDTO(1, 0, MealName, MealType.Name.ToString(), Calories, Protein, Carbs, Fat, "", "", Day, false);
+            var meal = new MealDTO(1, 0, MealName, MealType, Calories, Protein, Carbs, Fat, "", "", Day, false);
             var test = JsonConvert.SerializeObject(meal);
             var result = await networkService.UpdateAsync<Meal>(APIConstants.PutMealUri(id), meal);
 
