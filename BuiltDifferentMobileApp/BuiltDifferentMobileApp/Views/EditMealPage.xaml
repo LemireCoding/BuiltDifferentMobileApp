@@ -9,7 +9,7 @@
             </Grid.RowDefinitions>
             <ScrollView Grid.Row="0">
                 <StackLayout Padding="50">
-                    <Label Text="" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="{StaticResource Grey}"/>
+                    <Label Text="{Binding Title}" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="{StaticResource Grey}"/>
                     <Entry Text="{Binding MealName}" Placeholder="Exercise Name" Keyboard="Text"/>
                     <Picker Title="Meal Type"  ItemsSource="{Binding Types}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding MealType}"/>
                     <Entry Text="{Binding Calories}" Placeholder="Workout Type" Keyboard="Numeric"/>

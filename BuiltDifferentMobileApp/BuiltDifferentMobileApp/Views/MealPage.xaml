@@ -19,21 +19,13 @@
             <DatePicker HorizontalOptions="Center"/>
             <Button Text="Add" CornerRadius="12" Margin="300,10,30,10" Command="{Binding AddCommand}" />
             <CollectionView ItemsSource="{Binding MealGroups}"
-                           
-               
                 IsGrouped="true">
-                
                 <CollectionView.GroupHeaderTemplate>
                     <DataTemplate>
-                       
-                        
-                            <Label Text="{Binding Key}"
+                        <Label Text="{Binding Key}"
                    FontSize="30"
                    FontAttributes="Bold" VerticalTextAlignment="Center" />
-                        
-                        
-
-                    </DataTemplate>
+                     </DataTemplate>
                 </CollectionView.GroupHeaderTemplate>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -57,7 +49,7 @@
                                                 <ColumnDefinition Width="auto"/>
                                                 <ColumnDefinition/>
                                             </Grid.ColumnDefinitions>
-                                            <Label   VerticalTextAlignment="Center" Text="{Binding calories, StringFormat='{0} Calories'}"
+                                            <Label VerticalTextAlignment="Center" Text="{Binding calories, StringFormat='{0} Calories'}"
                                                FontAttributes="Bold"
                                                FontSize="Medium" />
                                             <Label 

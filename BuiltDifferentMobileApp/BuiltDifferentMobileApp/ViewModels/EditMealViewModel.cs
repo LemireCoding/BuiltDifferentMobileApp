@@ -36,17 +36,16 @@ namespace BuiltDifferentMobileApp.ViewModels
 
         public EditMealViewModel(int id)
         {
-            id = this.id;
+            this.id = id;
             Title = "Edit Meal";
             FetchInfo();
             SaveCommand = new AsyncCommand(Save);
-
         }
 
         private async void FetchInfo()
         {
             var route = APIConstants.GetMealByIdUri(id);
-            var meal = await networkService.GetAsync<Meal>(route);
+            var meal = await networkService.GetAsync<MealDTO>(route);
             mealName = meal.mealName;
             calories = meal.calories;
             protein = meal.protein;
@@ -54,7 +53,7 @@ namespace BuiltDifferentMobileApp.ViewModels
             fat = meal.fat;
             recipe = meal.recipe;
             imageLink = meal.imageLink;
-            day = meal.day;    
+            day = meal.day;
         }
 
         public async Task Save()
