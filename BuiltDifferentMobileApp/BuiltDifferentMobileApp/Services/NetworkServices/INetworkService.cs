@@ -10,6 +10,8 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices {
         Task<T> PostAsync(string uri, object obj);
         Task<T> PutAsync(string uri, object obj);
         Task<TResult> GetAsync<TResult>(string uri);
-        Task<T> GetAsync(string uri);
+        Task<bool> DeleteAsync(string uri);
+        Task<TResult> UpdateAsync<TResult>(string uri, object data);
+        Task<TResult> PostAsync<TResult>(string uri, object data);
     }
 }
