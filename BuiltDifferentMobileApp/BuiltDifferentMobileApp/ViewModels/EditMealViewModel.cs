@@ -43,6 +43,7 @@ namespace BuiltDifferentMobileApp.ViewModels
             Title = "Edit Meal";
             FetchInfo();
             SaveCommand = new AsyncCommand(Save);
+
             Types = new ObservableRangeCollection<string>
         {
             "Breakfast",
@@ -50,6 +51,7 @@ namespace BuiltDifferentMobileApp.ViewModels
             "Dinner",
             "Snack"
         };
+
         }
 
         private async void FetchInfo()
@@ -77,7 +79,7 @@ namespace BuiltDifferentMobileApp.ViewModels
 
             //default ids inserted for now
             //empty strings for receipe and image link
-            var meal = new MealDTO(1, 0, MealName, MealType.Name.ToString(), Calories, Protein, Carbs, Fat, "", "", Day, false);
+            var meal = new MealDTO(1, 0, MealName, MealType, Calories, Protein, Carbs, Fat, "", "", Day, false);
             var test = JsonConvert.SerializeObject(meal);
             var result = await networkService.UpdateAsync<Meal>(APIConstants.PutMealUri(id), meal);
 
