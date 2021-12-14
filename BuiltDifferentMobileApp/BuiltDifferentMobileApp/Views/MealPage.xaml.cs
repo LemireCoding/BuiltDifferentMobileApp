@@ -21,5 +21,12 @@ namespace BuiltDifferentMobileApp.Views
             InitializeComponent();
             BindingContext = new MealViewModel();
         }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            BindingContext = new MealViewModel();
+
+        }
+
     }
 }
