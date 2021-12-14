@@ -52,15 +52,15 @@ namespace BuiltDifferent.UITest
 
         //will look at for IOS testing(will replicate what is seen on actual physical device
         //to find out tree and ids 
-        //[Test]
-        //public void OpenRepl()
-        //{
-        //    app.Repl();
-        //}
+        [Test]
+        public void OpenRepl()
+        {
+            app.Repl();
+        }
 
-        
 
-        
+
+
         [Test]
         public void Workout_page_visible()
         {
