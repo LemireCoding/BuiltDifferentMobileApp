@@ -57,9 +57,9 @@ namespace BuiltDifferentMobileApp.ViewModels
             else
                 await Application.Current.MainPage.DisplayAlert("Good", "Workout Saved", "OK");
 
-            var workout = new Workout();
+            var workout = new Workout(CoachId,ClientId,WorkoutType,WorkoutName,Sets,Reps,Duration,RestTime,Day,Description,IsCompleted,VideoLink);
             var test = JsonConvert.SerializeObject(workout);
-            var result = await networkService.PostAsync<Workout>(APIConstants.GetWorkoutsUri(), workout);
+            var result = await networkService.PostAsync<Workout>(APIConstants.GetWorkoutsByClientId(1), workout);
 
             if (result != null)
             {
