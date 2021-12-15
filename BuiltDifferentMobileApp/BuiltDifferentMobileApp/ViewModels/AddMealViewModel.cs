@@ -1,6 +1,5 @@
 ﻿using BuiltDifferentMobileApp.Models;
 using BuiltDifferentMobileApp.Services.NetworkServices;
-using MvvmHelpers.Commands;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -40,7 +39,7 @@ namespace BuiltDifferentMobileApp.ViewModels
         {
 
             Title = "Add Meal";
-            SaveCommand = new Xamarin.CommunityToolkit.ObjectModel.AsyncCommand(SaveMeal);
+            SaveCommand = new AsyncCommand(SaveMeal);
             Types = new ObservableRangeCollection<string>
         {
             "Breakfast",

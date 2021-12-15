@@ -1,13 +1,12 @@
 ﻿using BuiltDifferentMobileApp.Models;
 using BuiltDifferentMobileApp.Services.NetworkServices;
-using MvvmHelpers;
-using MvvmHelpers.Commands;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace BuiltDifferentMobileApp.ViewModels
@@ -39,8 +38,8 @@ namespace BuiltDifferentMobileApp.ViewModels
 
         public EditMealViewModel(int id)
         {
-            this.id = id;
             Title = "Edit Meal";
+            this.id = id;
             FetchInfo();
             SaveCommand = new AsyncCommand(Save);
 
@@ -57,9 +56,9 @@ namespace BuiltDifferentMobileApp.ViewModels
         private async void FetchInfo()
         {
             var route = APIConstants.GetMealByIdUri(id);
-            var meal = await networkService.GetAsync<MealDTO>(route);
+            var meal = await networkService.GetAsync<Meal>(route);
             MealName = meal.mealName;
-            MealType = meal.mealType;
+            MealType = meal.mealType.ToString();
             Calories = meal.calories;
             Protein = meal.protein;
             Carbs = meal.carbs;
@@ -71,7 +70,7 @@ namespace BuiltDifferentMobileApp.ViewModels
 
         public async Task Save()
         {
-            if (string.IsNullOrEmpty(MealName) || MealType.ToString().Length == 0)
+            if (string.IsNullOrEmpty(MealName) || string.IsNullOrEmpty(MealType))
             {
                 await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
                 return;
@@ -80,7 +79,7 @@ namespace BuiltDifferentMobileApp.ViewModels
             //default client/coach ids inserted for now
 
             //filled string for image link otherwill fail
-            var meal = new MealDTO(2, 1, MealName, MealType, Calories, Protein, Carbs, Fat, Recipe , ImageLink, Day, false);
+            var meal = new Meal(id,2, 1, MealName, MealType, Calories, Protein, Carbs, Fat, "Reciepe" , "imageLink", Day, false);
             var test = JsonConvert.SerializeObject(meal);
             var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutMealUri(id), meal);
             var httpCode = result.StatusCode;

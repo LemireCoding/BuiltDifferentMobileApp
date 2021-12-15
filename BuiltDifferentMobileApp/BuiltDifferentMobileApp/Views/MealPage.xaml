@@ -90,8 +90,7 @@
                                                     <Label VerticalTextAlignment="Center" Text="{Binding fat, StringFormat='{0} Fat'}"
                                                FontAttributes="Bold"
                                                FontSize="Medium" />
-                                                    <Button  CornerRadius="12" Text="Edit" Command="{Binding Source={x:Reference TheMealPage},
-                                    Path=BindingContext.EditCommand}" CommandParameter="{Binding id}"/>
+                                                    <Button  CornerRadius="12" Text="Edit" Command="{Binding Source={x:Reference TheMealPage}, Path=BindingContext.EditCommand}" CommandParameter="{Binding id}"/>
                                                 </StackLayout>
                                             </Grid>
                                         </StackLayout>
