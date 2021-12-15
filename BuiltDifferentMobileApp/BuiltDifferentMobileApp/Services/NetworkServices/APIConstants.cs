@@ -13,6 +13,10 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
         private static readonly string BaseAddress = $"http://{HOST}:{PORT}/api";
 
+        /*
+         *  WORKOUT URIS
+         */
+
         public static string PostWorkoutUri()
         {
             //will need to add client id , etc...
@@ -22,6 +26,15 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         public static string GetWorkoutsByClientId(int id)
         {
             return $"{BaseAddress}/workouts/client/{id}";
+        }
+        public static string GetWorkoutsByWorkoutId(int workoutId)
+        {
+            return $"{BaseAddress}/workouts/{workoutId}";
+        }
+
+        public static string UpdateWorkoutByWorkoutId(int workoutId)
+        {
+            return $"{BaseAddress}/workouts/{workoutId}";
         }
 
         /*
@@ -41,16 +54,6 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         public static string GetMealsByClientId(int id)
         {
             return $"{BaseAddress}/meals/client/{id}";
-        }
-
-        public static string GetWorkoutsByWorkoutId(int workoutId)
-        {
-            return $"{BaseAddress}/workouts/{workoutId}";
-        }
-
-        public static string UpdateWorkoutByWorkoutId(int workoutId)
-        {
-            return $"{BaseAddress}/workouts/{workoutId}";
         }
 
         public static string PostMealUri()

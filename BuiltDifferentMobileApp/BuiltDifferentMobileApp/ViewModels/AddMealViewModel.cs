@@ -16,8 +16,8 @@ namespace BuiltDifferentMobileApp.ViewModels
     {
         private string mealName;
         public string MealName { get => mealName; set => SetProperty(ref mealName, value); }
-        private MealType mealType;
-        public MealType MealType { get; set; }
+        private string mealType;
+        public string MealType { get; set; }
         private double calories;
         public double Calories { get => calories; set => SetProperty(ref calories, value); }
         private double protein;
@@ -40,7 +40,7 @@ namespace BuiltDifferentMobileApp.ViewModels
         {
 
             Title = "Add Meal";
-            SaveCommand = new Xamarin.CommunityToolkit.ObjectModel.AsyncCommand(Save);
+            SaveCommand = new Xamarin.CommunityToolkit.ObjectModel.AsyncCommand(SaveMeal);
             Types = new ObservableRangeCollection<string>
         {
             "Breakfast",
@@ -48,30 +48,35 @@ namespace BuiltDifferentMobileApp.ViewModels
             "Dinner",
             "Snack"
         };
-
+            Day = DateTime.Now;
         }
 
-        public async Task Save()
+        public async Task SaveMeal()
         {
-            if (string.IsNullOrEmpty(MealName)|| MealType.ToString().Length == 0)
+            if (
+                string.IsNullOrEmpty(MealName) ||
+                string.IsNullOrEmpty(MealType)
+                )
             {
                 await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
                 return;
             }
             //default ids inserted for now
             //empty strings for receipe and image link
-            var meal = new MealDTO(1,0,MealName, MealType.Name, Calories, Protein, Carbs, Fat, "", ImageLink, day, false);
-            var test = JsonConvert.SerializeObject(meal);
-            var result = await networkService.PostAsync<Workout>(APIConstants.PostMealUri(), meal);
+            //must have receipe and image link filled
 
-            if (result != null)
+            var meal = new  MealDTO(2,1,MealName, MealType, Calories, Protein, Carbs, Fat, "recipe", "imagelink.com", Day, false);
+            var test = JsonConvert.SerializeObject(meal);
+            var result = await networkService.PostAsync<HttpResponseMessage>(APIConstants.PostMealUri(), meal);
+            var httpCode = result.StatusCode;
+
+            if (httpCode == System.Net.HttpStatusCode.OK)
             {
                 await Application.Current.MainPage.DisplayAlert("Good", "Meal Saved", "OK");
                 await AppShell.Current.GoToAsync("..");
-
             }
             else
-                return; 
+                return;
         }
     }
 }

@@ -1,9 +1,7 @@
-﻿using BuiltDifferentMobileApp.Services.NetworkServices;
-using BuiltDifferentMobileApp.ViewModels;
+﻿using BuiltDifferentMobileApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,14 +15,18 @@ namespace BuiltDifferentMobileApp.Views
     {
         public MealPage()
         {
-            
             InitializeComponent();
             BindingContext = new MealViewModel();
         }
+
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            BindingContext = new MealViewModel();
+            if (BindingContext != null)
+            {
+                var viewModel = (MealViewModel)BindingContext;
+                await viewModel.GetMeals();
+            }
 
         }
 
