@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -10,7 +11,7 @@
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-
+    
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -26,7 +27,7 @@
                     <Entry AutomationId="RepsField" Text="{Binding Reps}" Placeholder="Reps" Keyboard="Numeric"/>
                     <Entry AutomationId="DurationField" Text="{Binding Duration}" Placeholder="Duration (in minutes)" Keyboard="Numeric"/>
                     <Entry AutomationId="RestTimeField" Text="{Binding RestTime}" Placeholder="Rest Time(seconds)" Keyboard="Numeric"/>
-                    <Entry AutomationId="WeightField" Text="{Binding Weight}" Placeholder="Weight(in lbs)" Keyboard="Numeric"/>
+                   <Entry AutomationId="WeightField" Text="{Binding Weight}" Placeholder="Weight(in lbs)" Keyboard="Numeric"/>
                     <Entry AutomationId="DescriptionField" Text="{Binding Description}" Placeholder="Description" Keyboard="Text"/>
                     <Label Text="Date"/>
                     <DatePicker AutomationId="DateField" MinimumDate="{x:Static sys:DateTime.Now}" Date="{Binding Day}" HorizontalOptions="Center"/>
@@ -37,4 +38,3 @@
             </ScrollView>
         </Grid>
     </ContentPage.Content>
-    </ContentPage>
