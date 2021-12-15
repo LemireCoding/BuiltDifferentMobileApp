@@ -27,33 +27,42 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
          */
 
         public async Task<TResult> GetAsync<TResult>(string uri) {
-           
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
 
-      
+            HttpResponseMessage response = await httpClient.GetAsync(uri);
+
+
+            string serialized = await response.Content.ReadAsStringAsync();
+
+            var result = JsonConvert.DeserializeObject<TResult>(serialized);
+
+            return result;
+
+        }
+
+        public async Task<TResult> PutAsync<TResult>(string uri, object obj)
+        {
+            try
+            {
+                var json = JsonConvert.SerializeObject(obj);
+
+                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await httpClient.PutAsync(uri, content);
+
+                if (response.IsSuccessStatusCode)
+                {
                     string serialized = await response.Content.ReadAsStringAsync();
 
                     var result = JsonConvert.DeserializeObject<TResult>(serialized);
 
                     return result;
-            
-        }
+                }
 
-        public async Task<T> PutAsync(string uri, object obj)
-        {
-            var json = JsonConvert.SerializeObject(obj);
-
-            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await httpClient.PutAsync(uri, content);
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpHeaders header = response.Headers;
-                //Add auth once implementned
+                return default(TResult);
             }
-            return (T)response;
+            catch (TaskCanceledException)
+            {
+                return default(TResult);
+            }
         }
             
 
@@ -87,16 +96,6 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             } catch(TaskCanceledException) {
                 return false;
             }
-        }
-
-        public Task<T> PostAsync(string uri, object obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<TResult> UpdateAsync<TResult>(string uri, object data)
-        {
-            throw new NotImplementedException();
         }
     }
 }

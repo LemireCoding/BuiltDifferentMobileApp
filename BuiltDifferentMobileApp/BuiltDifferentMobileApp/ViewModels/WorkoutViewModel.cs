@@ -31,7 +31,7 @@ namespace BuiltDifferentMobileApp.ViewModels
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
         public WorkoutViewModel()
         {
-            clientId = 1;
+            clientId = 2;
             Day = DateTime.Now.Date;
             EditCommand = new AsyncCommand<int>(EditWorkout);
             AddCommand = new AsyncCommand(AddWorkout);
