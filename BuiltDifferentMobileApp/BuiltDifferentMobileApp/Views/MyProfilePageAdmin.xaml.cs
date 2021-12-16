@@ -9,8 +9,8 @@ using Xamarin.Forms.Xaml;
 
 namespace BuiltDifferentMobileApp.Views {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MyProfilePage : ContentPage {
-        public MyProfilePage() {
+    public partial class MyProfilePageAdmin : ContentPage {
+        public MyProfilePageAdmin() {
             InitializeComponent();
         }
     }

@@ -36,7 +36,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices {
                         userType = AccountConstants.Client;
                     } else if(result.ContainsKey("isVerified")) {
                         user = JsonConvert.DeserializeObject<Coach>(serializedUser);
-                        userType = AccountConstants.Client;
+                        userType = AccountConstants.Coach;
                     } else {
                         return false;
                     }
@@ -54,7 +54,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices {
             return user;
         }
 
-        public string GetCurrentUserType() {
+        public string GetCurrentUserRole() {
             return userType;
         }
     }

@@ -37,11 +37,12 @@ namespace BuiltDifferentMobileApp.ViewModels
             }
         }
 
-        public AsyncCommand ViewMyProfileCommand { get; }
         public AsyncCommand AddCommand { get; }
         public AsyncCommand <int>EditCommand { get; }
 
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
+
+        private IAccountService accountService = AccountService.Instance;
 
         public MealViewModel()
         {
@@ -51,15 +52,8 @@ namespace BuiltDifferentMobileApp.ViewModels
 
             Day = DateTime.Now.Date;
 
-            ViewMyProfileCommand = new AsyncCommand(ViewMyProfile);
-
-
             MealGroups = new ObservableRangeCollection<Grouping<string, Meal>>();
             GetMeals();
-        }
-
-        private async Task ViewMyProfile() {
-            await Shell.Current.GoToAsync($"{nameof(MyProfilePage)}");
         }
 
         private async Task AddMeal()
