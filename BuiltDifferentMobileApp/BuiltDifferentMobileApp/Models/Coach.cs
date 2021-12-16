@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace BuiltDifferentMobileApp.Models {
+    public class Coach : User {
+        public override int id { get; set; }
+        public override string name { get; set; }
+        public override int userId { get; set; }
+        public string type { get; set; }
+        public bool isAvailable { get; set; }
+        public bool offersMeal { get; set; }
+        public bool offersWorkout { get; set; }
+        public string certification { get; set; }
+        public string gender { get; set; }
+        public bool isVerified { get; set; }
+    }
+}

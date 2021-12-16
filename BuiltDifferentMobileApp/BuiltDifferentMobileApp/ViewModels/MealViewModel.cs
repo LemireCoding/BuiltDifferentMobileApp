@@ -25,6 +25,7 @@ namespace BuiltDifferentMobileApp.ViewModels
             get => selectedMeal;
             set => SetProperty(ref selectedMeal, value);
         }
+
         private DateTime day;
         public DateTime Day
         {
@@ -35,6 +36,11 @@ namespace BuiltDifferentMobileApp.ViewModels
                 GetMeals();
             }
         }
+
+        public AsyncCommand ViewMyProfileCommand { get; }
+        public AsyncCommand AddCommand { get; }
+        public AsyncCommand <int>EditCommand { get; }
+
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
         public MealViewModel()
@@ -42,9 +48,18 @@ namespace BuiltDifferentMobileApp.ViewModels
             clientId = 2;
             EditCommand = new AsyncCommand<int>(EditMeal);
             AddCommand = new AsyncCommand(AddMeal);
+
             Day = DateTime.Now.Date;
+
+            ViewMyProfileCommand = new AsyncCommand(ViewMyProfile);
+
+
             MealGroups = new ObservableRangeCollection<Grouping<string, Meal>>();
             GetMeals();
+        }
+
+        private async Task ViewMyProfile() {
+            await Shell.Current.GoToAsync($"{nameof(MyProfilePage)}");
         }
 
         private async Task AddMeal()
