@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels" xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
+             xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels"
+             xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
              x:Class="BuiltDifferentMobileApp.Views.LoginPage"
              Shell.TabBarIsVisible="False"
              Shell.NavBarIsVisible="False"
@@ -21,8 +22,9 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="300"/>
-                <RowDefinition />
-                <RowDefinition />
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="75"/>
@@ -39,17 +41,18 @@
                 <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                     <Entry Placeholder="Password" IsPassword="True" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" Text="{Binding Password}"/>
                 </Frame>
-                <StackLayout Padding="0" Margin="0">
-                    <Button Text="Log In" CornerRadius="8" Command="{Binding LoginCommand}"/>
-                    <Label Text="Forgot password?" HorizontalOptions="EndAndExpand">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
-                        </Label.GestureRecognizers>
-                    </Label>
-                </StackLayout>
             </StackLayout>
 
-            <Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource DarkGrey}" VerticalOptions="EndAndExpand" Padding="16" CornerRadius="0">
+            <StackLayout Grid.Row="2" Grid.Column="1" Padding="0" Margin="0">
+                <Button Text="Log In" CornerRadius="8" Command="{Binding LoginCommand}"/>
+                <Label Text="Forgot password?" HorizontalOptions="EndAndExpand">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
+            <Frame Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource DarkGrey}" VerticalOptions="Fill" Padding="16" CornerRadius="0">
                 <Label HorizontalOptions="Center" TextColor="White">
                     <Label.FormattedText>
                         <FormattedString>

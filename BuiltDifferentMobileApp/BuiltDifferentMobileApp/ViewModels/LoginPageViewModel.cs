@@ -51,11 +51,15 @@ namespace BuiltDifferentMobileApp.ViewModels {
         }
 
         private async Task Register() {
-            await Application.Current.MainPage.DisplayAlert("Clicked!", "nice one", "ty");
+            if(IsBusy) return;
+
+            await Shell.Current.GoToAsync($"{nameof(RegisterPage)}");
         }
 
         private async Task ForgotPassword() {
-            await Application.Current.MainPage.DisplayAlert("Clicked!", "remember", "fine");
+            if(IsBusy) return;
+
+            await Application.Current.MainPage.DisplayAlert("Not implemented yet!", "Forgot Password", "OK");
         }
 
     }
