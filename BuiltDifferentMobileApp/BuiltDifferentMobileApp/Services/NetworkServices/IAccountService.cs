@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace BuiltDifferentMobileApp.Services.NetworkServices {
     public interface IAccountService {
         Task<bool> SetCurrentUser(HttpResponseMessage user);
-        object GetCurrentUser();
+        User GetCurrentUser();
         string GetCurrentUserRole();
     }
 }

@@ -50,7 +50,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices {
             }
         }
 
-        public object GetCurrentUser() {
+        public User GetCurrentUser() {
             return user;
         }
 
