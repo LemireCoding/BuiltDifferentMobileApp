@@ -1,19 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels"
+             xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels" xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
              x:Class="BuiltDifferentMobileApp.Views.LoginPage"
-             Title="{Binding Title}">
+             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
+             x:Name="MyLoginPage">
 
     <ContentPage.BindingContext>
         <viewmodels:LoginPageViewModel />
     </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BoolToInvertedBoolConverter x:Key="boolToInvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300"/>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="75"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Row="0" Grid.Column="1" Source="https://www.lonestarpark.com/wp-content/uploads/2019/04/image-placeholder-500x500.jpg" VerticalOptions="Center" />
+
+            <StackLayout Grid.Row="1" Grid.Column="1" Spacing="16">
+                <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
+                    <Entry Placeholder="Email" Keyboard="Email" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" Text="{Binding Email}"/>
+                </Frame>
+                <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
+                    <Entry Placeholder="Password" IsPassword="True" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" Text="{Binding Password}"/>
+                </Frame>
+                <StackLayout Padding="0" Margin="0">
+                    <Button Text="Log In" CornerRadius="8" Command="{Binding LoginCommand}"/>
+                    <Label Text="Forgot password?" HorizontalOptions="EndAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+
+            <Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource DarkGrey}" VerticalOptions="EndAndExpand" Padding="16" CornerRadius="0">
+                <Label HorizontalOptions="Center" TextColor="White">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Don't have an account? " />
+                            <Span Text="Sign up" FontAttributes="Bold" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding RegisterCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Frame>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

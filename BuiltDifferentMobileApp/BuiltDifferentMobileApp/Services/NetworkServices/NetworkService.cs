@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -105,5 +106,31 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
                 return false;
             }
         }
+
+        public async Task<bool> LoginAsync(string uri, object user) {
+            try {
+                var json = JsonConvert.SerializeObject(user);
+                var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await httpClient.PostAsync(uri, jsonString);
+
+                if(response.IsSuccessStatusCode) {
+                    HttpHeaders headers = response.Headers;
+
+                    if(headers.TryGetValues("Authorization", out IEnumerable<string> values)) {
+                        var JWTToken = values.First();
+
+                        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", JWTToken);
+
+                        return true;
+                    }
+                }
+
+                return false;
+            } catch(TaskCanceledException) {
+                return false;
+            }
+        }
+
     }
 }

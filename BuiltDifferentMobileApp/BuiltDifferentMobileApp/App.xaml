@@ -11,6 +11,7 @@
             <Color x:Key="RedExtra">#A4161A</Color>
             <Color x:Key="RedSecondary">#BA181B</Color>
             <Color x:Key="Black">#0B090A</Color>
+            <Color x:Key="DarkGrey">#525557</Color>
             <Color x:Key="Grey">#B1A7A6</Color>
             <Color x:Key="LightGrey">#D3D3D3</Color>
             <Color x:Key="ExtraLightGrey">#F5F3F4</Color>

@@ -13,5 +13,6 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices {
         Task<bool> DeleteAsync(string uri);
         Task<TResult> PutAsync<TResult>(string uri, object data);
         Task<TResult> PostAsync<TResult>(string uri, object data);
+        Task<bool> LoginAsync(string uri, object user);
     }
 }
