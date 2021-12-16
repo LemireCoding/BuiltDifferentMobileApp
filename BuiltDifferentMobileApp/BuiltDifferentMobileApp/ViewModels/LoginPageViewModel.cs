@@ -44,7 +44,7 @@ namespace BuiltDifferentMobileApp.ViewModels {
             IsBusy = false;
 
             if(loggedIn) {
-                await Shell.Current.GoToAsync($"//{nameof(WorkoutPage)}");
+                await Shell.Current.GoToAsync($"//{nameof(MenuPage)}");
             } else {
                 await Application.Current.MainPage.DisplayAlert("Failed to log in", "Invalid email or password", "OK");
             }
