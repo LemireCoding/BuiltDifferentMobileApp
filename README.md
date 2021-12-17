@@ -215,7 +215,7 @@ Project Link: [https://github.com/LemireCoding/BuiltDifferentMobileApp](https://
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/LemireCoding/BuiltDifferentMobileApp.svg?style=for-the-badge
 [contributors-url]: https://github.com/LemireCoding/BuiltDifferentMobileApp/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forksLemireCoding/BuiltDifferentMobileApp.svg?style=for-the-badge
 [forks-url]: https://github.com/github_username/repo_name/network/members
 [stars-shield]: https://img.shields.io/github/stars/LemireCoding/BuiltDifferentMobileApp.svg?style=for-the-badge
 [stars-url]: https://github.com/github_username/repo_name/stargazers
