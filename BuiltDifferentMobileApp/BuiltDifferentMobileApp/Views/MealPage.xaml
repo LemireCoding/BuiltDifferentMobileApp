@@ -15,10 +15,10 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Margin="5,0,5,0">
-            <Label Margin="5,20,5,10" Text="Olivier's Meal Plan"  FontSize="35"
+            <Label Margin="5,20,5,10" AutomationId="MealPageTitle" Text="Olivier's Meal Plan"  FontSize="35"
                    FontAttributes="Bold" HorizontalTextAlignment="Center"/>
             <DatePicker HorizontalOptions="Center" Date="{Binding Day}"/>
-            <Button Text="Add" CornerRadius="12" Margin="300,10,30,10" Command="{Binding AddCommand}" />
+            <Button Text="Add" AutomationId="AddButton" CornerRadius="12" Margin="300,10,30,10" Command="{Binding AddCommand}" />
             <CollectionView ItemsSource="{Binding MealGroups}"
                 IsGrouped="true">
                 <CollectionView.GroupHeaderTemplate>
@@ -43,6 +43,7 @@
                                         </Grid.ColumnDefinitions>
 
                                         <Label Text="{Binding mealName}"
+                                               AutomationId="MealName"
                                                FontAttributes="Bold"
                                                FontSize="Medium"  VerticalTextAlignment="Center"/>
                                         <Grid Grid.Column="1">
