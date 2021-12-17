@@ -19,7 +19,7 @@
 -->
 
 	[link](https://www.example.com/my great page)
-[![Contributors][contributors-shield]][link](https://github.com/bthorng)][link](https://github.com/LemireCoding)][link](https://github.com/Chloedunwoody)]
+[![Contributors][contributors-shield](https://github.com/bthorng)][contributors-shield](https://github.com/LemireCoding)][contributors-shield](https://github.com/Chloedunwoody)]
 
 
 [![Forks][forks-shield]][forks-url]
