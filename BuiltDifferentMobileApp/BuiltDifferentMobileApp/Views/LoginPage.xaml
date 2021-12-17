@@ -44,8 +44,8 @@
             </StackLayout>
 
             <StackLayout Grid.Row="2" Grid.Column="1" Padding="0" Margin="0">
-                <Button Text="Log In" CornerRadius="8" Command="{Binding LoginCommand}"/>
-                <Label Text="Forgot password?" HorizontalOptions="EndAndExpand">
+                <Button Text="Log In" CornerRadius="8" Command="{Binding LoginCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"/>
+                <Label Text="Forgot password?" HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
                     </Label.GestureRecognizers>
@@ -53,7 +53,7 @@
             </StackLayout>
 
             <Frame Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource DarkGrey}" VerticalOptions="Fill" Padding="16" CornerRadius="0">
-                <Label HorizontalOptions="Center" TextColor="White">
+                <Label HorizontalOptions="Center" TextColor="White" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="Don't have an account? " />
@@ -65,7 +65,6 @@
                     </Label.GestureRecognizers>
                 </Label>
             </Frame>
-
         </Grid>
     </ContentPage.Content>
 </ContentPage>

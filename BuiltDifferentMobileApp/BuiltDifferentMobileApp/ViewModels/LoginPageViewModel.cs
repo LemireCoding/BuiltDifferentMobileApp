@@ -2,6 +2,7 @@
 using BuiltDifferentMobileApp.Views;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,14 +40,24 @@ namespace BuiltDifferentMobileApp.ViewModels {
                 { "password", Password },
             };
 
-            bool loggedIn = await networkService.LoginAsync(APIConstants.GetLoginUri(), credentials);
+            HttpStatusCode response = await networkService.LoginAsync(APIConstants.GetLoginUri(), credentials);
 
             IsBusy = false;
 
-            if(loggedIn) {
+            if(((int)response >= 200) && ((int)response <= 299)) {
                 await Shell.Current.GoToAsync($"//{nameof(MenuPage)}");
-            } else {
-                await Application.Current.MainPage.DisplayAlert("Failed to log in", "Invalid email or password", "OK");
+            }
+            else if((int)response == 404) {
+                await Application.Current.MainPage.DisplayAlert("Could not find account", "Please try a different login", "OK");
+            }
+            else if(response == HttpStatusCode.Unauthorized){
+                await Application.Current.MainPage.DisplayAlert("Invalid email or password!", "Please try again.", "OK");
+            }
+            else if((int)response == 429) {
+                await Application.Current.MainPage.DisplayAlert("Maximum login attempts exceeded", "Please try again later.", "OK");
+            }
+            else {
+                await Application.Current.MainPage.DisplayAlert("Unknown error while logging in", "Please try again.", "OK");
             }
         }
 

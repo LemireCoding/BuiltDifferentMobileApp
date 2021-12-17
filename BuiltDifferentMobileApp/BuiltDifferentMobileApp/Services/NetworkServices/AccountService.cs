@@ -17,13 +17,13 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices {
         private AccountService() { }
 
         private User user;
-        private string userType;
+        private string role;
 
         public async Task<bool> SetCurrentUser(HttpResponseMessage response) {
             try {
                 if(response.IsSuccessStatusCode) {
                     if(response.StatusCode == HttpStatusCode.NoContent) {
-                        userType = AccountConstants.Admin;
+                        role = AccountConstants.Admin;
                         return true;
                     }
 
@@ -33,10 +33,10 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices {
 
                     if(result.ContainsKey("waitingApproval")) {
                         user = JsonConvert.DeserializeObject<Client>(serializedUser);
-                        userType = AccountConstants.Client;
+                        role = AccountConstants.Client;
                     } else if(result.ContainsKey("isVerified")) {
                         user = JsonConvert.DeserializeObject<Coach>(serializedUser);
-                        userType = AccountConstants.Coach;
+                        role = AccountConstants.Coach;
                     } else {
                         return false;
                     }
@@ -55,7 +55,12 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices {
         }
 
         public string GetCurrentUserRole() {
-            return userType;
+            return role;
+        }
+
+        public void RemoveCurrentUser() {
+            user = null;
+            role = "";
         }
     }
 }

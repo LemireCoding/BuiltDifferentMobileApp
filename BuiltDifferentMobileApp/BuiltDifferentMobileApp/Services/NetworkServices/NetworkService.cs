@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -18,6 +19,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
         private AccountService accountService = AccountService.Instance;
         private HttpClient httpClient;
+
         private NetworkService()
         {
             httpClient = new HttpClient();
@@ -108,7 +110,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             }
         }
 
-        public async Task<bool> LoginAsync(string uri, object user) {
+        public async Task<HttpStatusCode> LoginAsync(string uri, object user) {
             try {
                 var json = JsonConvert.SerializeObject(user);
                 var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
@@ -127,19 +129,21 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
                         bool matchedAccountType = await accountService.SetCurrentUser(profileResponse);
 
-                        if(matchedAccountType) {
-                            return true;
-                        } else {
+                        if(!matchedAccountType) {
                             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "");
-                            return false;
                         }
                     }
                 }
 
-                return false;
+                return loginResponse.StatusCode;
             } catch(TaskCanceledException) {
-                return false;
+                return HttpStatusCode.RequestTimeout;
             }
+        }
+
+        public void RemoveJWTToken() {
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "");
+            accountService.RemoveCurrentUser();
         }
 
     }

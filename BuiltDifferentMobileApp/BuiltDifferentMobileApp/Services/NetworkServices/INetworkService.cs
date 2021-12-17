@@ -1,6 +1,7 @@
 ﻿using BuiltDifferentMobileApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices {
         Task<bool> DeleteAsync(string uri);
         Task<TResult> PutAsync<TResult>(string uri, object data);
         Task<TResult> PostAsync<TResult>(string uri, object data);
-        Task<bool> LoginAsync(string uri, object user);
+        Task<HttpStatusCode> LoginAsync(string uri, object user);
+        void RemoveJWTToken();
     }
 }
