@@ -37,9 +37,6 @@ namespace BuiltDifferentMobileApp.ViewModels
             }
         }
 
-        public AsyncCommand AddCommand { get; }
-        public AsyncCommand <int>EditCommand { get; }
-
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
         private IAccountService accountService = AccountService.Instance;

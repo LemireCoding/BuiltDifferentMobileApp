@@ -79,7 +79,7 @@ namespace BuiltDifferentMobileApp.ViewModels
             //default client/coach ids inserted for now
 
             //filled string for image link otherwill fail
-            var meal = new Meal(id,2, 1, MealName, MealType, Calories, Protein, Carbs, Fat, "Reciepe" , "imageLink", Day, false);
+            var meal = new Meal(id,2, 1, MealName, MealType, Calories, Protein, Carbs, Fat, Recipe, ImageLink, Day, false);
             var test = JsonConvert.SerializeObject(meal);
             var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutMealUri(id), meal);
             var httpCode = result.StatusCode;
