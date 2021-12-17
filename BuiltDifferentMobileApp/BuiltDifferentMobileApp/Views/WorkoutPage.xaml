@@ -6,12 +6,10 @@
              x:Name="TheWorkoutPage">
     <ContentPage.Content >
         <StackLayout Margin="5,0,5,0">
-            <Label Margin="5,20,5,10" Text="Olivier's Workout Plan"  FontSize="35"
+            <Label Margin="5,20,5,10" AutomationId="WelcomeTitle" Text="Olivier's Workout Plan"  FontSize="35"
                    FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-
-
             <DatePicker HorizontalOptions="Center" Date="{Binding Day}"  />
-            <Button Text="Add" CornerRadius="12" Margin="300,10,30,10" Command="{Binding AddCommand}" />
+            <Button AutomationId="AddButton" Text="Add" CornerRadius="12" Margin="300,10,30,10" Command="{Binding AddCommand}" />
 
             <!--InsertCommand when rerteieved -->
             <CollectionView Margin="10"
@@ -65,8 +63,8 @@
          IsVisible="True" />
                                             </Frame>
                                             <StackLayout Margin="10,10,0,10" Grid.Column="1">
-                                                
-                                                <Button 
+                                            <Button
+                                        AutomationId="AddButton"
                                         Text="Edit"
                                         VerticalOptions="Center"
                                         Padding="2"
@@ -105,10 +103,6 @@
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-
-
-
-               
                 <CollectionView.EmptyView>
                     <StackLayout HorizontalOptions="Center">
                         <Image 

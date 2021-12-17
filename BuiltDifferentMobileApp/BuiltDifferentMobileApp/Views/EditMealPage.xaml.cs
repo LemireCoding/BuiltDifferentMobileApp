@@ -17,18 +17,12 @@ namespace BuiltDifferentMobileApp.Views
         public EditMealPage()
         {
             InitializeComponent();
-
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
             BindingContext = new EditMealViewModel(id);
-        }
-
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync("..");
         }
     }
 }

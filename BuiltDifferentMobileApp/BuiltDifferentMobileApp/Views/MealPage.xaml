@@ -1,38 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
              x:Class="BuiltDifferentMobileApp.Views.MealPage"
               xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels"
-             x:Name="mealsPage"
+             x:Name="TheMealPage"
              >
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Profile" >
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
-            </ToolbarItem.IconImageSource>        </ToolbarItem>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Margin="5,0,5,0">
-            <Label Margin="5,20,5,10" Text="Olivier's Meal Plan"  FontSize="35"
+            <Label Margin="5,20,5,10" AutomationId="MealPageTitle" Text="Olivier's Meal Plan"  FontSize="35"
                    FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-            <DatePicker HorizontalOptions="Center"/>
-            <Button Text="Add" CornerRadius="12" Margin="300,10,30,10" Command="{Binding AddCommand}" />
+            <DatePicker HorizontalOptions="Center" Date="{Binding Day}"/>
+            <Button Text="Add" AutomationId="AddButton" CornerRadius="12" Margin="300,10,30,10" Command="{Binding AddCommand}" />
             <CollectionView ItemsSource="{Binding MealGroups}"
-                           
-               
                 IsGrouped="true">
-                
                 <CollectionView.GroupHeaderTemplate>
                     <DataTemplate>
-                       
-                        
-                            <Label Text="{Binding Key}"
+                        <Label Text="{Binding Key}"
                    FontSize="30"
                    FontAttributes="Bold" VerticalTextAlignment="Center" />
-                        
-                        
-
-                    </DataTemplate>
+                     </DataTemplate>
                 </CollectionView.GroupHeaderTemplate>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -49,6 +43,7 @@
                                         </Grid.ColumnDefinitions>
 
                                         <Label Text="{Binding mealName}"
+                                               AutomationId="MealName"
                                                FontAttributes="Bold"
                                                FontSize="Medium"  VerticalTextAlignment="Center"/>
                                         <Grid Grid.Column="1">
@@ -56,7 +51,7 @@
                                                 <ColumnDefinition Width="auto"/>
                                                 <ColumnDefinition/>
                                             </Grid.ColumnDefinitions>
-                                            <Label   VerticalTextAlignment="Center" Text="{Binding calories, StringFormat='{0} Calories'}"
+                                            <Label VerticalTextAlignment="Center" Text="{Binding calories, StringFormat='{0} Calories'}"
                                                FontAttributes="Bold"
                                                FontSize="Medium" />
                                             <Label 
@@ -85,23 +80,20 @@
                                                 <StackLayout >
                                                     <Image  Source="{Binding imageLink}"/>
                                                 </StackLayout>
-                                                
-                                                <StackLayout Grid.Column="1" >
-                                                    <Label  VerticalTextAlignment="Center" Text="{Binding protein, StringFormat='{0}g Proteins'}"
-                                               FontAttributes="Bold"
-                                               FontSize="Medium" />
-                                                    <Label  VerticalTextAlignment="Center" Text="{Binding carbs, StringFormat='{0}g Carbs'}"
-                                               FontAttributes="Bold"
-                                               FontSize="Medium" />
-                                                    <Label VerticalTextAlignment="Center" Text="{Binding fat, StringFormat='{0}g Fat'}"
-                                               FontAttributes="Bold"
-                                               FontSize="Medium" />
-                                                    <Button  CornerRadius="12" Text="Edit" Command="{Binding Source={x:Reference mealsPage},
-                                    Path=BindingContext.EditCommand}" CommandParameter="{Binding id}"/>
-                                                </StackLayout>
 
-                                                
-                                        </Grid>
+                                                <StackLayout Grid.Column="1" >
+                                                    <Label  VerticalTextAlignment="Center" Text="{Binding protein, StringFormat='{0} Proteins'}"
+                                               FontAttributes="Bold"
+                                               FontSize="Medium" />
+                                                    <Label  VerticalTextAlignment="Center" Text="{Binding carbs, StringFormat='{0} Carbs'}"
+                                               FontAttributes="Bold"
+                                               FontSize="Medium" />
+                                                    <Label VerticalTextAlignment="Center" Text="{Binding fat, StringFormat='{0} Fat'}"
+                                               FontAttributes="Bold"
+                                               FontSize="Medium" />
+                                                    <Button  CornerRadius="12" Text="Edit" Command="{Binding Source={x:Reference TheMealPage}, Path=BindingContext.EditCommand}" CommandParameter="{Binding id}"/>
+                                                </StackLayout>
+                                            </Grid>
                                         </StackLayout>
 
                                     </DataTemplate>
