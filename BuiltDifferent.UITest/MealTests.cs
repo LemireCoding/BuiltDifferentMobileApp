@@ -26,6 +26,18 @@ namespace BuiltDifferent.UITest
         public void BeforeEachTest()
         {
             app = AppInitializer.StartApp(platform);
+
+            // Login
+            app.WaitForElement(e => e.Marked("Email"), "coach");
+            app.EnterText(e => e.Marked("Email"), "coach");
+
+            app.WaitForElement(e => e.Marked("Password"), "coach");
+            app.EnterText(e => e.Marked("Password"), "coach");
+
+            app.DismissKeyboard();
+
+            app.WaitForElement(e => e.Marked("Login"));
+            app.Tap(e => e.Marked("Login"));
         }
 
         private void SaveScreenshot([CallerMemberName] string title = "", [CallerLineNumber] int lineNumber = -1)
