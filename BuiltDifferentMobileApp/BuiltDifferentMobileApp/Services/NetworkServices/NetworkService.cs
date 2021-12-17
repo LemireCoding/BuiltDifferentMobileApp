@@ -23,7 +23,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         private NetworkService()
         {
             httpClient = new HttpClient();
-            httpClient.Timeout = TimeSpan.FromSeconds(10);
+            httpClient.Timeout = TimeSpan.FromSeconds(15);
         }
 
         /*
