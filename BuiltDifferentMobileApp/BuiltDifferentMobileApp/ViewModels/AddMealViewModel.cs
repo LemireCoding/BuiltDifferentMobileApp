@@ -47,7 +47,7 @@ namespace BuiltDifferentMobileApp.ViewModels
             "Dinner",
             "Snack"
         };
-            Day = DateTime.Now;
+            Day = DateTime.Now.Date;
         }
 
         public async Task SaveMeal()
