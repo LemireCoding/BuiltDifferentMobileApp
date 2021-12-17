@@ -156,7 +156,8 @@ namespace BuiltDifferent.UITest
                 app.WaitForElement("message");
                 app.Tap(x => x.Text("OK"));
                 app.WaitForElement(x => x.Marked("MealName"));
-                Assert.IsTrue(app.Query(x => x.Marked("MealName").Text("Test Meal Name")).Any());
+                Assert.AreSame("Test Meal Name", app.Query(x => x.Marked("MealName").Text("Test Meal Name")));
+
             }
             //if IOS
             else

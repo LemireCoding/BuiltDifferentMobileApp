@@ -71,8 +71,12 @@ namespace BuiltDifferentMobileApp.ViewModels
 
             if (httpCode == System.Net.HttpStatusCode.OK)
             {
-                await Application.Current.MainPage.DisplayAlert("Good", "Meal Saved", "OK");
+                await Application.Current.MainPage.DisplayAlert("Success", "Meal Saved", "OK");
                 await AppShell.Current.GoToAsync("..");
+            }
+            else if (httpCode == System.Net.HttpStatusCode.InternalServerError)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
             }
             else
                 return;
