@@ -83,11 +83,11 @@
                 <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
             </ToolbarItem.IconImageSource>        </ToolbarItem>
     </Shell.ToolbarItems>
+
+    <TabBar>
+        <ShellContent Route="LoginPage" Shell.FlyoutBehavior="Disabled" FlyoutItemIsVisible="False" ContentTemplate="{DataTemplate local:LoginPage}" />
+    </TabBar>
     
-    <FlyoutItem Title="Login" >
-        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
-    </FlyoutItem>
-   
     <FlyoutItem Title="Workouts" >
         <ShellContent Route="WorkoutPage" ContentTemplate="{DataTemplate local:WorkoutPage}" />
     </FlyoutItem>

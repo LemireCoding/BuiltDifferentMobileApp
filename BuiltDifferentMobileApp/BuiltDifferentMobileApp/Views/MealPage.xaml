@@ -6,13 +6,6 @@
               xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels"
              x:Name="TheMealPage"
              >
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Profile" >
-            <ToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
-            </ToolbarItem.IconImageSource>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Margin="5,0,5,0">
             <Label Margin="5,20,5,10" AutomationId="MealPageTitle" Text="Olivier's Meal Plan"  FontSize="35"
@@ -26,7 +19,7 @@
                         <Label Text="{Binding Key}"
                    FontSize="30"
                    FontAttributes="Bold" VerticalTextAlignment="Center" />
-                     </DataTemplate>
+                    </DataTemplate>
                 </CollectionView.GroupHeaderTemplate>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -62,18 +55,18 @@
                                         Text="&#xf107;"/>
                                         </Grid>
                                     </Grid>
-                                   
+
                                 </behaviors:Expander.Header>
                                 <behaviors:Expander.ContentTemplate>
                                     <DataTemplate>
                                         <StackLayout >
                                             <Grid Margin="10,10,10,10">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                                 <RowDefinition/>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                    <RowDefinition/>
                                                 </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition/>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
                                                     <ColumnDefinition/>
                                                 </Grid.ColumnDefinitions>
 
@@ -99,7 +92,7 @@
                                     </DataTemplate>
                                 </behaviors:Expander.ContentTemplate>
                             </behaviors:Expander>
-                           
+
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

@@ -2,6 +2,8 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -15,10 +17,13 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
         public static INetworkService<T> Instance { get { return lazy.Value; } }
 
+        private AccountService accountService = AccountService.Instance;
         private HttpClient httpClient;
+
         private NetworkService()
         {
             httpClient = new HttpClient();
+            httpClient.Timeout = TimeSpan.FromSeconds(15);
         }
 
         /*
@@ -58,7 +63,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
                 return default(TResult);
             }
-            catch (TaskCanceledException)
+            catch (OperationCanceledException)
             {
                 return default(TResult);
             }
@@ -85,8 +90,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
                 return default(TResult);
             }
-            catch (TaskCanceledException)
-            {
+            catch(OperationCanceledException) {
                 return default(TResult);
             }
         }
@@ -99,11 +103,46 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
                 HttpResponseMessage response = await httpClient.DeleteAsync(uri);
 
                 return response.IsSuccessStatusCode;
-            }
-            catch (TaskCanceledException)
-            {
+            } catch(OperationCanceledException) {
                 return false;
             }
         }
+
+        public async Task<HttpStatusCode> LoginAsync(string uri, object user) {
+            try {
+                var json = JsonConvert.SerializeObject(user);
+                var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage loginResponse = await httpClient.PostAsync(uri, jsonString);
+
+                if(loginResponse.IsSuccessStatusCode) {
+                    HttpHeaders headers = loginResponse.Headers;
+
+                    if(headers.TryGetValues("Authorization", out IEnumerable<string> values)) {
+                        var JWTToken = values.First();
+
+                        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", JWTToken);
+
+                        HttpResponseMessage profileResponse = await httpClient.GetAsync(uri);
+
+                        bool matchedAccountType = await accountService.SetCurrentUser(profileResponse);
+
+                        if(!matchedAccountType) {
+                            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "");
+                        }
+                    }
+                }
+
+                return loginResponse.StatusCode;
+            } catch(OperationCanceledException) {
+                return HttpStatusCode.RequestTimeout;
+            }
+        }
+
+        public void RemoveJWTToken() {
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "");
+            accountService.RemoveCurrentUser();
+        }
+
     }
 }

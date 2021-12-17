@@ -25,6 +25,7 @@ namespace BuiltDifferentMobileApp.ViewModels
             get => selectedMeal;
             set => SetProperty(ref selectedMeal, value);
         }
+
         private DateTime day;
         public DateTime Day
         {
@@ -35,14 +36,19 @@ namespace BuiltDifferentMobileApp.ViewModels
                 GetMeals();
             }
         }
+
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
+
+        private IAccountService accountService = AccountService.Instance;
 
         public MealViewModel()
         {
             clientId = 2;
             EditCommand = new AsyncCommand<int>(EditMeal);
             AddCommand = new AsyncCommand(AddMeal);
+
             Day = DateTime.Now.Date;
+
             MealGroups = new ObservableRangeCollection<Grouping<string, Meal>>();
             GetMeals();
         }
