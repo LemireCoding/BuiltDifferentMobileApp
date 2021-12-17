@@ -14,8 +14,17 @@ namespace BuiltDifferentMobileApp.ViewModels {
 
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
-        public string Email { get; set; }
-        public string Password { get; set; }
+        private string email;
+        public string Email {
+            get => email;
+            set => SetProperty(ref email, value);
+        }
+
+        private string password;
+        public string Password {
+            get => password;
+            set => SetProperty(ref password, value);
+        }
 
         public AsyncCommand LoginCommand { get; }
         public AsyncCommand RegisterCommand { get; }
