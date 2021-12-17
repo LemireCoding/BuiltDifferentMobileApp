@@ -23,6 +23,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         private NetworkService()
         {
             httpClient = new HttpClient();
+            httpClient.Timeout = TimeSpan.FromSeconds(10);
         }
 
         /*
@@ -62,7 +63,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
                 return default(TResult);
             }
-            catch (TaskCanceledException)
+            catch (OperationCanceledException)
             {
                 return default(TResult);
             }
@@ -89,8 +90,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
                 return default(TResult);
             }
-            catch (TaskCanceledException)
-            {
+            catch(OperationCanceledException) {
                 return default(TResult);
             }
         }
@@ -103,9 +103,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
                 HttpResponseMessage response = await httpClient.DeleteAsync(uri);
 
                 return response.IsSuccessStatusCode;
-            }
-            catch (TaskCanceledException)
-            {
+            } catch(OperationCanceledException) {
                 return false;
             }
         }
@@ -136,7 +134,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
                 }
 
                 return loginResponse.StatusCode;
-            } catch(TaskCanceledException) {
+            } catch(OperationCanceledException) {
                 return HttpStatusCode.RequestTimeout;
             }
         }
