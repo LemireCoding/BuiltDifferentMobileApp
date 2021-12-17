@@ -102,7 +102,9 @@
         <ShellContent Route="MealPage" ContentTemplate="{DataTemplate local:MealPage}" />
     </FlyoutItem>
 
-
+    <FlyoutItem Title="Log out" >
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" Shell.FlyoutBehavior="Disabled" FlyoutItemIsVisible="False"/>
+    </FlyoutItem>
 
     <!-- 
         When the Flyout is visible this defines the content to display in the flyout.
