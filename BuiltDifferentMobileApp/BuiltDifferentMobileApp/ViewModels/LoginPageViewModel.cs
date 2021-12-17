@@ -70,7 +70,7 @@ namespace BuiltDifferentMobileApp.ViewModels {
         private async Task ForgotPassword() {
             if(IsBusy) return;
 
-            await Application.Current.MainPage.DisplayAlert("Not implemented yet!", "Forgot Password", "OK");
+            await Shell.Current.GoToAsync($"{nameof(ForgotPasswordPage)}");
         }
 
     }
