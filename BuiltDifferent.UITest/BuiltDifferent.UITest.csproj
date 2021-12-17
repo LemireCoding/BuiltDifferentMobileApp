@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{574256F5-B4D1-4DA6-93F2-555161242982}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>BuiltDifferent.UITest</RootNamespace>
+    <AssemblyName>BuiltDifferent.UITest</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="Xamarin.UITest" Version="3.0.5" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BuiltDifferentMobileApp\BuiltDifferentMobileApp.Android\BuiltDifferentMobileApp.Android.csproj">
+      <Project>{05b8eea7-99c6-425c-8c0c-1876aa81cf94}</Project>
+      <Name>BuiltDifferentMobileApp.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BuiltDifferentMobileApp\BuiltDifferentMobileApp.iOS\BuiltDifferentMobileApp.iOS.csproj">
+      <Project>{6ec83197-ed3d-4a03-8a3d-1a6128e4ac65}</Project>
+      <Name>BuiltDifferentMobileApp.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BuiltDifferentMobileApp\BuiltDifferentMobileApp\BuiltDifferentMobileApp.csproj">
+      <Project>{95e51fd8-20cb-44cb-ba7d-2aa43ac88226}</Project>
+      <Name>BuiltDifferentMobileApp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Tests.cs" />
+    <Compile Include="AppInitializer.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
