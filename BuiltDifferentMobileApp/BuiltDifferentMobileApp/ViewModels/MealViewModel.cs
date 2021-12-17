@@ -1,14 +1,13 @@
 ﻿using BuiltDifferentMobileApp.Models;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using BuiltDifferentMobileApp.Views;
-using MvvmHelpers;
-using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace BuiltDifferentMobileApp.ViewModels
@@ -16,7 +15,8 @@ namespace BuiltDifferentMobileApp.ViewModels
      public class MealViewModel: ViewModelBase
     {
         private int clientId;
-
+        public AsyncCommand AddCommand { get; }
+        public AsyncCommand<int> EditCommand { get; }
         public ObservableRangeCollection<Meal> Meals { get; set; }
         public ObservableRangeCollection<Grouping<string, Meal>> MealGroups { get; set; }
         private Meal selectedMeal;
@@ -25,20 +25,32 @@ namespace BuiltDifferentMobileApp.ViewModels
             get => selectedMeal;
             set => SetProperty(ref selectedMeal, value);
         }
-       
-        public AsyncCommand AddCommand { get; }
-        public AsyncCommand <int>EditCommand { get; }
+
+        private DateTime day;
+        public DateTime Day
+        {
+            get => day;
+            set
+            {
+                SetProperty(ref day, value);
+                GetMeals();
+            }
+        }
+
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
+
+        private IAccountService accountService = AccountService.Instance;
+
         public MealViewModel()
         {
-            clientId = 1;
+            clientId = 2;
             EditCommand = new AsyncCommand<int>(EditMeal);
             AddCommand = new AsyncCommand(AddMeal);
-            
+
+            Day = DateTime.Now.Date;
+
             MealGroups = new ObservableRangeCollection<Grouping<string, Meal>>();
-            getMeals();
-           
-           
+            GetMeals();
         }
 
         private async Task AddMeal()
@@ -57,7 +69,7 @@ namespace BuiltDifferentMobileApp.ViewModels
             
         }
 
-        public void createMealGroups()
+        public void CreateMealGroups()
         {
             
             MealGroups.Clear();
@@ -75,7 +87,8 @@ namespace BuiltDifferentMobileApp.ViewModels
            
             
         }
-        private async Task getMeals()
+
+        public async Task GetMeals()
         {
 
             var result = await networkService.GetAsync<ObservableRangeCollection<Meal>>(APIConstants.GetMealsByClientId(clientId));
@@ -83,10 +96,9 @@ namespace BuiltDifferentMobileApp.ViewModels
             {
                 return;
             }
-            
-            Meals = new ObservableRangeCollection<Meal>(result);
-
-            createMealGroups();
+            Meals = new ObservableRangeCollection<Meal>(result.Where(x => x.day.ToString("MMMM dd, yyyy") == Day.ToString("MMMM dd, yyyy")));
+            CreateMealGroups();
+            OnPropertyChanged("Meals");
         }
 
         

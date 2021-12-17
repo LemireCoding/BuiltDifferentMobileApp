@@ -1,4 +1,3 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:sys="clr-namespace:System;assembly=mscorlib"
@@ -10,7 +9,7 @@
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-    
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -18,6 +17,7 @@
             </Grid.RowDefinitions>
             <ScrollView Grid.Row="0">
                 <StackLayout Padding="50">
+
                     <Label AutomationId="AddWorkoutTitle" Text="Create Workout" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="Black"/>
                     <Entry AutomationId="WorkoutName"  Text="{Binding WorkoutName}" Placeholder="Exercise Name" Keyboard="Text" BackgroundColor="White" />
                     <Label Text="Workout Type"/>
@@ -33,6 +33,7 @@
                     <Entry AutomationId="VideoLink" Text="{Binding VideoLink}" Placeholder="Youtube Video Link" Keyboard="Text"/>
                     <Button AutomationId="SaveButton" Grid.Row="0" BorderColor="{StaticResource RedPrimary}" BorderWidth="1" FontAttributes="Bold" BackgroundColor="{StaticResource RedPrimary}" BorderRadius="10" TextColor="White" 
                            Text="Create"  Margin="22,22,22,22" Command="{Binding SaveCommand}"/>
+
                 </StackLayout>
             </ScrollView>
         </Grid>

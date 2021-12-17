@@ -7,15 +7,11 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace BuiltDifferentMobileApp.Views
-{
+namespace BuiltDifferentMobileApp.Views {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MenuPage : TabbedPage
-    {
-        public MenuPage()
-        {
+    public partial class MyProfilePageCoach : ContentPage {
+        public MyProfilePageCoach() {
             InitializeComponent();
         }
-        
     }
 }

@@ -83,11 +83,11 @@
                 <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
             </ToolbarItem.IconImageSource>        </ToolbarItem>
     </Shell.ToolbarItems>
+
+    <TabBar>
+        <ShellContent Route="LoginPage" Shell.FlyoutBehavior="Disabled" FlyoutItemIsVisible="False" ContentTemplate="{DataTemplate local:LoginPage}" />
+    </TabBar>
     
-    <FlyoutItem Title="Login" >
-        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
-    </FlyoutItem>
-   
     <FlyoutItem Title="Workouts" >
         <ShellContent Route="WorkoutPage" ContentTemplate="{DataTemplate local:WorkoutPage}" />
     </FlyoutItem>
@@ -102,7 +102,9 @@
         <ShellContent Route="MealPage" ContentTemplate="{DataTemplate local:MealPage}" />
     </FlyoutItem>
 
-
+    <FlyoutItem Title="Log out" >
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" Shell.FlyoutBehavior="Disabled" FlyoutItemIsVisible="False"/>
+    </FlyoutItem>
 
     <!-- 
         When the Flyout is visible this defines the content to display in the flyout.
