@@ -35,14 +35,14 @@
   <p align="center">
     project_description
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/LemireCoding/BuiltDifferentMobileApp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/LemireCoding/BuiltDifferentMobileApp">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/LemireCoding/BuiltDifferentMobileApp/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/LemireCoding/BuiltDifferentMobileApp/issues">Request Feature</a>
   </p>
   <p align="center">
     Naming Conventions
@@ -156,7 +156,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [] Feature 3
     - [] Nested Feature
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/LemireCoding/BuiltDifferentMobileApp/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -194,7 +194,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/LemireCoding/BuiltDifferentMobileApp](https://github.com/LemireCoding/BuiltDifferentMobileApp)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
