@@ -1,6 +1,7 @@
 ﻿using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using BuiltDifferentMobileApp.Views;
+using BuiltDifferentMobileApp.Views.Admin;
 using BuiltDifferentMobileApp.Views.Client;
 using BuiltDifferentMobileApp.Views.Coach;
 using BuiltDifferentMobileApp.Views.Login;
@@ -62,7 +63,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
                 accountService.CurrentUserEmail = Email;
 
                 if(accountService.GetCurrentUserRole() == AccountConstants.Admin) {
-                    await Shell.Current.GoToAsync($"//{nameof(CoachMenuPage)}");
+                    await Shell.Current.GoToAsync($"//{nameof(AdminMenuPage)}");
                 }
                 if(accountService.GetCurrentUserRole() == AccountConstants.Coach) {
                     await Shell.Current.GoToAsync($"//{nameof(CoachMenuPage)}");

@@ -3,6 +3,7 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:coachpages="clr-namespace:BuiltDifferentMobileApp.Views.Coach"
        xmlns:clientpages="clr-namespace:BuiltDifferentMobileApp.Views.Client"
+       xmlns:adminpages="clr-namespace:BuiltDifferentMobileApp.Views.Admin"
        xmlns:loginpages="clr-namespace:BuiltDifferentMobileApp.Views.Login"
        xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels" x:DataType="viewmodels:AppShellViewModel"
        Title="BuiltDifferentMobileApp"
@@ -111,6 +112,14 @@
 
     <FlyoutItem Title="Menu" IsVisible="{Binding IsClient}">
         <ShellContent Route="ClientMenuPage" ContentTemplate="{DataTemplate clientpages:ClientMenuPage}" />
+    </FlyoutItem>
+
+    <!--
+        ADMIN PAGES
+    -->
+
+    <FlyoutItem Title="Menu" IsVisible="{Binding IsAdmin}">
+        <ShellContent Route="AdminMenuPage" ContentTemplate="{DataTemplate adminpages:AdminMenuPage}" />
     </FlyoutItem>
 
     <!--
