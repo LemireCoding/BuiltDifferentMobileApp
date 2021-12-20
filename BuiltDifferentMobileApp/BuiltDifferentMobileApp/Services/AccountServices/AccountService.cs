@@ -1,4 +1,5 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,14 +18,17 @@ namespace BuiltDifferentMobileApp.Services.AccountServices {
         private AccountService() { }
 
         private User user;
-        public string CurrentUserEmail { get; set; }
         private string role;
+
+        public string CurrentUserEmail { get; set; }
+        public AppShellViewModel AppShellViewModel { get; set; }
 
         public async Task<bool> SetCurrentUser(HttpResponseMessage response) {
             try {
                 if(response.IsSuccessStatusCode) {
                     if(response.StatusCode == HttpStatusCode.NoContent) {
                         role = AccountConstants.Admin;
+                        AppShellViewModel.UpdateUserRole(AccountConstants.Admin);
                         return true;
                     }
 
@@ -35,10 +39,14 @@ namespace BuiltDifferentMobileApp.Services.AccountServices {
                     if(result.ContainsKey("waitingApproval")) {
                         user = JsonConvert.DeserializeObject<Client>(serializedUser);
                         role = AccountConstants.Client;
-                    } else if(result.ContainsKey("isVerified")) {
+                        AppShellViewModel.UpdateUserRole(AccountConstants.Client);
+                    }
+                    else if(result.ContainsKey("isVerified")) {
                         user = JsonConvert.DeserializeObject<Coach>(serializedUser);
                         role = AccountConstants.Coach;
-                    } else {
+                        AppShellViewModel.UpdateUserRole(AccountConstants.Coach);
+                    }
+                    else {
                         return false;
                     }
 
@@ -62,6 +70,7 @@ namespace BuiltDifferentMobileApp.Services.AccountServices {
         public void RemoveCurrentUser() {
             user = null;
             role = "";
+            AppShellViewModel.RemoveAllUserRoles();
         }
     }
 }

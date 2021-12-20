@@ -4,13 +4,9 @@
        xmlns:coachpages="clr-namespace:BuiltDifferentMobileApp.Views.Coach"
        xmlns:clientpages="clr-namespace:BuiltDifferentMobileApp.Views.Client"
        xmlns:loginpages="clr-namespace:BuiltDifferentMobileApp.Views.Login"
-       xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels"
+       xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels" x:DataType="viewmodels:AppShellViewModel"
        Title="BuiltDifferentMobileApp"
        x:Class="BuiltDifferentMobileApp.AppShell">
-
-    <Shell.BindingContext>
-        <viewmodels:AppShellViewModel />
-    </Shell.BindingContext>
 
     <!--
         The overall app visual hierarchy is defined here, along with navigation.
@@ -84,6 +80,10 @@
         </ResourceDictionary>
     </Shell.Resources>
 
+    <!--
+        LOGIN
+    -->
+
     <ShellItem Route="LoginPage" FlyoutItemIsVisible="False">
         <ShellContent ContentTemplate="{DataTemplate loginpages:LoginPage}" />
     </ShellItem>
@@ -107,6 +107,14 @@
 
     <!--
         CLIENT PAGES
+    -->
+
+    <FlyoutItem Title="Menu" IsVisible="{Binding IsClient}">
+        <ShellContent Route="ClientMenuPage" ContentTemplate="{DataTemplate clientpages:ClientMenuPage}" />
+    </FlyoutItem>
+
+    <!--
+        LOGOUT
     -->
 
     <FlyoutItem Title="Log out">

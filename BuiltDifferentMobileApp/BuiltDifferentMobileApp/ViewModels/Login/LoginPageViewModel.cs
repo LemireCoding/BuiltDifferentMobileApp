@@ -1,6 +1,7 @@
 ﻿using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using BuiltDifferentMobileApp.Views;
+using BuiltDifferentMobileApp.Views.Client;
 using BuiltDifferentMobileApp.Views.Coach;
 using BuiltDifferentMobileApp.Views.Login;
 using System;
@@ -59,7 +60,16 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
 
             if(((int)response >= 200) && ((int)response <= 299)) {
                 accountService.CurrentUserEmail = Email;
-                await Shell.Current.GoToAsync($"//{nameof(CoachMenuPage)}");
+
+                if(accountService.GetCurrentUserRole() == AccountConstants.Admin) {
+                    await Shell.Current.GoToAsync($"//{nameof(CoachMenuPage)}");
+                }
+                if(accountService.GetCurrentUserRole() == AccountConstants.Coach) {
+                    await Shell.Current.GoToAsync($"//{nameof(CoachMenuPage)}");
+                }
+                if(accountService.GetCurrentUserRole() == AccountConstants.Client) {
+                    await Shell.Current.GoToAsync($"//{nameof(ClientMenuPage)}");
+                }
             }
             else if((int)response == 404) {
                 await Application.Current.MainPage.DisplayAlert("Could not find account", "Please try a different login", "OK");
