@@ -26,6 +26,18 @@ namespace BuiltDifferentMobileApp.Views {
             if(BindingContext != null) {
                 accountService.RemoveCurrentUser();
                 networkService.RemoveJWTToken();
+
+                var viewModel = (LoginPageViewModel)BindingContext;
+                viewModel.Email = accountService.CurrentUserEmail;
+                viewModel.Password = "";
+            } else {
+                var viewModel = new LoginPageViewModel();
+
+                if(accountService.CurrentUserEmail != null) {
+                    viewModel.Email = accountService.CurrentUserEmail;
+                }
+
+                BindingContext = viewModel;
             }
         }
     }

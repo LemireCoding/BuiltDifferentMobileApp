@@ -10,13 +10,14 @@ using System.Threading.Tasks;
 namespace BuiltDifferentMobileApp.Services.NetworkServices {
     public sealed class AccountService : IAccountService {
 
-        private static readonly Lazy<AccountService> lazy = new Lazy<AccountService>(() => new AccountService());
+        private static readonly Lazy<IAccountService> lazy = new Lazy<IAccountService>(() => new AccountService());
 
-        public static AccountService Instance { get { return lazy.Value; } }
+        public static IAccountService Instance { get { return lazy.Value; } }
 
         private AccountService() { }
 
         private User user;
+        public string CurrentUserEmail { get; set; }
         private string role;
 
         public async Task<bool> SetCurrentUser(HttpResponseMessage response) {

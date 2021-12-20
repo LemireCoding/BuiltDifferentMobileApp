@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace BuiltDifferentMobileApp.Services.NetworkServices {
     public interface IAccountService {
+        string CurrentUserEmail { get; set; }
         Task<bool> SetCurrentUser(HttpResponseMessage user);
         User GetCurrentUser();
         void RemoveCurrentUser();

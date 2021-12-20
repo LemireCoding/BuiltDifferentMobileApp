@@ -6,11 +6,8 @@
              x:Class="BuiltDifferentMobileApp.Views.LoginPage"
              Shell.TabBarIsVisible="False"
              Shell.NavBarIsVisible="False"
+             Shell.FlyoutBehavior="Disabled"
              x:Name="MyLoginPage">
-
-    <ContentPage.BindingContext>
-        <viewmodels:LoginPageViewModel />
-    </ContentPage.BindingContext>
 
     <ContentPage.Resources>
         <ResourceDictionary>

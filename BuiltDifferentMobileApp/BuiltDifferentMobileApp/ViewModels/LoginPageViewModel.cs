@@ -13,6 +13,7 @@ namespace BuiltDifferentMobileApp.ViewModels {
     public class LoginPageViewModel : ViewModelBase {
 
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
+        private IAccountService accountService = AccountService.Instance;
 
         private string email;
         public string Email {
@@ -54,6 +55,7 @@ namespace BuiltDifferentMobileApp.ViewModels {
             IsBusy = false;
 
             if(((int)response >= 200) && ((int)response <= 299)) {
+                accountService.CurrentUserEmail = Email;
                 await Shell.Current.GoToAsync($"//{nameof(MenuPage)}");
             }
             else if((int)response == 404) {

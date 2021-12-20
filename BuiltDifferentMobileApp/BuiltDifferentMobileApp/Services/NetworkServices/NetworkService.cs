@@ -17,7 +17,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
         public static INetworkService<T> Instance { get { return lazy.Value; } }
 
-        private AccountService accountService = AccountService.Instance;
+        private IAccountService accountService = AccountService.Instance;
         private HttpClient httpClient;
 
         private NetworkService()
