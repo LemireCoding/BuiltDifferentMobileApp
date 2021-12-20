@@ -14,7 +14,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         private IAccountService accountService = AccountService.Instance;
 
         public MyProfilePageClientViewModel() {
-            Models.Client user = (Models.Client)accountService.GetCurrentUser();
+            Models.Client user = (Models.Client)accountService.CurrentUser;
 
             Name = user.name;
         }

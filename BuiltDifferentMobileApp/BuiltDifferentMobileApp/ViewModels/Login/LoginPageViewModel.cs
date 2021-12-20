@@ -62,13 +62,13 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
             if(((int)response >= 200) && ((int)response <= 299)) {
                 accountService.CurrentUserEmail = Email;
 
-                if(accountService.GetCurrentUserRole() == AccountConstants.Admin) {
+                if(accountService.CurrentUserRole == AccountConstants.Admin) {
                     await Shell.Current.GoToAsync($"//{nameof(AdminMenuPage)}");
                 }
-                if(accountService.GetCurrentUserRole() == AccountConstants.Coach) {
+                if(accountService.CurrentUserRole == AccountConstants.Coach) {
                     await Shell.Current.GoToAsync($"//{nameof(CoachMenuPage)}");
                 }
-                if(accountService.GetCurrentUserRole() == AccountConstants.Client) {
+                if(accountService.CurrentUserRole == AccountConstants.Client) {
                     await Shell.Current.GoToAsync($"//{nameof(ClientMenuPage)}");
                 }
             }

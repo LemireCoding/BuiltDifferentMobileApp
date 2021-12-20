@@ -20,7 +20,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         private IAccountService accountService = AccountService.Instance;
 
         public MyProfilePageCoachViewModel() {
-            Models.Coach user = (Models.Coach)accountService.GetCurrentUser();
+            Models.Coach user = (Models.Coach)accountService.CurrentUser;
 
             Name = user.name;
             Type = user.type;

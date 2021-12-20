@@ -19,9 +19,8 @@ namespace BuiltDifferentMobileApp.Services.AccountServices {
 
         private AccountService() { }
 
-        private User user;
-        private string role;
-
+        public User CurrentUser { get; set; }
+        public string CurrentUserRole { get; set; }
         public string CurrentUserEmail { get; set; }
         public AppShellViewModel AppShellViewModel { get; set; }
 
@@ -29,7 +28,7 @@ namespace BuiltDifferentMobileApp.Services.AccountServices {
             try {
                 if(response.IsSuccessStatusCode) {
                     if(response.StatusCode == HttpStatusCode.NoContent) {
-                        role = AccountConstants.Admin;
+                        CurrentUserRole = AccountConstants.Admin;
                         AppShellViewModel.UpdateUserRole(AccountConstants.Admin);
                         return true;
                     }
@@ -39,13 +38,13 @@ namespace BuiltDifferentMobileApp.Services.AccountServices {
                     var result = JsonConvert.DeserializeObject<Dictionary<string, string>>(serializedUser);
 
                     if(result.ContainsKey("waitingApproval")) {
-                        user = JsonConvert.DeserializeObject<Client>(serializedUser);
-                        role = AccountConstants.Client;
+                        CurrentUser = JsonConvert.DeserializeObject<Client>(serializedUser);
+                        CurrentUserRole = AccountConstants.Client;
                         AppShellViewModel.UpdateUserRole(AccountConstants.Client);
                     }
                     else if(result.ContainsKey("isVerified")) {
-                        user = JsonConvert.DeserializeObject<Coach>(serializedUser);
-                        role = AccountConstants.Coach;
+                        CurrentUser = JsonConvert.DeserializeObject<Coach>(serializedUser);
+                        CurrentUserRole = AccountConstants.Coach;
                         AppShellViewModel.UpdateUserRole(AccountConstants.Coach);
                     }
                     else {
@@ -61,28 +60,20 @@ namespace BuiltDifferentMobileApp.Services.AccountServices {
             }
         }
 
-        public User GetCurrentUser() {
-            return user;
-        }
-
-        public string GetCurrentUserRole() {
-            return role;
-        }
-
         public void RemoveCurrentUser() {
-            user = null;
-            role = "";
+            CurrentUser = null;
+            CurrentUserRole = "";
             AppShellViewModel.RemoveAllUserRoles();
         }
 
         public async Task ViewMyProfileCommand() {
-            if(role == AccountConstants.Coach) {
+            if(CurrentUserRole == AccountConstants.Coach) {
                 await Shell.Current.GoToAsync($"{nameof(MyProfilePageCoach)}");
             }
-            if(role == AccountConstants.Client) {
+            if(CurrentUserRole == AccountConstants.Client) {
                 await Shell.Current.GoToAsync($"{nameof(MyProfilePageClient)}");
             }
-            if(role == AccountConstants.Admin) {
+            if(CurrentUserRole == AccountConstants.Admin) {
                 await Shell.Current.GoToAsync($"{nameof(MyProfilePageAdmin)}");
             }
         }
