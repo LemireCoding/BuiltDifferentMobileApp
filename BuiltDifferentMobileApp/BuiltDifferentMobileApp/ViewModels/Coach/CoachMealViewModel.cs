@@ -1,6 +1,8 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using BuiltDifferentMobileApp.Views;
+using BuiltDifferentMobileApp.Views.Coach;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
-namespace BuiltDifferentMobileApp.ViewModels
+namespace BuiltDifferentMobileApp.ViewModels.Coach
 {
      public class CoachMealViewModel: ViewModelBase
     {

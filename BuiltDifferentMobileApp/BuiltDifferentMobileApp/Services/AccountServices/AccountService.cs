@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuiltDifferentMobileApp.Services.NetworkServices {
+namespace BuiltDifferentMobileApp.Services.AccountServices {
     public sealed class AccountService : IAccountService {
 
         private static readonly Lazy<IAccountService> lazy = new Lazy<IAccountService>(() => new AccountService());

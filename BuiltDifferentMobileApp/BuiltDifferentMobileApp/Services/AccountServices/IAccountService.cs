@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuiltDifferentMobileApp.Services.NetworkServices {
+namespace BuiltDifferentMobileApp.Services.AccountServices {
     public interface IAccountService {
         string CurrentUserEmail { get; set; }
         Task<bool> SetCurrentUser(HttpResponseMessage user);

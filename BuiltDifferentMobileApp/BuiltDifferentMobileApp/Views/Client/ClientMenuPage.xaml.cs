@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace BuiltDifferentMobileApp.Views.Profile {
+namespace BuiltDifferentMobileApp.Views.Client {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MyProfilePageClient : ContentPage {
-        public MyProfilePageClient() {
+    public partial class ClientMenuPage : ContentPage {
+        public ClientMenuPage() {
             InitializeComponent();
         }
     }

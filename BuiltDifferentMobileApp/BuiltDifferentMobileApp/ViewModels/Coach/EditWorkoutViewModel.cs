@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace BuiltDifferentMobileApp.ViewModels
+namespace BuiltDifferentMobileApp.ViewModels.Coach
 {
     public class EditWorkoutViewModel : ViewModelBase
     {

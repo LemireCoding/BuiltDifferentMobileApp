@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BuiltDifferentMobileApp.Services.NetworkServices {
+namespace BuiltDifferentMobileApp.Services.AccountServices {
     public static class AccountConstants {
 
         public static string Admin = "Admin";

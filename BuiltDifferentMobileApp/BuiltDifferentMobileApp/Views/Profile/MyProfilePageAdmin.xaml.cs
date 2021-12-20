@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace BuiltDifferentMobileApp.Views {
+namespace BuiltDifferentMobileApp.Views.Profile {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MyProfilePageAdmin : ContentPage {
         public MyProfilePageAdmin() {

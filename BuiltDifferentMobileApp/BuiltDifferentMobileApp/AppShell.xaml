@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:local="clr-namespace:BuiltDifferentMobileApp.Views"
+       xmlns:coachpages="clr-namespace:BuiltDifferentMobileApp.Views.Coach"
+       xmlns:clientpages="clr-namespace:BuiltDifferentMobileApp.Views.Client"
+       xmlns:loginpages="clr-namespace:BuiltDifferentMobileApp.Views.Login"
+       xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels"
        Title="BuiltDifferentMobileApp"
        x:Class="BuiltDifferentMobileApp.AppShell">
+
+    <Shell.BindingContext>
+        <viewmodels:AppShellViewModel />
+    </Shell.BindingContext>
 
     <!--
         The overall app visual hierarchy is defined here, along with navigation.
@@ -78,84 +85,32 @@
     </Shell.Resources>
 
     <ShellItem Route="LoginPage" FlyoutItemIsVisible="False">
-        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
+        <ShellContent ContentTemplate="{DataTemplate loginpages:LoginPage}" />
     </ShellItem>
-
-    <FlyoutItem Title="Workouts" >
-        <ShellContent Route="WorkoutPage" ContentTemplate="{DataTemplate local:WorkoutPage}" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Menu" >
-        <ShellContent Route="MenuPage" ContentTemplate="{DataTemplate local:MenuPage}" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Meals" >
-        <ShellContent Route="MealPage" ContentTemplate="{DataTemplate local:MealPage}" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Log out" >
-        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" Shell.FlyoutBehavior="Disabled" FlyoutItemIsVisible="False"/>
-    </FlyoutItem>
-
-    <!-- 
-        When the Flyout is visible this defines the content to display in the flyout.
-        FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
-        https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
-    <FlyoutItem Title="About" Icon="icon_about.png">
-        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="Browse" Icon="icon_feed.png">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
-    </FlyoutItem>
+    
+    <!--
+        COACH PAGES
     -->
 
-    <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to 
-    <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
-    </MenuItem>
-     -->
+    <FlyoutItem Title="Workouts" IsVisible="{Binding IsCoach}">
+        <ShellContent Route="CoachWorkoutPage" ContentTemplate="{DataTemplate coachpages:CoachWorkoutPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Menu" IsVisible="{Binding IsCoach}">
+        <ShellContent Route="CoachMenuPage" ContentTemplate="{DataTemplate coachpages:CoachMenuPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Meals" IsVisible="{Binding IsCoach}">
+        <ShellContent Route="CoachMealPage" ContentTemplate="{DataTemplate coachpages:CoachMealPage}" />
+    </FlyoutItem>
+
 
     <!--
-        TabBar lets you define content that won't show up in a flyout menu. When this content is active
-        the flyout menu won't be available. This is useful for creating areas of the application where 
-        you don't want users to be able to navigate away from. If you would like to navigate to this 
-        content you can do so by calling 
-        await Shell.Current.GoToAsync("//LoginPage");
-    <TabBar>
-        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
-    </TabBar>
+        CLIENT PAGES
     -->
 
-    <!-- Optional Templates 
-    // These may be provided inline as below or as separate classes.
-
-    // This header appears at the top of the Flyout.
-    // https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#flyout-header
-    <Shell.FlyoutHeaderTemplate>
-        <DataTemplate>
-            <Grid>ContentHere</Grid>
-        </DataTemplate>
-    </Shell.FlyoutHeaderTemplate>
-
-    // ItemTemplate is for ShellItems as displayed in a Flyout
-    // https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#define-flyoutitem-appearance
-    <Shell.ItemTemplate>
-        <DataTemplate>
-            <ContentView>
-                Bindable Properties: Title, Icon
-            </ContentView>
-        </DataTemplate>
-    </Shell.ItemTemplate>
-
-    // MenuItemTemplate is for MenuItems as displayed in a Flyout
-    // https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#define-menuitem-appearance
-    <Shell.MenuItemTemplate>
-        <DataTemplate>
-            <ContentView>
-                Bindable Properties: Text, Icon
-            </ContentView>
-        </DataTemplate>
-    </Shell.MenuItemTemplate>
-
-    -->
+    <FlyoutItem Title="Log out">
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate loginpages:LoginPage}" Shell.FlyoutBehavior="Disabled" FlyoutItemIsVisible="False"/>
+    </FlyoutItem>
 
 </Shell>

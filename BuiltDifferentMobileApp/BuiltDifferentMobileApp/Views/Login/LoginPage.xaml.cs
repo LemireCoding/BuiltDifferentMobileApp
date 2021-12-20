@@ -1,5 +1,7 @@
-﻿using BuiltDifferentMobileApp.Services.NetworkServices;
+﻿using BuiltDifferentMobileApp.Services.AccountServices;
+using BuiltDifferentMobileApp.Services.NetworkServices;
 using BuiltDifferentMobileApp.ViewModels;
+using BuiltDifferentMobileApp.ViewModels.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace BuiltDifferentMobileApp.Views {
+namespace BuiltDifferentMobileApp.Views.Login {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage {
 
@@ -19,6 +21,14 @@ namespace BuiltDifferentMobileApp.Views {
 
         public LoginPage() {
             InitializeComponent();
+
+            var viewModel = new LoginPageViewModel();
+
+            if(accountService.CurrentUserEmail != null) {
+                viewModel.Email = accountService.CurrentUserEmail;
+            }
+
+            BindingContext = viewModel;
         }
 
         protected override void OnAppearing() {
@@ -30,14 +40,6 @@ namespace BuiltDifferentMobileApp.Views {
                 var viewModel = (LoginPageViewModel)BindingContext;
                 viewModel.Email = accountService.CurrentUserEmail;
                 viewModel.Password = "";
-            } else {
-                var viewModel = new LoginPageViewModel();
-
-                if(accountService.CurrentUserEmail != null) {
-                    viewModel.Email = accountService.CurrentUserEmail;
-                }
-
-                BindingContext = viewModel;
             }
         }
     }

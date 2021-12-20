@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace BuiltDifferentMobileApp.Views
+namespace BuiltDifferentMobileApp.Views.Coach
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MenuPage : TabbedPage
+    public partial class CoachMenuPage : TabbedPage
     {
-        public MenuPage()
+        public CoachMenuPage()
         {
             InitializeComponent();
         }

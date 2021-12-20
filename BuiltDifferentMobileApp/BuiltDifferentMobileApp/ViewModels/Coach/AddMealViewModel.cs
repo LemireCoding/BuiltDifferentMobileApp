@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
-namespace BuiltDifferentMobileApp.ViewModels
+namespace BuiltDifferentMobileApp.ViewModels.Coach
 {
     public class AddMealViewModel : ViewModelBase
     {

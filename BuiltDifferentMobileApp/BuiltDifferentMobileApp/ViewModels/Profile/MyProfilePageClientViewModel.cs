@@ -1,10 +1,11 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BuiltDifferentMobileApp.ViewModels {
+namespace BuiltDifferentMobileApp.ViewModels.Profile {
     public class MyProfilePageClientViewModel : ViewModelBase {
 
         public string Name { get; set; }
@@ -13,7 +14,7 @@ namespace BuiltDifferentMobileApp.ViewModels {
         private IAccountService accountService = AccountService.Instance;
 
         public MyProfilePageClientViewModel() {
-            Client user = (Client)accountService.GetCurrentUser();
+            Models.Client user = (Models.Client)accountService.GetCurrentUser();
 
             Name = user.name;
         }

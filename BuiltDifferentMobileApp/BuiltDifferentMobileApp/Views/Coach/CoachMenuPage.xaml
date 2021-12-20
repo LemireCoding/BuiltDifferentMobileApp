@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BuiltDifferentMobileApp.Views.MenuPage"
-            xmlns:mypages="clr-namespace:BuiltDifferentMobileApp.Views;assembly=BuiltDifferentMobileApp"
-            xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels"
+             x:Class="BuiltDifferentMobileApp.Views.Coach.CoachMenuPage"
+            xmlns:mypages="clr-namespace:BuiltDifferentMobileApp.Views.Coach;assembly=BuiltDifferentMobileApp"
+            xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Coach"
             BackgroundColor="#660708" BarBackgroundColor="#660708">
 
     <TabbedPage.BindingContext>
@@ -18,7 +18,7 @@
     </TabbedPage.ToolbarItems>
     
     <TabbedPage.Children>
-        <mypages:MealPage Title="Meals"/>
-        <mypages:WorkoutPage Title="Workouts"/>
+        <mypages:CoachMealPage Title="Meals"/>
+        <mypages:CoachWorkoutPage Title="Workouts"/>
         </TabbedPage.Children>
 </TabbedPage>

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BuiltDifferentMobileApp.ViewModels;
+using BuiltDifferentMobileApp.ViewModels.Coach;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace BuiltDifferentMobileApp.Views
+namespace BuiltDifferentMobileApp.Views.Coach
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     [QueryProperty(nameof(id), nameof(id))]

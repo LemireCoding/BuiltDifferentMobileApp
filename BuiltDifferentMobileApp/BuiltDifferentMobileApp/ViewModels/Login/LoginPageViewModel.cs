@@ -1,5 +1,8 @@
-﻿using BuiltDifferentMobileApp.Services.NetworkServices;
+﻿using BuiltDifferentMobileApp.Services.AccountServices;
+using BuiltDifferentMobileApp.Services.NetworkServices;
 using BuiltDifferentMobileApp.Views;
+using BuiltDifferentMobileApp.Views.Coach;
+using BuiltDifferentMobileApp.Views.Login;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -9,7 +12,7 @@ using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
-namespace BuiltDifferentMobileApp.ViewModels {
+namespace BuiltDifferentMobileApp.ViewModels.Login {
     public class LoginPageViewModel : ViewModelBase {
 
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
@@ -56,7 +59,7 @@ namespace BuiltDifferentMobileApp.ViewModels {
 
             if(((int)response >= 200) && ((int)response <= 299)) {
                 accountService.CurrentUserEmail = Email;
-                await Shell.Current.GoToAsync($"//{nameof(MenuPage)}");
+                await Shell.Current.GoToAsync($"//{nameof(CoachMenuPage)}");
             }
             else if((int)response == 404) {
                 await Application.Current.MainPage.DisplayAlert("Could not find account", "Please try a different login", "OK");

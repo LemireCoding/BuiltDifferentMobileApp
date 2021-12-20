@@ -1,5 +1,8 @@
 ﻿using BuiltDifferentMobileApp.ViewModels;
-using BuiltDifferentMobileApp.Views;
+using BuiltDifferentMobileApp.Views.Client;
+using BuiltDifferentMobileApp.Views.Coach;
+using BuiltDifferentMobileApp.Views.Login;
+using BuiltDifferentMobileApp.Views.Profile;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -9,13 +12,17 @@ namespace BuiltDifferentMobileApp {
         public AppShell() {
             InitializeComponent();
 
+            // Coach pages
             Routing.RegisterRoute(nameof(AddWorkoutPage), typeof(AddWorkoutPage));
             Routing.RegisterRoute(nameof(EditWorkoutPage), typeof(EditWorkoutPage));
             Routing.RegisterRoute(nameof(AddMealPage), typeof(AddMealPage));
             Routing.RegisterRoute(nameof(EditMealPage), typeof(EditMealPage));
-            Routing.RegisterRoute(nameof(MealPage), typeof(MealPage));
-            Routing.RegisterRoute(nameof(WorkoutPage), typeof(WorkoutPage));
-            Routing.RegisterRoute(nameof(MenuPage), typeof(MenuPage));
+            Routing.RegisterRoute(nameof(CoachMealPage), typeof(CoachMealPage));
+            Routing.RegisterRoute(nameof(CoachWorkoutPage), typeof(CoachWorkoutPage));
+            Routing.RegisterRoute(nameof(CoachMenuPage), typeof(CoachMenuPage));
+
+            // Client pages
+            Routing.RegisterRoute(nameof(ClientMenuPage), typeof(ClientMenuPage));
             
             // Profile pages
             Routing.RegisterRoute(nameof(MyProfilePageAdmin), typeof(MyProfilePageAdmin));
