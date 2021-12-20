@@ -1,5 +1,6 @@
 ﻿using BuiltDifferentMobileApp.Models;
 using BuiltDifferentMobileApp.ViewModels;
+using BuiltDifferentMobileApp.Views.Profile;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace BuiltDifferentMobileApp.Services.AccountServices {
     public sealed class AccountService : IAccountService {
@@ -71,6 +73,18 @@ namespace BuiltDifferentMobileApp.Services.AccountServices {
             user = null;
             role = "";
             AppShellViewModel.RemoveAllUserRoles();
+        }
+
+        public async Task ViewMyProfileCommand() {
+            if(role == AccountConstants.Coach) {
+                await Shell.Current.GoToAsync($"{nameof(MyProfilePageCoach)}");
+            }
+            if(role == AccountConstants.Client) {
+                await Shell.Current.GoToAsync($"{nameof(MyProfilePageClient)}");
+            }
+            if(role == AccountConstants.Admin) {
+                await Shell.Current.GoToAsync($"{nameof(MyProfilePageAdmin)}");
+            }
         }
     }
 }

@@ -14,5 +14,6 @@ namespace BuiltDifferentMobileApp.Services.AccountServices {
         User GetCurrentUser();
         void RemoveCurrentUser();
         string GetCurrentUserRole();
+        Task ViewMyProfileCommand();
     }
 }

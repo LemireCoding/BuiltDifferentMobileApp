@@ -17,21 +17,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
         public AsyncCommand ViewMyProfileCommand { get; }
 
         public CoachMenuPageViewModel() {
-            ViewMyProfileCommand = new AsyncCommand(ViewMyProfile);
+            ViewMyProfileCommand = new AsyncCommand(accountService.ViewMyProfileCommand);
         }
 
-        private async Task ViewMyProfile() {
-            string role = accountService.GetCurrentUserRole();
-
-            if(role == AccountConstants.Coach) {
-                await Shell.Current.GoToAsync($"{nameof(MyProfilePageCoach)}");
-            }
-            if(role == AccountConstants.Client) {
-                await Shell.Current.GoToAsync($"{nameof(MyProfilePageClient)}");
-            }
-            if(role == AccountConstants.Admin) {
-                await Shell.Current.GoToAsync($"{nameof(MyProfilePageAdmin)}");
-            }
-        }
     }
 }
