@@ -11,22 +11,24 @@ using Xamarin.Forms.Xaml;
 namespace BuiltDifferentMobileApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WorkoutPage : ContentPage
+    public partial class MealPage : ContentPage
     {
-        public WorkoutPage()
+        public MealPage()
         {
             InitializeComponent();
-            BindingContext = new WorkoutViewModel();
+            BindingContext = new CoachMealViewModel();
         }
 
-        protected async override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
-            if(BindingContext != null)
+            if (BindingContext != null)
             {
-                var viewModel = (WorkoutViewModel)BindingContext;
-                await viewModel.GetWorkouts();
+                var viewModel = (CoachMealViewModel)BindingContext;
+                await viewModel.GetMeals();
             }
+
         }
+
     }
 }

@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace BuiltDifferentMobileApp.ViewModels
 {
-     public class MealViewModel: ViewModelBase
+     public class CoachMealViewModel: ViewModelBase
     {
         private int clientId;
         public AsyncCommand AddCommand { get; }
@@ -41,7 +41,7 @@ namespace BuiltDifferentMobileApp.ViewModels
 
         private IAccountService accountService = AccountService.Instance;
 
-        public MealViewModel()
+        public CoachMealViewModel()
         {
             clientId = 2;
             EditCommand = new AsyncCommand<int>(EditMeal);

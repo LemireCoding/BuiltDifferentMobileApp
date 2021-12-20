@@ -8,13 +8,13 @@ using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace BuiltDifferentMobileApp.ViewModels {
-    public class MenuPageViewModel : ViewModelBase {
+    public class CoachMenuPageViewModel : ViewModelBase {
 
         private IAccountService accountService = AccountService.Instance;
 
         public AsyncCommand ViewMyProfileCommand { get; }
 
-        public MenuPageViewModel() {
+        public CoachMenuPageViewModel() {
             ViewMyProfileCommand = new AsyncCommand(ViewMyProfile);
         }
 

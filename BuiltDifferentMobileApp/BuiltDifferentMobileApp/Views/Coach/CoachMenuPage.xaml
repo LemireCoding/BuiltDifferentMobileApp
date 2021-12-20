@@ -7,7 +7,7 @@
             BackgroundColor="#660708" BarBackgroundColor="#660708">
 
     <TabbedPage.BindingContext>
-        <viewmodels:MenuPageViewModel />
+        <viewmodels:CoachMenuPageViewModel />
     </TabbedPage.BindingContext>
     
     <TabbedPage.ToolbarItems>

@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace BuiltDifferentMobileApp.ViewModels
 {
-    public class WorkoutViewModel:ViewModelBase
+    public class CoachWorkoutViewModel:ViewModelBase
     {
         private int clientId;
         public ObservableRangeCollection<WorkoutDTO> Workouts { get; set; }
@@ -29,7 +29,7 @@ namespace BuiltDifferentMobileApp.ViewModels
             }
         }
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
-        public WorkoutViewModel()
+        public CoachWorkoutViewModel()
         {
             clientId = 2;
             Day = DateTime.Now.Date;
