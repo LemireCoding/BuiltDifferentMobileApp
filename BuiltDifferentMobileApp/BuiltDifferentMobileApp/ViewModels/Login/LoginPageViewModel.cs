@@ -32,6 +32,18 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
             set => SetProperty(ref password, value);
         }
 
+        private const string AccountNotFoundText = "The email you entered does not belong to an account. Please check your email and try again.";
+        private const string IncorrectLoginText = "Sorry, your password was incorrect. Please check your password and try again.";
+        private const string LoginAttempsExceededText = "You have reached exceeded the maximum login attempts. Please try again later.";
+        private const string UnknownErrorText = "There was an unknown issue communicating with the server. Please try again later.";
+        private const string MissingInputs = "Please fill all required fields.";
+
+        private string errorText;
+        public string ErrorText {
+            get => errorText;
+            set => SetProperty(ref errorText, value);
+        }
+
         public AsyncCommand LoginCommand { get; }
         public AsyncCommand RegisterCommand { get; }
         public AsyncCommand ForgotPasswordCommand { get; }
@@ -44,7 +56,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
 
         private async Task Login() {
             if(string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password)) {
-                await Application.Current.MainPage.DisplayAlert("Required fields", "Please fill out all fields", "OK");
+                ErrorText = MissingInputs;
                 return;
             }
 
@@ -57,33 +69,34 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
 
             HttpStatusCode response = await networkService.LoginAsync(APIConstants.GetLoginUri(), credentials);
 
-            IsBusy = false;
-
             if(((int)response >= 200) && ((int)response <= 299)) {
+                ErrorText = "";
                 accountService.CurrentUserEmail = Email;
 
                 if(accountService.CurrentUserRole == AccountConstants.Admin) {
                     await Shell.Current.GoToAsync($"//{nameof(AdminMenuPage)}");
                 }
-                if(accountService.CurrentUserRole == AccountConstants.Coach) {
+                else if(accountService.CurrentUserRole == AccountConstants.Coach) {
                     await Shell.Current.GoToAsync($"//{nameof(CoachMenuPage)}");
                 }
-                if(accountService.CurrentUserRole == AccountConstants.Client) {
+                else if(accountService.CurrentUserRole == AccountConstants.Client) {
                     await Shell.Current.GoToAsync($"//{nameof(ClientMenuPage)}");
                 }
             }
             else if((int)response == 404) {
-                await Application.Current.MainPage.DisplayAlert("Could not find account", "Please try a different login", "OK");
+                ErrorText = AccountNotFoundText;
             }
             else if(response == HttpStatusCode.Unauthorized){
-                await Application.Current.MainPage.DisplayAlert("Invalid email or password!", "Please try again.", "OK");
+                ErrorText = IncorrectLoginText;
             }
             else if((int)response == 429) {
-                await Application.Current.MainPage.DisplayAlert("Maximum login attempts exceeded", "Please try again later.", "OK");
+                ErrorText = LoginAttempsExceededText;
             }
             else {
-                await Application.Current.MainPage.DisplayAlert("Unknown error while logging in", "Please try again.", "OK");
+                ErrorText = UnknownErrorText;
             }
+
+            IsBusy = false;
         }
 
         private async Task Register() {
