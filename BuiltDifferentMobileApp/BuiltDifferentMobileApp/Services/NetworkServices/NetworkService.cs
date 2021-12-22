@@ -33,15 +33,22 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
          */
 
         public async Task<TResult> GetAsync<TResult>(string uri) {
+            try {
+                HttpResponseMessage response = await httpClient.GetAsync(uri);
 
-            HttpResponseMessage response = await httpClient.GetAsync(uri);
+                string serialized = await response.Content.ReadAsStringAsync();
 
+                if(response.IsSuccessStatusCode) {
+                    var result = JsonConvert.DeserializeObject<TResult>(serialized);
 
-            string serialized = await response.Content.ReadAsStringAsync();
+                    return result;
+                }
 
-            var result = JsonConvert.DeserializeObject<TResult>(serialized);
-
-            return result;
+                return default(TResult);
+            }
+            catch(OperationCanceledException) {
+                return default(TResult);
+            }
 
         }
 

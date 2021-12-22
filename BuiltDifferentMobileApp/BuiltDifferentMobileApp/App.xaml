@@ -15,7 +15,7 @@
             <Color x:Key="Grey">#B1A7A6</Color>
             <Color x:Key="LightGrey">#D3D3D3</Color>
             <Color x:Key="ExtraLightGrey">#F5F3F4</Color>
-
+            <Color x:Key="PageBackground">#E0E0E0</Color>
 
 
 

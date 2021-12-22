@@ -93,18 +93,9 @@
         COACH PAGES
     -->
 
-    <FlyoutItem Title="Workouts" IsVisible="{Binding IsCoach}">
-        <ShellContent Route="CoachWorkoutPage" ContentTemplate="{DataTemplate coachpages:CoachWorkoutPage}" />
+    <FlyoutItem Title="Clients" IsVisible="{Binding IsCoach}">
+        <ShellContent Route="CoachDashboardPage" ContentTemplate="{DataTemplate coachpages:CoachDashboardPage}" />
     </FlyoutItem>
-
-    <FlyoutItem Title="Menu" IsVisible="{Binding IsCoach}">
-        <ShellContent Route="CoachMenuPage" ContentTemplate="{DataTemplate coachpages:CoachMenuPage}" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Meals" IsVisible="{Binding IsCoach}">
-        <ShellContent Route="CoachMealPage" ContentTemplate="{DataTemplate coachpages:CoachMealPage}" />
-    </FlyoutItem>
-
 
     <!--
         CLIENT PAGES

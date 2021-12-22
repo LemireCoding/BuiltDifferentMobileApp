@@ -17,7 +17,6 @@ namespace BuiltDifferentMobileApp.Views.Coach
         public CoachWorkoutPage()
         {
             InitializeComponent();
-            BindingContext = new CoachWorkoutViewModel();
         }
 
         protected async override void OnAppearing()
