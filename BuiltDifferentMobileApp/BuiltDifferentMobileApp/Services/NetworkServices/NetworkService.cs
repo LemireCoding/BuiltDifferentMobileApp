@@ -1,4 +1,5 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Services.AccountServices;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
         public static INetworkService<T> Instance { get { return lazy.Value; } }
 
-        private AccountService accountService = AccountService.Instance;
+        private IAccountService accountService = AccountService.Instance;
         private HttpClient httpClient;
 
         private NetworkService()

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BuiltDifferentMobileApp.Views.Coach.CoachMenuPage"
+            xmlns:mypages="clr-namespace:BuiltDifferentMobileApp.Views.Coach;assembly=BuiltDifferentMobileApp"
+            xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Coach"
+            BackgroundColor="#660708" BarBackgroundColor="#660708">
+
+    <TabbedPage.BindingContext>
+        <viewmodels:CoachMenuPageViewModel />
+    </TabbedPage.BindingContext>
+    
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Text="Profile" Command="{Binding ViewMyProfileCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
+            </ToolbarItem.IconImageSource>        </ToolbarItem>
+    </TabbedPage.ToolbarItems>
+    
+    <TabbedPage.Children>
+        <mypages:CoachMealPage Title="Meals"/>
+        <mypages:CoachWorkoutPage Title="Workouts"/>
+        </TabbedPage.Children>
+</TabbedPage>

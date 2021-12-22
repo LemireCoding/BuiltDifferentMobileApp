@@ -26,49 +26,58 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\AddWorkoutPage.xaml.cs">
+    <Compile Update="Views\Coach\AddWorkoutPage.xaml.cs">
       <DependentUpon>AddWorkoutPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\MenuPage.xaml.cs">
-      <DependentUpon>MenuPage.xaml</DependentUpon>
+    <Compile Update="Views\Coach\CoachMealPage.xaml.cs">
+      <DependentUpon>CoachMealPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Coach\CoachMenuPage.xaml.cs">
+      <DependentUpon>CoachMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Coach\CoachWorkoutPage.xaml.cs">
+      <DependentUpon>CoachWorkoutPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\AddMealPage.xaml">
+    <EmbeddedResource Update="Views\Client\ClientMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\EditMealPage.xaml">
+    <EmbeddedResource Update="Views\Coach\AddMealPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AddWorkoutPage.xaml">
+    <EmbeddedResource Update="Views\Coach\EditMealPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\EditWorkoutPage.xaml">
+    <EmbeddedResource Update="Views\Coach\AddWorkoutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ForgotPasswordPage.xaml">
+    <EmbeddedResource Update="Views\Coach\EditWorkoutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MealPage.xaml">
+    <EmbeddedResource Update="Views\Login\ForgotPasswordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MenuPage.xaml">
+    <EmbeddedResource Update="Views\Coach\CoachMealPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MyProfilePageAdmin.xaml">
+    <EmbeddedResource Update="Views\Coach\CoachMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MyProfilePageClient.xaml">
+    <EmbeddedResource Update="Views\Profile\MyProfilePageAdmin.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MyProfilePageCoach.xaml">
+    <EmbeddedResource Update="Views\Profile\MyProfilePageClient.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\RegisterPage.xaml">
+    <EmbeddedResource Update="Views\Profile\MyProfilePageCoach.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\WorkoutPage.xaml">
+    <EmbeddedResource Update="Views\Login\RegisterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Coach\CoachWorkoutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
