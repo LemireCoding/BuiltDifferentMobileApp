@@ -23,7 +23,7 @@
             <StackLayout BackgroundColor="{StaticResource PageBackground}" Padding="0,12,0,0" Margin="0">
                 <Label Text="Your Clients" FontSize="26" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="{StaticResource DarkGrey}"/>
                 
-                <SearchBar Placeholder="Search client"/>
+                <SearchBar Placeholder="Search client" Text="{Binding SearchTerm}"/>
                 
                 <CollectionView ItemsSource="{Binding Clients}"
                                 ItemSizingStrategy="MeasureAllItems">
