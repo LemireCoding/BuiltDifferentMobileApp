@@ -39,13 +39,16 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
             }
         }
 
+        public string MealPageTitle { get; set; }
+
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
         private IAccountService accountService = AccountService.Instance;
 
-        public CoachMealViewModel()
+        public CoachMealViewModel(string clientName, int clientId)
         {
-            clientId = 2;
+            MealPageTitle = $"{clientName} Meal Plan";
+            this.clientId = clientId;
             EditCommand = new AsyncCommand<int>(EditMeal);
             AddCommand = new AsyncCommand(AddMeal);
 

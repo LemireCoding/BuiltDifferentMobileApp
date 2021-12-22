@@ -77,7 +77,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
                     await Shell.Current.GoToAsync($"//{nameof(AdminMenuPage)}");
                 }
                 else if(accountService.CurrentUserRole == AccountConstants.Coach) {
-                    await Shell.Current.GoToAsync($"//{nameof(CoachMenuPage)}");
+                    await Shell.Current.GoToAsync($"//{nameof(CoachDashboardPage)}");
                 }
                 else if(accountService.CurrentUserRole == AccountConstants.Client) {
                     await Shell.Current.GoToAsync($"//{nameof(ClientMenuPage)}");

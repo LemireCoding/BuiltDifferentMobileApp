@@ -12,12 +12,9 @@ using Xamarin.Forms;
 namespace BuiltDifferentMobileApp.ViewModels.Coach {
     public class CoachMenuPageViewModel : ViewModelBase {
 
-        private IAccountService accountService = AccountService.Instance;
-
         public AsyncCommand ViewMyProfileCommand { get; }
 
         public CoachMenuPageViewModel() {
-            ViewMyProfileCommand = new AsyncCommand(accountService.ViewMyProfileCommand);
         }
 
     }

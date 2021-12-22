@@ -68,5 +68,9 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         public static string GetLoginUri() {
             return $"{BaseAddress}/login";
         }
+
+        public static string GetClientsForCoachId(int coachId) {
+            return $"{BaseAddress}/coach/{coachId}/clients";
+        }
     }
 }

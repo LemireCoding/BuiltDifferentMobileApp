@@ -29,16 +29,20 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
                 
             }
         }
+
+        public string WorkoutPageTitle { get; set; }
+
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
-        public CoachWorkoutViewModel()
+
+        public CoachWorkoutViewModel(string clientName, int clientId)
         {
-            clientId = 2;
+            WorkoutPageTitle = $"{clientName} Workout Plan";
+            this.clientId = clientId;
             Day = DateTime.Now.Date;
             EditCommand = new AsyncCommand<int>(EditWorkout);
             AddCommand = new AsyncCommand(AddWorkout);
 
             GetWorkouts();
-
         }
 
         public async Task GetWorkouts()

@@ -5,10 +5,10 @@
              x:Class="BuiltDifferentMobileApp.Views.Coach.CoachMealPage"
               xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels"
              x:Name="TheMealPage"
-             >
+             Title="Meals">
     <ContentPage.Content>
         <StackLayout Margin="5,0,5,0">
-            <Label Margin="5,20,5,10" AutomationId="MealPageTitle" Text="Olivier's Meal Plan"  FontSize="35"
+            <Label Margin="5,20,5,10" AutomationId="MealPageTitle" Text="{Binding MealPageTitle}"  FontSize="35"
                    FontAttributes="Bold" HorizontalTextAlignment="Center"/>
             <DatePicker HorizontalOptions="Center" Date="{Binding Day}"/>
             <Button Text="Add" AutomationId="AddButton" CornerRadius="12" Margin="300,10,30,10" Command="{Binding AddCommand}" />
