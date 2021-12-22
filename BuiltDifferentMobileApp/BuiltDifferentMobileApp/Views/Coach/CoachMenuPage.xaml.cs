@@ -23,6 +23,7 @@ namespace BuiltDifferentMobileApp.Views.Coach
         {
             InitializeComponent();
             BindingContext = new CoachMenuPageViewModel();
+            Children.Clear();
         }
 
         protected override void OnAppearing() {
