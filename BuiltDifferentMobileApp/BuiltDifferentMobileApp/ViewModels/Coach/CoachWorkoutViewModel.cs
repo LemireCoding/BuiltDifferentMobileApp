@@ -36,7 +36,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 
         public CoachWorkoutViewModel(string clientName, int clientId)
         {
-            WorkoutPageTitle = $"{clientName} Meal Plan";
+            WorkoutPageTitle = $"{clientName} Workout Plan";
             this.clientId = clientId;
             Day = DateTime.Now.Date;
             EditCommand = new AsyncCommand<int>(EditWorkout);
