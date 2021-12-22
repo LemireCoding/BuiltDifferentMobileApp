@@ -6,10 +6,6 @@
              Title="{Binding Title}"
              x:Name="MyCoachDashboardPage">
 
-    <ContentPage.BindingContext>
-        <viewmodels:CoachDashboardPageViewModel />
-    </ContentPage.BindingContext>
-
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Profile" Command="{Binding ViewMyProfileCommand}">
             <ToolbarItem.IconImageSource>

@@ -33,10 +33,9 @@ namespace BuiltDifferentMobileApp.Views.Login {
 
         protected override void OnAppearing() {
             base.OnAppearing();
+            accountService.RemoveCurrentUser();
+            networkService.RemoveJWTToken();
             if(BindingContext != null) {
-                accountService.RemoveCurrentUser();
-                networkService.RemoveJWTToken();
-
                 var viewModel = (LoginPageViewModel)BindingContext;
                 viewModel.Email = accountService.CurrentUserEmail;
                 viewModel.Password = "";
