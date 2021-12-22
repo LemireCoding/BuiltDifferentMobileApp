@@ -13,11 +13,15 @@ namespace BuiltDifferentMobileApp.Views.Coach {
     public partial class CoachDashboardPage : ContentPage {
         public CoachDashboardPage() {
             InitializeComponent();
+            BindingContext = new CoachDashboardPageViewModel();
         }
 
-        protected override void OnAppearing() {
+        protected async override void OnAppearing() {
             base.OnAppearing();
-            BindingContext = new CoachDashboardPageViewModel();
+            if(BindingContext != null) {
+                var viewModel = (CoachDashboardPageViewModel)BindingContext;
+                await viewModel.FetchClients();
+            }
         }
     }
 }

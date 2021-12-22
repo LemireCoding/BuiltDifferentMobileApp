@@ -16,8 +16,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
         private IAccountService accountService = AccountService.Instance;
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
-        private int coachId;
-
         private List<Models.Client> originalClients { get; set; }
         public ObservableRangeCollection<Models.Client> Clients { get; set; }
 
@@ -41,8 +39,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             RefreshCommand = new AsyncCommand(FetchClients);
             ViewClientsBoardCommand = new AsyncCommand<Models.Client>(ViewClientsBoard);
 
-            coachId = ((Models.Coach)accountService.CurrentUser).id;
-
             FetchClients();
         }
 
@@ -65,6 +61,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
 
         public async Task FetchClients() {
             IsBusy = true;
+
+            int coachId = ((Models.Coach)accountService.CurrentUser).id;
 
             List<Models.Client> clients = await networkService.GetAsync<List<Models.Client>>(APIConstants.GetClientsForCoachId(coachId));
 
