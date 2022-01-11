@@ -1,6 +1,7 @@
 ﻿using BuiltDifferentMobileApp.Services.NetworkServices;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -30,7 +31,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
         private const string UnknownErrorText = "There was an unknown issue communicating with the server. Please try again later.";
         private const string MissingInputs = "Please fill all required fields.";
         private const string InvalidEmail = "The email that you have entered is not valid.";
-        private const string DifferentPasswords = "Password and Confirm Password are not the same!";
+        private const string DifferentPasswords = "Passwords don't match!";
 
         public AsyncCommand RegisterCommand { get; set; }
 
@@ -62,6 +63,13 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
 
             if(Password != ConfirmPassword) {
                 ErrorText = DifferentPasswords;
+                IsBusy = false;
+                return;
+            }
+
+            string passwordErrors = IsValidPassword(Password);
+            if(!string.IsNullOrWhiteSpace(passwordErrors)) {
+                ErrorText = passwordErrors;
                 IsBusy = false;
                 return;
             }
@@ -100,6 +108,28 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
             } catch {
                 return false;
             }
+        }
+
+        private string IsValidPassword(string password) {
+            string passwordRequirements = "";
+
+            if(password.Length < 8) {
+                passwordRequirements += "Password must be 8 characters long.\n";
+            }
+
+            if(!password.Any(char.IsUpper)) {
+                passwordRequirements += "Password must contain at least one uppercase character.\n";
+            }
+
+            if(!password.Any(char.IsDigit)) {
+                passwordRequirements += "Password must contain at least one digit.\n";
+            }
+
+            if(!password.Any(char.IsPunctuation)) {
+                passwordRequirements += "Password must contain at least one symbol.";
+            }
+
+            return passwordRequirements;
         }
     }
 }
