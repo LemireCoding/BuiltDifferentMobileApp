@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BuiltDifferent.UITest {
-    class SignupTests {
+    public class CreateAccountTests {
     }
 }
