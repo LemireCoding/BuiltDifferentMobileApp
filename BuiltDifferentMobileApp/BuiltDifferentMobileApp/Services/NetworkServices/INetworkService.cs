@@ -15,6 +15,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices {
         Task<TResult> PutAsync<TResult>(string uri, object data);
         Task<TResult> PostAsync<TResult>(string uri, object data);
         Task<HttpStatusCode> LoginAsync(string uri, object user);
+        Task<HttpStatusCode> RegisterAsync(string uri, object user);
         void RemoveJWTToken();
     }
 }

@@ -47,11 +47,11 @@
                         <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
-                <Label Margin="0,10,0,0" TextColor="Red" HorizontalTextAlignment="Center" Text="{Binding ErrorText}" />
+                <Label Margin="0,10,0,0" TextColor="Red" HorizontalTextAlignment="Center" Text="{Binding ErrorText}" AutomationId="ErrorText"/>
             </StackLayout>
 
             <Frame Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource DarkGrey}" VerticalOptions="Fill" Padding="16" CornerRadius="0">
-                <Label HorizontalOptions="Center" TextColor="White" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}">
+                <Label HorizontalOptions="Center" TextColor="White" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Register">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="Don't have an account? " />
@@ -59,7 +59,7 @@
                         </FormattedString>
                     </Label.FormattedText>
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding RegisterCommand}" />
+                        <TapGestureRecognizer Command="{Binding RegisterCommand}"/>
                     </Label.GestureRecognizers>
                 </Label>
             </Frame>
