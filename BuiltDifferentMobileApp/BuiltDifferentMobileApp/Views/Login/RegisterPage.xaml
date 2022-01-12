@@ -48,7 +48,7 @@
                     <Label Text="Apply to be a Coach" VerticalOptions="Center" />
                 </StackLayout>
                 <Button Text="Sign up" Command="{Binding RegisterCommand}" CornerRadius="8" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="RegisterButton"/>
-                <Label Margin="0,10,0,0" TextColor="Red" HorizontalTextAlignment="Center" Text="{Binding ErrorText}" />
+                <Label Margin="0,10,0,0" TextColor="Red" HorizontalTextAlignment="Center" Text="{Binding ErrorText}" AutomationId="ErrorText"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

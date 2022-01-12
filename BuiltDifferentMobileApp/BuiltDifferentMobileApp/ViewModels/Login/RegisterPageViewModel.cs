@@ -26,12 +26,12 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
             set => SetProperty(ref errorText, value);
         }
 
-        private const string BadRequest = "The server could not parse your request. Please report this bug.";
-        private const string AccountAlreadyExists = "An account already exists for the email that you have entered.";
-        private const string UnknownErrorText = "There was an unknown issue communicating with the server. Please try again later.";
-        private const string MissingInputs = "Please fill all required fields.";
-        private const string InvalidEmail = "The email that you have entered is not valid.";
-        private const string DifferentPasswords = "Passwords don't match!";
+        public const string BadRequest = "The server could not parse your request. Please report this bug.";
+        public const string AccountAlreadyExists = "An account already exists for the email that you have entered.";
+        public const string UnknownErrorText = "There was an unknown issue communicating with the server. Please try again later.";
+        public const string MissingInputs = "Please fill all required fields.";
+        public const string InvalidEmail = "The email that you have entered is not valid.";
+        public const string DifferentPasswords = "Passwords don't match!";
 
         public AsyncCommand RegisterCommand { get; set; }
 
@@ -110,7 +110,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
             }
         }
 
-        private string IsValidPassword(string password) {
+        public string IsValidPassword(string password) {
             string passwordRequirements = "";
 
             if(password.Length < 8) {
@@ -125,7 +125,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
                 passwordRequirements += "Password must contain at least one digit.\n";
             }
 
-            if(!password.Any(char.IsPunctuation)) {
+            if(!password.Any(char.IsPunctuation) && !password.Any(char.IsSymbol)) {
                 passwordRequirements += "Password must contain at least one symbol.";
             }
 
