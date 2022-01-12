@@ -42,9 +42,9 @@
 
             <StackLayout Grid.Row="2" Grid.Column="1" Padding="0" Margin="0">
                 <Button Text="Log In" CornerRadius="8" Command="{Binding LoginCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Login"/>
-                <Label Text="Forgot password?" HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}">
+                <Label Text="Forgot password?" HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" >
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                        <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" AutomationId="ForgotPassword"/>
                     </Label.GestureRecognizers>
                 </Label>
                 <Label Margin="0,10,0,0" TextColor="Red" HorizontalTextAlignment="Center" Text="{Binding ErrorText}" />
