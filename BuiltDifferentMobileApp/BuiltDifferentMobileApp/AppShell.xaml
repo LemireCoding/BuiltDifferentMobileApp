@@ -109,11 +109,15 @@
         <ShellContent Route="ClientDashboardPage" ContentTemplate="{DataTemplate clientpages:ClientDashboardPage}" />
     </FlyoutItem>
 
+    <FlyoutItem Title="Coach Criterias" FlyoutItemIsVisible="False" IsVisible="{Binding IsClient}">
+        <ShellContent Route="ClientCoachCriteriasPage" ContentTemplate="{DataTemplate clientpages:ClientCoachCriteriasPage}" />
+    </FlyoutItem>
+
     <FlyoutItem Title="Coach Selection" FlyoutItemIsVisible="False" IsVisible="{Binding IsClient}">
         <ShellContent Route="ClientCoachSelectionPage" ContentTemplate="{DataTemplate clientpages:ClientCoachSelectionPage}" />
     </FlyoutItem>
-    
-    
+
+
 
 
     <!--

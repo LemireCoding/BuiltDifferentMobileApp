@@ -14,5 +14,8 @@ namespace BuiltDifferentMobileApp.Models {
         public string certification { get; set; }
         public string gender { get; set; }
         public bool isVerified { get; set; }
+
+        public string description { get; set; }
+        public double pricing { get; set; }
     }
 }

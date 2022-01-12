@@ -30,7 +30,7 @@ namespace BuiltDifferentMobileApp.Views.Client {
         {
             if (user.coachId == 0)
             {
-                await Shell.Current.GoToAsync($"//{nameof(ClientCoachSelectionPage)}");
+                await Shell.Current.GoToAsync($"//{nameof(ClientCoachCriteriasPage)}");
             }
             else
             {

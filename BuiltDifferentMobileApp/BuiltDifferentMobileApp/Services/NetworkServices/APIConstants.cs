@@ -14,6 +14,31 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         private static readonly string BaseAddress = $"http://{HOST}:{PORT}/api";
 
         /*
+         *  COACH URIS
+         *  All endpoints on the api are available (post delete update not listed here yet)
+         */
+
+        public static string GetAllCoaches()
+        {
+            return $"{BaseAddress}/coaches";
+        }
+
+        public static string GetAllVerifiedCoaches()
+        {
+            return $"{BaseAddress}/coaches/verified";
+        }
+
+        public static string GetAllAvailableCoach(string query)
+        {
+            return $"{BaseAddress}/coaches/available{query}";
+        }
+
+        public static string GetCoachByCoachId(int id)
+        {
+            return $"{BaseAddress}/coaches/{id}";
+        }
+
+        /*
          *  WORKOUT URIS
          */
 
