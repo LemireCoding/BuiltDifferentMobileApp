@@ -147,6 +147,19 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             }
         }
 
+        public async Task<HttpStatusCode> RegisterAsync(string uri, object user) {
+            try {
+                var json = JsonConvert.SerializeObject(user);
+                var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage loginResponse = await httpClient.PostAsync(uri, jsonString);
+
+                return loginResponse.StatusCode;
+            } catch(OperationCanceledException) {
+                return HttpStatusCode.RequestTimeout;
+            }
+        }
+
         public void RemoveJWTToken() {
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "");
             accountService.RemoveCurrentUser();

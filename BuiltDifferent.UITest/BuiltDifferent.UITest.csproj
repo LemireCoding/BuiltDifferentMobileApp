@@ -33,9 +33,14 @@
     <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BuiltDifferentMobileApp\BuiltDifferentMobileApp\BuiltDifferentMobileApp.csproj">
+      <Project>{95E51FD8-20CB-44CB-BA7D-2AA43AC88226}</Project>
+      <Name>BuiltDifferentMobileApp</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ForgotPasswordTests.cs" />
+    <Compile Include="CreateAccountTests.cs" />
     <Compile Include="MealTests.cs" />
     <Compile Include="AppInitializer.cs" />
     <Compile Include="WorkoutTests.cs" />
