@@ -33,8 +33,11 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
         public async Task SearchCoach()
         {
-
-           await Application.Current.MainPage.Navigation.PushAsync(new ClientCoachSelectionPage(CoachName, Gender, CoachingType));
+            if(CoachingType == "Workouts and Meals")
+            {
+                CoachingType = "both";
+            }
+           await Application.Current.MainPage.Navigation.PushAsync(new ClientCoachSelectionPage(CoachName, Gender.ToLower(), CoachingType.ToLower()));
         }
     }
 }
