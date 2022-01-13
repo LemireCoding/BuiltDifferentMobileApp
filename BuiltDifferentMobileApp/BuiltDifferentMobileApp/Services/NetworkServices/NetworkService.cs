@@ -95,7 +95,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
                     return result;
                 }
-
+                
                 return default(TResult);
             }
             catch(OperationCanceledException) {
@@ -163,6 +163,24 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         public void RemoveJWTToken() {
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "");
             accountService.RemoveCurrentUser();
+        }
+
+
+        public async Task<HttpStatusCode> PostAsyncHttpResponseMessage(string uri, object data)
+        {
+            try
+            {
+                var json = JsonConvert.SerializeObject(data);
+                var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await httpClient.PostAsync(uri, jsonString);
+
+                return response.StatusCode;
+            }
+            catch (OperationCanceledException)
+            {
+                return HttpStatusCode.RequestTimeout;
+            }
         }
 
     }
