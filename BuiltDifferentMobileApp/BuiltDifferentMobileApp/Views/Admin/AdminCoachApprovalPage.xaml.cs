@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BuiltDifferentMobileApp.ViewModels.Admin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,15 @@ namespace BuiltDifferentMobileApp.Views.Admin {
     public partial class AdminCoachApprovalPage : ContentPage {
         public AdminCoachApprovalPage() {
             InitializeComponent();
+            BindingContext = new AdminCoachApprovalPageViewModel();
+        }
+
+        protected async override void OnAppearing() {
+            base.OnAppearing();
+            if(BindingContext != null) {
+                var viewModel = (AdminCoachApprovalPageViewModel)BindingContext;
+                await viewModel.FetchPendingCoaches();
+            }
         }
     }
 }
