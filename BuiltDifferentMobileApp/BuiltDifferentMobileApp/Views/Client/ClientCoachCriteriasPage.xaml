@@ -12,7 +12,7 @@
     <ContentPage.Content>
         
         <StackLayout BackgroundColor="{StaticResource PageBackground}" Padding="0,12,0,0" Margin="0">
-             <Label Margin="0,0,0,12" Text="Find your Coach and start your fitness journey as soon as possible !" FontSize="22" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="{StaticResource DarkGrey}"/>
+             <Label AutomationId="CriteriasTitle" Margin="0,0,0,12" Text="Find your Coach and start your fitness journey as soon as possible !" FontSize="22" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="{StaticResource DarkGrey}"/>
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -62,7 +62,7 @@
                             <behaviors:Expander.ContentTemplate>
                                 <DataTemplate>
                                     <Grid>
-                                        <Entry Margin="0,12,0,0" Text="{Binding CoachName}" Placeholder="Coach Name"/>
+                                        <Entry AutomationId="CoachNameField" Margin="0,12,0,0" Text="{Binding CoachName}" Placeholder="Coach Name"/>
 
 
 
@@ -72,7 +72,7 @@
                         </behaviors:Expander>
                     </Grid>
                 </Frame>
-                <Button Grid.Row="3" BorderColor="{StaticResource RedPrimary}" BorderWidth="1" FontAttributes="Bold" BackgroundColor="{StaticResource RedPrimary}" BorderRadius="10" TextColor="White" 
+                <Button AutomationId="SearchCoach" Grid.Row="3" BorderColor="{StaticResource RedPrimary}" BorderWidth="1" FontAttributes="Bold" BackgroundColor="{StaticResource RedPrimary}" BorderRadius="10" TextColor="White" 
                            Text="Search"  Margin="22,22,22,22" Command="{Binding SearchCommand}"/>
             </Grid>             
         </StackLayout>

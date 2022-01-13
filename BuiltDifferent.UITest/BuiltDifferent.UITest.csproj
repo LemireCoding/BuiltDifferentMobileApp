@@ -35,6 +35,7 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientCriteriaFormTests.cs" />
     <Compile Include="MealTests.cs" />
     <Compile Include="AppInitializer.cs" />
     <Compile Include="WorkoutTests.cs" />
