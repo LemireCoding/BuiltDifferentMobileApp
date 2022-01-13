@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="BuiltDifferentMobileApp.Views.Client.ClientCoachSelectionPage">
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <Grid BackgroundColor="{StaticResource DarkGrey}" HeightRequest="50" Padding="12">
+
+                <Label Grid.Row="0" Grid.Column="1" Text="Search Criterias" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
+                <Label Grid.Row="1" Text="{Binding Gender}"
+                Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
+                <Label Grid.Row="1" Text="{Binding CoachName}"
+                Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
+                <Label Grid.Row="1" Text="{Binding CoachingType}"
+                Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
+            </Grid>
+            <Label Margin="5,10,5,10" AutomationId="SelectionTitle" Text="Available Coach List"  FontSize="35"
+                   FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <CollectionView ItemsSource="{Binding Coaches}"
+                                ItemSizingStrategy="MeasureAllItems">
+
+                <CollectionView.EmptyView>
+                    <Label Text="No Coach was found corresponding to your search." />
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate>
+                        <Frame BorderColor="Black" BackgroundColor="White" CornerRadius="0" Margin="0">
+                            <Grid  >
+                            <behaviors:Expander>
+                                <behaviors:Expander.Header>
+                                    <Grid >
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                                            <Image Source="https://pngset.com/images/katie-notopoulos-katienotopoulos-i-write-about-tech-round-profile-image-placeholder-text-number-symbol-word-transparent-png-201415.png" HeightRequest="40"/>
+                                            <Label Text="{Binding name}" FontAttributes="Bold"
+                                        FontSize="Medium" LineBreakMode="TailTruncation" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                      
+
+                                        <Label 
+                                        Grid.Column="1"
+                                                HorizontalOptions="End"
+                                            VerticalOptions="Center"
+                                        FontAttributes="Bold"
+                                        FontSize="Medium" 
+                                        Text="{Binding pricing , StringFormat='{0} $/month'}" />
+                                    </Grid>
+
+                                </behaviors:Expander.Header>
+                                <behaviors:Expander.ContentTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="0,15,0,0"  HeightRequest="180"
+                                    >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="180" />
+
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="{Binding description}" FontSize="16"/>
+                                            <StackLayout Margin="0,0,0,20" Grid.Column="1">
+                                                <Button
+                                        Text="Request"
+                                        VerticalOptions="Center"
+                                        Padding="2"
+                                        CornerRadius="10"         
+                                        />
+                                             
+                                            </StackLayout>
+
+                                        </Grid>
+                      
+
+                                    </DataTemplate>
+                                </behaviors:Expander.ContentTemplate>
+                            </behaviors:Expander>
+
+                        </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+                <CollectionView.Header>
+
+
+                    <Grid Margin="20,10,20,10">
+                          
+                        <Label Text="Name"  Grid.Column="0" HorizontalOptions="Center" FontAttributes="Bold"/>
+                        <Label Text="Pricing" Grid.Column="1" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    </Grid>
+                       
+                </CollectionView.Header>
+
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
