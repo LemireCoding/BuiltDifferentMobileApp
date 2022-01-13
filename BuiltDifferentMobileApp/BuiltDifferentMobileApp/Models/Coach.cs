@@ -11,8 +11,10 @@ namespace BuiltDifferentMobileApp.Models {
         public bool isAvailable { get; set; }
         public bool offersMeal { get; set; }
         public bool offersWorkout { get; set; }
-        public string certification { get; set; }
+        public int certificationId { get; set; }
         public string gender { get; set; }
         public bool isVerified { get; set; }
+        public string description { get; set; }
+        public double pricing { get; set; }
     }
 }

@@ -86,5 +86,13 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         public static string GetRegisterNewAccountUri() {
             return $"{BaseAddress}/register";
         }
+
+        public static string GetPendingCoachesUri() {
+            return $"{BaseAddress}/coaches/pending";
+        }
+
+        public static string GetCoachByIdUri(int coachId) {
+            return $"{BaseAddress}/coaches/{coachId}";
+        }
     }
 }
