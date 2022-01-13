@@ -68,7 +68,7 @@
     <EmbeddedResource Update="Views\Coach\EditWorkoutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Login\ForgotPasswordPage.xaml">
+    <EmbeddedResource Update="Views\ForgotPassword\ForgotPasswordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Coach\CoachMealPage.xaml">
