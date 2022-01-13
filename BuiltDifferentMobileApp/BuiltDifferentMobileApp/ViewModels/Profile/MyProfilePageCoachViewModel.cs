@@ -13,7 +13,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         public bool IsAvailable { get; set; }
         public bool OffersMeal { get; set; }
         public bool OffersWorkout { get; set; }
-        public string Certification { get; set; }
+        public int CertificationId { get; set; }
         public string Gender { get; set; }
         public bool IsVerified { get; set; }
 
@@ -27,7 +27,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             IsAvailable = user.isAvailable;
             OffersMeal = user.offersMeal;
             OffersWorkout = user.offersWorkout;
-            Certification = user.certification;
+            CertificationId = user.certificationId;
             Gender = user.gender;
             IsVerified = user.isVerified;
         }

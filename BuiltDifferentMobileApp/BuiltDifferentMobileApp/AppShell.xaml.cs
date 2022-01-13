@@ -1,4 +1,5 @@
 ﻿using BuiltDifferentMobileApp.ViewModels;
+using BuiltDifferentMobileApp.Views.Admin;
 using BuiltDifferentMobileApp.Views.Client;
 using BuiltDifferentMobileApp.Views.Coach;
 using BuiltDifferentMobileApp.Views.Login;
@@ -11,6 +12,10 @@ namespace BuiltDifferentMobileApp {
     public partial class AppShell : Xamarin.Forms.Shell {
         public AppShell() {
             InitializeComponent();
+
+            // Admin pages
+            Routing.RegisterRoute(nameof(AdminCoachApprovalPage), typeof(AdminCoachApprovalPage));
+            Routing.RegisterRoute(nameof(AdminMenuPage), typeof(AdminMenuPage));
 
             // Coach pages
             Routing.RegisterRoute(nameof(AddWorkoutPage), typeof(AddWorkoutPage));
