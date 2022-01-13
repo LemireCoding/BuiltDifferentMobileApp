@@ -94,8 +94,30 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return $"{BaseAddress}/login";
         }
 
+        public static string PostForgotPasswordUri()
+        {
+            return $"{BaseAddress}/forgot-password";
+        }
+
+        public static string GetResetPasswordUri(string email, string token)
+        {
+            return $"{BaseAddress}/reset-password{email}/{token}";
+        }
+
         public static string GetClientsForCoachId(int coachId) {
             return $"{BaseAddress}/coach/{coachId}/clients";
+        }
+
+        public static string GetRegisterNewAccountUri() {
+            return $"{BaseAddress}/register";
+        }
+
+        public static string GetPendingCoachesUri() {
+            return $"{BaseAddress}/coaches/pending";
+        }
+
+        public static string GetCoachByIdUri(int coachId) {
+            return $"{BaseAddress}/coaches/{coachId}";
         }
     }
 }
