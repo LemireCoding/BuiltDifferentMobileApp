@@ -8,6 +8,13 @@
         <viewmodels:MyProfilePageCoachViewModel />
     </ContentPage.BindingContext>
     
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Command="{Binding EditProfileCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf304;"/>
+            </ToolbarItem.IconImageSource>        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -26,37 +33,38 @@
                 <StackLayout Spacing="2">
                     <Label Text="Name" />
                     <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                        <Entry IsEnabled="False" Text="{Binding Name}"/>
+                        <Entry IsEnabled="{Binding IsEnabled}" Text="{Binding Name}"/>
                     </Frame>
                 </StackLayout>
                 <StackLayout Spacing="2">
                     <Label Text="Type" />
                     <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                        <Entry IsEnabled="False" Text="{Binding Type}"/>
+                        <Entry IsEnabled="{Binding IsEnabled}" Text="{Binding Type}"/>
                     </Frame>
                 </StackLayout>
                 <StackLayout Spacing="2">
                     <Label Text="Gender" />
                     <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                        <Entry IsEnabled="False" Text="{Binding Gender}"/>
+                        <Entry Text="{Binding Gender}" IsEnabled="{Binding IsEnabled}"/>
                     </Frame>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <CheckBox IsChecked="{Binding IsAvailable}" VerticalOptions="Center" Color="{StaticResource RedSecondary}"/>
+                    <CheckBox IsChecked="{Binding IsAvailable}" VerticalOptions="Center" Color="{StaticResource RedSecondary}" IsEnabled="{Binding IsEnabled}"/>
                     <Label Text="Available for new clients" VerticalOptions="Center"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <CheckBox IsChecked="{Binding OffersWorkout}" VerticalOptions="Center" Color="{StaticResource RedSecondary}"/>
+                    <CheckBox IsChecked="{Binding OffersWorkout}" VerticalOptions="Center" Color="{StaticResource RedSecondary}" IsEnabled="{Binding IsEnabled}"/>
                     <Label Text="Offer workout coaching" VerticalOptions="Center"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <CheckBox IsChecked="{Binding OffersMeal}" VerticalOptions="Center" Color="{StaticResource RedSecondary}"/>
+                    <CheckBox IsChecked="{Binding OffersMeal}" VerticalOptions="Center" Color="{StaticResource RedSecondary}" IsEnabled="{Binding IsEnabled}"/>
                     <Label Text="Offer meal coaching" VerticalOptions="Center"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <CheckBox IsChecked="{Binding OffersMeal}" VerticalOptions="Center" Color="{StaticResource RedPrimary}" IsEnabled="False"/>
+                    <CheckBox IsChecked="{Binding OffersMeal}" VerticalOptions="Center" Color="{StaticResource RedPrimary}" IsEnabled="{Binding IsEnabled}"/>
                     <Label Text="Is verified" VerticalOptions="Center"/>
                 </StackLayout>
+                <Button  Margin="10" Text="Save" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SubmitCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Submit"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>
