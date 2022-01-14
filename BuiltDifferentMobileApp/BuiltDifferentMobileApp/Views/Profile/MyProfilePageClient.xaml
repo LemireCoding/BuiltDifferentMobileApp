@@ -40,14 +40,14 @@
                 <StackLayout Spacing="2">
                     <StackLayout>
                         <Image Source="" HorizontalOptions="Center">
-                            <Image.GestureRecognizers>
+                            <Image.GestureRecognizers IsEnabled="{Binding isEnabled}" >
                                 <TapGestureRecognizer Command="{Binding UploadImageCommand}" />
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
                     <Label Text="Name" />
                     <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                        <Entry IsEnabled="False" Text="{Binding Name}"/>
+                        <Entry IsEnabled="{Binding isEnabled}"  Text="{Binding Name}"/>
                     </Frame>
                     <Label Text="Start Weight" />
                     <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
@@ -55,9 +55,9 @@
                     </Frame>
                     <Label Text="Current Weight" />
                     <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                        <Entry IsEnabled="False" Text="{Binding CurrentWeight}" Keyboard="Numeric"/>
+                        <Entry IsEnabled="{Binding isEnabled}" Text="{Binding CurrentWeight}" Keyboard="Numeric"/>
                     </Frame>
-                    <Button Margin="10" Text="Save" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SubmitCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Submit"/>
+                    <Button  Margin="10" Text="Save" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SubmitCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Submit"/>
                 </StackLayout>
             </StackLayout>
         </Grid>
