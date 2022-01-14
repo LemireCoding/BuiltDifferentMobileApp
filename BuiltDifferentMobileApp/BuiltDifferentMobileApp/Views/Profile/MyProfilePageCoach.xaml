@@ -1,8 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Profile"
+             xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Profile" 
+             xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
              x:Class="BuiltDifferentMobileApp.Views.Profile.MyProfilePageCoach">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BoolToInvertedBoolConverter x:Key="boolToInvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.BindingContext>
         <viewmodels:MyProfilePageCoachViewModel />
@@ -16,7 +23,8 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <Grid>
+        <ScrollView>
+            <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition />
@@ -48,6 +56,18 @@
                         <Entry Text="{Binding Gender}" IsEnabled="{Binding IsEnabled}"/>
                     </Frame>
                 </StackLayout>
+                <StackLayout Spacing="2">
+                    <Label Text="Pricing" />
+                    <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
+                        <Entry Text="{Binding Pricing}" IsEnabled="{Binding IsEnabled}" Keyboard="Numeric"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Spacing="2">
+                    <Label Text="Description" />
+                    <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
+                        <Entry HorizontalOptions="Start" VerticalOptions="Start" FontSize="10" Text="{Binding Description}" IsEnabled="{Binding IsEnabled}"/>
+                    </Frame>
+                </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <CheckBox IsChecked="{Binding IsAvailable}" VerticalOptions="Center" Color="{StaticResource RedSecondary}" IsEnabled="{Binding IsEnabled}"/>
                     <Label Text="Available for new clients" VerticalOptions="Center"/>
@@ -61,11 +81,13 @@
                     <Label Text="Offer meal coaching" VerticalOptions="Center"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <CheckBox IsChecked="{Binding OffersMeal}" VerticalOptions="Center" Color="{StaticResource RedPrimary}" IsEnabled="{Binding IsEnabled}"/>
-                    <Label Text="Is verified" VerticalOptions="Center"/>
+                    <CheckBox IsChecked="{Binding IsVerified}" VerticalOptions="Center" Color="{StaticResource RedPrimary}" IsEnabled="False"/>
+                    <Label Text="Is Verified" VerticalOptions="Center"/>
                 </StackLayout>
                 <Button  Margin="10" Text="Save" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SubmitCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Submit"/>
             </StackLayout>
         </Grid>
+            
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

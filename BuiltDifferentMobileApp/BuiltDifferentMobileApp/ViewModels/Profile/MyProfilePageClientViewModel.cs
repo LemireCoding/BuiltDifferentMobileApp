@@ -51,6 +51,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
             }
         }
+
         private bool isEnabled;
         public bool IsEnabled
         {
@@ -80,7 +81,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             UploadImageCommand = new AsyncCommand(Upload);
             EditProfileCommand = new AsyncCommand(Edit);
 
-            isEnabled = false;
+            IsEnabled = false;
         }
 
         private async Task Edit()
@@ -89,7 +90,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             {
                 IsEnabled = true;
             }
-            IsEnabled = false;
         }
 
         private async Task Upload()
@@ -110,6 +110,12 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
         private async Task Submit()
         {
+
+            if (IsEnabled)
+            {
+                IsEnabled = false;
+            }
+
             if (
                 string.IsNullOrEmpty(Name)
                 )
