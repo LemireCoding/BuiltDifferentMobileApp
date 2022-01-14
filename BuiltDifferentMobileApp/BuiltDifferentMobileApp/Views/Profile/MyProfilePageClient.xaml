@@ -34,11 +34,11 @@
                         <Image 
                             Aspect="AspectFit"
                             HeightRequest="100"
-                            Source="{Binding DisplayImageSource}"
+                            Source="{Binding ProfilePicture}"
                             WidthRequest="200"/>
-                        <Image Source="camera.png" HorizontalOptions="Center">
+                        <Image Source="" HorizontalOptions="Center">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding UploadImage}" />
+                                <TapGestureRecognizer Command="{Binding UploadImageCommand}" />
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>

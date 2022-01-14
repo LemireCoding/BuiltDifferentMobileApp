@@ -9,5 +9,8 @@ namespace BuiltDifferentMobileApp.Models {
         public override int userId { get; set; }
         public int coachId { get; set; }
         public bool waitingApproval { get; set; }
+        public int startWeight { get; set; }
+        public int currentWeight { get; set; }
+        public string profilePicture { get; set; }
     }
 }
