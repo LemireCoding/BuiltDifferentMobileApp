@@ -12,8 +12,8 @@ using Xamarin.Forms;
 namespace BuiltDifferentMobileApp.ViewModels.Profile {
     public class MyProfilePageClientViewModel : ViewModelBase {
 
-        private object profilePicture;
-        public object ProfilePicture
+        private string profilePicture;
+        public string ProfilePicture
         {
             get => profilePicture;
             set => SetProperty(ref profilePicture, value);
@@ -62,16 +62,17 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
         private async Task Upload()
         {
-            var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
-            {
-                Title = "Please Pick a Profile Picture"
-            });
-            if (result != null)
-            {
-                var stream = await result.OpenReadAsync();
-                ProfilePicture = ImageSource.FromStream(() => stream);
-            }
-            OnPropertyChanged("ProfilePicture");
+            throw new NotImplementedException();
+            //var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+            //{
+            //    Title = "Please Pick a Profile Picture"
+            //});
+            //if (result != null)
+            //{
+            //    var stream = await result.OpenReadAsync();
+            //    ProfilePicture = ImageSource.FromStream(() => stream);
+            //}
+            //OnPropertyChanged("ProfilePicture");
 
         }
 
