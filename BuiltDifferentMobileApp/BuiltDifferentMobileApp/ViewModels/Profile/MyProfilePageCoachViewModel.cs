@@ -192,7 +192,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
                 await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
                 return;
             }
-            HttpStatusCode response = await networkService.GetAsync<HttpStatusCode>(APIConstants.GetCoachByCoachId(CoachId));
+            HttpResponseMessage response = await networkService.GetAsync<HttpResponseMessage>(APIConstants.GetCoachByCoachId(CoachId));
             //default ids inserted for now
             //empty strings for receipe and image link
             //must have receipe and image link filled
