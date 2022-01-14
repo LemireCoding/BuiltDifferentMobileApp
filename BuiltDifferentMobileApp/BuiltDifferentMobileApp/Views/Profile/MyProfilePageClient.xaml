@@ -1,14 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Profile"
+             xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Profile" 
+             xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
              x:Class="BuiltDifferentMobileApp.Views.Profile.MyProfilePageClient">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BoolToInvertedBoolConverter x:Key="boolToInvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.BindingContext>
         <viewmodels:MyProfilePageClientViewModel />
     </ContentPage.BindingContext>
     
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Command="{Binding EditProfileCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf304;"/>
+            </ToolbarItem.IconImageSource>        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
+        
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
@@ -20,14 +35,30 @@
                 <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="1" Text="Your Info" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold"/>
-            
+            <Label Grid.Row="0" Grid.Column="1" Text="Your Info" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" AutomationId="Title"/>
+
             <StackLayout Grid.Row="1" Grid.Column="1" Spacing="12">
                 <StackLayout Spacing="2">
+                    <StackLayout>
+                        <Image Source="" HorizontalOptions="Center">
+                            <Image.GestureRecognizers IsEnabled="{Binding isEnabled}" >
+                                <TapGestureRecognizer Command="{Binding UploadImageCommand}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
                     <Label Text="Name" />
-                    <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                        <Entry IsEnabled="False" Text="{Binding Name}"/>
+                    <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}" >
+                        <Entry IsEnabled="{Binding isEnabled}"  Text="{Binding Name}"/>
                     </Frame>
+                    <Label Text="Start Weight" />
+                    <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
+                        <Entry IsEnabled="False" Text="{Binding StartWeight}" Keyboard="Numeric"/>
+                    </Frame>
+                    <Label Text="Current Weight" />
+                    <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
+                        <Entry IsEnabled="{Binding isEnabled}" Text="{Binding CurrentWeight}" Keyboard="Numeric" AutomationId="CurrentWeight"/>
+                    </Frame>
+                    <Button  Margin="10" Text="Save" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SubmitCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Submit"/>
                 </StackLayout>
             </StackLayout>
         </Grid>

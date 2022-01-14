@@ -119,5 +119,13 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         public static string GetCoachByIdUri(int coachId) {
             return $"{BaseAddress}/coaches/{coachId}";
         }
+        /*
+         * Profile URI
+         */
+        public static string PutProfileUri(int userId)
+        {
+            return $"{BaseAddress}/profile/{userId}";
+        }
+
     }
 }
