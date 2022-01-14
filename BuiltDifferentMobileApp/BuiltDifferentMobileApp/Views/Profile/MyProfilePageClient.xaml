@@ -7,8 +7,14 @@
     <ContentPage.BindingContext>
         <viewmodels:MyProfilePageClientViewModel />
     </ContentPage.BindingContext>
-    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Command="{Binding EditProfileCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf304;"/>
+            </ToolbarItem.IconImageSource>        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
+        
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
@@ -24,10 +30,32 @@
             
             <StackLayout Grid.Row="1" Grid.Column="1" Spacing="12">
                 <StackLayout Spacing="2">
+                    <StackLayout>
+                        <Image 
+                            Aspect="AspectFit"
+                            HeightRequest="100"
+                            Source="{Binding DisplayImageSource}"
+                            WidthRequest="200"/>
+                        <Image Source="camera.png" HorizontalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding UploadImage}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
                     <Label Text="Name" />
-                    <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
+                    <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                         <Entry IsEnabled="False" Text="{Binding Name}"/>
                     </Frame>
+                    <Label Text="Start Weight" />
+                    <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
+                        <Entry IsEnabled="False" Text="{Binding StartWeight}" Keyboard="Numeric"/>
+                    </Frame>
+                    <Label Text="Current Weight" />
+                    <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
+                        <Entry IsEnabled="False" Text="{Binding CurrentWeight}" Keyboard="Numeric"/>
+                    </Frame>
+                 
+                    <Button Margin="10" Text="Save" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SubmitCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Submit"/>
                 </StackLayout>
             </StackLayout>
         </Grid>
