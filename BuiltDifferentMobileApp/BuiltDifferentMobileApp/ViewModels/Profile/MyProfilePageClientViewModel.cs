@@ -71,11 +71,11 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         public MyProfilePageClientViewModel() {
             GetUserInfo();
 
+            isEnabled = false;
+
             SubmitCommand = new AsyncCommand(Submit);
             UploadImageCommand = new AsyncCommand(Upload);
             EditProfileCommand = new AsyncCommand(Edit);
-
-            isEnabled = false;
         }
 
         private async Task GetUserInfo()
@@ -115,7 +115,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
         private async Task Submit()
         {
-
             if (IsEnabled)
             {
                 IsEnabled = false;
