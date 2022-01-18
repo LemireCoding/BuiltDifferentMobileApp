@@ -118,5 +118,28 @@ namespace BuiltDifferent.UITest
                 return;
             }
         }
+
+        [Test]
+        public void submit_for_update_name_change()
+        {
+            //T.1.3
+
+            if (platform == Platform.Android)
+            {
+                app.Tap(x => x.Marked("Profile"));
+                app.Tap(x => x.Marked("CurrentWeight"));
+                app.EnterText("150");
+                app.DismissKeyboard();
+                app.Tap(x => x.Marked("Submit"));
+                app.WaitForElement("message");
+                app.Tap(x => x.Text("OK"));
+                Assert.IsTrue(app.Query(x => x.Marked("CurrentWeight").Text("150")).Any());
+            }
+            //if IOS
+            else
+            {
+                return;
+            }
+        }
     }
 }
