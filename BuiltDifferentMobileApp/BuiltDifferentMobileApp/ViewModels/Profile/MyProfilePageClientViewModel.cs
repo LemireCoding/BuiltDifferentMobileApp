@@ -68,6 +68,17 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
         public MyProfilePageClientViewModel() {
+            GetUserInfo();
+
+            SubmitCommand = new AsyncCommand(Submit);
+            UploadImageCommand = new AsyncCommand(Upload);
+            EditProfileCommand = new AsyncCommand(Edit);
+
+            isEnabled = false;
+        }
+
+        private async Task GetUserInfo()
+        {
             Models.Client user = (Models.Client)accountService.CurrentUser;
             Id = user.id;
             Name = user.name;
@@ -75,12 +86,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             ProfilePicture = user.profilePicture;
             StartWeight = user.startWeight;
             CurrentWeight = user.currentWeight;
-
-            SubmitCommand = new AsyncCommand(Submit);
-            UploadImageCommand = new AsyncCommand(Upload);
-            EditProfileCommand = new AsyncCommand(Edit);
-
-            isEnabled = false;
         }
 
         private async Task Edit()
@@ -129,7 +134,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             if (httpCode == System.Net.HttpStatusCode.OK)
             {
                 await Application.Current.MainPage.DisplayAlert("Success", "Profile Saved", "OK");
-                await AppShell.Current.GoToAsync("..");
+                await GetUserInfo();
             }
             else if (httpCode == System.Net.HttpStatusCode.NotFound)
             {
