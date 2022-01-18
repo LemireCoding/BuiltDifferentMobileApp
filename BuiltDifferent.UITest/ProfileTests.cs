@@ -120,7 +120,7 @@ namespace BuiltDifferent.UITest
         }
 
         [Test]
-        public void submit_for_update_name_change()
+        public void submit_for_update_weight_change()
         {
             //T.1.3
 
@@ -134,6 +134,41 @@ namespace BuiltDifferent.UITest
                 app.WaitForElement("message");
                 app.Tap(x => x.Text("OK"));
                 Assert.IsTrue(app.Query(x => x.Marked("CurrentWeight").Text("150")).Any());
+            }
+            //if IOS
+            else
+            {
+                return;
+            }
+        }
+
+        [Test]
+        public void edit_mode_off_on_Appearing()
+        {
+            //T.1.3
+
+            if (platform == Platform.Android)
+            {
+                app.Tap(x => x.Marked("Profile"));
+                Assert.IsFalse(app.Query(x => x.Marked("CurrentWeight")).FirstOrDefault().Enabled);
+            }
+            //if IOS
+            else
+            {
+                return;
+            }
+        }
+
+        [Test]
+        public void enter_edit_mode()
+        {
+            //T.1.3
+
+            if (platform == Platform.Android)
+            {
+                app.Tap(x => x.Marked("Profile"));
+                app.Tap(x => x.Marked("EditButton"));
+                Assert.IsTrue(app.Query(x => x.Marked("CurrentWeight")).FirstOrDefault().Enabled);
             }
             //if IOS
             else

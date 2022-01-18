@@ -16,7 +16,7 @@
     </ContentPage.BindingContext>
     
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Edit" Command="{Binding EditProfileCommand}">
+        <ToolbarItem Text="Edit" Command="{Binding EditProfileCommand}" AutomationId="EditButton">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="FAS" Glyph="&#xf304;"/>
             </ToolbarItem.IconImageSource>        </ToolbarItem>
@@ -41,14 +41,14 @@
                 <StackLayout Spacing="2">
                     <StackLayout>
                         <Image Source="" HorizontalOptions="Center">
-                            <Image.GestureRecognizers IsEnabled="{Binding isEnabled}" >
+                            <Image.GestureRecognizers IsEnabled="{Binding IsEnabled}" >
                                 <TapGestureRecognizer Command="{Binding UploadImageCommand}" />
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
                     <Label Text="Name" />
                     <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}" >
-                        <Entry IsEnabled="{Binding isEnabled}"  Text="{Binding Name}"/>
+                        <Entry IsEnabled="{Binding IsEnabled}"  Text="{Binding Name}"/>
                     </Frame>
                     <Label Text="Start Weight" />
                     <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
@@ -56,7 +56,7 @@
                     </Frame>
                     <Label Text="Current Weight" />
                     <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                        <Entry IsEnabled="{Binding isEnabled}" Text="{Binding CurrentWeight}" Keyboard="Numeric" AutomationId="CurrentWeight"/>
+                        <Entry IsEnabled="{Binding IsEnabled}" Text="{Binding CurrentWeight}" Keyboard="Numeric" AutomationId="CurrentWeight"/>
                     </Frame>
                     <Button  Margin="10" Text="Save" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SubmitCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Submit"/>
                 </StackLayout>
