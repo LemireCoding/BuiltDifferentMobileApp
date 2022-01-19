@@ -39,7 +39,15 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             }
         }
 
-        public int StartWeight { get; set; }
+        public int startWeight;
+        public int StartWeight
+        {
+            get => startWeight;
+            set
+            {
+                SetProperty(ref startWeight, value);
+            }
+        }
 
         private int currentWeight;
         public int CurrentWeight
@@ -79,18 +87,16 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
         private async Task GetUserInfo()
         {
-
             Models.Client user = (Models.Client)accountService.CurrentUser;
-            //var userInfo = await networkService.GetAsync<ClientProfileRecieveDTO>(APIConstants.GetClientProfileUri(user.userId));
-            HttpResponseMessage profileResponse = await networkService.GetAsync<HttpResponseMessage>(APIConstants.GetClientProfileUri(user.userId));
-            await accountService.SetCurrentUser(profileResponse);
-            Models.Client userAfter = (Models.Client)accountService.CurrentUser;
-            Id = userAfter.id;
-            Name = userAfter.name;
-            UserId = userAfter.userId;
-            ProfilePicture = userAfter.profilePicture;
-            StartWeight = userAfter.startWeight;
-            CurrentWeight = userAfter.currentWeight;
+            var userInfo = await networkService.GetAsync<Models.Client>(APIConstants.GetClientProfileUri(user.userId));
+            accountService.CurrentUser = userInfo;
+
+            Id = userInfo.id;
+            Name = userInfo.name;
+            UserId = userInfo.userId;
+            ProfilePicture = userInfo.profilePicture;
+            StartWeight = userInfo.startWeight;
+            CurrentWeight = userInfo.currentWeight;
         }
 
         private async Task Edit()
