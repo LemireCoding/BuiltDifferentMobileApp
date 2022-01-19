@@ -80,7 +80,13 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
         private async Task GetUserInfo()
         {
+            
             Models.Client user = (Models.Client)accountService.CurrentUser;
+            var userInfo = await networkService.GetAsync<ClientProfileRecieveDTO>(APIConstants.GetClientProfileUri(user.userId));
+            accountService.CurrentUser.id = userInfo.id;
+            accountService.CurrentUser.name = userInfo.name;
+            accountService.CurrentUser.userId = userInfo.userId;
+
             Id = user.id;
             Name = user.name;
             UserId = user.userId;
@@ -95,6 +101,13 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             {
                 IsEnabled = true;
             }
+            else
+            {
+                IsEnabled = false;
+                GetUserInfo();
+            }
+                
+
         }
 
         private async Task Upload()
@@ -115,10 +128,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
         private async Task Submit()
         {
-            if (IsEnabled)
-            {
-                IsEnabled = false;
-            }
+            
 
             if (
                 string.IsNullOrEmpty(Name)
@@ -133,24 +143,31 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
             var profile = new ClientProfileDTO(Name, UserId, CurrentWeight, ProfilePicture);
             var test = JsonConvert.SerializeObject(profile);
-            var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutProfileUri(UserId), profile);
-            var httpCode = result.StatusCode;
+            if (IsEnabled)
+            {
+                IsEnabled = false;
+                var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutProfileUri(UserId), profile);
+                var httpCode = result.StatusCode;
 
-            if (httpCode == System.Net.HttpStatusCode.OK)
-            {
-                await Application.Current.MainPage.DisplayAlert("Success", "Profile Saved", "OK");
-                await GetUserInfo();
-            }
-            else if (httpCode == System.Net.HttpStatusCode.NotFound)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
-            }
-            else if (httpCode == System.Net.HttpStatusCode.InternalServerError)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
+                if (httpCode == System.Net.HttpStatusCode.OK)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Success", "Profile Saved", "OK");
+                    await GetUserInfo();
+                }
+                else if (httpCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
+                }
+                else if (httpCode == System.Net.HttpStatusCode.InternalServerError)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
+                }
+                else
+                    return;
             }
             else
                 return;
+            
         }
     }
 }
