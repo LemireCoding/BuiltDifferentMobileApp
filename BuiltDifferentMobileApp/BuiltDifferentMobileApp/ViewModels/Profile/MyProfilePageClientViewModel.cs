@@ -79,19 +79,18 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
         private async Task GetUserInfo()
         {
-            
-            Models.Client user = (Models.Client)accountService.CurrentUser;
-            var userInfo = await networkService.GetAsync<ClientProfileRecieveDTO>(APIConstants.GetClientProfileUri(user.userId));
-            accountService.CurrentUser.id = userInfo.id;
-            accountService.CurrentUser.name = userInfo.name;
-            accountService.CurrentUser.userId = userInfo.userId;
 
-            Id = user.id;
-            Name = user.name;
-            UserId = user.userId;
-            ProfilePicture = user.profilePicture;
-            StartWeight = user.startWeight;
-            CurrentWeight = user.currentWeight;
+            Models.Client user = (Models.Client)accountService.CurrentUser;
+            //var userInfo = await networkService.GetAsync<ClientProfileRecieveDTO>(APIConstants.GetClientProfileUri(user.userId));
+            HttpResponseMessage profileResponse = await networkService.GetAsync<HttpResponseMessage>(APIConstants.GetClientProfileUri(user.userId));
+            await accountService.SetCurrentUser(profileResponse);
+            Models.Client userAfter = (Models.Client)accountService.CurrentUser;
+            Id = userAfter.id;
+            Name = userAfter.name;
+            UserId = userAfter.userId;
+            ProfilePicture = userAfter.profilePicture;
+            StartWeight = userAfter.startWeight;
+            CurrentWeight = userAfter.currentWeight;
         }
 
         private async Task Edit()
