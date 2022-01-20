@@ -132,5 +132,9 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         }
 
 
+        public static string UploadCertificationUri(int coachId) {
+            return $"{BaseAddress}/certification/upload/{coachId}";
+        }
+
     }
 }
