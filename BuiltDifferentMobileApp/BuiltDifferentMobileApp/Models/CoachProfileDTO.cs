@@ -17,9 +17,9 @@ namespace BuiltDifferentMobileApp.Models
         public bool isVerified { get; set; }
         public string description { get; set; }
         public double pricing { get; set; }
+        public string profilePicture { get; set; }
 
-        public CoachProfileDTO(string name, int userId, string type, bool isAvailable, bool offersMeal, bool offersWorkout, int certificationNumber, string gender, bool isVerified, string description, double pricing)
-        {
+        public CoachProfileDTO(string name, int userId, string type, bool isAvailable, bool offersMeal, bool offersWorkout, int certificationId, string gender, bool isVerified, string description, double pricing, string profilePicture){
             this.name = name;
             this.userId = userId;
             this.type = type;
@@ -31,6 +31,7 @@ namespace BuiltDifferentMobileApp.Models
             this.isVerified = isVerified;
             this.description = description;
             this.pricing = pricing;
+            this.profilePicture = profilePicture;
         }
 
     }

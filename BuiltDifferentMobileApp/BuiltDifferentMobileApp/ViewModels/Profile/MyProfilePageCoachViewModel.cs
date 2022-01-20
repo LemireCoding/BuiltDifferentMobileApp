@@ -9,10 +9,24 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.ObjectModel;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace BuiltDifferentMobileApp.ViewModels.Profile {
     public class MyProfilePageCoachViewModel : ViewModelBase {
+
+        private string profilePicture;
+        public string ProfilePicture
+        {
+            get => profilePicture;
+            set
+            {
+                SetProperty(ref profilePicture, value);
+                OnPropertyChanged(nameof(IsEnabled));
+
+            }
+        }
+        public FileResult PhotoPath { get; private set; }
 
         private string name;
         public string Name
@@ -140,33 +154,45 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             get => isEnabled;
             set => SetProperty(ref isEnabled, value);
         }
-        private int CoachId;
+
         private int UserId;
 
         public AsyncCommand SubmitCommand { get; }
+        public AsyncCommand UploadImageCommand { get; }
         public AsyncCommand EditProfileCommand { get; }
 
         private IAccountService accountService = AccountService.Instance;
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
         public MyProfilePageCoachViewModel() {
-            Models.Coach user = (Models.Coach)accountService.CurrentUser;
 
-            Name = user.name;
-            Type = user.type;
-            CoachId = user.id;
-            UserId = user.userId;
-            IsAvailable = user.isAvailable;
-            OffersMeal = user.offersMeal;
-            OffersWorkout = user.offersWorkout;
-            CertificationId = user.certificationId;
-            Gender = user.gender;
-            IsVerified = user.isVerified;
-            Description = user.description;
-            Pricing = user.pricing;
-            IsEnabled = false;
+            GetUserInfo();
+
+            isEnabled = false;
+
             SubmitCommand = new AsyncCommand(Submit);
+            UploadImageCommand = new AsyncCommand(Upload);
             EditProfileCommand = new AsyncCommand(Edit);
+        }
+
+        private async Task GetUserInfo()
+        {
+            Models.Coach user = (Models.Coach)accountService.CurrentUser;
+            var userInfo = await networkService.GetAsync<Models.Coach>(APIConstants.GetProfileUri());
+            accountService.CurrentUser = userInfo;
+
+            ProfilePicture = userInfo.profilePicture;
+            Name = userInfo.name;
+            UserId = userInfo.userId;
+            Type = userInfo.type;
+            IsAvailable = userInfo.isAvailable;
+            OffersMeal = userInfo.offersMeal;
+            OffersWorkout = userInfo.offersWorkout;
+            CertificationId = userInfo.certificationId;
+            Gender = userInfo.gender;
+            IsVerified = userInfo.isVerified;
+            Description = userInfo.description;
+            Pricing = userInfo.pricing;
         }
 
         private async Task Edit()
@@ -175,11 +201,31 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             {
                 IsEnabled = true;
             }
+            else
+            {
+                IsEnabled = false;
+                GetUserInfo();
+            }
+        }
+        private async Task Upload()
+        {
+            throw new NotImplementedException();
+            //This has been left commented in order to facilitate profilePicture Upload
+
+            //var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+            //{
+            //    Title = "Please Pick a Profile Picture"
+            //});
+            //if (result != null)
+            //{
+            //    var stream = await result.OpenReadAsync();
+            //    ProfilePicture = ImageSource.FromStream(() => stream);
+            //}
+            //OnPropertyChanged("ProfilePicture");
         }
 
         private async Task Submit()
         {
-
             if (IsEnabled)
             {
                 IsEnabled = false;
@@ -192,31 +238,29 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
                 await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
                 return;
             }
-            HttpResponseMessage response = await networkService.GetAsync<HttpResponseMessage>(APIConstants.GetCoachByCoachId(CoachId));
-            //default ids inserted for now
-            //empty strings for receipe and image link
-            //must have receipe and image link filled
 
-            var profile = new CoachProfileDTO(Name, UserId, Type, IsAvailable,OffersMeal,OffersWorkout,CertificationId,Gender,IsVerified,Description,Pricing);
-            var test = JsonConvert.SerializeObject(profile);
-            var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutProfileUri(UserId), profile);
-            var httpCode = result.StatusCode;
+            var profile = new CoachProfileDTO(Name, UserId, Type, IsAvailable, OffersMeal, OffersWorkout, CertificationId, Gender, IsVerified, Description, Pricing, ProfilePicture);
+            if (IsEnabled)
+            {
+                IsEnabled = false;
+                var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutProfileUri(), profile);
+                var httpCode = result.StatusCode;
 
-            if (accountService.CurrentUserRole == AccountConstants.Coach && httpCode == System.Net.HttpStatusCode.OK)
-            {
-                await Application.Current.MainPage.DisplayAlert("Success", "Profile Saved", "OK");
-                await AppShell.Current.GoToAsync("..");
-            }
-            else if (httpCode == System.Net.HttpStatusCode.NotFound)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
-            }
-            else if (httpCode == System.Net.HttpStatusCode.InternalServerError)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
-            }
-            else if(accountService.CurrentUserRole != AccountConstants.Coach){
-                await Application.Current.MainPage.DisplayAlert("Error", "An error occured you are not logged in as a coach", "OK");
+                if (httpCode == System.Net.HttpStatusCode.OK)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Success", "Profile Saved", "OK");
+                    await GetUserInfo();
+                }
+                else if (httpCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "An error occurred on the server. Please try saving again.", "OK");
+                }
+                else if (httpCode == System.Net.HttpStatusCode.InternalServerError)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "An error occurred on the server. Please try saving again.", "OK");
+                }
+                else
+                    return;
             }
             else
                 return;

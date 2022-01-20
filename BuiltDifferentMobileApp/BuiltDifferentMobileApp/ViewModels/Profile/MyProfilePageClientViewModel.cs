@@ -65,7 +65,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             set => SetProperty(ref isEnabled, value);
         }
         private int UserId;
-        private int Id;
 
         public AsyncCommand SubmitCommand { get; }
         public AsyncCommand UploadImageCommand { get; }
@@ -87,10 +86,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         private async Task GetUserInfo()
         {
             Models.Client user = (Models.Client)accountService.CurrentUser;
-            var userInfo = await networkService.GetAsync<Models.Client>(APIConstants.GetClientProfileUri(user.userId));
+            var userInfo = await networkService.GetAsync<Models.Client>(APIConstants.GetProfileUri());
             accountService.CurrentUser = userInfo;
 
-            Id = userInfo.id;
             Name = userInfo.name;
             UserId = userInfo.userId;
             ProfilePicture = userInfo.profilePicture;
@@ -143,7 +141,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             if (IsEnabled)
             {
                 IsEnabled = false;
-                var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutProfileUri(UserId), profile);
+                var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutProfileUri(), profile);
                 var httpCode = result.StatusCode;
 
                 if (httpCode == System.Net.HttpStatusCode.OK)

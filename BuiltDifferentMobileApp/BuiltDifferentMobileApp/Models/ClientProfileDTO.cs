@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BuiltDifferentMobileApp.Models
 {
-    class ClientProfileDTO 
+    public class ClientProfileDTO 
     {
         public string name { get; set; }
         public int userId { get; set; }
