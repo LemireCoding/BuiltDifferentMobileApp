@@ -126,6 +126,11 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         {
             return $"{BaseAddress}/profile/{userId}";
         }
+        public static string GetClientProfileUri(int userId)
+        {
+            return $"{BaseAddress}/profile/{userId}";
+        }
+
 
     }
 }

@@ -38,9 +38,15 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
             }
         }
-
-        public int StartWeight { get; set; }
-
+        public int startWeight;
+        public int StartWeight
+        {
+            get => startWeight;
+            set
+            {
+                SetProperty(ref startWeight, value);
+            }
+        }
         private int currentWeight;
         public int CurrentWeight
         {
@@ -68,19 +74,27 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
         public MyProfilePageClientViewModel() {
-            Models.Client user = (Models.Client)accountService.CurrentUser;
-            Id = user.id;
-            Name = user.name;
-            UserId = user.userId;
-            ProfilePicture = user.profilePicture;
-            StartWeight = user.startWeight;
-            CurrentWeight = user.currentWeight;
+            GetUserInfo();
+
+            isEnabled = false;
 
             SubmitCommand = new AsyncCommand(Submit);
             UploadImageCommand = new AsyncCommand(Upload);
             EditProfileCommand = new AsyncCommand(Edit);
+        }
 
-            isEnabled = false;
+        private async Task GetUserInfo()
+        {
+            Models.Client user = (Models.Client)accountService.CurrentUser;
+            var userInfo = await networkService.GetAsync<Models.Client>(APIConstants.GetClientProfileUri(user.userId));
+            accountService.CurrentUser = userInfo;
+
+            Id = userInfo.id;
+            Name = userInfo.name;
+            UserId = userInfo.userId;
+            ProfilePicture = userInfo.profilePicture;
+            StartWeight = userInfo.startWeight;
+            CurrentWeight = userInfo.currentWeight;
         }
 
         private async Task Edit()
@@ -89,12 +103,19 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             {
                 IsEnabled = true;
             }
-            IsEnabled = false;
+            else
+            {
+                IsEnabled = false;
+                GetUserInfo();
+            }
         }
 
         private async Task Upload()
         {
             throw new NotImplementedException();
+
+            //This has been left commented in order to facilitate profilePicture Upload
+
             //var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
             //{
             //    Title = "Please Pick a Profile Picture"
@@ -105,7 +126,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             //    ProfilePicture = ImageSource.FromStream(() => stream);
             //}
             //OnPropertyChanged("ProfilePicture");
-
         }
 
         private async Task Submit()
@@ -117,27 +137,29 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
                 await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
                 return;
             }
-            //default ids inserted for now
-            //empty strings for receipe and image link
-            //must have receipe and image link filled
 
             var profile = new ClientProfileDTO(Name, UserId, CurrentWeight, ProfilePicture);
-            var test = JsonConvert.SerializeObject(profile);
-            var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutProfileUri(UserId), profile);
-            var httpCode = result.StatusCode;
+            if (IsEnabled)
+            {
+                IsEnabled = false;
+                var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutProfileUri(UserId), profile);
+                var httpCode = result.StatusCode;
 
-            if (httpCode == System.Net.HttpStatusCode.OK)
-            {
-                await Application.Current.MainPage.DisplayAlert("Success", "Profile Saved", "OK");
-                await AppShell.Current.GoToAsync("..");
-            }
-            else if (httpCode == System.Net.HttpStatusCode.NotFound)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
-            }
-            else if (httpCode == System.Net.HttpStatusCode.InternalServerError)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
+                if (httpCode == System.Net.HttpStatusCode.OK)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Success", "Profile Saved", "OK");
+                    await GetUserInfo();
+                }
+                else if (httpCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
+                }
+                else if (httpCode == System.Net.HttpStatusCode.InternalServerError)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
+                }
+                else
+                    return;
             }
             else
                 return;
