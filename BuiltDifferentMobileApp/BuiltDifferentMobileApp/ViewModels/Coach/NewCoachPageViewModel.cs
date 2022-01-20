@@ -63,15 +63,36 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
         }
 
         private async Task SubmitForm() {
+            if(string.IsNullOrWhiteSpace(Description) || string.IsNullOrWhiteSpace(Pricing)) {
+                return;
+            }
+
+            if(!GenderPickerList.Contains(SelectedGender)) {
+                return;
+            }
+
             var multipartFormContent = await GetMultiPartFormContent();
+
             if(multipartFormContent == null) {
                 return;
             }
 
-            var response = await networkService.PostAsyncHttpResponseMessage(APIConstants.UploadCertificationUri(accountService.CurrentUser.id), multipartFormContent, true);
+            var coachProfile = new Dictionary<string, string>() {
+                { "gender", SelectedGender == "Other" ? OtherGender : SelectedGender },
+                { "description", Description },
+                { "pricing", Pricing },
+                { "offersWorkout", OfferWorkouts.ToString() },
+                { "offersMeal", OfferMeals.ToString() },
+            };
 
-            if(((int)response >= 200) && ((int)response <= 299)) {
+            var uploadCertification = (int)await networkService.PostAsyncHttpResponseMessage(APIConstants.UploadCertificationUri(accountService.CurrentUser.id), multipartFormContent, true);
+            var uploadProfile = (int)await networkService.PutAsyncHttpResponseMessage(APIConstants.GetCoachByIdUri(accountService.CurrentUser.id), coachProfile);
+
+            if(uploadCertification >= 200 && uploadCertification <= 299 && uploadProfile >= 200 && uploadProfile <= 299) {
                 await Application.Current.MainPage.DisplayAlert("", "good", "OK");
+            }
+            else {
+
             }
         }
 

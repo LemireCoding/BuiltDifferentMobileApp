@@ -195,5 +195,18 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             }
         }
 
+        public async Task<HttpStatusCode> PutAsyncHttpResponseMessage(string uri, object obj) {
+            try {
+                var json = JsonConvert.SerializeObject(obj);
+                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await httpClient.PutAsync(uri, content);
+
+                return response.StatusCode;
+            } catch(OperationCanceledException) {
+                return HttpStatusCode.RequestTimeout;
+            }
+        }
+
     }
 }

@@ -18,5 +18,6 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices {
         Task<HttpStatusCode> RegisterAsync(string uri, object user);
         void RemoveJWTToken();
         Task<HttpStatusCode> PostAsyncHttpResponseMessage(string uri, object data, bool IsEncoded = false);
+        Task<HttpStatusCode> PutAsyncHttpResponseMessage(string uri, object obj);
     }
 }
