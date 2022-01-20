@@ -30,6 +30,18 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             }
         }
 
+        private string errorText;
+        public string ErrorText {
+            get => errorText;
+            set => SetProperty(ref errorText, value);
+        }
+
+        public const string MissingInputs = "Please fill out all fields.";
+        public const string OtherGenderUnspecified = "Please specify your gender.";
+        public const string MissingCertification = "Please upload your certification.";
+        public const string PricingError = "Please enter a valid pricing.";
+        public const string ServerError = "There was an error submitting your information. Please try again.";
+
         public string Description { get; set; }
         public string Pricing { get; set; }
         public bool OfferWorkouts { get; set; }
@@ -63,24 +75,41 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
         }
 
         private async Task SubmitForm() {
-            if(string.IsNullOrWhiteSpace(Description) || string.IsNullOrWhiteSpace(Pricing)) {
+            IsBusy = true;
+
+            if(string.IsNullOrWhiteSpace(Description) || string.IsNullOrWhiteSpace(Pricing) || !GenderPickerList.Contains(SelectedGender)) {
+                ErrorText = MissingInputs;
+                IsBusy = false;
                 return;
             }
 
-            if(!GenderPickerList.Contains(SelectedGender)) {
+            if(SelectedGender == "Other" && string.IsNullOrEmpty(OtherGender)) {
+                ErrorText = OtherGenderUnspecified;
+                IsBusy = false;
                 return;
             }
 
             var multipartFormContent = await GetMultiPartFormContent();
 
             if(multipartFormContent == null) {
+                ErrorText = MissingCertification;
+                IsBusy = false;
+                return;
+            }
+
+            double parsedPricing;
+            try {
+                parsedPricing = double.Parse(Pricing);
+            } catch {
+                ErrorText = PricingError;
+                IsBusy = false;
                 return;
             }
 
             var coachProfile = new Dictionary<string, string>() {
-                { "gender", SelectedGender == "Other" ? OtherGender : SelectedGender },
-                { "description", Description },
-                { "pricing", Pricing },
+                { "gender", SelectedGender == "Other" ? OtherGender.Trim() : SelectedGender },
+                { "description", Description.Trim() },
+                { "pricing", parsedPricing.ToString() },
                 { "offersWorkout", OfferWorkouts.ToString() },
                 { "offersMeal", OfferMeals.ToString() },
             };
@@ -88,12 +117,16 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             var uploadCertification = (int)await networkService.PostAsyncHttpResponseMessage(APIConstants.UploadCertificationUri(accountService.CurrentUser.id), multipartFormContent, true);
             var uploadProfile = (int)await networkService.PutAsyncHttpResponseMessage(APIConstants.GetCoachByIdUri(accountService.CurrentUser.id), coachProfile);
 
-            if(uploadCertification >= 200 && uploadCertification <= 299 && uploadProfile >= 200 && uploadProfile <= 299) {
+            if(uploadCertification >= 200 && uploadCertification <= 299 &&
+               uploadProfile >= 200 && uploadProfile <= 299) {
+                ErrorText = "";
                 await Application.Current.MainPage.DisplayAlert("", "good", "OK");
             }
             else {
-
+                ErrorText = ServerError;
             }
+
+            IsBusy = false;
         }
 
         private async Task SelectCertificationFile() {
