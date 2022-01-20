@@ -48,6 +48,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
         public bool OfferMeals { get; set; }
         public string FileName { get; set; }
 
+        public bool HasSubmittedCertification { get; set; }
+
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
         private FileResult Certification { get; set; }
         private IAccountService accountService = AccountService.Instance;
@@ -66,6 +68,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             FileName = "";
             Certification = null;
 
+            HasSubmittedCertification = ((Models.Coach)accountService.CurrentUser).certificationId > 0;
+            IsBusy = HasSubmittedCertification;
+
             GenderPickerList = new List<string>() {
                 "Male", "Female", "Other"
             };
@@ -75,6 +80,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
         }
 
         private async Task SubmitForm() {
+            if(HasSubmittedCertification) return;
             IsBusy = true;
 
             if(string.IsNullOrWhiteSpace(Description) || string.IsNullOrWhiteSpace(Pricing) || !GenderPickerList.Contains(SelectedGender)) {
@@ -114,13 +120,20 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
                 { "offersMeal", OfferMeals.ToString() },
             };
 
-            var uploadCertification = (int)await networkService.PostAsyncHttpResponseMessage(APIConstants.UploadCertificationUri(accountService.CurrentUser.id), multipartFormContent, true);
             var uploadProfile = (int)await networkService.PutAsyncHttpResponseMessage(APIConstants.GetCoachByIdUri(accountService.CurrentUser.id), coachProfile);
 
-            if(uploadCertification >= 200 && uploadCertification <= 299 &&
-               uploadProfile >= 200 && uploadProfile <= 299) {
-                ErrorText = "";
-                await Application.Current.MainPage.DisplayAlert("", "good", "OK");
+            if(uploadProfile >= 200 && uploadProfile <= 299) {
+                var uploadCertification = (int)await networkService.PostAsyncHttpResponseMessage(APIConstants.UploadCertificationUri(accountService.CurrentUser.id), multipartFormContent, true);
+
+                if(uploadCertification >= 200 && uploadCertification <= 299) {
+                    ErrorText = "";
+                    HasSubmittedCertification = true;
+                    OnPropertyChanged("HasSubmittedCertification");
+                    return;
+                }
+                else {
+                    ErrorText = ServerError;
+                }
             }
             else {
                 ErrorText = ServerError;
