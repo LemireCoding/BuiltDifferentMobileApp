@@ -38,7 +38,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
             }
         }
-
         public int startWeight;
         public int StartWeight
         {
@@ -48,7 +47,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
                 SetProperty(ref startWeight, value);
             }
         }
-
         private int currentWeight;
         public int CurrentWeight
         {
@@ -110,13 +108,14 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
                 IsEnabled = false;
                 GetUserInfo();
             }
-                
-
         }
 
         private async Task Upload()
         {
             throw new NotImplementedException();
+
+            //This has been left commented in order to facilitate profilePicture Upload
+
             //var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
             //{
             //    Title = "Please Pick a Profile Picture"
@@ -127,13 +126,10 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             //    ProfilePicture = ImageSource.FromStream(() => stream);
             //}
             //OnPropertyChanged("ProfilePicture");
-
         }
 
         private async Task Submit()
         {
-            
-
             if (
                 string.IsNullOrEmpty(Name)
                 )
@@ -141,12 +137,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
                 await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
                 return;
             }
-            //default ids inserted for now
-            //empty strings for receipe and image link
-            //must have receipe and image link filled
 
             var profile = new ClientProfileDTO(Name, UserId, CurrentWeight, ProfilePicture);
-            var test = JsonConvert.SerializeObject(profile);
             if (IsEnabled)
             {
                 IsEnabled = false;
@@ -171,7 +163,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             }
             else
                 return;
-            
         }
     }
 }
