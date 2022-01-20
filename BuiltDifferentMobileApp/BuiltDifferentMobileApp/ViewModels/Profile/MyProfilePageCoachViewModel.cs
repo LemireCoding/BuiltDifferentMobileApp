@@ -226,11 +226,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
         private async Task Submit()
         {
-            if (IsEnabled)
-            {
-                IsEnabled = false;
-            }
-
             if (
                 string.IsNullOrEmpty(Name)
                 )
