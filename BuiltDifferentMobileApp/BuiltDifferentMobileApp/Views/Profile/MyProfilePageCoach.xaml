@@ -39,23 +39,23 @@
                 <Label Grid.Row="0" Grid.Column="1" Text="Your Info" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold"/>
 
                 <StackLayout Grid.Row="1" Grid.Column="1" Spacing="12">
+                    <StackLayout>
+                        <Image Source="https://picsum.photos/id/56/200" HeightRequest="100" HorizontalOptions="Center">
+                            <Image.GestureRecognizers IsEnabled="{Binding IsEnabled}" >
+                                <TapGestureRecognizer Command="{Binding UploadImageCommand}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
                     <StackLayout Spacing="2">
-                        <StackLayout>
-                            <Image Source="" HorizontalOptions="Center">
-                                <Image.GestureRecognizers IsEnabled="{Binding IsEnabled}" >
-                                    <TapGestureRecognizer Command="{Binding UploadImageCommand}" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                        </StackLayout>
                         <Label Text="Name" />
                         <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                             <Entry Text="{Binding Name}" IsEnabled="{Binding IsEnabled}"/>
                         </Frame>
                     </StackLayout>
                     <StackLayout Spacing="2">
-                        <Label Text="Type" />
+                        <Label Text="Type Of Service Offered" />
                         <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                            <Entry Text="{Binding Type}" IsEnabled="{Binding IsEnabled}"/>
+                            <Picker ItemsSource="{Binding TypesOfServices}"  IsEnabled="{Binding IsEnabled}"  SelectedItem="{Binding Type}"/>
                         </Frame>
                     </StackLayout>
                     <StackLayout Spacing="2">
@@ -73,7 +73,7 @@
                     <StackLayout Spacing="2">
                         <Label Text="Gender" />
                         <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                            <Entry Text="{Binding Gender}" IsEnabled="{Binding IsEnabled}" />
+                            <Picker ItemsSource="{Binding GenderTypes}"  IsEnabled="{Binding IsEnabled}" SelectedItem="{Binding Gender}"/>
                         </Frame>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
@@ -92,7 +92,9 @@
                         <CheckBox IsChecked="{Binding IsVerified}" VerticalOptions="Center" Color="{StaticResource RedPrimary}" IsEnabled="False"/>
                         <Label Text="Is verified" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Button  Margin="10" Text="Save" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SubmitCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Submit"/>
+                    <StackLayout>
+                        <Button  Margin="10" Text="Save" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SubmitCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Submit"/>
+                    </StackLayout>
                 </StackLayout>
             </Grid>
         </ScrollView>

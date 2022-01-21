@@ -40,7 +40,7 @@
             <StackLayout Grid.Row="1" Grid.Column="1" Spacing="12">
                 <StackLayout Spacing="2">
                     <StackLayout>
-                        <Image Source="" HorizontalOptions="Center">
+                        <Image Source="https://picsum.photos/id/56/200" HorizontalOptions="Center">
                             <Image.GestureRecognizers IsEnabled="{Binding IsEnabled}" >
                                 <TapGestureRecognizer Command="{Binding UploadImageCommand}" />
                             </Image.GestureRecognizers>

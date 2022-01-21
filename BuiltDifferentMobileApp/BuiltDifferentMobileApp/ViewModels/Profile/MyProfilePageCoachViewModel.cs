@@ -157,6 +157,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
         private int UserId;
 
+        public ObservableRangeCollection<string> TypesOfServices { get; set; }
+        public ObservableRangeCollection<string> GenderTypes { get; set; }
+
         public AsyncCommand SubmitCommand { get; }
         public AsyncCommand UploadImageCommand { get; }
         public AsyncCommand EditProfileCommand { get; }
@@ -173,6 +176,19 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             SubmitCommand = new AsyncCommand(Submit);
             UploadImageCommand = new AsyncCommand(Upload);
             EditProfileCommand = new AsyncCommand(Edit);
+
+            TypesOfServices = new ObservableRangeCollection<string>
+        {
+            "Meals Only",
+            "Workouts Only",
+            "Both"
+        };
+            GenderTypes = new ObservableRangeCollection<string>
+            {
+                "Male",
+                "Female",
+                "Prefer Not To Say"
+            };
         }
 
         private async Task GetUserInfo()
