@@ -1,5 +1,7 @@
-﻿using BuiltDifferentMobileApp.Services.AccountServices;
+﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
+using BuiltDifferentMobileApp.Views.Coach;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -42,6 +44,25 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
         public const string PricingError = "Please enter a valid pricing.";
         public const string ServerError = "There was an error submitting your information. Please try again.";
 
+        private string pendingApprovalTitle;
+        public string PendingApprovalTitle {
+            get => pendingApprovalTitle;
+            set => SetProperty(ref pendingApprovalTitle, value);
+        }
+
+        private string pendingApprovalBody;
+        public string PendingApprovalBody {
+            get => pendingApprovalBody;
+            set => SetProperty(ref pendingApprovalBody, value);
+        }
+
+        public const string ApprovalPendingTitle = "Your application is currently pending review";
+        public const string ApprovalPendingBody = "Please wait until you have been approved or denied";
+        public const string ApprovalPassedTitle = "Your application has been approved";
+        public const string ApprovalPassedBody = "Now navigating to coach dashboard...";
+        public const string ApprovalDeniedTitle = "Your application has been denied";
+        public const string ApprovalDeniedBody = "Sorry, your application has been denied";
+
         public string Description { get; set; }
         public string Pricing { get; set; }
         public bool OfferWorkouts { get; set; }
@@ -56,6 +77,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
 
         public AsyncCommand SelectCertificationFileCommand { get; set; }
         public AsyncCommand SubmitFormCommand { get; set; }
+        public AsyncCommand CheckIfSubmissionApprovedCommand { get; set; }
 
         public NewCoachPageViewModel() {
             Title = "Complete Account Setup";
@@ -68,15 +90,43 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             FileName = "";
             Certification = null;
 
-            HasSubmittedCertification = ((Models.Coach)accountService.CurrentUser).certificationId > 0;
-            IsBusy = HasSubmittedCertification;
-
             GenderPickerList = new List<string>() {
                 "Male", "Female", "Other"
             };
 
             SelectCertificationFileCommand = new AsyncCommand(SelectCertificationFile);
             SubmitFormCommand = new AsyncCommand(SubmitForm);
+            CheckIfSubmissionApprovedCommand = new AsyncCommand(CheckIfSubmissionApproved);
+
+            HasSubmittedCertification = ((Models.Coach)accountService.CurrentUser).certificationId > 0;
+            if(HasSubmittedCertification) CheckIfSubmissionApproved();
+            else {
+                PendingApprovalTitle = ApprovalPendingTitle;
+                PendingApprovalBody = ApprovalPendingBody;
+            }
+        }
+
+        private async Task CheckIfSubmissionApproved() {
+            IsBusy = true;
+
+            var approval = await networkService.GetAsync<Models.CoachApprovalStatus>(APIConstants.GetCoachApprovalStatusUri(accountService.CurrentUser.id));
+
+            if(approval.approvalStatus == CoachApprovalStatus.APPROVED) {
+                PendingApprovalTitle = ApprovalPassedTitle;
+                PendingApprovalBody = ApprovalPassedBody;
+                await networkService.UpdateCurrentUser();
+                await Task.Delay(1000);
+                await Shell.Current.GoToAsync($"//{nameof(CoachDashboardPage)}");
+            }
+            else if(approval.approvalStatus == CoachApprovalStatus.DENIED) {
+                PendingApprovalTitle = ApprovalDeniedTitle;
+                PendingApprovalBody = ApprovalDeniedBody;
+            } else {
+                PendingApprovalTitle = ApprovalPendingTitle;
+                PendingApprovalBody = ApprovalPendingBody;
+            }
+
+            IsBusy = false;
         }
 
         private async Task SubmitForm() {
@@ -123,13 +173,12 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             var uploadProfile = (int)await networkService.PutAsyncHttpResponseMessage(APIConstants.GetCoachByIdUri(accountService.CurrentUser.id), coachProfile);
 
             if(uploadProfile >= 200 && uploadProfile <= 299) {
-                var uploadCertification = (int)await networkService.PostAsyncHttpResponseMessage(APIConstants.UploadCertificationUri(accountService.CurrentUser.id), multipartFormContent, true);
+                var uploadCertification = (int)await networkService.PostAsyncHttpResponseMessage(APIConstants.UploadCertificationUri(), multipartFormContent, true);
 
                 if(uploadCertification >= 200 && uploadCertification <= 299) {
                     ErrorText = "";
                     HasSubmittedCertification = true;
                     OnPropertyChanged("HasSubmittedCertification");
-                    return;
                 }
                 else {
                     ErrorText = ServerError;

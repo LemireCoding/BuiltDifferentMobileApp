@@ -132,8 +132,16 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         }
 
 
-        public static string UploadCertificationUri(int coachId) {
-            return $"{BaseAddress}/certification/upload/{coachId}";
+        public static string UploadCertificationUri() {
+            return $"{BaseAddress}/certification/upload";
+        }
+
+        public static string GetCoachCertificationUri(int coachId) {
+            return $"{BaseAddress}/certification/{coachId}";
+        }
+
+        public static string GetCoachApprovalStatusUri(int coachId) {
+            return $"{BaseAddress}/certification/{coachId}/status";
         }
 
     }

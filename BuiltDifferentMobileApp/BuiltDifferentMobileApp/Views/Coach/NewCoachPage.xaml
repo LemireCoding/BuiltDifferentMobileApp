@@ -64,8 +64,9 @@
                              IsVisible="{Binding HasSubmittedCertification}">
                     <Frame BorderColor="{StaticResource DarkGrey}" Margin="12,12,12,100" CornerRadius="6" VerticalOptions="CenterAndExpand">
                         <StackLayout>
-                            <Label Text="Your application is currently pending review" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"/>
-                            <Label Text="Please wait until you have been approved or denied." TextColor="Gray" HorizontalOptions="Center" />
+                            <Label Text="{Binding PendingApprovalTitle}" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"/>
+                            <Label Text="{Binding PendingApprovalBody}" TextColor="Gray" HorizontalOptions="Center" />
+                            <Button Text="Check Application Status" Command="{Binding CheckIfSubmissionApprovedCommand}" HorizontalOptions="Center" Margin="0,12,0,0"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>

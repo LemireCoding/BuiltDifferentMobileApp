@@ -153,6 +153,14 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             }
         }
 
+        public async Task UpdateCurrentUser() {
+            try {
+                HttpResponseMessage profileResponse = await httpClient.GetAsync(APIConstants.GetLoginUri());
+
+                bool matchedAccountType = await accountService.SetCurrentUser(profileResponse);
+            } catch(Exception) { }
+        }
+
         public async Task<HttpStatusCode> RegisterAsync(string uri, object user) {
             try {
                 var json = JsonConvert.SerializeObject(user);
