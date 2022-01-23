@@ -144,5 +144,9 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return $"{BaseAddress}/certification/{coachId}/status";
         }
 
+        public static string GetApproveDenyCoachUri(int coachId) {
+            return $"{BaseAddress}/admin/applications/{coachId}";
+        }
+
     }
 }

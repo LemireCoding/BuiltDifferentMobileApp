@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BuiltDifferentMobileApp.ViewModels.Coach;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,15 @@ namespace BuiltDifferentMobileApp.Views.Coach {
     public partial class NewCoachPage : ContentPage {
         public NewCoachPage() {
             InitializeComponent();
+            BindingContext = new NewCoachPageViewModel();
+        }
+
+        protected async override void OnAppearing() {
+            base.OnAppearing();
+            if(BindingContext != null) {
+                var viewModel = (NewCoachPageViewModel)BindingContext;
+                await viewModel.CheckIfSubmissionApproved();
+            }
         }
     }
 }

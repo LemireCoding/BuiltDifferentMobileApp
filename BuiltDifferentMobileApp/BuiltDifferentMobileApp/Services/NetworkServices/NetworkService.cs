@@ -3,6 +3,7 @@ using BuiltDifferentMobileApp.Services.AccountServices;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -48,6 +49,17 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             }
             catch(OperationCanceledException) {
                 return default(TResult);
+            }
+
+        }
+
+        public async Task<Stream> GetStreamAsync(string uri) {
+            try {
+                Stream response = await httpClient.GetStreamAsync(uri);
+
+                return response == null ? null : response;
+            } catch(OperationCanceledException) {
+                return null;
             }
 
         }
