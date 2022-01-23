@@ -24,6 +24,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
         public string Gender { get; set; }
         public string PlansOffered { get; set; }
         public string Description { get; set; }
+        public string Pricing { get; set; }
         public MemoryStream Certification { get; set; }
 
         public AsyncCommand<string> RespondToCoachApplicationCommand { get; set; }
@@ -73,7 +74,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
             if(response >= 200 && response <= 299) {
                 await Shell.Current.GoToAsync("..");
             } else {
-                await Application.Current.MainPage.DisplayAlert("Server Error", "Could not accept/deny coach. Please try again.", "OK");
+                await Application.Current.MainPage.DisplayAlert($"Server Error ({response})", "Could not accept/deny coach. Please try again.", "OK");
             }
         }
 
@@ -91,6 +92,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
             Name = coach.name;
             Description = coach.description;
             Gender = coach.gender;
+            Pricing = $"${coach.pricing:F}";
 
             await certification.CopyToAsync(Certification);
 
@@ -109,6 +111,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
             OnPropertyChanged("Gender");
             OnPropertyChanged("Description");
             OnPropertyChanged("PlansOffered");
+            OnPropertyChanged("Pricing");
         }
 
     }
