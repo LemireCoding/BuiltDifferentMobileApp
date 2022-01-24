@@ -88,6 +88,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current Weight.
+        /// </summary>
+        public static string CurrentWeightLabel {
+            get {
+                return ResourceManager.GetString("CurrentWeightLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Don&apos;t have an account?.
         /// </summary>
         public static string DontHaveAccountLabel {
@@ -106,11 +115,20 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot password?.
+        ///   Looks up a localized string similar to Forgot password ?.
         /// </summary>
         public static string ForgotPasswordLabel {
             get {
                 return ResourceManager.GetString("ForgotPasswordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the email associated with your account..
+        /// </summary>
+        public static string ForgotPasswordPrompt {
+            get {
+                return ResourceManager.GetString("ForgotPasswordPrompt", resourceCulture);
             }
         }
         
@@ -178,11 +196,29 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string SaveButton {
+            get {
+                return ResourceManager.GetString("SaveButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign up.
         /// </summary>
         public static string SignUpLabel {
             get {
                 return ResourceManager.GetString("SignUpLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Weight.
+        /// </summary>
+        public static string StartWeightLabel {
+            get {
+                return ResourceManager.GetString("StartWeightLabel", resourceCulture);
             }
         }
         

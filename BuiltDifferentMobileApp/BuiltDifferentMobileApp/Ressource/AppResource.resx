@@ -129,6 +129,10 @@
     <value>Confirm Password</value>
     <comment>2-Register</comment>
   </data>
+  <data name="CurrentWeightLabel" xml:space="preserve">
+    <value>Current Weight</value>
+    <comment>3-Profile</comment>
+  </data>
   <data name="DontHaveAccountLabel" xml:space="preserve">
     <value>Don't have an account?</value>
     <comment>1-Login</comment>
@@ -138,8 +142,11 @@
     <comment>1-Login</comment>
   </data>
   <data name="ForgotPasswordLabel" xml:space="preserve">
-    <value>Forgot password?</value>
+    <value>Forgot password ?</value>
     <comment>1-Login</comment>
+  </data>
+  <data name="ForgotPasswordPrompt" xml:space="preserve">
+    <value>Please enter the email associated with your account.</value>
   </data>
   <data name="FullNamePlaceholder" xml:space="preserve">
     <value>Full Name</value>
@@ -169,9 +176,17 @@
     <value>Your Profile</value>
     <comment>3-Profile</comment>
   </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Save</value>
+    <comment>3-Profile</comment>
+  </data>
   <data name="SignUpLabel" xml:space="preserve">
     <value>Sign up</value>
     <comment>1-Login</comment>
+  </data>
+  <data name="StartWeightLabel" xml:space="preserve">
+    <value>Start Weight</value>
+    <comment>3-Profile</comment>
   </data>
   <data name="TypeLabel" xml:space="preserve">
     <value>Type</value>
