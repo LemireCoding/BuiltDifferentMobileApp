@@ -45,7 +45,7 @@ namespace BuiltDifferentMobileApp.Services.AccountServices {
                     else if(result.ContainsKey("isVerified")) {
                         CurrentUser = JsonConvert.DeserializeObject<Coach>(serializedUser);
                         CurrentUserRole = AccountConstants.Coach;
-                        AppShellViewModel.UpdateUserRole(AccountConstants.Coach);
+                        AppShellViewModel.UpdateUserRole(AccountConstants.Coach, ((Coach)CurrentUser).isVerified);
                     }
                     else {
                         return false;
