@@ -39,6 +39,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
             Gender = "";
             PlansOffered = "";
             Description = "";
+            Pricing = "";
             Certification = new MemoryStream();
 
             RespondToCoachApplicationCommand = new AsyncCommand<string>(RespondToCoachApplication);
