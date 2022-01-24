@@ -4,7 +4,7 @@
              xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels"
              xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters" xmlns:login="clr-namespace:BuiltDifferentMobileApp.ViewModels.Login" x:DataType="login:LoginPageViewModel"
              x:Class="BuiltDifferentMobileApp.Views.Login.LoginPage"
-              xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              Shell.TabBarIsVisible="False"
              Shell.NavBarIsVisible="False"
              Shell.FlyoutBehavior="Disabled"

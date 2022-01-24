@@ -36,7 +36,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
         public AsyncCommand RegisterCommand { get; set; }
 
         public RegisterPageViewModel() {
-            Title = "Sign up";
+            
             RegisterCommand = new AsyncCommand(Register);
 
             FullName = "";

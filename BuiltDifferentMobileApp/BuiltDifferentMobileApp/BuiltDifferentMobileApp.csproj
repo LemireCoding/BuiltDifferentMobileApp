@@ -26,10 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Ressources\AppResources.Designer.cs">
+    <Compile Update="Ressource\AppResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>AppResources.resx</DependentUpon>
+      <DependentUpon>AppResource.resx</DependentUpon>
     </Compile>
     <Compile Update="Views\Coach\AddWorkoutPage.xaml.cs">
       <DependentUpon>AddWorkoutPage.xaml</DependentUpon>
@@ -46,9 +46,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Ressources\AppResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    <EmbeddedResource Update="Ressource\AppResource.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Ressource\AppResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Client\ClientCoachCriteriasPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

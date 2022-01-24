@@ -117,14 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApplyToBeACoach" xml:space="preserve">
+    <value>Apply to be a coach</value>
+  </data>
+  <data name="ConfirmedPasswordPlaceholder" xml:space="preserve">
+    <value>Confirmez le mot de passe</value>
+  </data>
   <data name="DontHaveAccountLabel" xml:space="preserve">
-    <value>Créer un compte</value>
+    <value>Vous n'avez pas de compte?</value>
   </data>
   <data name="EmailPlaceholder" xml:space="preserve">
     <value>Couriel</value>
   </data>
   <data name="ForgotPasswordLabel" xml:space="preserve">
     <value>Mot de passe oublié ?</value>
+  </data>
+  <data name="FullNamePlaceholder" xml:space="preserve">
+    <value>Nom complet</value>
   </data>
   <data name="LoginButton" xml:space="preserve">
     <value>Connexion</value>
@@ -133,6 +142,6 @@
     <value>Mot de passe</value>
   </data>
   <data name="SignUpLabel" xml:space="preserve">
-    <value>!</value>
+    <value>S'inscrire!</value>
   </data>
 </root>

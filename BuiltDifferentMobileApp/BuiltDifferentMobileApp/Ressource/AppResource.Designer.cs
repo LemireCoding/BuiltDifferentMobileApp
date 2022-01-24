@@ -22,7 +22,7 @@ namespace BuiltDifferentMobileApp.Ressource {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class AppResource {
+    public class AppResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BuiltDifferentMobileApp.Ressource.AppResource", typeof(AppResource).Assembly);
@@ -51,7 +51,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,27 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apply to be a coach.
+        /// </summary>
+        public static string ApplyToBeACoach {
+            get {
+                return ResourceManager.GetString("ApplyToBeACoach", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Password.
+        /// </summary>
+        public static string ConfirmedPasswordPlaceholder {
+            get {
+                return ResourceManager.GetString("ConfirmedPasswordPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Don&apos;t have an account?.
         /// </summary>
-        internal static string DontHaveAccountLabel {
+        public static string DontHaveAccountLabel {
             get {
                 return ResourceManager.GetString("DontHaveAccountLabel", resourceCulture);
             }
@@ -72,7 +90,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
-        internal static string EmailPlaceholder {
+        public static string EmailPlaceholder {
             get {
                 return ResourceManager.GetString("EmailPlaceholder", resourceCulture);
             }
@@ -81,16 +99,25 @@ namespace BuiltDifferentMobileApp.Ressource {
         /// <summary>
         ///   Looks up a localized string similar to Forgot password?.
         /// </summary>
-        internal static string ForgotPasswordLabel {
+        public static string ForgotPasswordLabel {
             get {
                 return ResourceManager.GetString("ForgotPasswordLabel", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Full Name.
+        /// </summary>
+        public static string FullNamePlaceholder {
+            get {
+                return ResourceManager.GetString("FullNamePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log In.
         /// </summary>
-        internal static string LoginButton {
+        public static string LoginButton {
             get {
                 return ResourceManager.GetString("LoginButton", resourceCulture);
             }
@@ -99,7 +126,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
-        internal static string PasswordPlaceholder {
+        public static string PasswordPlaceholder {
             get {
                 return ResourceManager.GetString("PasswordPlaceholder", resourceCulture);
             }
@@ -108,7 +135,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         /// <summary>
         ///   Looks up a localized string similar to Sign up.
         /// </summary>
-        internal static string SignUpLabel {
+        public static string SignUpLabel {
             get {
                 return ResourceManager.GetString("SignUpLabel", resourceCulture);
             }
