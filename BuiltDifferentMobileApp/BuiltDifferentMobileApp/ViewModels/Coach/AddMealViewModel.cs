@@ -38,7 +38,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
         public AddMealViewModel()
         {
 
-            Title = "Add Meal";
+            
             SaveCommand = new AsyncCommand(SaveMeal);
             Types = new ObservableRangeCollection<string>
         {

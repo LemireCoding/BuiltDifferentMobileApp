@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              x:Class="BuiltDifferentMobileApp.Views.Coach.AddMealPage">
     <ContentPage.Content>
         <Grid>
@@ -10,15 +11,15 @@
             </Grid.RowDefinitions>
             <ScrollView Grid.Row="0">
                 <StackLayout Padding="50">
-                    <Label Text="{Binding Title}" AutomationId="AddMealPageTitle" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="{StaticResource RedSecondary}"/>
-                    <Entry Text="{Binding MealName}" AutomationId="MealNameField" Placeholder="Meal Name" Keyboard="Text"/>
-                    <Picker Title="Meal Type" AutomationId="MealTypeField" ItemsSource="{Binding Types}"  SelectedItem="{Binding MealType}"/>
-                    <Entry Text="{Binding Calories}" Placeholder="Workout Type" Keyboard="Numeric"/>
-                    <Entry Text="{Binding Protein}" Placeholder="Sets" Keyboard="Numeric"/>
-                    <Entry Text="{Binding Carbs}" Placeholder="Sets" Keyboard="Numeric"/>
-                    <Entry Text="{Binding Fat}" Placeholder="Reps" Keyboard="Numeric"/>
-                    <Editor Text="{Binding Recipe}" Placeholder="Type the Ingredients and Cook Time" Keyboard="Text"/>
-                    <Entry Text="{Binding ImageLink}" Placeholder="Paste an image link here" Keyboard="Text"/>
+                    <Label Text="{x:Static resource:AppResource.CoachAddMealTitle}" AutomationId="AddMealPageTitle" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="{StaticResource RedSecondary}"/>
+                    <Entry Text="{Binding MealName}" AutomationId="MealNameField" Placeholder="{x:Static resource:AppResource.CoachAddMealNameLabel}" Keyboard="Text"/>
+                    <Picker Title="{x:Static resource:AppResource.CoachAddMealTypeLabel}" AutomationId="MealTypeField" ItemsSource="{Binding Types}"  SelectedItem="{Binding MealType}"/>
+                    <Entry Text="{Binding Calories}" Placeholder="{x:Static resource:AppResource.CoachAddMealCaloriesLabel}" Keyboard="Numeric"/>
+                    <Entry Text="{Binding Protein}" Placeholder="{x:Static resource:AppResource.CoachAddMealProteinLabel}" Keyboard="Numeric"/>
+                    <Entry Text="{Binding Carbs}" Placeholder="{x:Static resource:AppResource.CoachAddMealCarbsLabel}" Keyboard="Numeric"/>
+                    <Entry Text="{Binding Fat}" Placeholder="{x:Static resource:AppResource.CoachAddMealFatLabel}" Keyboard="Numeric"/>
+                    <Editor Text="{Binding Recipe}" Placeholder="{x:Static resource:AppResource.CoachAddMealRecipeLabel}" Keyboard="Text"/>
+                    <Entry Text="{Binding ImageLink}" Placeholder="{x:Static resource:AppResource.CoachAddMealCaloriesLabelgg}" Keyboard="Text"/>
                     <Label Text="Date"/>
                     <DatePicker MinimumDate="{x:Static sys:DateTime.Now}" Date="{Binding Day}" HorizontalOptions="Center"/>
                     <Button AutomationId="SaveButton" Grid.Row="0" BorderColor="{StaticResource RedPrimary}" BorderWidth="1" FontAttributes="Bold" BackgroundColor="{StaticResource RedPrimary}" BorderRadius="35" TextColor="White" 

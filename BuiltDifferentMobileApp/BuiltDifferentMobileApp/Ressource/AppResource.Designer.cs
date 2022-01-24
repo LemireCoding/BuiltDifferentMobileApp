@@ -79,6 +79,87 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calories.
+        /// </summary>
+        public static string CoachAddMealCaloriesLabel {
+            get {
+                return ResourceManager.GetString("CoachAddMealCaloriesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Carbs.
+        /// </summary>
+        public static string CoachAddMealCarbsLabel {
+            get {
+                return ResourceManager.GetString("CoachAddMealCarbsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fat.
+        /// </summary>
+        public static string CoachAddMealFatLabel {
+            get {
+                return ResourceManager.GetString("CoachAddMealFatLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste an image link here.
+        /// </summary>
+        public static string CoachAddMealImageLabel {
+            get {
+                return ResourceManager.GetString("CoachAddMealImageLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meal Name.
+        /// </summary>
+        public static string CoachAddMealNameLabel {
+            get {
+                return ResourceManager.GetString("CoachAddMealNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protein.
+        /// </summary>
+        public static string CoachAddMealProteinLabel {
+            get {
+                return ResourceManager.GetString("CoachAddMealProteinLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type the ingredients and cook time..
+        /// </summary>
+        public static string CoachAddMealRecipeLabel {
+            get {
+                return ResourceManager.GetString("CoachAddMealRecipeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Meal.
+        /// </summary>
+        public static string CoachAddMealTitle {
+            get {
+                return ResourceManager.GetString("CoachAddMealTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meal Type.
+        /// </summary>
+        public static string CoachAddMealTypeLabel {
+            get {
+                return ResourceManager.GetString("CoachAddMealTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available Coach List.
         /// </summary>
         public static string CoachSelectionAvalibleListLabel {

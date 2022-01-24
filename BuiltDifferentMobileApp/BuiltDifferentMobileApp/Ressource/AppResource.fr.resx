@@ -125,6 +125,42 @@
     <value>Disponible pour de nouveaux clients?</value>
     <comment>3-Profile</comment>
   </data>
+  <data name="CoachAddMealCaloriesLabel" xml:space="preserve">
+    <value>Calories</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealCarbsLabel" xml:space="preserve">
+    <value>Glucides</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealFatLabel" xml:space="preserve">
+    <value>Gras</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealImageLabel" xml:space="preserve">
+    <value>Collez le lien d'une image ici.</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealNameLabel" xml:space="preserve">
+    <value>Nom du repas</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealProteinLabel" xml:space="preserve">
+    <value>Protéines</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealRecipeLabel" xml:space="preserve">
+    <value>Tapez les ingrédients et le temps de cuisson.</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealTitle" xml:space="preserve">
+    <value>Ajouter un repas</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealTypeLabel" xml:space="preserve">
+    <value>Type de repas</value>
+    <comment>7-AddMealPage</comment>
+  </data>
   <data name="CoachSelectionAvalibleListLabel" xml:space="preserve">
     <value>Available Coach List</value>
     <comment>6-ClientCoachSelectionPage</comment>
