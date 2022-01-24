@@ -88,6 +88,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Find your coach and start your fitness journey as soon as possible!.
+        /// </summary>
+        public static string CriteriasTitleLabel {
+            get {
+                return ResourceManager.GetString("CriteriasTitleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current Weight.
         /// </summary>
         public static string CurrentWeightLabel {
@@ -111,6 +120,69 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string EmailPlaceholder {
             get {
                 return ResourceManager.GetString("EmailPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a gender, if you have a prefered coach gender.
+        /// </summary>
+        public static string FindACoachByCriteriaGenderLabel {
+            get {
+                return ResourceManager.GetString("FindACoachByCriteriaGenderLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Let us find one for you!.
+        /// </summary>
+        public static string FindACoachByCriteriaLabel {
+            get {
+                return ResourceManager.GetString("FindACoachByCriteriaLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coach Name.
+        /// </summary>
+        public static string FindACoachByCriteriaNameLabel {
+            get {
+                return ResourceManager.GetString("FindACoachByCriteriaNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - OR -.
+        /// </summary>
+        public static string FindACoachByCriteriaOrLabel {
+            get {
+                return ResourceManager.GetString("FindACoachByCriteriaOrLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string FindACoachByCriteriaSearchButton {
+            get {
+                return ResourceManager.GetString("FindACoachByCriteriaSearchButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the coaching type that best fits you.
+        /// </summary>
+        public static string FindACoachByCriteriaTypeLabel {
+            get {
+                return ResourceManager.GetString("FindACoachByCriteriaTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find a coach by name.
+        /// </summary>
+        public static string FindACoachByNameLabel {
+            get {
+                return ResourceManager.GetString("FindACoachByNameLabel", resourceCulture);
             }
         }
         

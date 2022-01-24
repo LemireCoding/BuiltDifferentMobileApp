@@ -129,6 +129,10 @@
     <value>Confirmez le mot de passe</value>
     <comment>2-Register</comment>
   </data>
+  <data name="CriteriasTitleLabel" xml:space="preserve">
+    <value>Trouvez votre entaineur et commencez votre parcours de remise en forme dès que possible !</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
   <data name="CurrentWeightLabel" xml:space="preserve">
     <value>Mesure du poids courrant</value>
     <comment>3-Profile</comment>
@@ -141,12 +145,41 @@
     <value>Couriel</value>
     <comment>1-Login</comment>
   </data>
+  <data name="FindACoachByCriteriaGenderLabel" xml:space="preserve">
+    <value>Sélectionnez un sexe, si vous avez une préférence pour le sexe de l'entaineur.</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByCriteriaLabel" xml:space="preserve">
+    <value>Laissez-nous en trouver un pour vous !</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByCriteriaNameLabel" xml:space="preserve">
+    <value>Nom de l'entaineur</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByCriteriaOrLabel" xml:space="preserve">
+    <value>- OU -</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByCriteriaSearchButton" xml:space="preserve">
+    <value>Rechercher</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByCriteriaTypeLabel" xml:space="preserve">
+    <value>Sélectionnez le type d'entrainement qui vous convient le mieux.</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByNameLabel" xml:space="preserve">
+    <value>Trouver un entraineur par son nom complet.</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
   <data name="ForgotPasswordLabel" xml:space="preserve">
     <value>Mot de passe oublié ?</value>
     <comment>1-Login</comment>
   </data>
   <data name="ForgotPasswordPrompt" xml:space="preserve">
     <value>Veuillez entrer l'e-mail associé à votre compte.</value>
+    <comment>4-ForgotPassword</comment>
   </data>
   <data name="FullNamePlaceholder" xml:space="preserve">
     <value>Nom complet</value>

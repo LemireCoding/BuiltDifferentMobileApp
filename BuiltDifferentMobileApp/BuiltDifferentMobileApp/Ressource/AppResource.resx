@@ -129,6 +129,10 @@
     <value>Confirm Password</value>
     <comment>2-Register</comment>
   </data>
+  <data name="CriteriasTitleLabel" xml:space="preserve">
+    <value>Find your coach and start your fitness journey as soon as possible!</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
   <data name="CurrentWeightLabel" xml:space="preserve">
     <value>Current Weight</value>
     <comment>3-Profile</comment>
@@ -141,12 +145,41 @@
     <value>Email</value>
     <comment>1-Login</comment>
   </data>
+  <data name="FindACoachByCriteriaGenderLabel" xml:space="preserve">
+    <value>Select a gender, if you have a prefered coach gender</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByCriteriaLabel" xml:space="preserve">
+    <value>Let us find one for you!</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByCriteriaNameLabel" xml:space="preserve">
+    <value>Coach Name</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByCriteriaOrLabel" xml:space="preserve">
+    <value>- OR -</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByCriteriaSearchButton" xml:space="preserve">
+    <value>Search</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByCriteriaTypeLabel" xml:space="preserve">
+    <value>Select the coaching type that best fits you</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByNameLabel" xml:space="preserve">
+    <value>Find a coach by name</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
   <data name="ForgotPasswordLabel" xml:space="preserve">
     <value>Forgot password ?</value>
     <comment>1-Login</comment>
   </data>
   <data name="ForgotPasswordPrompt" xml:space="preserve">
     <value>Please enter the email associated with your account.</value>
+    <comment>4-ForgotPassword</comment>
   </data>
   <data name="FullNamePlaceholder" xml:space="preserve">
     <value>Full Name</value>
