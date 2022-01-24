@@ -78,14 +78,20 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         }
 
 
-        public async Task<TResult> PostAsync<TResult>(string uri, object data)
+        public async Task<TResult> PostAsync<TResult>(string uri, object data, bool MultiPartFormData = false)
         {
             try
             {
-                var json = JsonConvert.SerializeObject(data);
-                var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = null;
 
-                HttpResponseMessage response = await httpClient.PostAsync(uri, jsonString);
+                if(!MultiPartFormData) {
+                    var json = JsonConvert.SerializeObject(data);
+                    var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    response = await httpClient.PostAsync(uri, jsonString);
+                } else {    
+                    response = await httpClient.PostAsync(uri, (MultipartFormDataContent)data);
+                }
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -147,6 +153,14 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             }
         }
 
+        public async Task UpdateCurrentUser() {
+            try {
+                HttpResponseMessage profileResponse = await httpClient.GetAsync(APIConstants.GetLoginUri());
+
+                bool matchedAccountType = await accountService.SetCurrentUser(profileResponse);
+            } catch(Exception) { }
+        }
+
         public async Task<HttpStatusCode> RegisterAsync(string uri, object user) {
             try {
                 var json = JsonConvert.SerializeObject(user);
@@ -166,19 +180,38 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         }
 
 
-        public async Task<HttpStatusCode> PostAsyncHttpResponseMessage(string uri, object data)
+        public async Task<HttpStatusCode> PostAsyncHttpResponseMessage(string uri, object data, bool MultiPartFormData = false)
         {
             try
             {
-                var json = JsonConvert.SerializeObject(data);
-                var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = null;
 
-                HttpResponseMessage response = await httpClient.PostAsync(uri, jsonString);
+                if(!MultiPartFormData) {
+                    var json = JsonConvert.SerializeObject(data);
+                    var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    response = await httpClient.PostAsync(uri, jsonString);
+                } else {
+                    response = await httpClient.PostAsync(uri, (MultipartFormDataContent)data);
+                }
 
                 return response.StatusCode;
             }
             catch (OperationCanceledException)
             {
+                return HttpStatusCode.RequestTimeout;
+            }
+        }
+
+        public async Task<HttpStatusCode> PutAsyncHttpResponseMessage(string uri, object obj) {
+            try {
+                var json = JsonConvert.SerializeObject(obj);
+                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await httpClient.PutAsync(uri, content);
+
+                return response.StatusCode;
+            } catch(OperationCanceledException) {
                 return HttpStatusCode.RequestTimeout;
             }
         }
