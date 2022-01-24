@@ -118,30 +118,67 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ApplyToBeACoach" xml:space="preserve">
-    <value>Apply to be a coach</value>
+    <value>Vous êtes entaineur?</value>
+    <comment>2-Register</comment>
+  </data>
+  <data name="AvailabilityLabel" xml:space="preserve">
+    <value>Disponible pour de nouveaux clients?</value>
+    <comment>3-Profile</comment>
   </data>
   <data name="ConfirmedPasswordPlaceholder" xml:space="preserve">
     <value>Confirmez le mot de passe</value>
+    <comment>2-Register</comment>
   </data>
   <data name="DontHaveAccountLabel" xml:space="preserve">
     <value>Vous n'avez pas de compte?</value>
+    <comment>1-Login</comment>
   </data>
   <data name="EmailPlaceholder" xml:space="preserve">
     <value>Couriel</value>
+    <comment>1-Login</comment>
   </data>
   <data name="ForgotPasswordLabel" xml:space="preserve">
     <value>Mot de passe oublié ?</value>
+    <comment>1-Login</comment>
   </data>
   <data name="FullNamePlaceholder" xml:space="preserve">
     <value>Nom complet</value>
+    <comment>2-Register</comment>
+  </data>
+  <data name="GenderLabel" xml:space="preserve">
+    <value>Sexe</value>
+    <comment>3-Profile</comment>
+  </data>
+  <data name="IsVerifiedLabel" xml:space="preserve">
+    <value>Entraîneur vérifié</value>
+    <comment>3-Profile</comment>
   </data>
   <data name="LoginButton" xml:space="preserve">
     <value>Connexion</value>
+    <comment>1-Login</comment>
+  </data>
+  <data name="MealServiceLabel" xml:space="preserve">
+    <value>Offre les plans de repas</value>
+    <comment>3-Profile</comment>
   </data>
   <data name="PasswordPlaceholder" xml:space="preserve">
     <value>Mot de passe</value>
+    <comment>1-Login</comment>
+  </data>
+  <data name="ProfileTitle" xml:space="preserve">
+    <value>Votre profile</value>
+    <comment>3-Profile</comment>
   </data>
   <data name="SignUpLabel" xml:space="preserve">
     <value>S'inscrire!</value>
+    <comment>1-Login</comment>
+  </data>
+  <data name="TypeLabel" xml:space="preserve">
+    <value>Type</value>
+    <comment>3-Profile</comment>
+  </data>
+  <data name="WorkoutServiceLabel" xml:space="preserve">
+    <value>Offre l'entraînement physique</value>
+    <comment>3-Profile</comment>
   </data>
 </root>

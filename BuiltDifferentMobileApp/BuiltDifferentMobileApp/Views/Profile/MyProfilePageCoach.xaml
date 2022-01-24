@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Profile"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              x:Class="BuiltDifferentMobileApp.Views.Profile.MyProfilePageCoach">
 
     <ContentPage.BindingContext>
@@ -20,42 +21,42 @@
                 <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="1" Text="Your Info" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold"/>
+            <Label Grid.Row="0" Grid.Column="1" Text="{x:Static resource:AppResource.ProfileTitle}" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold"/>
 
             <StackLayout Grid.Row="1" Grid.Column="1" Spacing="12">
                 <StackLayout Spacing="2">
-                    <Label Text="Name" />
+                    <Label Text="{x:Static resource:AppResource.FullNamePlaceholder}" />
                     <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                         <Entry IsEnabled="False" Text="{Binding Name}"/>
                     </Frame>
                 </StackLayout>
                 <StackLayout Spacing="2">
-                    <Label Text="Type" />
+                    <Label Text="{x:Static resource:AppResource.TypeLabel}" />
                     <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                         <Entry IsEnabled="False" Text="{Binding Type}"/>
                     </Frame>
                 </StackLayout>
                 <StackLayout Spacing="2">
-                    <Label Text="Gender" />
+                    <Label Text="{x:Static resource:AppResource.GenderLabel}"  />
                     <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                         <Entry IsEnabled="False" Text="{Binding Gender}"/>
                     </Frame>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <CheckBox IsChecked="{Binding IsAvailable}" VerticalOptions="Center" Color="{StaticResource RedSecondary}"/>
-                    <Label Text="Available for new clients" VerticalOptions="Center"/>
+                    <Label Text="{x:Static resource:AppResource.AvailabilityLabel}"  VerticalOptions="Center"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <CheckBox IsChecked="{Binding OffersWorkout}" VerticalOptions="Center" Color="{StaticResource RedSecondary}"/>
-                    <Label Text="Offer workout coaching" VerticalOptions="Center"/>
+                    <Label Text="{x:Static resource:AppResource.WorkoutServiceLabel}" VerticalOptions="Center"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <CheckBox IsChecked="{Binding OffersMeal}" VerticalOptions="Center" Color="{StaticResource RedSecondary}"/>
-                    <Label Text="Offer meal coaching" VerticalOptions="Center"/>
+                    <Label Text="{x:Static resource:AppResource.MealServiceLabel}" VerticalOptions="Center"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <CheckBox IsChecked="{Binding OffersMeal}" VerticalOptions="Center" Color="{StaticResource RedPrimary}" IsEnabled="False"/>
-                    <Label Text="Is verified" VerticalOptions="Center"/>
+                    <CheckBox IsChecked="{Binding IsVerified}" VerticalOptions="Center" Color="{StaticResource RedPrimary}" IsEnabled="False"/>
+                    <Label Text="{x:Static resource:AppResource.IsVerifiedLabel}" VerticalOptions="Center"/>
                 </StackLayout>
             </StackLayout>
         </Grid>

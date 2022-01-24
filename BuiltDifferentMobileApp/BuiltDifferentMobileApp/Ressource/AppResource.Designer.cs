@@ -70,6 +70,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available for new clients?.
+        /// </summary>
+        public static string AvailabilityLabel {
+            get {
+                return ResourceManager.GetString("AvailabilityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm Password.
         /// </summary>
         public static string ConfirmedPasswordPlaceholder {
@@ -115,11 +124,38 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gender.
+        /// </summary>
+        public static string GenderLabel {
+            get {
+                return ResourceManager.GetString("GenderLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is verified.
+        /// </summary>
+        public static string IsVerifiedLabel {
+            get {
+                return ResourceManager.GetString("IsVerifiedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log In.
         /// </summary>
         public static string LoginButton {
             get {
                 return ResourceManager.GetString("LoginButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offer meal coaching.
+        /// </summary>
+        public static string MealServiceLabel {
+            get {
+                return ResourceManager.GetString("MealServiceLabel", resourceCulture);
             }
         }
         
@@ -133,11 +169,38 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your Profile.
+        /// </summary>
+        public static string ProfileTitle {
+            get {
+                return ResourceManager.GetString("ProfileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign up.
         /// </summary>
         public static string SignUpLabel {
             get {
                 return ResourceManager.GetString("SignUpLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string TypeLabel {
+            get {
+                return ResourceManager.GetString("TypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offer workout coaching.
+        /// </summary>
+        public static string WorkoutServiceLabel {
+            get {
+                return ResourceManager.GetString("WorkoutServiceLabel", resourceCulture);
             }
         }
     }
