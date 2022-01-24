@@ -125,6 +125,26 @@
     <value>Disponible pour de nouveaux clients?</value>
     <comment>3-Profile</comment>
   </data>
+  <data name="CoachSelectionAvalibleListLabel" xml:space="preserve">
+    <value>Available Coach List</value>
+    <comment>6-ClientCoachSelectionPage</comment>
+  </data>
+  <data name="CoachSelectionNoAvalibleListLabel" xml:space="preserve">
+    <value>Aucun entraîneur n'a été trouvé correspondant à vos critères de recherche.</value>
+    <comment>6-ClientCoachSelectionPage</comment>
+  </data>
+  <data name="CoachSelectionPriceLabel" xml:space="preserve">
+    <value> $/mois</value>
+    <comment>6-ClientCoachSelectionPage</comment>
+  </data>
+  <data name="CoachSelectionPriceTitleLabel" xml:space="preserve">
+    <value>Prix</value>
+    <comment>6-ClientCoachSelectionPage</comment>
+  </data>
+  <data name="CoachSelectionRequestButton" xml:space="preserve">
+    <value>Confirmer</value>
+    <comment>6-ClientCoachSelectionPage</comment>
+  </data>
   <data name="ConfirmedPasswordPlaceholder" xml:space="preserve">
     <value>Confirmez le mot de passe</value>
     <comment>2-Register</comment>

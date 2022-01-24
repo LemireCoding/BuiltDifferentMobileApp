@@ -79,6 +79,51 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available Coach List.
+        /// </summary>
+        public static string CoachSelectionAvalibleListLabel {
+            get {
+                return ResourceManager.GetString("CoachSelectionAvalibleListLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Coach was found corresponding to your search..
+        /// </summary>
+        public static string CoachSelectionNoAvalibleListLabel {
+            get {
+                return ResourceManager.GetString("CoachSelectionNoAvalibleListLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  $/month.
+        /// </summary>
+        public static string CoachSelectionPriceLabel {
+            get {
+                return ResourceManager.GetString("CoachSelectionPriceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        public static string CoachSelectionPriceTitleLabel {
+            get {
+                return ResourceManager.GetString("CoachSelectionPriceTitleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request.
+        /// </summary>
+        public static string CoachSelectionRequestButton {
+            get {
+                return ResourceManager.GetString("CoachSelectionRequestButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm Password.
         /// </summary>
         public static string ConfirmedPasswordPlaceholder {
