@@ -61,6 +61,87 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string AddWorkoutPageDescription {
+            get {
+                return ResourceManager.GetString("AddWorkoutPageDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duration (minutes).
+        /// </summary>
+        public static string AddWorkoutPageDuration {
+            get {
+                return ResourceManager.GetString("AddWorkoutPageDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reps.
+        /// </summary>
+        public static string AddWorkoutPageReps {
+            get {
+                return ResourceManager.GetString("AddWorkoutPageReps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rest Time (seconds).
+        /// </summary>
+        public static string AddWorkoutPageRestTime {
+            get {
+                return ResourceManager.GetString("AddWorkoutPageRestTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Workout.
+        /// </summary>
+        public static string AddWorkoutPageTitle {
+            get {
+                return ResourceManager.GetString("AddWorkoutPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Workout Type.
+        /// </summary>
+        public static string AddWorkoutPageType {
+            get {
+                return ResourceManager.GetString("AddWorkoutPageType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to YouTube Video Link.
+        /// </summary>
+        public static string AddWorkoutPageVideoLink {
+            get {
+                return ResourceManager.GetString("AddWorkoutPageVideoLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exercise Name.
+        /// </summary>
+        public static string AddWorkoutPageWorkoutName {
+            get {
+                return ResourceManager.GetString("AddWorkoutPageWorkoutName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sets.
+        /// </summary>
+        public static string AddWorkoutPageWorkoutSets {
+            get {
+                return ResourceManager.GetString("AddWorkoutPageWorkoutSets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply to be a coach.
         /// </summary>
         public static string ApplyToBeACoach {

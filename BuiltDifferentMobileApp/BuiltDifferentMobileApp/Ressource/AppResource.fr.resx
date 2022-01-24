@@ -117,6 +117,42 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddWorkoutPageDescription" xml:space="preserve">
+    <value>Description</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageDuration" xml:space="preserve">
+    <value>Durée</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageReps" xml:space="preserve">
+    <value># de répétitions</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageRestTime" xml:space="preserve">
+    <value>Temps de repos</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageTitle" xml:space="preserve">
+    <value>Créer un exercice</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageType" xml:space="preserve">
+    <value>Type d'exercice</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageVideoLink" xml:space="preserve">
+    <value>Lien vidéo YouTube</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageWorkoutName" xml:space="preserve">
+    <value>Nom de l'exercice</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageWorkoutSets" xml:space="preserve">
+    <value># de séries</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
   <data name="ApplyToBeACoach" xml:space="preserve">
     <value>Vous êtes entaineur?</value>
     <comment>2-Register</comment>
