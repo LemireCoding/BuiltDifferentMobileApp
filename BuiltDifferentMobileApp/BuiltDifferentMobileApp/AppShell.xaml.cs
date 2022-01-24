@@ -32,7 +32,10 @@ namespace BuiltDifferentMobileApp {
             Routing.RegisterRoute(nameof(ClientMenuPage), typeof(ClientMenuPage));
             Routing.RegisterRoute(nameof(ClientCoachCriteriasPage), typeof(ClientCoachCriteriasPage));
             Routing.RegisterRoute(nameof(ClientCoachSelectionPage), typeof(ClientCoachSelectionPage));
+            Routing.RegisterRoute(nameof(ClientMealPage), typeof(ClientMealPage));
+            Routing.RegisterRoute(nameof(ClientWorkoutPage), typeof(ClientWorkoutPage));
             Routing.RegisterRoute(nameof(ClientDashboardPage), typeof(ClientDashboardPage));
+
 
             // Profile pages
             Routing.RegisterRoute(nameof(MyProfilePageAdmin), typeof(MyProfilePageAdmin));

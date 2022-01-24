@@ -75,7 +75,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
                 return;
             }
 
-            var workout = new Workout(1,2, WorkoutType.Name, WorkoutName, Convert.ToInt32(Sets), Convert.ToInt32(Reps), Convert.ToInt32(Duration), Convert.ToInt32(RestTime),Day,Description, isCompleted,VideoLink);
+            var workout = new Workout(1,1, WorkoutType.Name, WorkoutName, Convert.ToInt32(Sets), Convert.ToInt32(Reps), Convert.ToInt32(Duration), Convert.ToInt32(RestTime),Day,Description, isCompleted,VideoLink);
             var result = await networkService.PostAsync<HttpResponseMessage>(APIConstants.PostWorkoutUri(), workout);
             var httpCode = result.StatusCode;
 
