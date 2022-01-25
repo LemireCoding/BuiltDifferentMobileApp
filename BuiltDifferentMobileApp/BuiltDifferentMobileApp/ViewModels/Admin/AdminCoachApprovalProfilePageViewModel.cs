@@ -1,4 +1,5 @@
-﻿using BuiltDifferentMobileApp.Services.NetworkServices;
+﻿using BuiltDifferentMobileApp.Ressource;
+using BuiltDifferentMobileApp.Services.NetworkServices;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -27,8 +28,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
         public AdminCoachApprovalProfilePageViewModel(int coachId) {
             
             CoachId = coachId;
-            DenyButtonText = "Deny";
-            ApproveButtonText = "Approve";
+            DenyButtonText = AppResource.AdminCoachApprovalDeny;
+            ApproveButtonText = AppResource.AdminCoachApprovalApprove;
 
             RefreshCommand = new AsyncCommand(FetchCoachInformation);
             RespondToCoachApplicationCommand = new AsyncCommand<string>(RespondToCoachApplication);
@@ -52,7 +53,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
             var coach = await networkService.GetAsync<Models.Coach>(APIConstants.GetCoachByIdUri(CoachId));
 
             if(coach == null) {
-                await Application.Current.MainPage.DisplayAlert("Could not load coach's profile!", "Returning to previous page", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.AdminCoachApprovalNoProfileTitle, AppResource.AdminCoachApprovalNoProfileMessage, "OK");
                 await Shell.Current.GoToAsync("..");
                 return;
             }
@@ -61,15 +62,15 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
             Description = coach.description;
             Gender = coach.gender;
 
-            PlansOffered = "Plans: ";
+            PlansOffered = AppResource.AdminCoachApprovalPlansOfferedTitle;
             if(coach.offersMeal && coach.offersWorkout) {
-                PlansOffered += "Workouts, Meals";
+                PlansOffered += AppResource.ClientCoachCriteriaCoachingTypesBoth;
             }
             else if(coach.offersMeal && !coach.offersWorkout) {
-                PlansOffered += "Meals";
+                PlansOffered += AppResource.ClientCoachCriteriaCoachingTypesMeals;
             }
             else if(!coach.offersMeal && coach.offersWorkout) {
-                PlansOffered += "Workouts";
+                PlansOffered += AppResource.ClientCoachCriteriaCoachingTypesWorkouts;
             }
 
             OnPropertyChanged("Name");

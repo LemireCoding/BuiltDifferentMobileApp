@@ -117,6 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountAlreadyExists" xml:space="preserve">
+    <value>Un compte existe déjà pour ce courriel.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="AccountNotFoundText" xml:space="preserve">
+    <value>Le courriel que vous avez entré n'appartient pas à un compte. Veuillez vérifier votre courriel et réessayer.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="AddMealSavedTitle" xml:space="preserve">
+    <value>Repas sauvegarder.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="AddMealViewModelBreakfast" xml:space="preserve">
+    <value>Déjeuner</value>
+  </data>
+  <data name="AddMealViewModelDinner" xml:space="preserve">
+    <value>Souper</value>
+  </data>
+  <data name="AddMealViewModelLunch" xml:space="preserve">
+    <value>Dinner</value>
+  </data>
+  <data name="AddMealViewModelSnack" xml:space="preserve">
+    <value>Collation</value>
+  </data>
   <data name="AddWorkoutPageDescription" xml:space="preserve">
     <value>Description</value>
     <comment>8-AddWorkoutPage</comment>
@@ -153,6 +177,33 @@
     <value> # de séries</value>
     <comment>8-AddWorkoutPage</comment>
   </data>
+  <data name="AddWorkoutSaved" xml:space="preserve">
+    <value>Exercise sauvegarder.</value>
+  </data>
+  <data name="AddWorkoutTypeCardio" xml:space="preserve">
+    <value>Cardio</value>
+  </data>
+  <data name="AddWorkoutTypeWarmUp" xml:space="preserve">
+    <value>Échauffement</value>
+  </data>
+  <data name="AddWorkoutTypeWeightTraining" xml:space="preserve">
+    <value>Entraînement de musculation</value>
+  </data>
+  <data name="AdminCoachApprovalApprove" xml:space="preserve">
+    <value>Approvez</value>
+  </data>
+  <data name="AdminCoachApprovalDeny" xml:space="preserve">
+    <value>Refusez</value>
+  </data>
+  <data name="AdminCoachApprovalNoProfileMessage" xml:space="preserve">
+    <value>Retour à la page précédente.</value>
+  </data>
+  <data name="AdminCoachApprovalNoProfileTitle" xml:space="preserve">
+    <value>Impossible de charger le profil de l'entraîneur !</value>
+  </data>
+  <data name="AdminCoachApprovalPlansOfferedTitle" xml:space="preserve">
+    <value>Plans: </value>
+  </data>
   <data name="ApplyToBeACoach" xml:space="preserve">
     <value>Vous êtes entaineur?</value>
     <comment>2-Register</comment>
@@ -160,6 +211,32 @@
   <data name="AvailabilityLabel" xml:space="preserve">
     <value>Disponible pour de nouveaux clients?</value>
     <comment>3-Profile</comment>
+  </data>
+  <data name="BadEmail" xml:space="preserve">
+    <value>Veuillez saisir un courriel valide.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="BadRequest" xml:space="preserve">
+    <value>Le serveur n'a pas pu analyser votre demande. Veuillez signaler cet erreur.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="ClientCoachCriteriaCoachingGenderF" xml:space="preserve">
+    <value>Femme</value>
+  </data>
+  <data name="ClientCoachCriteriaCoachingGenderM" xml:space="preserve">
+    <value>Mâle</value>
+  </data>
+  <data name="ClientCoachCriteriaCoachingGenderPNTS" xml:space="preserve">
+    <value>Préfère ne pas dire</value>
+  </data>
+  <data name="ClientCoachCriteriaCoachingTypesBoth" xml:space="preserve">
+    <value>Exercices et Repas</value>
+  </data>
+  <data name="ClientCoachCriteriaCoachingTypesMeals" xml:space="preserve">
+    <value>Exercises</value>
+  </data>
+  <data name="ClientCoachCriteriaCoachingTypesWorkouts" xml:space="preserve">
+    <value>Repas</value>
   </data>
   <data name="CoachAddMealCaloriesLabel" xml:space="preserve">
     <value> Calories</value>
@@ -273,6 +350,10 @@
     <value>Confirmez le mot de passe</value>
     <comment>2-Register</comment>
   </data>
+  <data name="ConfirmSentEmailText" xml:space="preserve">
+    <value>Merci!\n\n Si vous êtes déjà inscrit, nous vous enverrons sous peu un courriel contenant un lien pour réinitialiser votre mot de passe.</value>
+    <comment>100-Alerts</comment>
+  </data>
   <data name="CriteriasTitleLabel" xml:space="preserve">
     <value>Trouvez votre entaineur et commencez votre parcours de remise en forme dès que possible !</value>
     <comment>5-ClientCoachCriteriaPage</comment>
@@ -280,6 +361,10 @@
   <data name="CurrentWeightLabel" xml:space="preserve">
     <value>Mesure du poids courrant</value>
     <comment>3-Profile</comment>
+  </data>
+  <data name="DifferentPasswords" xml:space="preserve">
+    <value>Les mots de passe ne correspondent pas !</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="DontHaveAccountLabel" xml:space="preserve">
     <value>Vous n'avez pas de compte?</value>
@@ -289,9 +374,18 @@
     <value>Modifier un repas</value>
     <comment>12-EditMealPage</comment>
   </data>
+  <data name="EditMealSaved" xml:space="preserve">
+    <value>Repas sauvegarder.</value>
+  </data>
+  <data name="EditWorkoutNotFoundMessage" xml:space="preserve">
+    <value>Exercice non trouvé. Veuillez réessayer.</value>
+  </data>
   <data name="EditWorkoutPageTitle" xml:space="preserve">
     <value>Modifier un exercise</value>
     <comment>13-WorkoutEditPage</comment>
+  </data>
+  <data name="EditWorkoutSaved" xml:space="preserve">
+    <value>Exercise sauvegarder.</value>
   </data>
   <data name="EmailPlaceholder" xml:space="preserve">
     <value>Couriel</value>
@@ -341,9 +435,21 @@
     <value>Sexe</value>
     <comment>3-Profile</comment>
   </data>
+  <data name="IncorrectLoginText" xml:space="preserve">
+    <value>Désolé, votre mot de passe est incorrect. Veuillez vérifier votre mot de passe et réessayer.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Le courriel que vous avez entré n'est pas valide.</value>
+    <comment>100-Alerts</comment>
+  </data>
   <data name="IsVerifiedLabel" xml:space="preserve">
     <value>Entraîneur vérifié</value>
     <comment>3-Profile</comment>
+  </data>
+  <data name="LoginAttempsExceededText" xml:space="preserve">
+    <value>Vous avez atteint le nombre maximum de tentatives de connexion. Veuillez réessayer plus tard.</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="LoginButton" xml:space="preserve">
     <value>Connexion</value>
@@ -353,9 +459,29 @@
     <value>Offre les plans de repas</value>
     <comment>3-Profile</comment>
   </data>
+  <data name="MissingInputs" xml:space="preserve">
+    <value>Veuillez remplir tous les champs obligatoires.</value>
+    <comment>100-Alerts</comment>
+  </data>
   <data name="PasswordPlaceholder" xml:space="preserve">
     <value>Mot de passe</value>
     <comment>1-Login</comment>
+  </data>
+  <data name="PasswordRequirementDigit" xml:space="preserve">
+    <value>Le mot de passe doit contenir au moins un chiffre.\n</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="PasswordRequirementsLength" xml:space="preserve">
+    <value>Le mot de passe doit comporter 8 caractères.\n</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="PasswordRequirementUppercase" xml:space="preserve">
+    <value>Le mot de passe doit contenir au moins un caractère majuscule.\n</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="PasswordRequirmentSymbol" xml:space="preserve">
+    <value>Le mot de passe doit contenir au moins un symbole.</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Votre profile</value>
@@ -377,14 +503,33 @@
     <value>Type</value>
     <comment>3-Profile</comment>
   </data>
+  <data name="UnknownErrorText" xml:space="preserve">
+    <value>Il y a eu un problème inconnu de communication avec le serveur. Veuillez réessayer plus tard.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="ViewModelErrorMessage" xml:space="preserve">
+    <value>Une erreur s'est produite sur le serveur. Veuillez réessayer d'enregistrer de nouveau.</value>
+    <comment>100-Alerts</comment>
+  </data>
   <data name="ViewModelErrorTitle" xml:space="preserve">
     <value>Erreur</value>
+    <comment>100-Alerts</comment>
   </data>
-  <data name="ViewModelFieldIssue" xml:space="preserve">
-    <value>Problème de champ</value>
+  <data name="ViewModelFieldIssueMessage" xml:space="preserve">
+    <value>Please fill ALL of the fields.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="ViewModelFieldIssueTitle" xml:space="preserve">
+    <value>Erreur de champ</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="ViewModelProfileSuccessMessage" xml:space="preserve">
+    <value>Profil enregistré.</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="ViewModelSuccessTitle" xml:space="preserve">
     <value>Succès</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="WorkoutServiceLabel" xml:space="preserve">
     <value>Offre l'entraînement physique</value>

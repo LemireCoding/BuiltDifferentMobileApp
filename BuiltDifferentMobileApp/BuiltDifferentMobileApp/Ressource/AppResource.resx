@@ -189,9 +189,24 @@
   <data name="AddWorkoutTypeWeightTraining" xml:space="preserve">
     <value>Weight Training</value>
   </data>
+  <data name="AdminCoachApprovalApprove" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="AdminCoachApprovalDeny" xml:space="preserve">
+    <value>Deny</value>
+  </data>
   <data name="AdminCoachApprovalGender" xml:space="preserve">
     <value>  , </value>
     <comment>15-AdminCoachApprovalProfilePage</comment>
+  </data>
+  <data name="AdminCoachApprovalNoProfileMessage" xml:space="preserve">
+    <value>Returning to previous page.</value>
+  </data>
+  <data name="AdminCoachApprovalNoProfileTitle" xml:space="preserve">
+    <value>Could not load coach's profile!</value>
+  </data>
+  <data name="AdminCoachApprovalPlansOfferedTitle" xml:space="preserve">
+    <value>Plans: </value>
   </data>
   <data name="AdminCoachApprovalProfileTitle" xml:space="preserve">
     <value>Coach Application</value>
