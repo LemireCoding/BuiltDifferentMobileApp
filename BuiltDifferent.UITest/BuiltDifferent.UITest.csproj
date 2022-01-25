@@ -42,6 +42,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminInteractWithCoachAccountsTests.cs" />
     <Compile Include="ClientCriteriaFormTests.cs" />
     <Compile Include="CoachApplyForApprovalTests.cs" />
     <Compile Include="ForgotPasswordTests.cs" />

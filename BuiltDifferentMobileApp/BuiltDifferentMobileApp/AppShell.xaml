@@ -131,7 +131,11 @@
     <FlyoutItem Title="Menu" IsVisible="{Binding IsAdmin}">
         <ShellContent Route="AdminMenuPage" ContentTemplate="{DataTemplate adminpages:AdminMenuPage}" />
     </FlyoutItem>
-    
+
+    <FlyoutItem Title="Verified Coaches" IsVisible="{Binding IsAdmin}">
+        <ShellContent Route="AdminApprovedCoachesPage" ContentTemplate="{DataTemplate adminpages:AdminApprovedCoachesPage}" />
+    </FlyoutItem>
+
     <FlyoutItem Title="Pending Coaches" IsVisible="{Binding IsAdmin}">
         <ShellContent Route="AdminCoachApprovalPage" ContentTemplate="{DataTemplate adminpages:AdminCoachApprovalPage}" />
     </FlyoutItem>

@@ -16,6 +16,8 @@ namespace BuiltDifferentMobileApp {
             // Admin pages
             Routing.RegisterRoute(nameof(AdminCoachApprovalProfilePage), typeof(AdminCoachApprovalProfilePage));
             Routing.RegisterRoute(nameof(AdminCoachApprovalPage), typeof(AdminCoachApprovalPage));
+            Routing.RegisterRoute(nameof(AdminApprovedCoachProfilePage), typeof(AdminApprovedCoachProfilePage));
+            Routing.RegisterRoute(nameof(AdminApprovedCoachesPage), typeof(AdminApprovedCoachesPage));
             Routing.RegisterRoute(nameof(AdminMenuPage), typeof(AdminMenuPage));
 
             // Coach pages
