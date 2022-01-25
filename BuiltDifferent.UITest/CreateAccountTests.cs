@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.UITest;
 using NUnit.Framework;
 using BuiltDifferentMobileApp.ViewModels.Login;
+using BuiltDifferentMobileApp.Ressource;
 
 namespace BuiltDifferent.UITest {
     [TestFixture(Platform.Android)]
@@ -178,11 +179,11 @@ namespace BuiltDifferent.UITest {
 
                 emailAlreadyInUseError = app.Query(label => label.Marked("ErrorText"))[0].Text;
 
-                Assert.AreEqual(missingInputsError, RegisterPageViewModel.MissingInputs);
-                Assert.AreEqual(invalidEmailError, RegisterPageViewModel.InvalidEmail);
+                Assert.AreEqual(missingInputsError, AppResource.MissingInputs);
+                Assert.AreEqual(invalidEmailError, AppResource.InvalidEmail);
                 Assert.IsNotEmpty(invalidPasswordError);
-                Assert.AreEqual(notMatchingPasswordError, RegisterPageViewModel.DifferentPasswords);
-                Assert.AreEqual(emailAlreadyInUseError, RegisterPageViewModel.AccountAlreadyExists);
+                Assert.AreEqual(notMatchingPasswordError, AppResource.DifferentPasswords);
+                Assert.AreEqual(emailAlreadyInUseError, AppResource.AccountAlreadyExists);
             } else {
                 return;
             }
