@@ -225,6 +225,22 @@
     <value>Your Clients</value>
     <comment>9-CoachDashboardPage</comment>
   </data>
+  <data name="CoachMealsClientPlanAdd" xml:space="preserve">
+    <value>Add</value>
+    <comment>10-CoachMealsPage</comment>
+  </data>
+  <data name="CoachMealsClientPlanTitle" xml:space="preserve">
+    <value>Meal Plan</value>
+    <comment>10-CoachMealsPage</comment>
+  </data>
+  <data name="CoachMealsEdit" xml:space="preserve">
+    <value>Edit</value>
+    <comment>10-CoachMealsPage</comment>
+  </data>
+  <data name="CoachMealsTitle" xml:space="preserve">
+    <value>Meals</value>
+    <comment>10-CoachMealsPage</comment>
+  </data>
   <data name="CoachSelectionAvalibleListLabel" xml:space="preserve">
     <value>Available Coach List</value>
     <comment>6-ClientCoachSelectionPage</comment>
@@ -244,6 +260,14 @@
   <data name="CoachSelectionRequestButton" xml:space="preserve">
     <value>Request</value>
     <comment>6-ClientCoachSelectionPage</comment>
+  </data>
+  <data name="CoachWorkoutClientPlanTitle" xml:space="preserve">
+    <value> Workout Plan</value>
+    <comment>11-CoachWorkoutsPage</comment>
+  </data>
+  <data name="CoachWorkoutTitle" xml:space="preserve">
+    <value>Workouts</value>
+    <comment>11-CoachWorkoutsPage</comment>
   </data>
   <data name="ConfirmedPasswordPlaceholder" xml:space="preserve">
     <value>Confirm Password</value>

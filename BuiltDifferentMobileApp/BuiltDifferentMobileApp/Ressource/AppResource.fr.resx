@@ -126,11 +126,11 @@
     <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutPageReps" xml:space="preserve">
-    <value># de répétitions</value>
+    <value> # de répétitions</value>
     <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutPageRestTime" xml:space="preserve">
-    <value>Temps de repos</value>
+    <value> Temps de repos (min)</value>
     <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutPageTitle" xml:space="preserve">
@@ -150,7 +150,7 @@
     <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutPageWorkoutSets" xml:space="preserve">
-    <value># de séries</value>
+    <value> # de séries</value>
     <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="ApplyToBeACoach" xml:space="preserve">
@@ -225,6 +225,22 @@
     <value>Vos clients</value>
     <comment>9-CoachDashboardPage</comment>
   </data>
+  <data name="CoachMealsClientPlanAdd" xml:space="preserve">
+    <value>Ajouter</value>
+    <comment>10-CoachMealsPage</comment>
+  </data>
+  <data name="CoachMealsClientPlanTitle" xml:space="preserve">
+    <value>Plan Alimentaire</value>
+    <comment>10-CoachMealsPage</comment>
+  </data>
+  <data name="CoachMealsEdit" xml:space="preserve">
+    <value>Modifier</value>
+    <comment>10-CoachMealsPage</comment>
+  </data>
+  <data name="CoachMealsTitle" xml:space="preserve">
+    <value>Repas</value>
+    <comment>10-CoachMealsPage</comment>
+  </data>
   <data name="CoachSelectionAvalibleListLabel" xml:space="preserve">
     <value>Available Coach List</value>
     <comment>6-ClientCoachSelectionPage</comment>
@@ -244,6 +260,12 @@
   <data name="CoachSelectionRequestButton" xml:space="preserve">
     <value>Confirmer</value>
     <comment>6-ClientCoachSelectionPage</comment>
+  </data>
+  <data name="CoachWorkoutClientPlanTitle" xml:space="preserve">
+    <value> Workout Plan</value>
+  </data>
+  <data name="CoachWorkoutTitle" xml:space="preserve">
+    <value>Workouts</value>
   </data>
   <data name="ConfirmedPasswordPlaceholder" xml:space="preserve">
     <value>Confirmez le mot de passe</value>
@@ -334,7 +356,7 @@
     <comment>3-Profile</comment>
   </data>
   <data name="SignUpLabel" xml:space="preserve">
-    <value>S'inscrire!</value>
+    <value> S'inscrire!</value>
     <comment>1-Login</comment>
   </data>
   <data name="StartWeightLabel" xml:space="preserve">

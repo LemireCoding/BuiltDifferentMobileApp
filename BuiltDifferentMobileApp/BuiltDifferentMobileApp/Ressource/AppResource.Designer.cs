@@ -304,6 +304,42 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string CoachMealsClientPlanAdd {
+            get {
+                return ResourceManager.GetString("CoachMealsClientPlanAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meal Plan.
+        /// </summary>
+        public static string CoachMealsClientPlanTitle {
+            get {
+                return ResourceManager.GetString("CoachMealsClientPlanTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string CoachMealsEdit {
+            get {
+                return ResourceManager.GetString("CoachMealsEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meals.
+        /// </summary>
+        public static string CoachMealsTitle {
+            get {
+                return ResourceManager.GetString("CoachMealsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available Coach List.
         /// </summary>
         public static string CoachSelectionAvalibleListLabel {
@@ -345,6 +381,24 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string CoachSelectionRequestButton {
             get {
                 return ResourceManager.GetString("CoachSelectionRequestButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Workout Plan.
+        /// </summary>
+        public static string CoachWorkoutClientPlanTitle {
+            get {
+                return ResourceManager.GetString("CoachWorkoutClientPlanTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Workouts.
+        /// </summary>
+        public static string CoachWorkoutTitle {
+            get {
+                return ResourceManager.GetString("CoachWorkoutTitle", resourceCulture);
             }
         }
         
