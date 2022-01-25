@@ -25,7 +25,7 @@
                     <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="{StaticResource PageBackground}" BorderColor="Transparent">
                         <StackLayout Spacing="6">
                             <StackLayout Spacing="0">
-                                <Label Text="{Binding Name}" FontSize="Title" TextColor="{StaticResource Black}"/>
+                                <Label Text="{Binding Name}" FontSize="Title" TextColor="{StaticResource Black}" AutomationId="CoachName"/>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding Gender, StringFormat='{}{0},'}" FontSize="Subtitle" />
                                     <Label Text="{Binding PlansOffered}" FontSize="Subtitle" />
@@ -49,8 +49,8 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
-                    <Button Command="{Binding RespondToCoachApplicationCommand}" Text="{Binding DenyButtonText}" CommandParameter="Deny" Grid.Row="0" Grid.Column="0"/>
-                    <Button Command="{Binding RespondToCoachApplicationCommand}" Text="{Binding ApproveButtonText}" CommandParameter="Approve" Grid.Row="0" Grid.Column="1"/>
+                    <Button Command="{Binding RespondToCoachApplicationCommand}" Text="{Binding DenyButtonText}" AutomationId="DenyCoachButton" CommandParameter="Deny" Grid.Row="0" Grid.Column="0"/>
+                    <Button Command="{Binding RespondToCoachApplicationCommand}" Text="{Binding ApproveButtonText}" AutomationId="ApproveCoachButton" CommandParameter="Approve" Grid.Row="0" Grid.Column="1"/>
                 </Grid>
             </Frame>
 
