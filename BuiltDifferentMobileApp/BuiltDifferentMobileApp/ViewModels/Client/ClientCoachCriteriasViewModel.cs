@@ -1,4 +1,5 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Ressource;
 using BuiltDifferentMobileApp.Views.Client;
 using System;
 using System.Collections.Generic;
@@ -26,16 +27,16 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         public AsyncCommand SearchCommand { get; }
         public ClientCoachCriteriasViewModel()
         {
-            CoachingTypes = new List<string> {"Workouts and Meals", "Workouts","Meals"};
-            Genders = new List<string> { "Male", "Female" };
+            CoachingTypes = new List<string> {AppResource.ClientCoachCriteriaCoachingTypesBoth, AppResource.ClientCoachCriteriaCoachingTypesWorkouts, AppResource.ClientCoachCriteriaCoachingTypesMeals };
+            Genders = new List<string> { AppResource.ClientCoachCriteriaCoachingGenderM, AppResource.ClientCoachCriteriaCoachingGenderF, AppResource.ClientCoachCriteriaCoachingGenderPNTS };
             SearchCommand = new AsyncCommand(SearchCoach);
         }
 
         public async Task SearchCoach()
         {
-            if(CoachingType == "Workouts and Meals")
+            if(CoachingType == AppResource.ClientCoachCriteriaCoachingTypesBoth)
             {
-                CoachingType = "both";
+                CoachingType = "Both";
             }
            await Application.Current.MainPage.Navigation.PushAsync(new ClientCoachSelectionPage(CoachName, Gender.ToLower(), CoachingType.ToLower()));
         }

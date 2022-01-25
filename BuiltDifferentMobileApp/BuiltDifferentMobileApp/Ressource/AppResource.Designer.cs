@@ -205,11 +205,92 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Workout Saved..
+        /// </summary>
+        public static string AddWorkoutSaved {
+            get {
+                return ResourceManager.GetString("AddWorkoutSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cardio.
+        /// </summary>
+        public static string AddWorkoutTypeCardio {
+            get {
+                return ResourceManager.GetString("AddWorkoutTypeCardio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warm Up.
+        /// </summary>
+        public static string AddWorkoutTypeWarmUp {
+            get {
+                return ResourceManager.GetString("AddWorkoutTypeWarmUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weight Training.
+        /// </summary>
+        public static string AddWorkoutTypeWeightTraining {
+            get {
+                return ResourceManager.GetString("AddWorkoutTypeWeightTraining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Approve.
+        /// </summary>
+        public static string AdminCoachApprovalApprove {
+            get {
+                return ResourceManager.GetString("AdminCoachApprovalApprove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deny.
+        /// </summary>
+        public static string AdminCoachApprovalDeny {
+            get {
+                return ResourceManager.GetString("AdminCoachApprovalDeny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to   , .
         /// </summary>
         public static string AdminCoachApprovalGender {
             get {
                 return ResourceManager.GetString("AdminCoachApprovalGender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Returning to previous page..
+        /// </summary>
+        public static string AdminCoachApprovalNoProfileMessage {
+            get {
+                return ResourceManager.GetString("AdminCoachApprovalNoProfileMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not load coach&apos;s profile!.
+        /// </summary>
+        public static string AdminCoachApprovalNoProfileTitle {
+            get {
+                return ResourceManager.GetString("AdminCoachApprovalNoProfileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plans: .
+        /// </summary>
+        public static string AdminCoachApprovalPlansOfferedTitle {
+            get {
+                return ResourceManager.GetString("AdminCoachApprovalPlansOfferedTitle", resourceCulture);
             }
         }
         
@@ -282,6 +363,60 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string BadRequest {
             get {
                 return ResourceManager.GetString("BadRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Female.
+        /// </summary>
+        public static string ClientCoachCriteriaCoachingGenderF {
+            get {
+                return ResourceManager.GetString("ClientCoachCriteriaCoachingGenderF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Male.
+        /// </summary>
+        public static string ClientCoachCriteriaCoachingGenderM {
+            get {
+                return ResourceManager.GetString("ClientCoachCriteriaCoachingGenderM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prefer Not To Say.
+        /// </summary>
+        public static string ClientCoachCriteriaCoachingGenderPNTS {
+            get {
+                return ResourceManager.GetString("ClientCoachCriteriaCoachingGenderPNTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Workouts and Meals.
+        /// </summary>
+        public static string ClientCoachCriteriaCoachingTypesBoth {
+            get {
+                return ResourceManager.GetString("ClientCoachCriteriaCoachingTypesBoth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Workouts.
+        /// </summary>
+        public static string ClientCoachCriteriaCoachingTypesMeals {
+            get {
+                return ResourceManager.GetString("ClientCoachCriteriaCoachingTypesMeals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meals.
+        /// </summary>
+        public static string ClientCoachCriteriaCoachingTypesWorkouts {
+            get {
+                return ResourceManager.GetString("ClientCoachCriteriaCoachingTypesWorkouts", resourceCulture);
             }
         }
         
@@ -592,11 +727,38 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Meal Updated..
+        /// </summary>
+        public static string EditMealSaved {
+            get {
+                return ResourceManager.GetString("EditMealSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Workout Not Found. Please try again.
+        /// </summary>
+        public static string EditWorkoutNotFoundMessage {
+            get {
+                return ResourceManager.GetString("EditWorkoutNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Workout.
         /// </summary>
         public static string EditWorkoutPageTitle {
             get {
                 return ResourceManager.GetString("EditWorkoutPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Workout Updated..
+        /// </summary>
+        public static string EditWorkoutSaved {
+            get {
+                return ResourceManager.GetString("EditWorkoutSaved", resourceCulture);
             }
         }
         

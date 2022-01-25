@@ -1,4 +1,5 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Ressource;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using Newtonsoft.Json;
 using System;
@@ -44,10 +45,10 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 
             Types = new ObservableRangeCollection<string>
         {
-            "Breakfast",
-            "Lunch",
-            "Dinner",
-            "Snack"
+            AppResource.AddMealViewModelBreakfast,
+            AppResource.AddMealViewModelLunch,
+            AppResource.AddMealViewModelDinner,
+            AppResource.AddMealViewModelSnack
         };
 
         }
@@ -71,7 +72,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
         {
             if (string.IsNullOrEmpty(MealName) || string.IsNullOrEmpty(MealType))
             {
-                await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelFieldIssueTitle, AppResource.ViewModelFieldIssueMessage, "OK");
                 return;
             }
 
@@ -85,7 +86,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 
             if (httpCode == System.Net.HttpStatusCode.OK)
             {
-                await Application.Current.MainPage.DisplayAlert("Good", "Meal Updated", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelSuccessTitle, AppResource.EditMealSaved, "OK");
                 await AppShell.Current.GoToAsync("..");
             }
 

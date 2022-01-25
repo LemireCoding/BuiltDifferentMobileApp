@@ -177,6 +177,18 @@
     <value> Sets</value>
     <comment>8-AddWorkoutPage</comment>
   </data>
+  <data name="AddWorkoutSaved" xml:space="preserve">
+    <value>Workout Saved.</value>
+  </data>
+  <data name="AddWorkoutTypeCardio" xml:space="preserve">
+    <value>Cardio</value>
+  </data>
+  <data name="AddWorkoutTypeWarmUp" xml:space="preserve">
+    <value>Warm Up</value>
+  </data>
+  <data name="AddWorkoutTypeWeightTraining" xml:space="preserve">
+    <value>Weight Training</value>
+  </data>
   <data name="AdminCoachApprovalGender" xml:space="preserve">
     <value>  , </value>
     <comment>15-AdminCoachApprovalProfilePage</comment>
@@ -212,6 +224,24 @@
   <data name="BadRequest" xml:space="preserve">
     <value>The server could not parse your request. Please report this bug.</value>
     <comment>100-Alerts</comment>
+  </data>
+  <data name="ClientCoachCriteriaCoachingGenderF" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="ClientCoachCriteriaCoachingGenderM" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="ClientCoachCriteriaCoachingGenderPNTS" xml:space="preserve">
+    <value>Prefer Not To Say</value>
+  </data>
+  <data name="ClientCoachCriteriaCoachingTypesBoth" xml:space="preserve">
+    <value>Workouts and Meals</value>
+  </data>
+  <data name="ClientCoachCriteriaCoachingTypesMeals" xml:space="preserve">
+    <value>Workouts</value>
+  </data>
+  <data name="ClientCoachCriteriaCoachingTypesWorkouts" xml:space="preserve">
+    <value>Meals</value>
   </data>
   <data name="CoachAddMealCaloriesLabel" xml:space="preserve">
     <value> Calories</value>
@@ -349,9 +379,18 @@
     <value>Edit Meal</value>
     <comment>12-EditMealPage</comment>
   </data>
+  <data name="EditMealSaved" xml:space="preserve">
+    <value>Meal Updated.</value>
+  </data>
+  <data name="EditWorkoutNotFoundMessage" xml:space="preserve">
+    <value>Workout Not Found. Please try again</value>
+  </data>
   <data name="EditWorkoutPageTitle" xml:space="preserve">
     <value>Edit Workout</value>
     <comment>13-WorkoutEditPage</comment>
+  </data>
+  <data name="EditWorkoutSaved" xml:space="preserve">
+    <value>Workout Updated.</value>
   </data>
   <data name="EmailPlaceholder" xml:space="preserve">
     <value>Email</value>
