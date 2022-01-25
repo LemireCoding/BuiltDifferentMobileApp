@@ -1,6 +1,7 @@
 ﻿using BuiltDifferentMobileApp.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -13,10 +14,13 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices {
         Task<TResult> GetAsync<TResult>(string uri);
         Task<bool> DeleteAsync(string uri);
         Task<TResult> PutAsync<TResult>(string uri, object data);
-        Task<TResult> PostAsync<TResult>(string uri, object data);
+        Task<TResult> PostAsync<TResult>(string uri, object data, bool IsEncoded = false);
         Task<HttpStatusCode> LoginAsync(string uri, object user);
         Task<HttpStatusCode> RegisterAsync(string uri, object user);
         void RemoveJWTToken();
-        Task<HttpStatusCode> PostAsyncHttpResponseMessage(string uri, object data);
+        Task<HttpStatusCode> PostAsyncHttpResponseMessage(string uri, object data, bool IsEncoded = false);
+        Task<HttpStatusCode> PutAsyncHttpResponseMessage(string uri, object obj);
+        Task UpdateCurrentUser();
+        Task<Stream> GetStreamAsync(string uri);
     }
 }

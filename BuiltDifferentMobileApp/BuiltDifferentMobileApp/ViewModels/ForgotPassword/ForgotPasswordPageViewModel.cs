@@ -87,6 +87,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
 
             if (((int)response>= 200) && ((int)response <= 299))
             {
+                ErrorText = "";
                 SuccessText = ConfirmSentEmailText;
             }
             else

@@ -126,6 +126,27 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         {
             return $"{BaseAddress}/profile/{userId}";
         }
+        public static string GetClientProfileUri(int userId)
+        {
+            return $"{BaseAddress}/profile/{userId}";
+        }
+
+
+        public static string UploadCertificationUri() {
+            return $"{BaseAddress}/certification/upload";
+        }
+
+        public static string GetCoachCertificationUri(int coachId) {
+            return $"{BaseAddress}/certification/{coachId}";
+        }
+
+        public static string GetCoachApprovalStatusUri(int coachId) {
+            return $"{BaseAddress}/certification/{coachId}/status";
+        }
+
+        public static string GetApproveDenyCoachUri(int coachId) {
+            return $"{BaseAddress}/admin/applications/{coachId}";
+        }
 
     }
 }

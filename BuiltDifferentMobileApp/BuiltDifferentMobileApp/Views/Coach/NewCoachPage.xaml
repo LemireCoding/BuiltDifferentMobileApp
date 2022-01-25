@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Coach"
+             xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
+             x:Class="BuiltDifferentMobileApp.Views.Coach.NewCoachPage"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BoolToInvertedBoolConverter x:Key="boolToInvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <RefreshView IsRefreshing="{Binding IsBusy}">
+            <Grid>
+                <StackLayout BackgroundColor="{StaticResource PageBackground}" Grid.Row="0" Grid.Column="0">
+                    <StackLayout Padding="20" Spacing="16" BackgroundColor="{StaticResource PageBackground}">
+                        <StackLayout>
+                            <Label Text="Gender" FontAttributes="Bold" />
+                            <StackLayout Orientation="Horizontal">
+                                <Picker ItemsSource="{Binding GenderPickerList}" SelectedItem="{Binding SelectedGender, Mode=TwoWay}" HorizontalOptions="Start" Title="Please select a gender"
+                                        IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="GenderPicker" />
+                                <Entry Text="{Binding OtherGender}" MaxLength="32" Placeholder="Please specify." IsVisible="{Binding OtherGenderInputVisible}"
+                                       HorizontalOptions="Start" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
+                                       AutomationId="CustomGender"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Label Text="How would you describe yourself to clients?" FontAttributes="Bold" />
+                            <Entry Text="{Binding Description}" MaxLength="250" Placeholder="I am a fun coach, always aspiring to..."
+                                   IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
+                                   AutomationId="Description"/>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Label Text="Pricing" FontAttributes="Bold"/>
+                            <Entry Text="{Binding Pricing}" Keyboard="Numeric" Placeholder="29.99" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
+                                   AutomationId="CoachPricing" />
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Label Text="What do you want to provide coaching for?" FontAttributes="Bold"/>
+                            <StackLayout Orientation="Horizontal">
+                                <CheckBox VerticalOptions="Center" IsChecked="{Binding OfferWorkouts}" Color="{StaticResource RedSecondary}"
+                                          IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
+                                          AutomationId="OfferWorkouts"/>
+                                <Label Text="Workouts" VerticalOptions="Center"/>
+                                <CheckBox VerticalOptions="Center" IsChecked="{Binding OfferMeals}" Color="{StaticResource RedSecondary}"
+                                          IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
+                                          AutomationId="OfferMeals"/>
+                                <Label Text="Meals" VerticalOptions="Center" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Vertical">
+                            <Button Text="Upload Certification (PDF)" Command="{Binding SelectCertificationFileCommand}"
+                                    IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
+                                    AutomationId="FilePicker"/>
+                            <Label Text="{Binding FileName}" HorizontalOptions="Center"/>
+                        </StackLayout>
+
+                        <Label Text="{Binding ErrorText}" HorizontalOptions="Center" TextColor="Red" AutomationId="ErrorText"/>
+                    </StackLayout>
+                    <Button Text="Confirm Account Information" VerticalOptions="EndAndExpand" CornerRadius="0" Command="{Binding SubmitFormCommand}"
+                            IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
+                            AutomationId="Submit"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="0" Grid.Column="0"
+                             BackgroundColor="#50000000"
+                             IsVisible="{Binding HasSubmittedCertification}">
+                    <Frame BorderColor="{StaticResource DarkGrey}" Margin="12,12,12,100" CornerRadius="6" VerticalOptions="CenterAndExpand">
+                        <StackLayout>
+                            <Label Text="{Binding PendingApprovalTitle}" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"/>
+                            <Label Text="{Binding PendingApprovalBody}" TextColor="Gray" HorizontalOptions="Center" />
+                            <Button Text="Check Application Status" Command="{Binding CheckIfSubmissionApprovedCommand}"
+                                    HorizontalOptions="Center" Margin="0,12,0,0"
+                                    AutomationId="CheckSubmissionStatus"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            
+            </Grid>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

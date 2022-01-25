@@ -1,11 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:admin="clr-namespace:BuiltDifferentMobileApp.ViewModels.Admin"
-             x:DataType="admin:AdminCoachApprovalProfilePageViewModel"
-             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
-             x:Class="BuiltDifferentMobileApp.Views.Admin.AdminCoachApprovalProfilePage"
-             Title="{x:Static resource:AppResource.AdminCoachApprovalProfileTitle}">
+             x:Class="BuiltDifferentMobileApp.Views.Admin.AdminApprovedCoachProfilePage"
+             Title="{Binding Title}">
+    
     <ContentPage.Content>
         <Grid>
             <ScrollView Grid.Row="0" Grid.Column="0">
@@ -16,12 +14,12 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="350"/>
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="60" />
                     </Grid.RowDefinitions>
 
                     <Image Source="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
                                    Aspect="Fill"
                                    Grid.Row="0" Grid.Column="0"/>
+
                     <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="{StaticResource PageBackground}" BorderColor="Transparent">
                         <StackLayout Spacing="6">
                             <StackLayout Spacing="0">
@@ -38,23 +36,9 @@
                     </Frame>
                 </Grid>
             </ScrollView>
-
-            <Frame Grid.Row="0" Grid.Column="0" VerticalOptions="EndAndExpand" BackgroundColor="#232323" CornerRadius="0" Padding="10">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-
-                    <Button Command="{Binding RespondToCoachApplicationCommand}" Text="{Binding DenyButtonText}" AutomationId="DenyCoachButton" CommandParameter="Deny" Grid.Row="0" Grid.Column="0"/>
-                    <Button Command="{Binding RespondToCoachApplicationCommand}" Text="{Binding ApproveButtonText}" AutomationId="ApproveCoachButton" CommandParameter="Approve" Grid.Row="0" Grid.Column="1"/>
-                </Grid>
-            </Frame>
-
+            
             <StackLayout BackgroundColor="#50000000" IsVisible="{Binding IsBusy}"></StackLayout>
         </Grid>
     </ContentPage.Content>
+    
 </ContentPage>

@@ -78,7 +78,12 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
                     await Shell.Current.GoToAsync($"//{nameof(AdminMenuPage)}");
                 }
                 else if(accountService.CurrentUserRole == AccountConstants.Coach) {
-                    await Shell.Current.GoToAsync($"//{nameof(CoachDashboardPage)}");
+                    if(((Models.Coach)accountService.CurrentUser).isVerified) {
+                        await Shell.Current.GoToAsync($"//{nameof(CoachDashboardPage)}");
+                    }
+                    else {
+                        await Shell.Current.GoToAsync($"//{nameof(NewCoachPage)}");
+                    }
                 }
                 else if(accountService.CurrentUserRole == AccountConstants.Client) {
                     await Shell.Current.GoToAsync($"//{nameof(ClientMenuPage)}");

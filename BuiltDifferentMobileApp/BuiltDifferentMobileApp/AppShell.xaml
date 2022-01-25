@@ -93,10 +93,14 @@
         COACH PAGES
     -->
 
-    <FlyoutItem Title="Clients" IsVisible="{Binding IsCoach}">
+    <FlyoutItem Title="Clients" IsVisible="{Binding IsVerifiedCoach}">
         <ShellContent Route="CoachDashboardPage" ContentTemplate="{DataTemplate coachpages:CoachDashboardPage}" />
     </FlyoutItem>
 
+    <FlyoutItem Title="Apply for approval" IsVisible="{Binding IsUnverifiedCoach}">
+        <ShellContent Route="NewCoachPage" ContentTemplate="{DataTemplate coachpages:NewCoachPage}" />
+    </FlyoutItem>
+    
     <!--
         CLIENT PAGES
     -->
@@ -127,7 +131,11 @@
     <FlyoutItem Title="Menu" IsVisible="{Binding IsAdmin}">
         <ShellContent Route="AdminMenuPage" ContentTemplate="{DataTemplate adminpages:AdminMenuPage}" />
     </FlyoutItem>
-    
+
+    <FlyoutItem Title="Verified Coaches" IsVisible="{Binding IsAdmin}">
+        <ShellContent Route="AdminApprovedCoachesPage" ContentTemplate="{DataTemplate adminpages:AdminApprovedCoachesPage}" />
+    </FlyoutItem>
+
     <FlyoutItem Title="Pending Coaches" IsVisible="{Binding IsAdmin}">
         <ShellContent Route="AdminCoachApprovalPage" ContentTemplate="{DataTemplate adminpages:AdminCoachApprovalPage}" />
     </FlyoutItem>
