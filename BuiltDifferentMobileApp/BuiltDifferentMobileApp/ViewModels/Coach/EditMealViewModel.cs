@@ -38,7 +38,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 
         public EditMealViewModel(int id)
         {
-            Title = "Edit Meal";
             this.id = id;
             FetchInfo();
             SaveCommand = new AsyncCommand(Save);

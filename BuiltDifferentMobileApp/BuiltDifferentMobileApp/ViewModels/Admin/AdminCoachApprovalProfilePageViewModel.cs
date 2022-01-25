@@ -25,7 +25,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
         public AsyncCommand<string> RespondToCoachApplicationCommand { get; set; }
 
         public AdminCoachApprovalProfilePageViewModel(int coachId) {
-            Title = "Coach Application";
+            
             CoachId = coachId;
             DenyButtonText = "Deny";
             ApproveButtonText = "Approve";

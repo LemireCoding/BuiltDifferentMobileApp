@@ -20,7 +20,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
         public AsyncCommand CoachSelectedCommand { get; set; }
 
         public AdminCoachApprovalPageViewModel() {
-            Title = "Pending Coaches";
 
             RefreshCommand = new AsyncCommand(FetchPendingCoaches);
             CoachSelectedCommand = new AsyncCommand(CoachSelected);

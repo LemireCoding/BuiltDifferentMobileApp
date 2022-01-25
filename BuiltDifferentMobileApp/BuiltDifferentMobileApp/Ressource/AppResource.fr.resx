@@ -262,10 +262,12 @@
     <comment>6-ClientCoachSelectionPage</comment>
   </data>
   <data name="CoachWorkoutClientPlanTitle" xml:space="preserve">
-    <value> Workout Plan</value>
+    <value> plan d'exercice</value>
+    <comment>11-CoachWorkoutsPage</comment>
   </data>
   <data name="CoachWorkoutTitle" xml:space="preserve">
-    <value>Workouts</value>
+    <value>Exercises</value>
+    <comment>11-CoachWorkoutsPage</comment>
   </data>
   <data name="ConfirmedPasswordPlaceholder" xml:space="preserve">
     <value>Confirmez le mot de passe</value>
@@ -282,6 +284,14 @@
   <data name="DontHaveAccountLabel" xml:space="preserve">
     <value>Vous n'avez pas de compte?</value>
     <comment>1-Login</comment>
+  </data>
+  <data name="EditMealPageTitle" xml:space="preserve">
+    <value>Modifier un repas</value>
+    <comment>12-EditMealPage</comment>
+  </data>
+  <data name="EditWorkoutPageTitle" xml:space="preserve">
+    <value>Modifier un exercise</value>
+    <comment>13-WorkoutEditPage</comment>
   </data>
   <data name="EmailPlaceholder" xml:space="preserve">
     <value>Couriel</value>

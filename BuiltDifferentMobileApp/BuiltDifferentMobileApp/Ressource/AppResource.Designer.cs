@@ -142,6 +142,51 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to   , .
+        /// </summary>
+        public static string AdminCoachApprovalGender {
+            get {
+                return ResourceManager.GetString("AdminCoachApprovalGender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coach Application.
+        /// </summary>
+        public static string AdminCoachApprovalProfileTitle {
+            get {
+                return ResourceManager.GetString("AdminCoachApprovalProfileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requests.
+        /// </summary>
+        public static string AdminCoachApprovalRequests {
+            get {
+                return ResourceManager.GetString("AdminCoachApprovalRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pending Coaches.
+        /// </summary>
+        public static string AdminCoachApprovalTitle {
+            get {
+                return ResourceManager.GetString("AdminCoachApprovalTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No pending coach requests.
+        /// </summary>
+        public static string AdminCoachNoPendingCoaches {
+            get {
+                return ResourceManager.GetString("AdminCoachNoPendingCoaches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply to be a coach.
         /// </summary>
         public static string ApplyToBeACoach {
@@ -435,6 +480,24 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string DontHaveAccountLabel {
             get {
                 return ResourceManager.GetString("DontHaveAccountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Meal.
+        /// </summary>
+        public static string EditMealPageTitle {
+            get {
+                return ResourceManager.GetString("EditMealPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Workout.
+        /// </summary>
+        public static string EditWorkoutPageTitle {
+            get {
+                return ResourceManager.GetString("EditWorkoutPageTitle", resourceCulture);
             }
         }
         

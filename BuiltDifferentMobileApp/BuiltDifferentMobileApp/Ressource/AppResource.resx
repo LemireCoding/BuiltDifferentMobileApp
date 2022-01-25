@@ -153,6 +153,26 @@
     <value>Sets</value>
     <comment>8-AddWorkoutPage</comment>
   </data>
+  <data name="AdminCoachApprovalGender" xml:space="preserve">
+    <value>  , </value>
+    <comment>15-AdminCoachApprovalProfilePage</comment>
+  </data>
+  <data name="AdminCoachApprovalProfileTitle" xml:space="preserve">
+    <value>Coach Application</value>
+    <comment>15-AdminCoachApprovalProfilePage</comment>
+  </data>
+  <data name="AdminCoachApprovalRequests" xml:space="preserve">
+    <value>Requests</value>
+    <comment>14-AdminCoachApprovalPage</comment>
+  </data>
+  <data name="AdminCoachApprovalTitle" xml:space="preserve">
+    <value>Pending Coaches</value>
+    <comment>14-AdminCoachApprovalPage</comment>
+  </data>
+  <data name="AdminCoachNoPendingCoaches" xml:space="preserve">
+    <value>No pending coach requests</value>
+    <comment>14-AdminCoachApprovalPage</comment>
+  </data>
   <data name="ApplyToBeACoach" xml:space="preserve">
     <value>Apply to be a coach</value>
     <comment>2-Register</comment>
@@ -284,6 +304,14 @@
   <data name="DontHaveAccountLabel" xml:space="preserve">
     <value>Don't have an account?</value>
     <comment>1-Login</comment>
+  </data>
+  <data name="EditMealPageTitle" xml:space="preserve">
+    <value>Edit Meal</value>
+    <comment>12-EditMealPage</comment>
+  </data>
+  <data name="EditWorkoutPageTitle" xml:space="preserve">
+    <value>Edit Workout</value>
+    <comment>13-WorkoutEditPage</comment>
   </data>
   <data name="EmailPlaceholder" xml:space="preserve">
     <value>Email</value>

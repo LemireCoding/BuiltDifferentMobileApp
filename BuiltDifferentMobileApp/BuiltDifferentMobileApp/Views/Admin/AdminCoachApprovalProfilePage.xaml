@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:admin="clr-namespace:BuiltDifferentMobileApp.ViewModels.Admin"
              x:DataType="admin:AdminCoachApprovalProfilePageViewModel"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              x:Class="BuiltDifferentMobileApp.Views.Admin.AdminCoachApprovalProfilePage"
-             Title="{Binding Title}">
+             Title="{x:Static resource:AppResource.AdminCoachApprovalProfileTitle}">
     <ContentPage.Content>
         <RefreshView IsRefreshing="{Binding IsBusy}"
                      Command="{Binding RefreshCommand}">
@@ -36,7 +37,14 @@
                                 <StackLayout Spacing="0">
                                     <Label Text="{Binding Name}" FontSize="Title" TextColor="{StaticResource Black}"/>
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Gender, StringFormat='{}{0},'}" FontSize="Subtitle" />
+                                        <Label FontSize="Subtitle" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Gender}" />
+                                                    <Span Text="{x:Static resource:AppResource.AdminCoachApprovalGender}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
                                         <Label Text="{Binding PlansOffered}" FontSize="Subtitle" />
                                     </StackLayout>
                                 </StackLayout>
