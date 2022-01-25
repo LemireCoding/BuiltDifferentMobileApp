@@ -55,9 +55,15 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
         public async Task<Stream> GetStreamAsync(string uri) {
             try {
-                Stream response = await httpClient.GetStreamAsync(uri);
+                Stream stream = null;
 
-                return response == null ? null : response;
+                var checkForSuccess = await httpClient.GetAsync(uri);
+
+                if(checkForSuccess.IsSuccessStatusCode) {
+                    stream = await httpClient.GetStreamAsync(uri);
+                }
+
+                return stream ?? null;
             } catch(OperationCanceledException) {
                 return null;
             }

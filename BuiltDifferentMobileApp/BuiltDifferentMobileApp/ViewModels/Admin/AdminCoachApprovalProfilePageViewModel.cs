@@ -80,6 +80,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
         }
 
         public async Task FetchCoachInformation() {
+            IsBusy = true;
+
             var coach = await networkService.GetAsync<Models.Coach>(APIConstants.GetCoachByIdUri(CoachId));
             var certification = await networkService.GetStreamAsync(APIConstants.GetCoachCertificationUri(CoachId));
 
@@ -113,6 +115,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
             OnPropertyChanged("Description");
             OnPropertyChanged("PlansOffered");
             OnPropertyChanged("Pricing");
+
+            IsBusy = false;
         }
 
     }
