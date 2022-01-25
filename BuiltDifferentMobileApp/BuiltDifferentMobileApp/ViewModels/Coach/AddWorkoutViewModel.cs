@@ -1,4 +1,5 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using Newtonsoft.Json;
 using System;
@@ -42,14 +43,16 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
         public bool IsCompleted { get => isCompleted; set => SetProperty(ref isCompleted, value); }
         public string VideoLink { get => videoLink; set => SetProperty(ref videoLink, value); }
 
-
+        private IAccountService accountService = AccountService.Instance;
         public List<WorkoutType> Types { get; set; }
 
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
         public AsyncCommand SaveCommand { get; }
-        public AddWorkoutViewModel()
+        public AddWorkoutViewModel(int clientId)
         {
-            
+            this.clientId = clientId;
+            var user = (Models.Coach)accountService.CurrentUser;
+            coachId = user.id;
             SaveCommand = new AsyncCommand(SaveWorkout);
             Day = DateTime.Now.Date;
             Types = new List<WorkoutType>
@@ -75,7 +78,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
                 return;
             }
 
-            var workout = new Workout(1,1, WorkoutType.Name, WorkoutName, Convert.ToInt32(Sets), Convert.ToInt32(Reps), Convert.ToInt32(Duration), Convert.ToInt32(RestTime),Day,Description, isCompleted,VideoLink);
+            var workout = new Workout(coachId, clientId, WorkoutType.Name, WorkoutName, Convert.ToInt32(Sets), Convert.ToInt32(Reps), Convert.ToInt32(Duration), Convert.ToInt32(RestTime),Day,Description, isCompleted,VideoLink);
             var result = await networkService.PostAsync<HttpResponseMessage>(APIConstants.PostWorkoutUri(), workout);
             var httpCode = result.StatusCode;
 

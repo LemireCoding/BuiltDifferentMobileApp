@@ -1,4 +1,5 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using Newtonsoft.Json;
 using System;
@@ -13,6 +14,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 {
     public class AddMealViewModel : ViewModelBase
     {
+        private int id;
+        private int coachId;
+        private int clientId;
         private string mealName;
         public string MealName { get => mealName; set => SetProperty(ref mealName, value); }
         private string mealType;
@@ -33,11 +37,13 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
         public string ImageLink { get => imageLink; set => SetProperty(ref imageLink, value); }
         public Xamarin.CommunityToolkit.ObjectModel.AsyncCommand SaveCommand { get; }
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
-
+        private IAccountService accountService = AccountService.Instance;
         public ObservableRangeCollection<string> Types { get; set; }
-        public AddMealViewModel()
+        public AddMealViewModel(int clientId)
         {
-
+            this.clientId = clientId;
+            var user = (Models.Coach)accountService.CurrentUser;
+            coachId = user.id;
             Title = "Add Meal";
             SaveCommand = new AsyncCommand(SaveMeal);
             Types = new ObservableRangeCollection<string>
@@ -64,7 +70,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
             //empty strings for receipe and image link
             //must have receipe and image link filled
 
-            var meal = new  MealDTO(1,1,MealName, MealType, Calories, Protein, Carbs, Fat, "recipe", "imagelink.com", Day, false);
+            var meal = new  MealDTO(clientId,coachId,MealName, MealType, Calories, Protein, Carbs, Fat, "recipe", "imagelink.com", Day, false);
             var test = JsonConvert.SerializeObject(meal);
             var result = await networkService.PostAsync<HttpResponseMessage>(APIConstants.PostMealUri(), meal);
             var httpCode = result.StatusCode;
