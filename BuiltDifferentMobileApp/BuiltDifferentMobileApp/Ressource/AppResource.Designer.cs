@@ -241,6 +241,69 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Board.
+        /// </summary>
+        public static string CoachDashboardBoard {
+            get {
+                return ResourceManager.GetString("CoachDashboardBoard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string CoachDashboardClientName {
+            get {
+                return ResourceManager.GetString("CoachDashboardClientName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily Progress.
+        /// </summary>
+        public static string CoachDashboardClientProgress {
+            get {
+                return ResourceManager.GetString("CoachDashboardClientProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # of clients.
+        /// </summary>
+        public static string CoachDashboardNumOfClient {
+            get {
+                return ResourceManager.GetString("CoachDashboardNumOfClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search clients.
+        /// </summary>
+        public static string CoachDashboardSearchClients {
+            get {
+                return ResourceManager.GetString("CoachDashboardSearchClients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clients.
+        /// </summary>
+        public static string CoachDashboardTitle {
+            get {
+                return ResourceManager.GetString("CoachDashboardTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Clients.
+        /// </summary>
+        public static string CoachDashboardYourClients {
+            get {
+                return ResourceManager.GetString("CoachDashboardYourClients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available Coach List.
         /// </summary>
         public static string CoachSelectionAvalibleListLabel {

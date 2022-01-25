@@ -197,6 +197,34 @@
     <value>Meal Type</value>
     <comment>7-AddMealPage</comment>
   </data>
+  <data name="CoachDashboardBoard" xml:space="preserve">
+    <value>Board</value>
+    <comment>9-CoachDashboardPage</comment>
+  </data>
+  <data name="CoachDashboardClientName" xml:space="preserve">
+    <value>Name</value>
+    <comment>9-CoachDashboardPage</comment>
+  </data>
+  <data name="CoachDashboardClientProgress" xml:space="preserve">
+    <value>Daily Progress</value>
+    <comment>9-CoachDashboardPage</comment>
+  </data>
+  <data name="CoachDashboardNumOfClient" xml:space="preserve">
+    <value># of clients</value>
+    <comment>9-CoachDashboardPage</comment>
+  </data>
+  <data name="CoachDashboardSearchClients" xml:space="preserve">
+    <value>Search clients</value>
+    <comment>9-CoachDashboardPage</comment>
+  </data>
+  <data name="CoachDashboardTitle" xml:space="preserve">
+    <value>Clients</value>
+    <comment>9-CoachDashboardPage</comment>
+  </data>
+  <data name="CoachDashboardYourClients" xml:space="preserve">
+    <value>Your Clients</value>
+    <comment>9-CoachDashboardPage</comment>
+  </data>
   <data name="CoachSelectionAvalibleListLabel" xml:space="preserve">
     <value>Available Coach List</value>
     <comment>6-ClientCoachSelectionPage</comment>

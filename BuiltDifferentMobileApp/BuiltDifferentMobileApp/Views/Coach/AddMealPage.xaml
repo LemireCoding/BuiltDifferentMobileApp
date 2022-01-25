@@ -4,14 +4,6 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              x:Class="BuiltDifferentMobileApp.Views.Coach.AddMealPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding GoToProfile}">
-            <ToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
-            </ToolbarItem.IconImageSource>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
-    
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
