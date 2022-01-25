@@ -131,15 +131,19 @@
   </data>
   <data name="AddMealViewModelBreakfast" xml:space="preserve">
     <value>Déjeuner</value>
+    <comment>7-AddMealPage</comment>
   </data>
   <data name="AddMealViewModelDinner" xml:space="preserve">
     <value>Souper</value>
+    <comment>7-AddMealPage</comment>
   </data>
   <data name="AddMealViewModelLunch" xml:space="preserve">
-    <value>Dinner</value>
+    <value>Dîner</value>
+    <comment>7-AddMealPage</comment>
   </data>
   <data name="AddMealViewModelSnack" xml:space="preserve">
     <value>Collation</value>
+    <comment>7-AddMealPage</comment>
   </data>
   <data name="AddWorkoutPageDescription" xml:space="preserve">
     <value>Description</value>
@@ -179,30 +183,39 @@
   </data>
   <data name="AddWorkoutSaved" xml:space="preserve">
     <value>Exercise sauvegarder.</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="AddWorkoutTypeCardio" xml:space="preserve">
     <value>Cardio</value>
+    <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutTypeWarmUp" xml:space="preserve">
     <value>Échauffement</value>
+    <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutTypeWeightTraining" xml:space="preserve">
     <value>Entraînement de musculation</value>
+    <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AdminCoachApprovalApprove" xml:space="preserve">
     <value>Approvez</value>
+    <comment>16-AdminCoachApprovalPage</comment>
   </data>
   <data name="AdminCoachApprovalDeny" xml:space="preserve">
     <value>Refusez</value>
+    <comment>16-AdminCoachApprovalPage</comment>
   </data>
   <data name="AdminCoachApprovalNoProfileMessage" xml:space="preserve">
     <value>Retour à la page précédente.</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="AdminCoachApprovalNoProfileTitle" xml:space="preserve">
     <value>Impossible de charger le profil de l'entraîneur !</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="AdminCoachApprovalPlansOfferedTitle" xml:space="preserve">
     <value>Plans: </value>
+    <comment>16-AdminCoachApprovalPage</comment>
   </data>
   <data name="ApplyToBeACoach" xml:space="preserve">
     <value>Vous êtes entaineur?</value>
@@ -222,21 +235,27 @@
   </data>
   <data name="ClientCoachCriteriaCoachingGenderF" xml:space="preserve">
     <value>Femme</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
   </data>
   <data name="ClientCoachCriteriaCoachingGenderM" xml:space="preserve">
     <value>Mâle</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
   </data>
   <data name="ClientCoachCriteriaCoachingGenderPNTS" xml:space="preserve">
     <value>Préfère ne pas dire</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
   </data>
   <data name="ClientCoachCriteriaCoachingTypesBoth" xml:space="preserve">
     <value>Exercices et Repas</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
   </data>
   <data name="ClientCoachCriteriaCoachingTypesMeals" xml:space="preserve">
-    <value>Exercises</value>
+    <value>Exercices</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
   </data>
   <data name="ClientCoachCriteriaCoachingTypesWorkouts" xml:space="preserve">
     <value>Repas</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
   </data>
   <data name="CoachAddMealCaloriesLabel" xml:space="preserve">
     <value> Calories</value>
@@ -319,7 +338,7 @@
     <comment>10-CoachMealsPage</comment>
   </data>
   <data name="CoachSelectionAvalibleListLabel" xml:space="preserve">
-    <value>Available Coach List</value>
+    <value>Liste des entraîneurs disponibles</value>
     <comment>6-ClientCoachSelectionPage</comment>
   </data>
   <data name="CoachSelectionNoAvalibleListLabel" xml:space="preserve">
@@ -376,9 +395,11 @@
   </data>
   <data name="EditMealSaved" xml:space="preserve">
     <value>Repas sauvegarder.</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="EditWorkoutNotFoundMessage" xml:space="preserve">
     <value>Exercice non trouvé. Veuillez réessayer.</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="EditWorkoutPageTitle" xml:space="preserve">
     <value>Modifier un exercise</value>
@@ -386,6 +407,7 @@
   </data>
   <data name="EditWorkoutSaved" xml:space="preserve">
     <value>Exercise sauvegarder.</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="EmailPlaceholder" xml:space="preserve">
     <value>Couriel</value>

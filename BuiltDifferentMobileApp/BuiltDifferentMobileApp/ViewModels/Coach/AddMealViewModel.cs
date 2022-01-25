@@ -4,8 +4,10 @@ using BuiltDifferentMobileApp.Services.NetworkServices;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
@@ -61,10 +63,19 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
                 await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelFieldIssueTitle, AppResource.ViewModelFieldIssueMessage, "OK");
                 return;
             }
-            //default ids inserted for now
-            //empty strings for receipe and image link
-            //must have receipe and image link filled
-
+            
+            //This is to ensure the data sent is accepted by the backend 
+            if(Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.Equals("fr"))
+            {
+                if (MealType == "Déjeuner")
+                    MealType = "Breakfast";
+                else if (MealType == "Dîner")
+                    MealType = "Lunch";
+                else if (MealType == "Souper")
+                    MealType = "Dinner";
+                else if (MealType == "Collation")
+                    MealType = "Snack";
+            }
             var meal = new  MealDTO(2,1,MealName, MealType, Calories, Protein, Carbs, Fat, "recipe", "imagelink.com", Day, false);
             var test = JsonConvert.SerializeObject(meal);
             var result = await networkService.PostAsync<HttpResponseMessage>(APIConstants.PostMealUri(), meal);

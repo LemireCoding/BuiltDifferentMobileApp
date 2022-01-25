@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using BuiltDifferentMobileApp.Models;
+using System.Threading;
+using BuiltDifferentMobileApp.Ressource;
 
 namespace BuiltDifferentMobileApp.ViewModels.Client
 {
@@ -32,6 +34,16 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
         public async Task GetCoaches()
         {
+            if (Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.Equals("fr"))
+            {
+                if (CoachingType == "Exercices et Repas")
+                    CoachingType = "Both";
+                else if (CoachingType == "Exercices")
+                    CoachingType = "Workouts";
+                else if (CoachingType == "Repas")
+                    CoachingType = "Meals";
+            }
+
             var query = "";
             if(!string.IsNullOrEmpty(CoachName) || !string.IsNullOrEmpty(Gender) || !string.IsNullOrEmpty(CoachingType))
             {
@@ -44,7 +56,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
                     query = query + "gender=" + Gender + "&" + "type=" + CoachingType;
                 }
             }
-
+            
             var result = await networkService.GetAsync<ObservableRangeCollection<Models.Coach>>(APIConstants.GetAllAvailableCoach(query));
             if (result.Count == 0)
             {

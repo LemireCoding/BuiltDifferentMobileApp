@@ -4,6 +4,7 @@ using BuiltDifferentMobileApp.Views.Client;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
@@ -34,11 +35,23 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
         public async Task SearchCoach()
         {
-            if(CoachingType == AppResource.ClientCoachCriteriaCoachingTypesBoth)
+            if (Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.Equals("fr"))
             {
-                CoachingType = "Both";
-            }
-           await Application.Current.MainPage.Navigation.PushAsync(new ClientCoachSelectionPage(CoachName, Gender.ToLower(), CoachingType.ToLower()));
+                if (CoachingType == "Exercices et Repas")
+                    CoachingType = "Both";
+                else if (CoachingType == "Exercices")
+                    CoachingType = "Workouts";
+                else if (CoachingType == "Repas")
+                    CoachingType = "Meals";
+
+                if (Gender == "Mâle")
+                    Gender = "Male";
+                else if (Gender == "Femme")
+                    Gender = "Female";
+                else if (Gender == "Préfère ne pas dire")
+                    Gender = "Prefer Not To Say";
+            }            
+           await Application.Current.MainPage.Navigation.PushAsync(new ClientCoachSelectionPage(CoachName, Gender, CoachingType));
         }
     }
 }

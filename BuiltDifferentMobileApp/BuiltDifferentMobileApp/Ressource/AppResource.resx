@@ -131,15 +131,19 @@
   </data>
   <data name="AddMealViewModelBreakfast" xml:space="preserve">
     <value>Breakfast</value>
+    <comment>7-AddMealPage</comment>
   </data>
   <data name="AddMealViewModelDinner" xml:space="preserve">
     <value>Dinner</value>
+    <comment>7-AddMealPage</comment>
   </data>
   <data name="AddMealViewModelLunch" xml:space="preserve">
     <value>Lunch</value>
+    <comment>7-AddMealPage</comment>
   </data>
   <data name="AddMealViewModelSnack" xml:space="preserve">
     <value>Snack</value>
+    <comment>7-AddMealPage</comment>
   </data>
   <data name="AddWorkoutPageDescription" xml:space="preserve">
     <value>Description</value>
@@ -179,21 +183,27 @@
   </data>
   <data name="AddWorkoutSaved" xml:space="preserve">
     <value>Workout Saved.</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="AddWorkoutTypeCardio" xml:space="preserve">
     <value>Cardio</value>
+    <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutTypeWarmUp" xml:space="preserve">
     <value>Warm Up</value>
+    <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutTypeWeightTraining" xml:space="preserve">
     <value>Weight Training</value>
+    <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AdminCoachApprovalApprove" xml:space="preserve">
     <value>Approve</value>
+    <comment>16-AdminCoachApprovalPage</comment>
   </data>
   <data name="AdminCoachApprovalDeny" xml:space="preserve">
     <value>Deny</value>
+    <comment>16-AdminCoachApprovalPage</comment>
   </data>
   <data name="AdminCoachApprovalGender" xml:space="preserve">
     <value>  , </value>
@@ -201,12 +211,15 @@
   </data>
   <data name="AdminCoachApprovalNoProfileMessage" xml:space="preserve">
     <value>Returning to previous page.</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="AdminCoachApprovalNoProfileTitle" xml:space="preserve">
     <value>Could not load coach's profile!</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="AdminCoachApprovalPlansOfferedTitle" xml:space="preserve">
     <value>Plans: </value>
+    <comment>16-AdminCoachApprovalPage</comment>
   </data>
   <data name="AdminCoachApprovalProfileTitle" xml:space="preserve">
     <value>Coach Application</value>
@@ -242,21 +255,27 @@
   </data>
   <data name="ClientCoachCriteriaCoachingGenderF" xml:space="preserve">
     <value>Female</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
   </data>
   <data name="ClientCoachCriteriaCoachingGenderM" xml:space="preserve">
     <value>Male</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
   </data>
   <data name="ClientCoachCriteriaCoachingGenderPNTS" xml:space="preserve">
     <value>Prefer Not To Say</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
   </data>
   <data name="ClientCoachCriteriaCoachingTypesBoth" xml:space="preserve">
     <value>Workouts and Meals</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
   </data>
   <data name="ClientCoachCriteriaCoachingTypesMeals" xml:space="preserve">
     <value>Workouts</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
   </data>
   <data name="ClientCoachCriteriaCoachingTypesWorkouts" xml:space="preserve">
     <value>Meals</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
   </data>
   <data name="CoachAddMealCaloriesLabel" xml:space="preserve">
     <value> Calories</value>
@@ -396,9 +415,11 @@
   </data>
   <data name="EditMealSaved" xml:space="preserve">
     <value>Meal Updated.</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="EditWorkoutNotFoundMessage" xml:space="preserve">
     <value>Workout Not Found. Please try again</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="EditWorkoutPageTitle" xml:space="preserve">
     <value>Edit Workout</value>
@@ -406,6 +427,7 @@
   </data>
   <data name="EditWorkoutSaved" xml:space="preserve">
     <value>Workout Updated.</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="EmailPlaceholder" xml:space="preserve">
     <value>Email</value>

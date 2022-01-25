@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
@@ -74,6 +75,16 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
             {
                 await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelFieldIssueTitle, AppResource.ViewModelFieldIssueMessage, "OK");
                 return;
+            }
+
+            if (Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.Equals("fr"))
+            {
+                if (WorkoutType.Name == "Échauffement")
+                    WorkoutType.Name = "Warm Up";
+                else if (WorkoutType.Name == "Cardio")
+                    WorkoutType.Name = "Cardio";
+                else if (WorkoutType.Name == "Entraînement de musculation")
+                    WorkoutType.Name = "Weight Training";
             }
 
             var workout = new Workout(1,2, WorkoutType.Name, WorkoutName, Convert.ToInt32(Sets), Convert.ToInt32(Reps), Convert.ToInt32(Duration), Convert.ToInt32(RestTime),Day,Description, isCompleted,VideoLink);
