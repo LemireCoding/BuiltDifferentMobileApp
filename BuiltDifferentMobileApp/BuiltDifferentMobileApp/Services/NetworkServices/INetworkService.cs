@@ -1,6 +1,7 @@
 ﻿using BuiltDifferentMobileApp.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -20,5 +21,6 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices {
         Task<HttpStatusCode> PostAsyncHttpResponseMessage(string uri, object data, bool IsEncoded = false);
         Task<HttpStatusCode> PutAsyncHttpResponseMessage(string uri, object obj);
         Task UpdateCurrentUser();
+        Task<Stream> GetStreamAsync(string uri);
     }
 }

@@ -6,10 +6,6 @@
              x:Class="BuiltDifferentMobileApp.Views.Coach.NewCoachPage"
              Title="{Binding Title}">
 
-    <ContentPage.BindingContext>
-        <viewmodels:NewCoachPageViewModel />
-    </ContentPage.BindingContext>
-
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:BoolToInvertedBoolConverter x:Key="boolToInvertedBoolConverter" />

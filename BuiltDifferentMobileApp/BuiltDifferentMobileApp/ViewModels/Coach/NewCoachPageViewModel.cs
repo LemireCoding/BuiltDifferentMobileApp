@@ -106,19 +106,20 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             }
         }
 
-        private async Task CheckIfSubmissionApproved() {
+        public async Task CheckIfSubmissionApproved() {
+            if(!HasSubmittedCertification) return;
             IsBusy = true;
 
             var approval = await networkService.GetAsync<Models.CoachApprovalStatus>(APIConstants.GetCoachApprovalStatusUri(accountService.CurrentUser.id));
 
-            if(approval.approvalStatus == CoachApprovalStatus.APPROVED) {
+            if(approval.approvalStatus == ApprovalConstants.APPROVED) {
                 PendingApprovalTitle = ApprovalPassedTitle;
                 PendingApprovalBody = ApprovalPassedBody;
                 await networkService.UpdateCurrentUser();
                 await Task.Delay(1000);
                 await Shell.Current.GoToAsync($"//{nameof(CoachDashboardPage)}");
             }
-            else if(approval.approvalStatus == CoachApprovalStatus.DENIED) {
+            else if(approval.approvalStatus == ApprovalConstants.DENIED) {
                 PendingApprovalTitle = ApprovalDeniedTitle;
                 PendingApprovalBody = ApprovalDeniedBody;
             } else {

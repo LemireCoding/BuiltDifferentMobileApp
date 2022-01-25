@@ -6,8 +6,8 @@ namespace BuiltDifferentMobileApp.Models {
     public class CoachApprovalStatus {
         public string approvalStatus { get; set; }
 
-        public const string APPROVED = "APPROVED";
-        public const string PENDING = "PENDING";
-        public const string DENIED = "DENIED";
+        public CoachApprovalStatus(string approvalStatus) {
+            this.approvalStatus = approvalStatus;
+        }
     }
 }
