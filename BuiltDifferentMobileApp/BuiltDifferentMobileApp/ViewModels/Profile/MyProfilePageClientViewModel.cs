@@ -1,4 +1,5 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Ressource;
 using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using Newtonsoft.Json;
@@ -114,7 +115,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
                 string.IsNullOrEmpty(Name)
                 )
             {
-                await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelFieldIssueTitle, AppResource.ViewModelFieldIssueMessage, "OK");
                 return;
             }
             //default ids inserted for now
@@ -128,16 +129,16 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
             if (httpCode == System.Net.HttpStatusCode.OK)
             {
-                await Application.Current.MainPage.DisplayAlert("Success", "Profile Saved", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelSuccessTitle, AppResource.ViewModelProfileSuccessMessage, "OK");
                 await AppShell.Current.GoToAsync("..");
             }
             else if (httpCode == System.Net.HttpStatusCode.NotFound)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelErrorTitle, AppResource.ViewModelErrorMessage, "OK");
             }
             else if (httpCode == System.Net.HttpStatusCode.InternalServerError)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelErrorTitle, AppResource.ViewModelErrorMessage, "OK");
             }
             else
                 return;

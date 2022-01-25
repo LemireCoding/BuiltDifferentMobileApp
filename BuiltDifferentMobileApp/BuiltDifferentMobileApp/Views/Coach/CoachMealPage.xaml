@@ -19,7 +19,7 @@
                 </Label.FormattedText>
             </Label>
             <DatePicker HorizontalOptions="Center" Date="{Binding Day}"/>
-            <Button Text="{x:Static resource:AppResource.CoachMealsClientPlanAdd}" AutomationId="AddButton" CornerRadius="12" Margin="300,10,30,10" Command="{Binding AddCommand}" />
+            <Button Text="{x:Static resource:AppResource.CoachMealsClientPlanAdd}" AutomationId="AddButton" CornerRadius="12" Margin="200,10,30,10" Command="{Binding AddCommand}" HorizontalOptions="FillAndExpand"  VerticalOptions="CenterAndExpand"/>
             <CollectionView ItemsSource="{Binding MealGroups}"
                 IsGrouped="true">
                 <CollectionView.GroupHeaderTemplate>
@@ -74,7 +74,7 @@
                                 </behaviors:Expander.Header>
                                 <behaviors:Expander.ContentTemplate>
                                     <DataTemplate>
-                                        <StackLayout >
+                                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                             <Grid Margin="10,10,10,10">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto" />

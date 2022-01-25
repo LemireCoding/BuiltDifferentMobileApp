@@ -1,4 +1,5 @@
-﻿using BuiltDifferentMobileApp.Services.AccountServices;
+﻿using BuiltDifferentMobileApp.Ressource;
+using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using BuiltDifferentMobileApp.Views;
 using BuiltDifferentMobileApp.Views.Admin;
@@ -32,11 +33,11 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
             set => SetProperty(ref password, value);
         }
 
-        private const string AccountNotFoundText = "The email you entered does not belong to an account. Please check your email and try again.";
-        private const string IncorrectLoginText = "Sorry, your password was incorrect. Please check your password and try again.";
-        private const string LoginAttempsExceededText = "You have reached exceeded the maximum login attempts. Please try again later.";
-        private const string UnknownErrorText = "There was an unknown issue communicating with the server. Please try again later.";
-        private const string MissingInputs = "Please fill all required fields.";
+        private string AccountNotFoundText = AppResource.AccountNotFoundText;
+        private string IncorrectLoginText = AppResource.IncorrectLoginText;
+        private string LoginAttempsExceededText = AppResource.LoginAttempsExceededText;
+        private string UnknownErrorText = AppResource.UnknownErrorText;
+        private string MissingInputs = AppResource.MissingInputs;
 
         private string errorText;
         public string ErrorText {

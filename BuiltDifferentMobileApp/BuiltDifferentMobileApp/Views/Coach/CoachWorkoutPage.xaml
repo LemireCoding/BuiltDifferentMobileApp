@@ -18,19 +18,14 @@
                 </Label.FormattedText>
             </Label>
 
-
             <DatePicker HorizontalOptions="Center"  Date="{Binding Day}"  />
-            <Button Text="{x:Static resource:AppResource.CoachMealsClientPlanAdd}" AutomationId="AddButton" CornerRadius="12" Margin="300,10,30,10" Command="{Binding AddCommand}" />
+            <Button Text="{x:Static resource:AppResource.CoachMealsClientPlanAdd}" AutomationId="AddButton" CornerRadius="12"  Margin="200,10,30,10" Command="{Binding AddCommand}" HorizontalOptions="FillAndExpand"  VerticalOptions="CenterAndExpand" />
 
             <!--InsertCommand when rerteieved -->
-            <CollectionView Margin="10"
-                ItemsSource="{Binding Workouts}"
-                            >
-
-
+            <CollectionView Margin="10" ItemsSource="{Binding Workouts}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="15,15,15,15" >
+                        <Grid Margin="15,15,15,15">
                             <behaviors:Expander>
                                 <behaviors:Expander.Header>
                                     <Grid
@@ -58,30 +53,25 @@
                                 </behaviors:Expander.Header>
                                 <behaviors:Expander.ContentTemplate>
                                     <DataTemplate>
-                                        <Grid  HeightRequest="180"
-                                    Padding="4">
+                                        <Grid Padding="4" HorizontalOptions="FillAndExpand"  VerticalOptions="CenterAndExpand">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="180" />
-                                                
+                                                <RowDefinition Height="500"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="2.5*"/>
                                                 <ColumnDefinition/>
                                             </Grid.ColumnDefinitions>
                                             <Frame Padding="0" CornerRadius="10">
-                                                <WebView Source="{Binding videoLink}" 
-         HorizontalOptions="Fill" VerticalOptions="Fill"
-         IsVisible="True" />
+                                                <WebView Source="{Binding videoLink}" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="True" />
                                             </Frame>
                                             <StackLayout Margin="10,10,0,10" Grid.Column="1">
-                                            <Button
+                                                <Button
                                         AutomationId="EditButton"
                                         Text="{x:Static resource:AppResource.CoachMealsEdit}"
                                         VerticalOptions="Center"
                                         Padding="2"
                                         CornerRadius="10"
-                                                Command="{Binding Source={x:Reference TheWorkoutPage}, Path=BindingContext.EditCommand}" CommandParameter="{Binding id}"
-                                        />
+                                                Command="{Binding Source={x:Reference TheWorkoutPage}, Path=BindingContext.EditCommand}" CommandParameter="{Binding id}"/>
                                                 <Label 
                                     Grid.Column="1"
                                     HorizontalTextAlignment="Start"
@@ -120,15 +110,11 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
-
                                             </StackLayout>
-                                           
                                         </Grid>
-
                                     </DataTemplate>
                                 </behaviors:Expander.ContentTemplate>
                             </behaviors:Expander>
-
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -146,8 +132,6 @@
                     </StackLayout>
                 </CollectionView.EmptyView>
             </CollectionView>
-            
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>

@@ -61,6 +61,69 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An account already exists for the email that you have entered..
+        /// </summary>
+        public static string AccountAlreadyExists {
+            get {
+                return ResourceManager.GetString("AccountAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The email you entered does not belong to an account. Please check your email and try again..
+        /// </summary>
+        public static string AccountNotFoundText {
+            get {
+                return ResourceManager.GetString("AccountNotFoundText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meal Saved..
+        /// </summary>
+        public static string AddMealSavedTitle {
+            get {
+                return ResourceManager.GetString("AddMealSavedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Breakfast.
+        /// </summary>
+        public static string AddMealViewModelBreakfast {
+            get {
+                return ResourceManager.GetString("AddMealViewModelBreakfast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dinner.
+        /// </summary>
+        public static string AddMealViewModelDinner {
+            get {
+                return ResourceManager.GetString("AddMealViewModelDinner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lunch.
+        /// </summary>
+        public static string AddMealViewModelLunch {
+            get {
+                return ResourceManager.GetString("AddMealViewModelLunch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Snack.
+        /// </summary>
+        public static string AddMealViewModelSnack {
+            get {
+                return ResourceManager.GetString("AddMealViewModelSnack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string AddWorkoutPageDescription {
@@ -70,7 +133,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Duration (minutes).
+        ///   Looks up a localized string similar to  Duration (minutes).
         /// </summary>
         public static string AddWorkoutPageDuration {
             get {
@@ -79,7 +142,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reps.
+        ///   Looks up a localized string similar to  Reps.
         /// </summary>
         public static string AddWorkoutPageReps {
             get {
@@ -88,7 +151,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rest Time (seconds).
+        ///   Looks up a localized string similar to  Rest Time (seconds).
         /// </summary>
         public static string AddWorkoutPageRestTime {
             get {
@@ -133,7 +196,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sets.
+        ///   Looks up a localized string similar to  Sets.
         /// </summary>
         public static string AddWorkoutPageWorkoutSets {
             get {
@@ -205,7 +268,25 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Calories.
+        ///   Looks up a localized string similar to Please enter a valid email..
+        /// </summary>
+        public static string BadEmail {
+            get {
+                return ResourceManager.GetString("BadEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The server could not parse your request. Please report this bug..
+        /// </summary>
+        public static string BadRequest {
+            get {
+                return ResourceManager.GetString("BadRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Calories.
         /// </summary>
         public static string CoachAddMealCaloriesLabel {
             get {
@@ -214,7 +295,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Carbs.
+        ///   Looks up a localized string similar to  Carbs.
         /// </summary>
         public static string CoachAddMealCarbsLabel {
             get {
@@ -223,7 +304,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fat.
+        ///   Looks up a localized string similar to  Fat.
         /// </summary>
         public static string CoachAddMealFatLabel {
             get {
@@ -250,7 +331,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Protein.
+        ///   Looks up a localized string similar to  Protein.
         /// </summary>
         public static string CoachAddMealProteinLabel {
             get {
@@ -457,6 +538,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thank You!\n\n If you have signed up with us previously, we will be sending you an email shortly with a link to reset your password..
+        /// </summary>
+        public static string ConfirmSentEmailText {
+            get {
+                return ResourceManager.GetString("ConfirmSentEmailText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Find your coach and start your fitness journey as soon as possible!.
         /// </summary>
         public static string CriteriasTitleLabel {
@@ -471,6 +561,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string CurrentWeightLabel {
             get {
                 return ResourceManager.GetString("CurrentWeightLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords don&apos;t match!.
+        /// </summary>
+        public static string DifferentPasswords {
+            get {
+                return ResourceManager.GetString("DifferentPasswords", resourceCulture);
             }
         }
         
@@ -610,11 +709,38 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sorry, your password was incorrect. Please check your password and try again..
+        /// </summary>
+        public static string IncorrectLoginText {
+            get {
+                return ResourceManager.GetString("IncorrectLoginText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The email that you have entered is not valid..
+        /// </summary>
+        public static string InvalidEmail {
+            get {
+                return ResourceManager.GetString("InvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Is verified.
         /// </summary>
         public static string IsVerifiedLabel {
             get {
                 return ResourceManager.GetString("IsVerifiedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have reached exceeded the maximum login attempts. Please try again later..
+        /// </summary>
+        public static string LoginAttempsExceededText {
+            get {
+                return ResourceManager.GetString("LoginAttempsExceededText", resourceCulture);
             }
         }
         
@@ -637,11 +763,56 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please fill all required fields..
+        /// </summary>
+        public static string MissingInputs {
+            get {
+                return ResourceManager.GetString("MissingInputs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string PasswordPlaceholder {
             get {
                 return ResourceManager.GetString("PasswordPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must contain at least one digit.\n.
+        /// </summary>
+        public static string PasswordRequirementDigit {
+            get {
+                return ResourceManager.GetString("PasswordRequirementDigit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must be 8 characters long.\n.
+        /// </summary>
+        public static string PasswordRequirementsLength {
+            get {
+                return ResourceManager.GetString("PasswordRequirementsLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must contain at least one uppercase character.\n.
+        /// </summary>
+        public static string PasswordRequirementUppercase {
+            get {
+                return ResourceManager.GetString("PasswordRequirementUppercase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must contain at least one symbol..
+        /// </summary>
+        public static string PasswordRequirmentSymbol {
+            get {
+                return ResourceManager.GetString("PasswordRequirmentSymbol", resourceCulture);
             }
         }
         
@@ -687,6 +858,69 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string TypeLabel {
             get {
                 return ResourceManager.GetString("TypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was an unknown issue communicating with the server. Please try again later..
+        /// </summary>
+        public static string UnknownErrorText {
+            get {
+                return ResourceManager.GetString("UnknownErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured on the server. Please try saving again..
+        /// </summary>
+        public static string ViewModelErrorMessage {
+            get {
+                return ResourceManager.GetString("ViewModelErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string ViewModelErrorTitle {
+            get {
+                return ResourceManager.GetString("ViewModelErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please fill ALL of the fields..
+        /// </summary>
+        public static string ViewModelFieldIssueMessage {
+            get {
+                return ResourceManager.GetString("ViewModelFieldIssueMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field Error.
+        /// </summary>
+        public static string ViewModelFieldIssueTitle {
+            get {
+                return ResourceManager.GetString("ViewModelFieldIssueTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile saved..
+        /// </summary>
+        public static string ViewModelProfileSuccessMessage {
+            get {
+                return ResourceManager.GetString("ViewModelProfileSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        public static string ViewModelSuccessTitle {
+            get {
+                return ResourceManager.GetString("ViewModelSuccessTitle", resourceCulture);
             }
         }
         

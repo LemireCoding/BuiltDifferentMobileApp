@@ -122,7 +122,7 @@
     <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutPageDuration" xml:space="preserve">
-    <value>Durée</value>
+    <value> Durée</value>
     <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutPageReps" xml:space="preserve">
@@ -162,15 +162,15 @@
     <comment>3-Profile</comment>
   </data>
   <data name="CoachAddMealCaloriesLabel" xml:space="preserve">
-    <value>Calories</value>
+    <value> Calories</value>
     <comment>7-AddMealPage</comment>
   </data>
   <data name="CoachAddMealCarbsLabel" xml:space="preserve">
-    <value>Glucides</value>
+    <value> Glucides</value>
     <comment>7-AddMealPage</comment>
   </data>
   <data name="CoachAddMealFatLabel" xml:space="preserve">
-    <value>Gras</value>
+    <value> Gras</value>
     <comment>7-AddMealPage</comment>
   </data>
   <data name="CoachAddMealImageLabel" xml:space="preserve">
@@ -182,7 +182,7 @@
     <comment>7-AddMealPage</comment>
   </data>
   <data name="CoachAddMealProteinLabel" xml:space="preserve">
-    <value>Protéines</value>
+    <value> Protéines</value>
     <comment>7-AddMealPage</comment>
   </data>
   <data name="CoachAddMealRecipeLabel" xml:space="preserve">
@@ -230,7 +230,7 @@
     <comment>10-CoachMealsPage</comment>
   </data>
   <data name="CoachMealsClientPlanTitle" xml:space="preserve">
-    <value>Plan Alimentaire</value>
+    <value> plan alimentaire</value>
     <comment>10-CoachMealsPage</comment>
   </data>
   <data name="CoachMealsEdit" xml:space="preserve">
@@ -376,6 +376,15 @@
   <data name="TypeLabel" xml:space="preserve">
     <value>Type</value>
     <comment>3-Profile</comment>
+  </data>
+  <data name="ViewModelErrorTitle" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="ViewModelFieldIssue" xml:space="preserve">
+    <value>Problème de champ</value>
+  </data>
+  <data name="ViewModelSuccessTitle" xml:space="preserve">
+    <value>Succès</value>
   </data>
   <data name="WorkoutServiceLabel" xml:space="preserve">
     <value>Offre l'entraînement physique</value>

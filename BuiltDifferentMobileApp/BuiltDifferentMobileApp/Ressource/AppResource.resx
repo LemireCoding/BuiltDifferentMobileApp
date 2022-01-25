@@ -117,20 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountAlreadyExists" xml:space="preserve">
+    <value>An account already exists for the email that you have entered.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="AccountNotFoundText" xml:space="preserve">
+    <value>The email you entered does not belong to an account. Please check your email and try again.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="AddMealSavedTitle" xml:space="preserve">
+    <value>Meal Saved.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="AddMealViewModelBreakfast" xml:space="preserve">
+    <value>Breakfast</value>
+  </data>
+  <data name="AddMealViewModelDinner" xml:space="preserve">
+    <value>Dinner</value>
+  </data>
+  <data name="AddMealViewModelLunch" xml:space="preserve">
+    <value>Lunch</value>
+  </data>
+  <data name="AddMealViewModelSnack" xml:space="preserve">
+    <value>Snack</value>
+  </data>
   <data name="AddWorkoutPageDescription" xml:space="preserve">
     <value>Description</value>
     <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutPageDuration" xml:space="preserve">
-    <value>Duration (minutes)</value>
+    <value> Duration (minutes)</value>
     <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutPageReps" xml:space="preserve">
-    <value>Reps</value>
+    <value> Reps</value>
     <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutPageRestTime" xml:space="preserve">
-    <value>Rest Time (seconds)</value>
+    <value> Rest Time (seconds)</value>
     <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutPageTitle" xml:space="preserve">
@@ -150,7 +174,7 @@
     <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutPageWorkoutSets" xml:space="preserve">
-    <value>Sets</value>
+    <value> Sets</value>
     <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AdminCoachApprovalGender" xml:space="preserve">
@@ -181,16 +205,24 @@
     <value>Available for new clients?</value>
     <comment>3-Profile</comment>
   </data>
+  <data name="BadEmail" xml:space="preserve">
+    <value>Please enter a valid email.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="BadRequest" xml:space="preserve">
+    <value>The server could not parse your request. Please report this bug.</value>
+    <comment>100-Alerts</comment>
+  </data>
   <data name="CoachAddMealCaloriesLabel" xml:space="preserve">
-    <value>Calories</value>
+    <value> Calories</value>
     <comment>7-AddMealPage</comment>
   </data>
   <data name="CoachAddMealCarbsLabel" xml:space="preserve">
-    <value>Carbs</value>
+    <value> Carbs</value>
     <comment>7-AddMealPage</comment>
   </data>
   <data name="CoachAddMealFatLabel" xml:space="preserve">
-    <value>Fat</value>
+    <value> Fat</value>
     <comment>7-AddMealPage</comment>
   </data>
   <data name="CoachAddMealImageLabel" xml:space="preserve">
@@ -202,7 +234,7 @@
     <comment>7-AddMealPage</comment>
   </data>
   <data name="CoachAddMealProteinLabel" xml:space="preserve">
-    <value>Protein</value>
+    <value> Protein</value>
     <comment>7-AddMealPage</comment>
   </data>
   <data name="CoachAddMealRecipeLabel" xml:space="preserve">
@@ -293,6 +325,10 @@
     <value>Confirm Password</value>
     <comment>2-Register</comment>
   </data>
+  <data name="ConfirmSentEmailText" xml:space="preserve">
+    <value>Thank You!\n\n If you have signed up with us previously, we will be sending you an email shortly with a link to reset your password.</value>
+    <comment>100-Alerts</comment>
+  </data>
   <data name="CriteriasTitleLabel" xml:space="preserve">
     <value>Find your coach and start your fitness journey as soon as possible!</value>
     <comment>5-ClientCoachCriteriaPage</comment>
@@ -300,6 +336,10 @@
   <data name="CurrentWeightLabel" xml:space="preserve">
     <value>Current Weight</value>
     <comment>3-Profile</comment>
+  </data>
+  <data name="DifferentPasswords" xml:space="preserve">
+    <value>Passwords don't match!</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="DontHaveAccountLabel" xml:space="preserve">
     <value>Don't have an account?</value>
@@ -361,9 +401,21 @@
     <value>Gender</value>
     <comment>3-Profile</comment>
   </data>
+  <data name="IncorrectLoginText" xml:space="preserve">
+    <value>Sorry, your password was incorrect. Please check your password and try again.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>The email that you have entered is not valid.</value>
+    <comment>100-Alerts</comment>
+  </data>
   <data name="IsVerifiedLabel" xml:space="preserve">
     <value>Is verified</value>
     <comment>3-Profile</comment>
+  </data>
+  <data name="LoginAttempsExceededText" xml:space="preserve">
+    <value>You have reached exceeded the maximum login attempts. Please try again later.</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="LoginButton" xml:space="preserve">
     <value>Log In</value>
@@ -373,9 +425,29 @@
     <value>Offer meal coaching</value>
     <comment>3-Profile</comment>
   </data>
+  <data name="MissingInputs" xml:space="preserve">
+    <value>Please fill all required fields.</value>
+    <comment>100-Alerts</comment>
+  </data>
   <data name="PasswordPlaceholder" xml:space="preserve">
     <value>Password</value>
     <comment>1-Login</comment>
+  </data>
+  <data name="PasswordRequirementDigit" xml:space="preserve">
+    <value>Password must contain at least one digit.\n</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="PasswordRequirementsLength" xml:space="preserve">
+    <value>Password must be 8 characters long.\n</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="PasswordRequirementUppercase" xml:space="preserve">
+    <value>Password must contain at least one uppercase character.\n</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="PasswordRequirmentSymbol" xml:space="preserve">
+    <value>Password must contain at least one symbol.</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Your Profile</value>
@@ -396,6 +468,34 @@
   <data name="TypeLabel" xml:space="preserve">
     <value>Type</value>
     <comment>3-Profile</comment>
+  </data>
+  <data name="UnknownErrorText" xml:space="preserve">
+    <value>There was an unknown issue communicating with the server. Please try again later.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="ViewModelErrorMessage" xml:space="preserve">
+    <value>An error occured on the server. Please try saving again.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="ViewModelErrorTitle" xml:space="preserve">
+    <value>Error</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="ViewModelFieldIssueMessage" xml:space="preserve">
+    <value>Please fill ALL of the fields.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="ViewModelFieldIssueTitle" xml:space="preserve">
+    <value>Field Error</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="ViewModelProfileSuccessMessage" xml:space="preserve">
+    <value>Profile saved.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="ViewModelSuccessTitle" xml:space="preserve">
+    <value>Success</value>
+    <comment>100-Alerts</comment>
   </data>
   <data name="WorkoutServiceLabel" xml:space="preserve">
     <value>Offer workout coaching</value>
