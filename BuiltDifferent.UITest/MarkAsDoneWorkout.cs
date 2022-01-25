@@ -50,8 +50,7 @@ namespace BuiltDifferent.UITest
         }
 
         //will look at for IOS testing(will replicate what is seen on actual physical device
-
-       
+      
         [Test]
         public void Set_Workout_Done()
         {
@@ -60,7 +59,7 @@ namespace BuiltDifferent.UITest
             if (platform == Platform.Android)
             {
                 app.Tap(e => e.Id("NoResourceEntry-39"));
-                app.Tap(e => e.Id("NoResourceEntry-47"));
+                app.Tap(e => e.Id("NoResourceEntry-50"));
                 app.WaitForElement("message");
                 Assert.IsTrue(app.Query(x => x.Id("message").Text("Workout set as done")).Any());
 
