@@ -77,7 +77,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
             ErrorText = "";
 
             Dictionary<string, string> accountDetails = new Dictionary<string, string>() {
-                { "name", $"{FullName.Trim()} {FullName.Trim()}" },
+                { "name", $"{FullName.Trim()}" },
                 { "email", Email.Trim() },
                 { "password", Password },
                 { "accountType", RegisterForCoachAccount ? "coach" : "client" }

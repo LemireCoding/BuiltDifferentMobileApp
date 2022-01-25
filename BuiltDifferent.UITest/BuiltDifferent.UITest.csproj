@@ -44,6 +44,9 @@
     <Compile Include="CreateAccountTests.cs" />
     <Compile Include="MarkAsDoneMeal.cs" />
     <Compile Include="MarkAsDoneWorkout.cs" />
+    <Compile Include="CoachApplyForApprovalTests.cs" />
+    <Compile Include="ForgotPasswordTests.cs" />
+    <Compile Include="CreateAccountTests.cs" />
     <Compile Include="MealTests.cs" />
     <Compile Include="AppInitializer.cs" />
     <Compile Include="ProfileTests.cs" />

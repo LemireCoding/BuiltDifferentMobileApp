@@ -12,10 +12,16 @@ namespace BuiltDifferentMobileApp.ViewModels {
             set => SetProperty(ref isAdmin, value);
         }
 
-        private bool isCoach;
-        public bool IsCoach {
-            get => isCoach;
-            set => SetProperty(ref isCoach, value);
+        private bool isVerifiedCoach;
+        public bool IsVerifiedCoach {
+            get => isVerifiedCoach;
+            set => SetProperty(ref isVerifiedCoach, value);
+        }
+
+        private bool isUnverifiedCoach;
+        public bool IsUnverifiedCoach {
+            get => isUnverifiedCoach;
+            set => SetProperty(ref isUnverifiedCoach, value);
         }
 
         private bool isClient;
@@ -28,20 +34,29 @@ namespace BuiltDifferentMobileApp.ViewModels {
             RemoveAllUserRoles();
         }
 
-        public void UpdateUserRole(string role) {
+        public void UpdateUserRole(string role, bool verified = false) {
             if(role == AccountConstants.Coach) {
                 IsClient = false;
-                IsCoach = true;
                 IsAdmin = false;
+
+                if(verified) {
+                    IsUnverifiedCoach = false;
+                    IsVerifiedCoach = true;
+                } else {
+                    IsUnverifiedCoach = true;
+                    IsVerifiedCoach = false;
+                }
             }
             else if(role == AccountConstants.Client) {
                 IsClient = true;
-                IsCoach = false;
+                IsUnverifiedCoach = false;
+                IsVerifiedCoach = false;
                 IsAdmin = false;
             }
             else if(role == AccountConstants.Admin) {
                 IsClient = false;
-                IsCoach = false;
+                IsUnverifiedCoach = false;
+                IsVerifiedCoach = false;
                 IsAdmin = true;
             }
             else {
@@ -51,7 +66,8 @@ namespace BuiltDifferentMobileApp.ViewModels {
 
         public void RemoveAllUserRoles() {
             IsClient = false;
-            IsCoach = false;
+            IsUnverifiedCoach = false;
+            IsVerifiedCoach = false;
             IsAdmin = false;
         }
     }
