@@ -49,7 +49,7 @@
                     <StackLayout Spacing="2">
                         <Label Text="Name" />
                         <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                            <Entry Text="{Binding Name}" IsEnabled="{Binding IsEnabled}"/>
+                            <Entry Text="{Binding Name}" IsEnabled="{Binding IsEnabled}" AutomationId="NameInput"/>
                         </Frame>
                     </StackLayout>
                     <StackLayout Spacing="2">

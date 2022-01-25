@@ -12,12 +12,12 @@ namespace BuiltDifferent.UITest
 {
     [TestFixture(Platform.Android)]
     //[TestFixture(Platform.iOS)]
-    public class ProfileTests
+    public class ClientProfileTests
     {
         IApp app;
         Platform platform;
 
-        public ProfileTests(Platform platform)
+        public ClientProfileTests(Platform platform)
         {
             this.platform = platform;
         }
