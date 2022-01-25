@@ -64,7 +64,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
             //empty strings for receipe and image link
             //must have receipe and image link filled
 
-            var meal = new  MealDTO(2,1,MealName, MealType, Calories, Protein, Carbs, Fat, "recipe", "imagelink.com", Day, false);
+            var meal = new  MealDTO(1,1,MealName, MealType, Calories, Protein, Carbs, Fat, "recipe", "imagelink.com", Day, false);
             var test = JsonConvert.SerializeObject(meal);
             var result = await networkService.PostAsync<HttpResponseMessage>(APIConstants.PostMealUri(), meal);
             var httpCode = result.StatusCode;

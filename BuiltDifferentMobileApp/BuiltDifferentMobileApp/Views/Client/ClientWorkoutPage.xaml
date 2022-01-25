@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit" xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
+             x:Class="BuiltDifferentMobileApp.Views.Client.ClientWorkoutPage"
+             x:Name="TheWorkoutPageClient"
+              Title="Workouts">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BoolToColorButtonWorkoutDoneConverter x:Key="boolToColorButtonWorkoutDoneConverter" />
+
+            <converters:BoolToTextButtonWorkoutDoneConverter x:Key="boolToTextButtonWorkoutDoneConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="5,0,5,0">
+            <Label Margin="5,20,5,10" AutomationId="WorkoutTitle" Text="{Binding WorkoutPageTitle}"  FontSize="35"
+                   FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+
+
+            <DatePicker HorizontalOptions="Center"  Date="{Binding Day}"  />
+            
+
+            <!--InsertCommand when rerteieved -->
+            <CollectionView Margin="10"
+                ItemsSource="{Binding Workouts}"
+                            >
+
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="15,15,15,15" >
+                            <behaviors:Expander>
+                                <behaviors:Expander.Header>
+                                    <Grid
+                                Padding="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Label 
+                                    Grid.Column="0" 
+                                    Text="{Binding workoutName} "
+                                    FontAttributes="Bold"
+                                    FontSize="Medium" />
+                                        <!-- ="{Binding Sets, StringFormat='Sets {0}'}" -->
+                                        <Label 
+                                    Grid.Column="3"
+                                    HorizontalTextAlignment="End"
+                                    FontSize="Large"
+                                    FontFamily="FAS" 
+                                    Text="&#xf107;" />
+                                    </Grid>
+
+                                </behaviors:Expander.Header>
+                                <behaviors:Expander.ContentTemplate>
+                                    <DataTemplate>
+                                        <Grid  HeightRequest="180"
+                                    Padding="4">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="180" />
+
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2.5*"/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Frame Padding="0" CornerRadius="10">
+                                                <WebView Source="{Binding videoLink}" 
+         HorizontalOptions="Fill" VerticalOptions="Fill"
+         IsVisible="True" />
+                                            </Frame>
+                                            <StackLayout Margin="10,10,0,10" Grid.Column="1">
+                                                <Button IsEnabled="True" CornerRadius="12" BackgroundColor="{Binding isCompleted, Converter={StaticResource boolToColorButtonWorkoutDoneConverter}}" Text="{Binding isCompleted, Converter={StaticResource boolToTextButtonWorkoutDoneConverter}}" Command="{Binding Source={x:Reference TheWorkoutPageClient}, Path=BindingContext.MarkDone}" CommandParameter="{Binding id}"/>
+
+                                                <Label 
+                                    Grid.Column="1"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding sets, StringFormat='{0} Sets'} "
+                                    FontAttributes="Bold"
+                                    FontSize="Medium"/>
+                                                <!-- ="{Binding Reps, StringFormat='Sets {0}'}" -->
+                                                <Label 
+                                    Grid.Column="2"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding reps, StringFormat='{0} Reps'} "
+                                    FontAttributes="Bold"
+                                    FontSize="Medium" />
+
+                                                <Label 
+                                    Grid.Column="2"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding restTime, StringFormat='{0} Rest (s)'} "
+                                    FontAttributes="Bold"
+                                    FontSize="Medium" />
+
+                                            </StackLayout>
+
+                                        </Grid>
+
+                                    </DataTemplate>
+                                </behaviors:Expander.ContentTemplate>
+                            </behaviors:Expander>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <StackLayout HorizontalOptions="Center">
+                        <Image 
+                            IsAnimationPlaying="True"
+                            WidthRequest="200"
+                            HeightRequest="200" />
+                        <Label 
+                            Text="Wait for your Coach to add Workouts"
+                            HorizontalTextAlignment="Center"
+                            Padding="20,10,10,10"
+                            />
+                    </StackLayout>
+                </CollectionView.EmptyView>
+            </CollectionView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
