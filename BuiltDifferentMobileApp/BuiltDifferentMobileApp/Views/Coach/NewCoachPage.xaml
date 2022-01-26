@@ -62,7 +62,7 @@
                             <Label Text="{Binding FileName}" HorizontalOptions="Center"/>
                         </StackLayout>
 
-                        <Label Text="{Binding ErrorText}" HorizontalOptions="Center" TextColor="Red" AutomationId="ErrorText"/>
+                        <Label Text="{Binding ErrorText}" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Red" AutomationId="ErrorText"/>
                     </StackLayout>
                     <Button Text="Confirm Account Information" VerticalOptions="EndAndExpand" CornerRadius="0" Command="{Binding SubmitFormCommand}"
                             IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
