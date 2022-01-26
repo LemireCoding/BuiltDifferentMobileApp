@@ -112,14 +112,16 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
 
             var approval = await networkService.GetAsync<Models.CoachApprovalStatus>(APIConstants.GetCoachApprovalStatusUri(accountService.CurrentUser.id));
 
-            if(approval.approvalStatus == ApprovalConstants.APPROVED) {
+            if(approval == null) {
+                PendingApprovalTitle = ApprovalPendingTitle;
+                PendingApprovalBody = ApprovalPendingBody;
+            } else if(approval.approvalStatus == ApprovalConstants.APPROVED) {
                 PendingApprovalTitle = ApprovalPassedTitle;
                 PendingApprovalBody = ApprovalPassedBody;
                 await networkService.UpdateCurrentUser();
                 await Task.Delay(1000);
                 await Shell.Current.GoToAsync($"//{nameof(CoachDashboardPage)}");
-            }
-            else if(approval.approvalStatus == ApprovalConstants.DENIED) {
+            } else if(approval.approvalStatus == ApprovalConstants.DENIED) {
                 PendingApprovalTitle = ApprovalDeniedTitle;
                 PendingApprovalBody = ApprovalDeniedBody;
             } else {
