@@ -60,7 +60,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 
         private async Task AddMeal()
         {
-            var route = $"{nameof(AddMealPage)}";
+            var route = $"{nameof(AddMealPage)}?clientId={clientId}";
            
             await Shell.Current.GoToAsync(route);
         }
