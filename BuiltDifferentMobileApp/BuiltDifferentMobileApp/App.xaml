@@ -7,6 +7,10 @@
     -->
     <Application.Resources>
         <ResourceDictionary>
+            <OnPlatform x:Key="Recipe" x:TypeArguments="x:String">
+                <On Platform="Android" Value="recipe.ttf#fontello" />
+                <On Platform="iOS" Value="recipe" />
+            </OnPlatform>
             <Color x:Key="RedPrimary">#660708</Color>
             <Color x:Key="RedExtra">#A4161A</Color>
             <Color x:Key="RedSecondary">#BA181B</Color>

@@ -90,7 +90,21 @@
                                                FontAttributes="Bold"
                                                FontSize="Medium" />
 
-                                                    <Button IsEnabled="True" CornerRadius="12" BackgroundColor="{Binding isEaten, Converter={StaticResource boolToColorButtonMealEatenConverter}}" Text="{Binding isEaten, Converter={StaticResource boolToTextButtonMealEatenConverter}}" Command="{Binding Source={x:Reference TheMealPage}, Path=BindingContext.MarkEaten}" CommandParameter="{Binding id}"/>
+                                                    <Grid Margin="10,10,10,10">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                           
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="2*"/>
+                                                            <ColumnDefinition/>
+                                                        </Grid.ColumnDefinitions>
+                                                        
+                                                        <Button Grid.Column="0" IsEnabled="True" CornerRadius="12" BackgroundColor="{Binding isEaten, Converter={StaticResource boolToColorButtonMealEatenConverter}}" Text="{Binding isEaten, Converter={StaticResource boolToTextButtonMealEatenConverter}}" Command="{Binding Source={x:Reference TheMealPage}, Path=BindingContext.MarkEaten}" CommandParameter="{Binding id}"/>
+
+
+                                                        <Button Grid.Column="1" IsEnabled="True" FontFamily="{StaticResource Recipe}"  FontSize="30" TextColor="White" CornerRadius="12" BackgroundColor="{StaticResource RedPrimary}"  Text="&#xf15c;" x:Name="doc-text-inv" Command="{Binding Source={x:Reference TheMealPage}, Path=BindingContext.ShowRecipe}" CommandParameter="{Binding id}"/>
+                                                    </Grid>
                                                 </StackLayout>
                                             </Grid>
                                         </StackLayout>
