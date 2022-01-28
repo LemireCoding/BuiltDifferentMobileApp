@@ -4,6 +4,7 @@
              xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels"
              xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters" xmlns:login="clr-namespace:BuiltDifferentMobileApp.ViewModels.Login" x:DataType="login:LoginPageViewModel"
              x:Class="BuiltDifferentMobileApp.Views.Login.LoginPage"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              Shell.TabBarIsVisible="False"
              Shell.NavBarIsVisible="False"
              Shell.FlyoutBehavior="Disabled"
@@ -33,16 +34,16 @@
 
             <StackLayout Grid.Row="1" Grid.Column="1" Spacing="16">
                 <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                    <Entry Placeholder="Email" Keyboard="Email" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" Text="{Binding Email}" AutomationId="Email"/>
+                    <Entry Placeholder="{x:Static resource:AppResource.EmailPlaceholder}" Keyboard="Email" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" Text="{Binding Email}" AutomationId="Email"/>
                 </Frame>
                 <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                    <Entry Placeholder="Password" IsPassword="True" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" Text="{Binding Password}" AutomationId="Password"/>
+                    <Entry Placeholder="{x:Static resource:AppResource.PasswordPlaceholder}" IsPassword="True" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" Text="{Binding Password}" AutomationId="Password"/>
                 </Frame>
             </StackLayout>
 
             <StackLayout Grid.Row="2" Grid.Column="1" Padding="0" Margin="0">
-                <Button Text="Log In" CornerRadius="8" Command="{Binding LoginCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Login"/>
-                <Label Text="Forgot password?" HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" >
+                <Button Text="{x:Static resource:AppResource.LoginButton}" CornerRadius="8" Command="{Binding LoginCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Login"/>
+                <Label Text="{x:Static resource:AppResource.ForgotPasswordLabel}" HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" >
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" AutomationId="ForgotPassword"/>
                     </Label.GestureRecognizers>
@@ -54,8 +55,8 @@
                 <Label HorizontalOptions="Center" TextColor="White" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Register">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="Don't have an account? " />
-                            <Span Text="Sign up" FontAttributes="Bold" />
+                            <Span Text="{x:Static resource:AppResource.DontHaveAccountLabel}" />
+                            <Span Text="{x:Static resource:AppResource.SignUpLabel}" FontAttributes="Bold" />
                         </FormattedString>
                     </Label.FormattedText>
                     <Label.GestureRecognizers>

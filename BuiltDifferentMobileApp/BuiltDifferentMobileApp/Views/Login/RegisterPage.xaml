@@ -5,7 +5,8 @@
              xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
              x:Class="BuiltDifferentMobileApp.Views.Login.RegisterPage"
              Shell.BackgroundColor="#660708"
-             Title="{Binding Title}"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
+             Title="{x:Static resource:AppResource.SignUpLabel}"
              >
 
     <ContentPage.BindingContext>
@@ -32,22 +33,22 @@
             <StackLayout Grid.Row="0" Grid.Column="1" Spacing="16" Margin="0,5,0,0">
                 <Label Text="Built Different" HorizontalOptions="Center" FontSize="Title"/>
                 <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                    <Entry Placeholder="Full Name" Text="{Binding FullName}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="FullName"/>
+                    <Entry Placeholder="{x:Static resource:AppResource.FullNamePlaceholder}" Text="{Binding FullName}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="FullName"/>
                 </Frame>
                 <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                    <Entry Placeholder="Email" Keyboard="Email" Text="{Binding Email}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Email"/>
+                    <Entry Placeholder="{x:Static resource:AppResource.EmailPlaceholder}" Keyboard="Email" Text="{Binding Email}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Email"/>
                 </Frame>
                 <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                    <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Password"/>
+                    <Entry Placeholder="{x:Static resource:AppResource.PasswordPlaceholder}" IsPassword="True" Text="{Binding Password}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Password"/>
                 </Frame>
                 <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                    <Entry Placeholder="Confirm Password" IsPassword="True" Text="{Binding ConfirmPassword}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="ConfirmPassword"/>
+                    <Entry Placeholder="{x:Static resource:AppResource.ConfirmedPasswordPlaceholder}" IsPassword="True" Text="{Binding ConfirmPassword}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="ConfirmPassword"/>
                 </Frame>
                 <StackLayout Orientation="Horizontal" Padding="0" Margin="0" Spacing="2">
                     <CheckBox VerticalOptions="Center" IsChecked="{Binding RegisterForCoachAccount}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="RegisterAsCoach"/>
-                    <Label Text="Apply to be a Coach" VerticalOptions="Center" />
+                    <Label Text="{x:Static resource:AppResource.ApplyToBeACoach}" VerticalOptions="Center" />
                 </StackLayout>
-                <Button Text="Sign up" Command="{Binding RegisterCommand}" CornerRadius="8" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="RegisterButton"/>
+                <Button Text="{x:Static resource:AppResource.SignUpLabel}" Command="{Binding RegisterCommand}" CornerRadius="8" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="RegisterButton"/>
                 <Label Margin="0,10,0,0" TextColor="Red" HorizontalTextAlignment="Center" Text="{Binding ErrorText}" AutomationId="ErrorText"/>
             </StackLayout>
         </Grid>

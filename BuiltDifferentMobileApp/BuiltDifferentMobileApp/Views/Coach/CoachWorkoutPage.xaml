@@ -3,26 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
              x:Class="BuiltDifferentMobileApp.Views.Coach.CoachWorkoutPage"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              x:Name="TheWorkoutPage"
-             Title="Workouts">
+             Title="{x:Static resource:AppResource.CoachWorkoutTitle}">
     <ContentPage.Content >
         <StackLayout Margin="5,0,5,0">
-            <Label Margin="5,20,5,10" AutomationId="WorkoutTitle" Text="{Binding WorkoutPageTitle}"  FontSize="35"
-                   FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-
+            <Label Margin="5,20,5,10" AutomationId="WorkoutTitle" FontSize="35"
+                   FontAttributes="Bold" HorizontalTextAlignment="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding WorkoutPageTitle}" />
+                        <Span Text="{x:Static resource:AppResource.CoachWorkoutClientPlanTitle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
 
             <DatePicker HorizontalOptions="Center"  Date="{Binding Day}"  />
-            <Button Text="Add" AutomationId="AddButton" CornerRadius="12" Margin="300,10,30,10" Command="{Binding AddCommand}" />
+            <Button Text="{x:Static resource:AppResource.CoachMealsClientPlanAdd}" AutomationId="AddButton" CornerRadius="12"  Margin="200,10,30,10" Command="{Binding AddCommand}" HorizontalOptions="FillAndExpand"  VerticalOptions="CenterAndExpand" />
 
             <!--InsertCommand when rerteieved -->
-            <CollectionView Margin="10"
-                ItemsSource="{Binding Workouts}"
-                            >
-
-
+            <CollectionView Margin="10" ItemsSource="{Binding Workouts}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="15,15,15,15" >
+                        <Grid Margin="15,15,15,15">
                             <behaviors:Expander>
                                 <behaviors:Expander.Header>
                                     <Grid
@@ -50,59 +53,68 @@
                                 </behaviors:Expander.Header>
                                 <behaviors:Expander.ContentTemplate>
                                     <DataTemplate>
-                                        <Grid  HeightRequest="180"
-                                    Padding="4">
+                                        <Grid Padding="4" HorizontalOptions="FillAndExpand"  VerticalOptions="CenterAndExpand">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="180" />
-                                                
+                                                <RowDefinition Height="500"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="2.5*"/>
                                                 <ColumnDefinition/>
                                             </Grid.ColumnDefinitions>
                                             <Frame Padding="0" CornerRadius="10">
-                                                <WebView Source="{Binding videoLink}" 
-         HorizontalOptions="Fill" VerticalOptions="Fill"
-         IsVisible="True" />
+                                                <WebView Source="{Binding videoLink}" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="True" />
                                             </Frame>
                                             <StackLayout Margin="10,10,0,10" Grid.Column="1">
-                                            <Button
-                                        AutomationId="AddButton"
-                                        Text="Edit"
+                                                <Button
+                                        AutomationId="EditButton"
+                                        Text="{x:Static resource:AppResource.CoachMealsEdit}"
                                         VerticalOptions="Center"
                                         Padding="2"
                                         CornerRadius="10"
-                                                Command="{Binding Source={x:Reference TheWorkoutPage}, Path=BindingContext.EditCommand}" CommandParameter="{Binding id}"
-                                        />
+                                                Command="{Binding Source={x:Reference TheWorkoutPage}, Path=BindingContext.EditCommand}" CommandParameter="{Binding id}"/>
                                                 <Label 
                                     Grid.Column="1"
                                     HorizontalTextAlignment="Start"
-                                    Text="{Binding sets, StringFormat='{0} Sets'} "
                                     FontAttributes="Bold"
-                                    FontSize="Medium"/>
+                                    FontSize="Medium">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding sets}" />
+                                                            <Span Text="{x:Static resource:AppResource.AddWorkoutPageWorkoutSets}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                                 <!-- ="{Binding Reps, StringFormat='Sets {0}'}" -->
                                                 <Label 
                                     Grid.Column="2"
                                     HorizontalTextAlignment="Start"
-                                    Text="{Binding reps, StringFormat='{0} Reps'} "
                                     FontAttributes="Bold"
-                                    FontSize="Medium" />
+                                    FontSize="Medium" >
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding reps}" />
+                                                            <Span Text="{x:Static resource:AppResource.AddWorkoutPageReps}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
 
                                                 <Label 
                                     Grid.Column="2"
                                     HorizontalTextAlignment="Start"
-                                    Text="{Binding restTime, StringFormat='{0} Rest (s)'} "
                                     FontAttributes="Bold"
-                                    FontSize="Medium" />
-
+                                    FontSize="Medium" >
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding restTime}" />
+                                                            <Span Text="{x:Static resource:AppResource.AddWorkoutPageRestTime}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
-                                           
                                         </Grid>
-
                                     </DataTemplate>
                                 </behaviors:Expander.ContentTemplate>
                             </behaviors:Expander>
-
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -120,8 +132,6 @@
                     </StackLayout>
                 </CollectionView.EmptyView>
             </CollectionView>
-            
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>

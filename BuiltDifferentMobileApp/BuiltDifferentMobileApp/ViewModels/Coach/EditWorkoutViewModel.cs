@@ -1,4 +1,5 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Ressource;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using MvvmHelpers.Commands;
 using System;
@@ -55,9 +56,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
             Types = new List<WorkoutType>
         {
 
-            new WorkoutType("Warm Up"),
-            new WorkoutType("Cardio"),
-            new WorkoutType("Weight Training")
+            new WorkoutType(AppResource.AddWorkoutTypeWarmUp),
+            new WorkoutType(AppResource.AddWorkoutTypeCardio),
+            new WorkoutType(AppResource.AddWorkoutTypeWeightTraining)
         };
 
         }
@@ -67,7 +68,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
             var result = await networkService.GetAsync<Workout>(APIConstants.GetWorkoutsByWorkoutId(id));
             if (result == null)
             {
-                await Application.Current.MainPage.DisplayAlert("Workout Not Found", "Please try again", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelErrorTitle, AppResource.EditWorkoutNotFoundMessage, "OK");
             }
 
             EditingWorkout = new Workout(result.coachId, result.clientId, result.workoutType, result.workoutName, result.sets, result.reps, result.duration, result.restTime, result.day, result.description, result.isCompleted, result.videoLink);
@@ -95,7 +96,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
                 || string.IsNullOrEmpty(Duration)
                 || string.IsNullOrEmpty(Description))
             {
-                await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelFieldIssueTitle, AppResource.ViewModelFieldIssueMessage, "OK");
                 return;
             }
 
@@ -105,7 +106,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 
             if (httpCode == System.Net.HttpStatusCode.OK)
             {
-                await Application.Current.MainPage.DisplayAlert("Good", "Workout Saved", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelSuccessTitle, AppResource.EditWorkoutSaved, "OK");
             }
         }
     }

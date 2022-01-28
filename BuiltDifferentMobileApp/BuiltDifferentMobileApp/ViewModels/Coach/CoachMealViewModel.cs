@@ -47,7 +47,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 
         public CoachMealViewModel(string clientName, int clientId)
         {
-            MealPageTitle = $"{clientName} Meal Plan";
+            MealPageTitle = $"{clientName} ";
             this.clientId = clientId;
             EditCommand = new AsyncCommand<int>(EditMeal);
             AddCommand = new AsyncCommand(AddMeal);

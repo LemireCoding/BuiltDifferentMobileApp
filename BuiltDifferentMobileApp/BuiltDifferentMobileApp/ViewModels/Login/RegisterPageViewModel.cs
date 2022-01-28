@@ -1,4 +1,5 @@
-﻿using BuiltDifferentMobileApp.Services.NetworkServices;
+﻿using BuiltDifferentMobileApp.Ressource;
+using BuiltDifferentMobileApp.Services.NetworkServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,17 +27,17 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
             set => SetProperty(ref errorText, value);
         }
 
-        public const string BadRequest = "The server could not parse your request. Please report this bug.";
-        public const string AccountAlreadyExists = "An account already exists for the email that you have entered.";
-        public const string UnknownErrorText = "There was an unknown issue communicating with the server. Please try again later.";
-        public const string MissingInputs = "Please fill all required fields.";
-        public const string InvalidEmail = "The email that you have entered is not valid.";
-        public const string DifferentPasswords = "Passwords don't match!";
+        public string BadRequest = AppResource.BadRequest;
+        public string AccountAlreadyExists = AppResource.AccountAlreadyExists;
+        public string UnknownErrorText = AppResource.UnknownErrorText;
+        public string MissingInputs = AppResource.MissingInputs;
+        public string InvalidEmail = AppResource.InvalidEmail;
+        public string DifferentPasswords = AppResource.DifferentPasswords;
 
         public AsyncCommand RegisterCommand { get; set; }
 
         public RegisterPageViewModel() {
-            Title = "Sign up";
+            
             RegisterCommand = new AsyncCommand(Register);
 
             FullName = "";
@@ -114,19 +115,19 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
             string passwordRequirements = "";
 
             if(password.Length < 8) {
-                passwordRequirements += "Password must be 8 characters long.\n";
+                passwordRequirements += AppResource.PasswordRequirementsLength;
             }
 
             if(!password.Any(char.IsUpper)) {
-                passwordRequirements += "Password must contain at least one uppercase character.\n";
+                passwordRequirements += AppResource.PasswordRequirementUppercase;
             }
 
             if(!password.Any(char.IsDigit)) {
-                passwordRequirements += "Password must contain at least one digit.\n";
+                passwordRequirements += AppResource.PasswordRequirementDigit;
             }
 
             if(!password.Any(char.IsPunctuation) && !password.Any(char.IsSymbol)) {
-                passwordRequirements += "Password must contain at least one symbol.";
+                passwordRequirements += AppResource.PasswordRequirmentSymbol;
             }
 
             return passwordRequirements;

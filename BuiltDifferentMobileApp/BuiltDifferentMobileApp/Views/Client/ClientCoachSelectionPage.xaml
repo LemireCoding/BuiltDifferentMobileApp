@@ -1,19 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              x:Class="BuiltDifferentMobileApp.Views.Client.ClientCoachSelectionPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Profile" Command="{Binding ViewMyProfileCommand}">
-            <ToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
-            </ToolbarItem.IconImageSource>        </ToolbarItem>
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             
             <Grid BackgroundColor="{StaticResource DarkGrey}" HeightRequest="50" Padding="12">
 
-                <Label Grid.Row="0" Grid.Column="1" Text="Search Criterias" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="{x:Static resource:AppResource.ProfileTitle}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
                 <Label Grid.Row="1" Text="{Binding Gender}"
                 Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
                 <Label Grid.Row="1" Text="{Binding CoachName}"
@@ -21,13 +17,13 @@
                 <Label Grid.Row="1" Text="{Binding CoachingType}"
                 Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
             </Grid>
-            <Label Margin="5,10,5,10" AutomationId="SelectionTitle" Text="Available Coach List"  FontSize="35"
+            <Label Margin="5,10,5,10" AutomationId="SelectionTitle" Text="{x:Static resource:AppResource.CoachSelectionAvalibleListLabel}"  FontSize="35"
                    FontAttributes="Bold" HorizontalTextAlignment="Center"/>
             <CollectionView ItemsSource="{Binding Coaches}"
                                 ItemSizingStrategy="MeasureAllItems">
 
                 <CollectionView.EmptyView>
-                    <Label Text="No Coach was found corresponding to your search." />
+                    <Label Text="{x:Static resource:AppResource.CoachSelectionNoAvalibleListLabel}" />
                 </CollectionView.EmptyView>
 
                 <CollectionView.ItemTemplate>
@@ -43,15 +39,22 @@
                                             <Label Text="{Binding name}" FontAttributes="Bold"
                                         FontSize="Medium" LineBreakMode="TailTruncation" VerticalOptions="Center"/>
                                         </StackLayout>
-                                      
 
-                                        <Label 
+
+                                            <Label 
                                         Grid.Column="1"
                                                 HorizontalOptions="End"
                                             VerticalOptions="Center"
                                         FontAttributes="Bold"
-                                        FontSize="Medium" 
-                                        Text="{Binding pricing , StringFormat='{0} $/month'}" />
+                                        FontSize="Medium">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding pricing}" />
+                                                        <Span Text="{x:Static resource:AppResource.CoachSelectionPriceLabel}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            
                                     </Grid>
 
                                 </behaviors:Expander.Header>
@@ -70,7 +73,7 @@
                                             <Label Text="{Binding description}" FontSize="16"/>
                                             <StackLayout Margin="0,0,0,20" Grid.Column="1">
                                                 <Button
-                                        Text="Request"
+                                        Text="{x:Static resource:AppResource.CoachSelectionRequestButton}"
                                         VerticalOptions="Center"
                                         Padding="2"
                                         CornerRadius="10"         
@@ -94,9 +97,9 @@
 
 
                     <Grid Margin="20,10,20,10">
-                          
-                        <Label Text="Name"  Grid.Column="0" HorizontalOptions="Center" FontAttributes="Bold"/>
-                        <Label Text="Pricing" Grid.Column="1" HorizontalOptions="Center" FontAttributes="Bold"/>
+
+                        <Label Text="{x:Static resource:AppResource.FullNamePlaceholder}"  Grid.Column="0" HorizontalOptions="Center" FontAttributes="Bold"/>
+                        <Label Text="{x:Static resource:AppResource.CoachSelectionPriceTitleLabel}" Grid.Column="1" HorizontalOptions="Center" FontAttributes="Bold"/>
                     </Grid>
                        
                 </CollectionView.Header>

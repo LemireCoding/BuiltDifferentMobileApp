@@ -1,11 +1,14 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Ressource;
 using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
@@ -48,10 +51,10 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
             SaveCommand = new AsyncCommand(SaveMeal);
             Types = new ObservableRangeCollection<string>
         {
-            "Breakfast",
-            "Lunch",
-            "Dinner",
-            "Snack"
+            AppResource.AddMealViewModelBreakfast,
+            AppResource.AddMealViewModelLunch,
+            AppResource.AddMealViewModelDinner,
+            AppResource.AddMealViewModelSnack
         };
             Day = DateTime.Now.Date;
         }
@@ -63,12 +66,22 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
                 string.IsNullOrEmpty(MealType)
                 )
             {
-                await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelFieldIssueTitle, AppResource.ViewModelFieldIssueMessage, "OK");
                 return;
             }
-            //default ids inserted for now
-            //empty strings for receipe and image link
-            //must have receipe and image link filled
+            
+            //This is to ensure the data sent is accepted by the backend 
+            if(Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.Equals("fr"))
+            {
+                if (MealType == "Déjeuner")
+                    MealType = "Breakfast";
+                else if (MealType == "Dîner")
+                    MealType = "Lunch";
+                else if (MealType == "Souper")
+                    MealType = "Dinner";
+                else if (MealType == "Collation")
+                    MealType = "Snack";
+            }
 
             var meal = new  MealDTO(clientId,coachId,MealName, MealType, Calories, Protein, Carbs, Fat, "recipe", "imagelink.com", Day, false);
             var test = JsonConvert.SerializeObject(meal);
@@ -77,12 +90,12 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 
             if (httpCode == System.Net.HttpStatusCode.OK)
             {
-                await Application.Current.MainPage.DisplayAlert("Success", "Meal Saved", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelSuccessTitle, AppResource.AddMealSavedTitle, "OK");
                 await AppShell.Current.GoToAsync("..");
             }
             else if (httpCode == System.Net.HttpStatusCode.InternalServerError)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelErrorTitle, AppResource.ViewModelErrorMessage, "OK");
             }
             else
                 return;

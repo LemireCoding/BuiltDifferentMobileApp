@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:admin="clr-namespace:BuiltDifferentMobileApp.ViewModels.Admin"
              x:DataType="admin:AdminCoachApprovalProfilePageViewModel"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              x:Class="BuiltDifferentMobileApp.Views.Admin.AdminCoachApprovalProfilePage"
-             Title="{Binding Title}">
+             Title="{x:Static resource:AppResource.AdminCoachApprovalProfileTitle}">
     <ContentPage.Content>
         <Grid>
             <ScrollView Grid.Row="0" Grid.Column="0">
@@ -21,7 +22,6 @@
                     <Image Source="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
                                    Aspect="Fill"
                                    Grid.Row="0" Grid.Column="0"/>
-
                     <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="{StaticResource PageBackground}" BorderColor="Transparent">
                         <StackLayout Spacing="6">
                             <StackLayout Spacing="0">

@@ -1,8 +1,10 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Ressource;
 using BuiltDifferentMobileApp.Views.Client;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
@@ -26,18 +28,30 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         public AsyncCommand SearchCommand { get; }
         public ClientCoachCriteriasViewModel()
         {
-            CoachingTypes = new List<string> {"Workouts and Meals", "Workouts","Meals"};
-            Genders = new List<string> { "Male", "Female" };
+            CoachingTypes = new List<string> {AppResource.ClientCoachCriteriaCoachingTypesBoth, AppResource.ClientCoachCriteriaCoachingTypesWorkouts, AppResource.ClientCoachCriteriaCoachingTypesMeals };
+            Genders = new List<string> { AppResource.ClientCoachCriteriaCoachingGenderM, AppResource.ClientCoachCriteriaCoachingGenderF, AppResource.ClientCoachCriteriaCoachingGenderPNTS };
             SearchCommand = new AsyncCommand(SearchCoach);
         }
 
         public async Task SearchCoach()
         {
-            if(CoachingType == "Workouts and Meals")
+            if (Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.Equals("fr"))
             {
-                CoachingType = "both";
-            }
-           await Application.Current.MainPage.Navigation.PushAsync(new ClientCoachSelectionPage(CoachName, Gender.ToLower(), CoachingType.ToLower()));
+                if (CoachingType == "Exercices et Repas")
+                    CoachingType = "Both";
+                else if (CoachingType == "Exercices")
+                    CoachingType = "Workouts";
+                else if (CoachingType == "Repas")
+                    CoachingType = "Meals";
+
+                if (Gender == "Mâle")
+                    Gender = "Male";
+                else if (Gender == "Femme")
+                    Gender = "Female";
+                else if (Gender == "Préfère ne pas dire")
+                    Gender = "Prefer Not To Say";
+            }            
+           await Application.Current.MainPage.Navigation.PushAsync(new ClientCoachSelectionPage(CoachName, Gender, CoachingType));
         }
     }
 }
