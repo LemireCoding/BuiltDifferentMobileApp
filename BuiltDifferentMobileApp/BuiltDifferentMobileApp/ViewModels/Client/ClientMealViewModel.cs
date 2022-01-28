@@ -1,6 +1,7 @@
 ﻿using BuiltDifferentMobileApp.Models;
 using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
+using BuiltDifferentMobileApp.Views.Client;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
     {
         private int clientId;
         public AsyncCommand<int> MarkEaten { get; }
-        
+        public AsyncCommand<int> ShowRecipe { get; }
         public ObservableRangeCollection<Meal> Meals { get; set; }
         public ObservableRangeCollection<Grouping<string, Meal>> MealGroups { get; set; }
         private Meal selectedMeal;
@@ -47,7 +48,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         public ClientMealViewModel()
         {
             MarkEaten = new AsyncCommand<int>(Eaten);
-           
+            ShowRecipe = new AsyncCommand<int>(Recipe);
             var user = (Models.Client)accountService.CurrentUser;
             this.clientId = user.id;
             Day = DateTime.Now.Date;
@@ -138,6 +139,18 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
            
            
+        }
+
+
+        public async Task Recipe(int id)
+        {
+
+            var route = $"{nameof(RecipePage)}?mealId={id}";
+
+            await Shell.Current.GoToAsync(route);
+
+
+
         }
 
     }
