@@ -28,10 +28,20 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         private async void FetchInfo()
         {
             var route = APIConstants.GetMealByIdUri(mealId);
+
             var meal = await networkService.GetAsync<Meal>(route);
-            MealName = meal.mealName;
-           
-            Recipe = meal.recipe;
+            if(meal != null)
+            {
+                MealName = meal.mealName;
+
+                Recipe = meal.recipe;
+            }
+            else
+            {
+                MealName = "Meal Not Found";
+
+                Recipe = "Recipe Not Found";
+            }
            
         }
 
