@@ -58,7 +58,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
         }
         private async Task AddWorkout()
         {
-            var route = $"{nameof(AddWorkoutPage)}";
+            var route = $"{nameof(AddWorkoutPage)}?clientId={clientId}";
             await Shell.Current.GoToAsync(route);
         }
 

@@ -1,8 +1,8 @@
 ﻿using BuiltDifferentMobileApp.Models;
 using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
-using BuiltDifferentMobileApp.Views;
-using BuiltDifferentMobileApp.Views.Coach;
+using BuiltDifferentMobileApp.Views.Client;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
-namespace BuiltDifferentMobileApp.ViewModels.Coach
+namespace BuiltDifferentMobileApp.ViewModels.Client
 {
-     public class CoachMealViewModel: ViewModelBase
+    public class ClientMealViewModel : ViewModelBase
     {
         private int clientId;
-        public AsyncCommand AddCommand { get; }
-        public AsyncCommand<int> EditCommand { get; }
+        public AsyncCommand<int> MarkEaten { get; }
+        public AsyncCommand<int> ShowRecipe { get; }
         public ObservableRangeCollection<Meal> Meals { get; set; }
         public ObservableRangeCollection<Grouping<string, Meal>> MealGroups { get; set; }
         private Meal selectedMeal;
@@ -45,38 +45,21 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 
         private IAccountService accountService = AccountService.Instance;
 
-        public CoachMealViewModel(string clientName, int clientId)
+        public ClientMealViewModel()
         {
-            MealPageTitle = $"{clientName} ";
-            this.clientId = clientId;
-            EditCommand = new AsyncCommand<int>(EditMeal);
-            AddCommand = new AsyncCommand(AddMeal);
-
+            MarkEaten = new AsyncCommand<int>(Eaten);
+            ShowRecipe = new AsyncCommand<int>(Recipe);
+            var user = (Models.Client)accountService.CurrentUser;
+            this.clientId = user.id;
             Day = DateTime.Now.Date;
 
             MealGroups = new ObservableRangeCollection<Grouping<string, Meal>>();
             GetMeals();
         }
 
-        private async Task AddMeal()
-        {
-            var route = $"{nameof(AddMealPage)}?clientId={clientId}";
-           
-            await Shell.Current.GoToAsync(route);
-        }
-
-        private async Task EditMeal(int id)
-        {
-            
-            var route = $"{nameof(EditMealPage)}?id={id}";
-
-            await Shell.Current.GoToAsync(route);
-            
-        }
-
         public void CreateMealGroups()
         {
-            
+
             MealGroups.Clear();
 
             MealGroups.Add(new Grouping<string, Meal>("Breakfast", Meals.Where(x =>
@@ -89,8 +72,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
                 x.mealType.Contains("Snack"))));
 
             OnPropertyChanged("MealGroups");
-           
-            
+
+
         }
 
         public async Task GetMeals()
@@ -106,6 +89,69 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
             OnPropertyChanged("Meals");
         }
 
-        
+        public async Task Eaten(int id)
+        {
+
+            var route = APIConstants.GetMealByIdUri(id);
+            var meal = await networkService.GetAsync<Meal>(route);
+
+            if(meal.isEaten == false)
+            {
+                meal.isEaten = true;
+                var test = JsonConvert.SerializeObject(meal);
+                var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutMealUri(id), meal);
+                var httpCode = result.StatusCode;
+
+                if (httpCode == System.Net.HttpStatusCode.OK)
+                {
+                    
+                    await Application.Current.MainPage.DisplayAlert("Good", "Meal Eaten", "OK");
+                    GetMeals();
+
+
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                meal.isEaten = false;
+                var test = JsonConvert.SerializeObject(meal);
+                var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutMealUri(id), meal);
+                var httpCode = result.StatusCode;
+
+                if (httpCode == System.Net.HttpStatusCode.OK)
+                {
+                    
+                    await Application.Current.MainPage.DisplayAlert("Good", "Meal Not Eaten", "OK");
+                    GetMeals();
+
+
+                }
+                else
+                {
+                    return;
+                }
+            }
+           
+
+           
+           
+        }
+
+
+        public async Task Recipe(int id)
+        {
+
+            var route = $"{nameof(RecipePage)}?mealId={id}";
+
+            await Shell.Current.GoToAsync(route);
+
+
+
+        }
+
     }
 }
