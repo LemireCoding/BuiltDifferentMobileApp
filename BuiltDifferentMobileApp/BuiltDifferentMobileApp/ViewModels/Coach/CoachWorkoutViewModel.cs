@@ -48,7 +48,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
         public async Task GetWorkouts()
         {
             var result = await networkService.GetAsync<ObservableRangeCollection<WorkoutDTO>>(APIConstants.GetWorkoutsByClientId(clientId));
-            if (result.Count == 0)
+            if (result == null || result.Count == 0)
             {
                 return;
             }

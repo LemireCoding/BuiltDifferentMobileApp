@@ -58,7 +58,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             }
             
             var result = await networkService.GetAsync<ObservableRangeCollection<Models.Coach>>(APIConstants.GetAllAvailableCoach(query));
-            if (result.Count == 0)
+            if (result == null || result.Count == 0)
             {
                 return;
             }
