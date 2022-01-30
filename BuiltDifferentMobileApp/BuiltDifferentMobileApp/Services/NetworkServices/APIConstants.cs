@@ -13,6 +13,20 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
         private static readonly string BaseAddress = $"http://{HOST}:{PORT}/api";
 
+
+        public static string GetAllRequestsByClient(int id)
+        {
+            return $"{BaseAddress}/requests/client/{id}";
+        }
+
+
+        public static string PostRequestURI()
+        {
+            //will need to add client id , etc...
+            return $"{BaseAddress}/requests";
+        }
+
+
         /*
          *  COACH URIS
          *  All endpoints on the api are available (post delete update not listed here yet)
