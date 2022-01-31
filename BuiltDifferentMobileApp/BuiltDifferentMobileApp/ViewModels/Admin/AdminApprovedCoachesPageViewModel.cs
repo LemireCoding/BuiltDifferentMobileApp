@@ -42,7 +42,10 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
 
             var coaches = await networkService.GetAsync<List<Models.Coach>>(APIConstants.GetAllVerifiedCoaches());
 
-            if(coaches.Count > 0) {
+            if(coaches == null) {
+                Coaches = new ObservableRangeCollection<Models.Coach>();
+            }
+            else if(coaches.Count > 0) {
                 Coaches = new ObservableRangeCollection<Models.Coach>(coaches);
             } else {
                 Coaches = new ObservableRangeCollection<Models.Coach>();

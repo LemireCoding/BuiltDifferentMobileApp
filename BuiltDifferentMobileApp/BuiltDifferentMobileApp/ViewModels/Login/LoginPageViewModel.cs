@@ -38,6 +38,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
         private string LoginAttempsExceededText = AppResource.LoginAttempsExceededText;
         private string UnknownErrorText = AppResource.UnknownErrorText;
         private string MissingInputs = AppResource.MissingInputs;
+        private const string AccountSuspendedText = "This account has been suspended.";
 
         private string errorText;
         public string ErrorText {
@@ -76,29 +77,24 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
 
                 if(accountService.CurrentUserRole == AccountConstants.Admin) {
                     await Shell.Current.GoToAsync($"//{nameof(AdminMenuPage)}");
-                }
-                else if(accountService.CurrentUserRole == AccountConstants.Coach) {
+                } else if(accountService.CurrentUserRole == AccountConstants.Coach) {
                     if(((Models.Coach)accountService.CurrentUser).isVerified) {
                         await Shell.Current.GoToAsync($"//{nameof(CoachDashboardPage)}");
-                    }
-                    else {
+                    } else {
                         await Shell.Current.GoToAsync($"//{nameof(NewCoachPage)}");
                     }
-                }
-                else if(accountService.CurrentUserRole == AccountConstants.Client) {
+                } else if(accountService.CurrentUserRole == AccountConstants.Client) {
                     await Shell.Current.GoToAsync($"//{nameof(ClientMenuPage)}");
                 }
-            }
-            else if((int)response == 404) {
+            } else if((int)response == 404) {
                 ErrorText = AccountNotFoundText;
-            }
-            else if(response == HttpStatusCode.Unauthorized){
+            } else if(response == HttpStatusCode.Unauthorized) {
                 ErrorText = IncorrectLoginText;
-            }
-            else if((int)response == 429) {
+            } else if(response == HttpStatusCode.Forbidden) {
+                ErrorText = AccountSuspendedText;
+            } else if((int)response == 429) {
                 ErrorText = LoginAttempsExceededText;
-            }
-            else {
+            } else {
                 ErrorText = UnknownErrorText;
             }
 

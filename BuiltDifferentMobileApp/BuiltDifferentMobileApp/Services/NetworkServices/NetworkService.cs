@@ -1,5 +1,6 @@
 ﻿using BuiltDifferentMobileApp.Models;
 using BuiltDifferentMobileApp.Services.AccountServices;
+using BuiltDifferentMobileApp.Views.Login;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace BuiltDifferentMobileApp.Services.NetworkServices
 {
@@ -28,14 +30,20 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             httpClient.Timeout = TimeSpan.FromSeconds(15);
         }
 
-        /*
-         *  For now, we're just catching TaskCanceledException and returning null, could catch more stuff in the future
-         *  TaskCanceledException: request timed out, for example if the API is not running a request will timeout causing the app to crash
-         */
+        private async Task CheckIfSuspendedOrTokenExpired(HttpResponseMessage response) {
+            if(response.StatusCode == HttpStatusCode.Forbidden) {
+                accountService.RemoveCurrentUser();
+                await Application.Current.MainPage.DisplayAlert("Your account requires you to relogin", "You will now be returned to the login page", "OK");
+                await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+                throw new OperationCanceledException();
+            }
+        }
 
         public async Task<TResult> GetAsync<TResult>(string uri) {
             try {
                 HttpResponseMessage response = await httpClient.GetAsync(uri);
+
+                await CheckIfSuspendedOrTokenExpired(response);
 
                 string serialized = await response.Content.ReadAsStringAsync();
 
@@ -57,9 +65,11 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             try {
                 Stream stream = null;
 
-                var checkForSuccess = await httpClient.GetAsync(uri);
+                var response = await httpClient.GetAsync(uri);
 
-                if(checkForSuccess.IsSuccessStatusCode) {
+                await CheckIfSuspendedOrTokenExpired(response);
+
+                if(response.IsSuccessStatusCode) {
                     stream = await httpClient.GetStreamAsync(uri);
                 }
 
@@ -77,6 +87,8 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
                 var json = JsonConvert.SerializeObject(obj);
                 HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = await httpClient.PutAsync(uri, content);
+
+                await CheckIfSuspendedOrTokenExpired(response);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -111,6 +123,8 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
                     response = await httpClient.PostAsync(uri, (MultipartFormDataContent)data);
                 }
 
+                await CheckIfSuspendedOrTokenExpired(response);
+
                 if (response.IsSuccessStatusCode)
                 {
                     string serialized = await response.Content.ReadAsStringAsync();
@@ -133,6 +147,8 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             try
             {
                 HttpResponseMessage response = await httpClient.DeleteAsync(uri);
+
+                await CheckIfSuspendedOrTokenExpired(response);
 
                 return response.IsSuccessStatusCode;
             } catch(OperationCanceledException) {
@@ -173,9 +189,11 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
         public async Task UpdateCurrentUser() {
             try {
-                HttpResponseMessage profileResponse = await httpClient.GetAsync(APIConstants.GetLoginUri());
+                HttpResponseMessage response = await httpClient.GetAsync(APIConstants.GetLoginUri());
 
-                bool matchedAccountType = await accountService.SetCurrentUser(profileResponse);
+                await CheckIfSuspendedOrTokenExpired(response);
+
+                bool matchedAccountType = await accountService.SetCurrentUser(response);
             } catch(Exception) { }
         }
 
@@ -213,6 +231,8 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
                     response = await httpClient.PostAsync(uri, (MultipartFormDataContent)data);
                 }
 
+                await CheckIfSuspendedOrTokenExpired(response);
+
                 return response.StatusCode;
             }
             catch (OperationCanceledException)
@@ -227,6 +247,8 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
                 HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 var response = await httpClient.PutAsync(uri, content);
+
+                await CheckIfSuspendedOrTokenExpired(response);
 
                 return response.StatusCode;
             } catch(OperationCanceledException) {

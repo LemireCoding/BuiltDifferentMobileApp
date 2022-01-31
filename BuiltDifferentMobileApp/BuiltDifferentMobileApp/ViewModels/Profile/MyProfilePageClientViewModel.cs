@@ -88,6 +88,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         {
             Models.Client user = (Models.Client)accountService.CurrentUser;
             var userInfo = await networkService.GetAsync<Models.Client>(APIConstants.GetClientProfileUri(user.userId));
+
+            if(userInfo == null) return;
+
             accountService.CurrentUser = userInfo;
 
             Id = userInfo.id;

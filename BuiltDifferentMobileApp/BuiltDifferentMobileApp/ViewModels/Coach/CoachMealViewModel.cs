@@ -97,7 +97,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
         {
 
             var result = await networkService.GetAsync<ObservableRangeCollection<Meal>>(APIConstants.GetMealsByClientId(clientId));
-            if (result.Count == 0)
+            if (result == null || result.Count == 0)
             {
                 return;
             }

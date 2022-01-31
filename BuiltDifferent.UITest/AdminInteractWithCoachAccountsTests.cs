@@ -77,5 +77,27 @@ namespace BuiltDifferent.UITest {
                 return;
             }
         }
+
+        [Test]
+        public void Set_Coach_Account_Status() {
+            if(platform == Platform.Android) {
+                GoToFlyoutPage("Verified Coaches");
+                app.Tap(e => e.Text("Coach Bob"));
+
+                app.WaitForElement(x => x.Marked("SetCoachAccountStatusButton"));
+
+                string initialButtonText = app.Query(x => x.Marked("SetCoachAccountStatusButton"))[0].Text;
+
+                app.Tap(x => x.Marked("SetCoachAccountStatusButton"));
+
+                string postButtonText = app.Query(x => x.Marked("SetCoachAccountStatusButton"))[0].Text;
+
+                Assert.AreNotEqual(initialButtonText, postButtonText);
+            }
+            //if IOS
+            else {
+                return;
+            }
+        }
     }
 }
