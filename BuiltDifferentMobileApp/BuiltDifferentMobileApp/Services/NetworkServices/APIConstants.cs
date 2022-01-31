@@ -148,5 +148,9 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return $"{BaseAddress}/admin/applications/{coachId}";
         }
 
+        public static string GetUserAccountStatusUri(int userId) {
+            return $"{BaseAddress}/admin/user/{userId}/accountStatus";
+        }
+
     }
 }

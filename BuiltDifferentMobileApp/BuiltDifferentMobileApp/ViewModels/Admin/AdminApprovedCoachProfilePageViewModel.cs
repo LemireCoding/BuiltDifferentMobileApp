@@ -1,4 +1,5 @@
-﻿using BuiltDifferentMobileApp.Services.NetworkServices;
+﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Services.NetworkServices;
 using Plugin.XamarinFormsSaveOpenPDFPackage;
 using System;
 using System.Collections.Generic;
@@ -14,15 +15,18 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
         public int CoachId { get; set; }
+        public int UserId { get; set; }
 
         public string Name { get; set; }
         public string Gender { get; set; }
         public string PlansOffered { get; set; }
         public string Description { get; set; }
         public string Pricing { get; set; }
+        public bool IsSuspended { get; set; }
         public MemoryStream Certification { get; set; }
 
         public AsyncCommand ViewCoachCertificationCommand { get; set; }
+        public AsyncCommand SetSuspendedStatusCommand { get; set; }
 
         public AdminApprovedCoachProfilePageViewModel(int coachId) {
             Title = "Coach Profile";
@@ -35,8 +39,25 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
             Certification = null;
 
             ViewCoachCertificationCommand = new AsyncCommand(ViewCoachCertification);
+            SetSuspendedStatusCommand = new AsyncCommand(SetSuspendedStatus);
 
             FetchCoachInformation();
+        }
+
+        private async Task SetSuspendedStatus() {
+            IsBusy = true;
+
+            var updatedStatus = new AccountStatus(IsSuspended ? AccountStatusConstants.Active : AccountStatusConstants.Suspended);
+            var response = await networkService.PutAsync<AccountStatus>(APIConstants.GetUserAccountStatusUri(UserId), updatedStatus);
+
+            if(response == null) {
+                // DO NOTHING
+            } else {
+                IsSuspended = response.accountStatus == AccountStatusConstants.Suspended;
+                OnPropertyChanged("IsSuspended");
+            }
+
+            IsBusy = false;
         }
 
         private async Task ViewCoachCertification() {
@@ -59,6 +80,18 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
                 await Shell.Current.GoToAsync("..");
                 IsBusy = false;
                 return;
+            } else {
+                UserId = coach.userId;
+                var account = await networkService.GetAsync<AccountStatus>(APIConstants.GetUserAccountStatusUri(UserId));
+
+                if(account == null) {
+                    await Application.Current.MainPage.DisplayAlert("Could not load coach's profile!", "Returning to previous page", "OK");
+                    await Shell.Current.GoToAsync("..");
+                    IsBusy = false;
+                    return;
+                }
+
+                IsSuspended = account.accountStatus == AccountStatusConstants.Suspended;
             }
 
             Name = coach.name;
@@ -85,6 +118,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
             OnPropertyChanged("Description");
             OnPropertyChanged("PlansOffered");
             OnPropertyChanged("Pricing");
+            OnPropertyChanged("IsSuspended");
 
             IsBusy = false;
         }

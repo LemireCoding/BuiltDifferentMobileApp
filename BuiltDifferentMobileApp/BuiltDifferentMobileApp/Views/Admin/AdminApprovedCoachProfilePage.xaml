@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
              x:Class="BuiltDifferentMobileApp.Views.Admin.AdminApprovedCoachProfilePage"
              Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <converters:BoolToSetAccountStatusButtonConverter x:Key="boolToSetAccountStatusButtonConverter" />
+    </ContentPage.Resources>
     
     <ContentPage.Content>
         <Grid>
@@ -32,6 +37,7 @@
                             </StackLayout>
                             <Label Text="{Binding Description}" FontSize="Title"/>
                             <Button Text="View Certification" Command="{Binding ViewCoachCertificationCommand}" Margin="0,10,0,0" />
+                            <Button Text="{Binding IsSuspended, Converter={StaticResource boolToSetAccountStatusButtonConverter}}" Command="{Binding SetSuspendedStatusCommand}" />
                         </StackLayout>
                     </Frame>
                 </Grid>
