@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
              xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
-             x:Class="BuiltDifferentMobileApp.Views.Client.ClientCoachSelectionPage">
+             x:Class="BuiltDifferentMobileApp.Views.Client.ClientCoachSelectionPage"
+             x:Name="SelectionPage">
     <ContentPage.Content>
         <StackLayout>
             
@@ -76,7 +77,8 @@
                                         Text="{x:Static resource:AppResource.CoachSelectionRequestButton}"
                                         VerticalOptions="Center"
                                         Padding="2"
-                                        CornerRadius="10"         
+                                        CornerRadius="10"  
+                                                     Command="{Binding Source={x:Reference SelectionPage}, Path=BindingContext.SendRequest}" CommandParameter="{Binding id}"
                                         />
                                              
                                             </StackLayout>
