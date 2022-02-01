@@ -241,6 +241,24 @@
     <value>Apply to be a coach</value>
     <comment>2-Register</comment>
   </data>
+  <data name="ApprovalDeniedBody" xml:space="preserve">
+    <value>Sorry, your application has been denied</value>
+  </data>
+  <data name="ApprovalDeniedTitle" xml:space="preserve">
+    <value>Your application has been denied</value>
+  </data>
+  <data name="ApprovalPassedBody" xml:space="preserve">
+    <value>Now navigating to coach dashboard...</value>
+  </data>
+  <data name="ApprovalPassedTitle" xml:space="preserve">
+    <value>Your application has been approved</value>
+  </data>
+  <data name="ApprovalPendingBody" xml:space="preserve">
+    <value>Please wait until you have been approved or denied</value>
+  </data>
+  <data name="ApprovalPendingTitle" xml:space="preserve">
+    <value>Your application is currently pending review</value>
+  </data>
   <data name="AvailabilityLabel" xml:space="preserve">
     <value>Available for new clients?</value>
     <comment>3-Profile</comment>
@@ -252,6 +270,9 @@
   <data name="BadRequest" xml:space="preserve">
     <value>The server could not parse your request. Please report this bug.</value>
     <comment>100-Alerts</comment>
+  </data>
+  <data name="CheckApplicationStatusButton" xml:space="preserve">
+    <value>Check Application Status</value>
   </data>
   <data name="ClientCoachCriteriaCoachingGenderF" xml:space="preserve">
     <value>Female</value>
@@ -341,6 +362,12 @@
     <value>Your Clients</value>
     <comment>9-CoachDashboardPage</comment>
   </data>
+  <data name="CoachDescriptionHelpText" xml:space="preserve">
+    <value>How would you describe yourself to clients?</value>
+  </data>
+  <data name="CoachDescriptionPlaceholder" xml:space="preserve">
+    <value>I am a fun coach, always aspiring to...</value>
+  </data>
   <data name="CoachMealsClientPlanAdd" xml:space="preserve">
     <value>Add</value>
     <comment>10-CoachMealsPage</comment>
@@ -384,6 +411,12 @@
   <data name="CoachWorkoutTitle" xml:space="preserve">
     <value>Workouts</value>
     <comment>11-CoachWorkoutsPage</comment>
+  </data>
+  <data name="CompleteAccountSetup" xml:space="preserve">
+    <value>Complete Account Setup</value>
+  </data>
+  <data name="ConfirmCoachSignUpButton" xml:space="preserve">
+    <value>Confirm Account Information</value>
   </data>
   <data name="ConfirmedPasswordPlaceholder" xml:space="preserve">
     <value>Confirm Password</value>
@@ -432,6 +465,12 @@
   <data name="EmailPlaceholder" xml:space="preserve">
     <value>Email</value>
     <comment>1-Login</comment>
+  </data>
+  <data name="FemaleGender" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="FileNameTextStart" xml:space="preserve">
+    <value>File name:</value>
   </data>
   <data name="FindACoachByCriteriaGenderLabel" xml:space="preserve">
     <value>Select a gender, if you have a prefered coach gender</value>
@@ -497,13 +536,22 @@
     <value>Log In</value>
     <comment>1-Login</comment>
   </data>
+  <data name="MaleGender" xml:space="preserve">
+    <value>Male</value>
+  </data>
   <data name="MealServiceLabel" xml:space="preserve">
     <value>Offer meal coaching</value>
     <comment>3-Profile</comment>
   </data>
+  <data name="MissingCertificationError" xml:space="preserve">
+    <value>Please upload your certification.</value>
+  </data>
   <data name="MissingInputs" xml:space="preserve">
     <value>Please fill all required fields.</value>
     <comment>100-Alerts</comment>
+  </data>
+  <data name="OtherGender" xml:space="preserve">
+    <value>Other</value>
   </data>
   <data name="PasswordPlaceholder" xml:space="preserve">
     <value>Password</value>
@@ -525,6 +573,18 @@
     <value>Password must contain at least one symbol.</value>
     <comment>100-Alerts</comment>
   </data>
+  <data name="PlanOffersHelpText" xml:space="preserve">
+    <value>What do you want to provide coaching for?</value>
+  </data>
+  <data name="PleaseSelectAGender" xml:space="preserve">
+    <value>Please select a gender</value>
+  </data>
+  <data name="PleaseSelectCertification" xml:space="preserve">
+    <value>Please select your certification</value>
+  </data>
+  <data name="PricingError" xml:space="preserve">
+    <value>Please enter a valid pricing.</value>
+  </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Your Profile</value>
     <comment>3-Profile</comment>
@@ -533,9 +593,15 @@
     <value>Save</value>
     <comment>3-Profile</comment>
   </data>
+  <data name="SelectPDFError" xml:space="preserve">
+    <value>Invalid file type. Please select a PDF.</value>
+  </data>
   <data name="SignUpLabel" xml:space="preserve">
     <value>Sign up</value>
     <comment>1-Login</comment>
+  </data>
+  <data name="SpecifyGenderError" xml:space="preserve">
+    <value>Please specify your gender.</value>
   </data>
   <data name="StartWeightLabel" xml:space="preserve">
     <value>Start Weight</value>
@@ -548,6 +614,9 @@
   <data name="UnknownErrorText" xml:space="preserve">
     <value>There was an unknown issue communicating with the server. Please try again later.</value>
     <comment>100-Alerts</comment>
+  </data>
+  <data name="UploadCertificationButton" xml:space="preserve">
+    <value>Upload Certification (PDF)</value>
   </data>
   <data name="ViewModelErrorMessage" xml:space="preserve">
     <value>An error occured on the server. Please try saving again.</value>

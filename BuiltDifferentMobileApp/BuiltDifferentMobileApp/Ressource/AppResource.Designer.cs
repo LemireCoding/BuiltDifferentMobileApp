@@ -340,6 +340,60 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sorry, your application has been denied.
+        /// </summary>
+        public static string ApprovalDeniedBody {
+            get {
+                return ResourceManager.GetString("ApprovalDeniedBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your application has been denied.
+        /// </summary>
+        public static string ApprovalDeniedTitle {
+            get {
+                return ResourceManager.GetString("ApprovalDeniedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Now navigating to coach dashboard....
+        /// </summary>
+        public static string ApprovalPassedBody {
+            get {
+                return ResourceManager.GetString("ApprovalPassedBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your application has been approved.
+        /// </summary>
+        public static string ApprovalPassedTitle {
+            get {
+                return ResourceManager.GetString("ApprovalPassedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please wait until you have been approved or denied.
+        /// </summary>
+        public static string ApprovalPendingBody {
+            get {
+                return ResourceManager.GetString("ApprovalPendingBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your application is currently pending review.
+        /// </summary>
+        public static string ApprovalPendingTitle {
+            get {
+                return ResourceManager.GetString("ApprovalPendingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available for new clients?.
         /// </summary>
         public static string AvailabilityLabel {
@@ -363,6 +417,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string BadRequest {
             get {
                 return ResourceManager.GetString("BadRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check Application Status.
+        /// </summary>
+        public static string CheckApplicationStatusButton {
+            get {
+                return ResourceManager.GetString("CheckApplicationStatusButton", resourceCulture);
             }
         }
         
@@ -565,6 +628,24 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to How would you describe yourself to clients?.
+        /// </summary>
+        public static string CoachDescriptionHelpText {
+            get {
+                return ResourceManager.GetString("CoachDescriptionHelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string CoachDescriptionPlaceholder {
+            get {
+                return ResourceManager.GetString("CoachDescriptionPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string CoachMealsClientPlanAdd {
@@ -660,6 +741,24 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string CoachWorkoutTitle {
             get {
                 return ResourceManager.GetString("CoachWorkoutTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Complete Account Setup.
+        /// </summary>
+        public static string CompleteAccountSetup {
+            get {
+                return ResourceManager.GetString("CompleteAccountSetup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Account Information.
+        /// </summary>
+        public static string ConfirmCoachSignUpButton {
+            get {
+                return ResourceManager.GetString("ConfirmCoachSignUpButton", resourceCulture);
             }
         }
         
@@ -768,6 +867,24 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string EmailPlaceholder {
             get {
                 return ResourceManager.GetString("EmailPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Female.
+        /// </summary>
+        public static string FemaleGender {
+            get {
+                return ResourceManager.GetString("FemaleGender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File name:.
+        /// </summary>
+        public static string FileNameTextStart {
+            get {
+                return ResourceManager.GetString("FileNameTextStart", resourceCulture);
             }
         }
         
@@ -916,6 +1033,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Male.
+        /// </summary>
+        public static string MaleGender {
+            get {
+                return ResourceManager.GetString("MaleGender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offer meal coaching.
         /// </summary>
         public static string MealServiceLabel {
@@ -925,11 +1051,29 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please upload your certification..
+        /// </summary>
+        public static string MissingCertificationError {
+            get {
+                return ResourceManager.GetString("MissingCertificationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please fill all required fields..
         /// </summary>
         public static string MissingInputs {
             get {
                 return ResourceManager.GetString("MissingInputs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        public static string OtherGender {
+            get {
+                return ResourceManager.GetString("OtherGender", resourceCulture);
             }
         }
         
@@ -979,6 +1123,42 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to What do you want to provide coaching for?.
+        /// </summary>
+        public static string PlanOffersHelpText {
+            get {
+                return ResourceManager.GetString("PlanOffersHelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a gender.
+        /// </summary>
+        public static string PleaseSelectAGender {
+            get {
+                return ResourceManager.GetString("PleaseSelectAGender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select your certification.
+        /// </summary>
+        public static string PleaseSelectCertification {
+            get {
+                return ResourceManager.GetString("PleaseSelectCertification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid pricing..
+        /// </summary>
+        public static string PricingError {
+            get {
+                return ResourceManager.GetString("PricingError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Profile.
         /// </summary>
         public static string ProfileTitle {
@@ -997,11 +1177,29 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid file type. Please select a PDF..
+        /// </summary>
+        public static string SelectPDFError {
+            get {
+                return ResourceManager.GetString("SelectPDFError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign up.
         /// </summary>
         public static string SignUpLabel {
             get {
                 return ResourceManager.GetString("SignUpLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please specify your gender..
+        /// </summary>
+        public static string SpecifyGenderError {
+            get {
+                return ResourceManager.GetString("SpecifyGenderError", resourceCulture);
             }
         }
         
@@ -1029,6 +1227,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string UnknownErrorText {
             get {
                 return ResourceManager.GetString("UnknownErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Certification (PDF).
+        /// </summary>
+        public static string UploadCertificationButton {
+            get {
+                return ResourceManager.GetString("UploadCertificationButton", resourceCulture);
             }
         }
         
