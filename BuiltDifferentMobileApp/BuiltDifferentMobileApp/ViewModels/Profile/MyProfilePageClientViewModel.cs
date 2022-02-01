@@ -150,7 +150,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             if (httpCode == System.Net.HttpStatusCode.OK)
             {
                 await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelSuccessTitle, AppResource.ViewModelProfileSuccessMessage, "OK");
-                await AppShell.Current.GoToAsync("..");
             }
             else if (httpCode == System.Net.HttpStatusCode.NotFound)
             {

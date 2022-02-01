@@ -13,7 +13,6 @@
                    FontAttributes="Bold" HorizontalTextAlignment="Center">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="{Binding MealPageTitle}" />
                         <Span Text="{x:Static resource:AppResource.CoachMealsClientPlanTitle}" />
                     </FormattedString>
                 </Label.FormattedText>

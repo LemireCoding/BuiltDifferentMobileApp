@@ -4,7 +4,15 @@
              x:Class="BuiltDifferentMobileApp.Views.Client.ClientDashboardPage"
             xmlns:mypages="clr-namespace:BuiltDifferentMobileApp.Views.Coach;assembly=BuiltDifferentMobileApp"
             xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Coach"
+            xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
             BackgroundColor="#660708" BarBackgroundColor="#660708"
-            Title="{Binding Title}">
+            Title="{x:Static resource:AppResource.ClientDashboardTitle}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ViewMyProfileCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
+            </ToolbarItem.IconImageSource>        </ToolbarItem>
+    </ContentPage.ToolbarItems>
 
 </TabbedPage>

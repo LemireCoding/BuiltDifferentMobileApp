@@ -138,11 +138,11 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
          */
         public static string PutProfileUri(int userId)
         {
-            return $"{BaseAddress}/profile/{userId}";
+            return $"{BaseAddress}/profile";
         }
         public static string GetClientProfileUri(int userId)
         {
-            return $"{BaseAddress}/profile/{userId}";
+            return $"{BaseAddress}/profile";
         }
 
 

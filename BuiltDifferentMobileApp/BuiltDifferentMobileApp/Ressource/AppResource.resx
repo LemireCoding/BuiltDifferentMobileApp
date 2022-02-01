@@ -174,7 +174,7 @@
     <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutPageWorkoutName" xml:space="preserve">
-    <value>Exercise Name</value>
+    <value>Exercice Name</value>
     <comment>8-AddWorkoutPage</comment>
   </data>
   <data name="AddWorkoutPageWorkoutSets" xml:space="preserve">
@@ -297,6 +297,9 @@
   <data name="ClientCoachCriteriaCoachingTypesWorkouts" xml:space="preserve">
     <value>Meals</value>
     <comment>15-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="ClientDashboardTitle" xml:space="preserve">
+    <value>Board</value>
   </data>
   <data name="CoachAddMealCaloriesLabel" xml:space="preserve">
     <value> Calories</value>
@@ -423,7 +426,7 @@
     <comment>2-Register</comment>
   </data>
   <data name="ConfirmSentEmailText" xml:space="preserve">
-    <value>Thank You!\n\n If you have signed up with us previously, we will be sending you an email shortly with a link to reset your password.</value>
+    <value>Thank You! If you have signed up with us previously, we will be sending you an email shortly with a link to reset your password.</value>
     <comment>100-Alerts</comment>
   </data>
   <data name="CriteriasTitleLabel" xml:space="preserve">
@@ -558,15 +561,15 @@
     <comment>1-Login</comment>
   </data>
   <data name="PasswordRequirementDigit" xml:space="preserve">
-    <value>Password must contain at least one digit.\n</value>
+    <value>Password must contain at least one digit.</value>
     <comment>100-Alerts</comment>
   </data>
   <data name="PasswordRequirementsLength" xml:space="preserve">
-    <value>Password must be 8 characters long.\n</value>
+    <value>Password must be 8 characters long.</value>
     <comment>100-Alerts</comment>
   </data>
   <data name="PasswordRequirementUppercase" xml:space="preserve">
-    <value>Password must contain at least one uppercase character.\n</value>
+    <value>Password must contain at least one uppercase character.</value>
     <comment>100-Alerts</comment>
   </data>
   <data name="PasswordRequirmentSymbol" xml:space="preserve">

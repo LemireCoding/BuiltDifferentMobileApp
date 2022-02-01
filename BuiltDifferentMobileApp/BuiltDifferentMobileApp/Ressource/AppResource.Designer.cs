@@ -19,7 +19,7 @@ namespace BuiltDifferentMobileApp.Ressource {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class AppResource {
@@ -187,7 +187,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Exercise Name.
+        ///   Looks up a localized string similar to Exercice Name.
         /// </summary>
         public static string AddWorkoutPageWorkoutName {
             get {
@@ -484,6 +484,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Board.
+        /// </summary>
+        public static string ClientDashboardTitle {
+            get {
+                return ResourceManager.GetString("ClientDashboardTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  Calories.
         /// </summary>
         public static string CoachAddMealCaloriesLabel {
@@ -772,7 +781,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thank You!\n\n If you have signed up with us previously, we will be sending you an email shortly with a link to reset your password..
+        ///   Looks up a localized string similar to Thank You! If you have signed up with us previously, we will be sending you an email shortly with a link to reset your password..
         /// </summary>
         public static string ConfirmSentEmailText {
             get {
@@ -1087,7 +1096,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password must contain at least one digit.\n.
+        ///   Looks up a localized string similar to Password must contain at least one digit..
         /// </summary>
         public static string PasswordRequirementDigit {
             get {
@@ -1096,7 +1105,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password must be 8 characters long.\n.
+        ///   Looks up a localized string similar to Password must be 8 characters long..
         /// </summary>
         public static string PasswordRequirementsLength {
             get {
@@ -1105,7 +1114,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password must contain at least one uppercase character.\n.
+        ///   Looks up a localized string similar to Password must contain at least one uppercase character..
         /// </summary>
         public static string PasswordRequirementUppercase {
             get {
