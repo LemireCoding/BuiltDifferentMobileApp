@@ -1,4 +1,5 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Ressource;
 using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using BuiltDifferentMobileApp.Views;
@@ -78,14 +79,13 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
         {
             
             MealGroups.Clear();
-
-            MealGroups.Add(new Grouping<string, Meal>("Breakfast", Meals.Where(x =>
+            MealGroups.Add(new Grouping<string, Meal>(AppResource.AddMealViewModelBreakfast, Meals.Where(x =>
                 x.mealType.Contains("Breakfast"))));
-            MealGroups.Add(new Grouping<string, Meal>("Lunch", Meals.Where(x =>
+            MealGroups.Add(new Grouping<string, Meal>(AppResource.AddMealViewModelLunch, Meals.Where(x =>
                 x.mealType.Contains("Lunch"))));
-            MealGroups.Add(new Grouping<string, Meal>("Dinner", Meals.Where(x =>
+            MealGroups.Add(new Grouping<string, Meal>(AppResource.AddMealViewModelDinner, Meals.Where(x =>
                 x.mealType.Contains("Dinner"))));
-            MealGroups.Add(new Grouping<string, Meal>("Snack", Meals.Where(x =>
+            MealGroups.Add(new Grouping<string, Meal>(AppResource.AddMealViewModelSnack, Meals.Where(x =>
                 x.mealType.Contains("Snack"))));
 
             OnPropertyChanged("MealGroups");

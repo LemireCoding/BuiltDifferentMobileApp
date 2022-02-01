@@ -115,19 +115,19 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
             string passwordRequirements = "";
 
             if(password.Length < 8) {
-                passwordRequirements += AppResource.PasswordRequirementsLength;
+                passwordRequirements += AppResource.PasswordRequirementsLength + "\n";
             }
 
             if(!password.Any(char.IsUpper)) {
-                passwordRequirements += AppResource.PasswordRequirementUppercase;
+                passwordRequirements += AppResource.PasswordRequirementUppercase + "\n";
             }
 
             if(!password.Any(char.IsDigit)) {
-                passwordRequirements += AppResource.PasswordRequirementDigit;
+                passwordRequirements += AppResource.PasswordRequirementDigit + "\n";
             }
 
             if(!password.Any(char.IsPunctuation) && !password.Any(char.IsSymbol)) {
-                passwordRequirements += AppResource.PasswordRequirmentSymbol;
+                passwordRequirements += AppResource.PasswordRequirmentSymbol + "\n";
             }
 
             return passwordRequirements;

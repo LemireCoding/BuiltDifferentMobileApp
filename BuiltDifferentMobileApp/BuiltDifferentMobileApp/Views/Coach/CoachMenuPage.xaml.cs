@@ -1,4 +1,5 @@
-﻿using BuiltDifferentMobileApp.ViewModels.Coach;
+﻿using BuiltDifferentMobileApp.Ressource;
+using BuiltDifferentMobileApp.ViewModels.Coach;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace BuiltDifferentMobileApp.Views.Coach
                     ClientName += "'s";
                 }
 
-                ((CoachMenuPageViewModel)BindingContext).Title = $"{ClientName} board";
+                ((CoachMenuPageViewModel)BindingContext).Title = $"{ClientName}" + AppResource.ClientDashboardTitle;
 
                 var workoutPage = new CoachWorkoutPage {
                     BindingContext = new CoachWorkoutViewModel(ClientName, ClientId)
