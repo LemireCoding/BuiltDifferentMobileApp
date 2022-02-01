@@ -15,13 +15,14 @@ namespace BuiltDifferentMobileApp.Views.Client
         public ClientDashboardPage()
         {
             InitializeComponent();
-            Children.Clear();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-         
+
+            Children.Clear();
+
             var workoutPage = new ClientWorkoutPage
             {
                 BindingContext = new ClientWorkoutViewModel()
