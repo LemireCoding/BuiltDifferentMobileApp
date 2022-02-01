@@ -329,7 +329,7 @@
     <comment>10-CoachMealsPage</comment>
   </data>
   <data name="CoachMealsClientPlanTitle" xml:space="preserve">
-    <value> plan alimentaire</value>
+    <value> Plan alimentaire</value>
     <comment>10-CoachMealsPage</comment>
   </data>
   <data name="CoachMealsEdit" xml:space="preserve">
@@ -365,7 +365,7 @@
     <comment>11-CoachWorkoutsPage</comment>
   </data>
   <data name="CoachWorkoutTitle" xml:space="preserve">
-    <value>Exercises</value>
+    <value>Exercices</value>
     <comment>11-CoachWorkoutsPage</comment>
   </data>
   <data name="ConfirmedPasswordPlaceholder" xml:space="preserve">
@@ -405,7 +405,7 @@
     <comment>100-Alerts</comment>
   </data>
   <data name="EditWorkoutPageTitle" xml:space="preserve">
-    <value>Modifier un exercise</value>
+    <value>Modifier un exercice</value>
     <comment>13-WorkoutEditPage</comment>
   </data>
   <data name="EditWorkoutSaved" xml:space="preserve">
@@ -453,11 +453,11 @@
     <comment>4-ForgotPassword</comment>
   </data>
   <data name="FullNamePlaceholder" xml:space="preserve">
-    <value>Nom complet</value>
+    <value>nom complet</value>
     <comment>2-Register</comment>
   </data>
   <data name="GenderLabel" xml:space="preserve">
-    <value>Sexe</value>
+    <value>sexe</value>
     <comment>3-Profile</comment>
   </data>
   <data name="IncorrectLoginText" xml:space="preserve">
