@@ -1,4 +1,5 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Ressource;
 using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using BuiltDifferentMobileApp.Views.Coach;
@@ -26,7 +27,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             get => selectedGender;
             set {
                 selectedGender = value;
-                OtherGenderInputVisible = selectedGender == "Other";
+                OtherGenderInputVisible = selectedGender == AppResource.OtherGender;
                 OnPropertyChanged("OtherGenderInputVisible");
                 OnPropertyChanged();
             }
@@ -38,11 +39,11 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             set => SetProperty(ref errorText, value);
         }
 
-        public const string MissingInputs = "Please fill out all fields.";
-        public const string OtherGenderUnspecified = "Please specify your gender.";
-        public const string MissingCertification = "Please upload your certification.";
-        public const string PricingError = "Please enter a valid pricing.";
-        public const string ServerError = "There was an error submitting your information. Please try again.";
+        public static readonly string MissingInputs = AppResource.MissingInputs;
+        public static readonly string OtherGenderUnspecified = AppResource.SpecifyGenderError;
+        public static readonly string MissingCertification = AppResource.MissingCertificationError;
+        public static readonly string PricingError = AppResource.PricingError;
+        public static readonly string ServerError = AppResource.ViewModelErrorMessage;
 
         private string pendingApprovalTitle;
         public string PendingApprovalTitle {
@@ -56,12 +57,12 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             set => SetProperty(ref pendingApprovalBody, value);
         }
 
-        public const string ApprovalPendingTitle = "Your application is currently pending review";
-        public const string ApprovalPendingBody = "Please wait until you have been approved or denied";
-        public const string ApprovalPassedTitle = "Your application has been approved";
-        public const string ApprovalPassedBody = "Now navigating to coach dashboard...";
-        public const string ApprovalDeniedTitle = "Your application has been denied";
-        public const string ApprovalDeniedBody = "Sorry, your application has been denied";
+        public static readonly string ApprovalPendingTitle = AppResource.ApprovalPendingTitle;
+        public static readonly string ApprovalPendingBody = AppResource.ApprovalPendingBody;
+        public static readonly string ApprovalPassedTitle = AppResource.ApprovalPassedTitle;
+        public static readonly string ApprovalPassedBody = AppResource.ApprovalPassedBody;
+        public static readonly string ApprovalDeniedTitle = AppResource.ApprovalDeniedTitle;
+        public static readonly string ApprovalDeniedBody = AppResource.ApprovalDeniedBody;
 
         public string Description { get; set; }
         public string Pricing { get; set; }
@@ -80,7 +81,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
         public AsyncCommand CheckIfSubmissionApprovedCommand { get; set; }
 
         public NewCoachPageViewModel() {
-            Title = "Complete Account Setup";
+            Title = AppResource.CompleteAccountSetup;
             OtherGender = "";
             OtherGenderInputVisible = false;
             Description = "";
@@ -91,7 +92,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             Certification = null;
 
             GenderPickerList = new List<string>() {
-                "Male", "Female", "Other"
+                AppResource.MaleGender, AppResource.FemaleGender, AppResource.OtherGender
             };
 
             SelectCertificationFileCommand = new AsyncCommand(SelectCertificationFile);
@@ -166,7 +167,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             }
 
             var coachProfile = new Dictionary<string, string>() {
-                { "gender", SelectedGender == "Other" ? OtherGender.Trim() : SelectedGender },
+                { "gender", SelectedGender == AppResource.OtherGender ? OtherGender.Trim() : SelectedGender },
                 { "description", Description.Trim() },
                 { "pricing", parsedPricing.ToString() },
                 { "offersWorkout", OfferWorkouts.ToString() },
@@ -201,7 +202,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             });
 
             var options = new PickOptions {
-                PickerTitle = "Please select your certification (PDF)",
+                PickerTitle = $"{AppResource.PleaseSelectCertification} (PDF)",
                 FileTypes = customFileTypes,
             };
 
@@ -209,7 +210,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
                 var file = await FilePicker.PickAsync(options);
 
                 if(file != null && file.ContentType == "application/pdf") {
-                    FileName = $"File Name: {file.FileName}";
+                    FileName = $"{AppResource.FileNameTextStart} {file.FileName}";
 
                     // Processing inputted file to a stream is not done until the user submits in order to not create a stream closed error
                     // This fixes the user having to select a file before hitting submit every time,
@@ -217,7 +218,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
                     Certification = file;
                 } 
                 else {
-                    FileName = "Invalid file type. Please select a PDF.";
+                    FileName = AppResource.SelectPDFError;
                 }
             }
             // If the user doesn't select a file
