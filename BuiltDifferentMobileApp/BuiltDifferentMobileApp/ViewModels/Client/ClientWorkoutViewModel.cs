@@ -52,11 +52,10 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         public async Task GetWorkouts()
         {
             var result = await networkService.GetAsync<ObservableRangeCollection<WorkoutDTO>>(APIConstants.GetWorkoutsByClientId(clientId));
-            if (result.Count == 0)
+            if (result == null||result.Count == 0 )
             {
                 return;
             }
-
             Workouts = new ObservableRangeCollection<WorkoutDTO>(result.Where(x => x.day.ToString("MMMM dd, yyyy") == Day.ToString("MMMM dd, yyyy")));
             OnPropertyChanged("Workouts");
         }

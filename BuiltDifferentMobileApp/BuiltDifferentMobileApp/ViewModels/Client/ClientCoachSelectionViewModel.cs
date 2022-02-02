@@ -86,7 +86,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
            if(coach.isAvailable)
             {
                 var routeClientRequests = APIConstants.GetAllRequestsByClient(clientId);
-                var clientRequests = await networkService.GetAsync<Request>(routeClientRequests);
+                var clientRequests = await networkService.GetAsync<List<Request>>(routeClientRequests);
 
                 if (clientRequests == null)
                 {
