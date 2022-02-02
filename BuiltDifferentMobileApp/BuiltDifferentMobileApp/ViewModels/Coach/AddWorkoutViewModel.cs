@@ -57,6 +57,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
             coachId = user.id;
             SaveCommand = new AsyncCommand(SaveWorkout);
             Day = DateTime.Now.Date;
+            VideoLink = "";
+            IsCompleted = false;
             Types = new List<WorkoutType>
         {
            
@@ -90,14 +92,21 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
                     WorkoutType.Name = "Weight Training";
             }
 
-            var workout = new Workout(coachId, clientId, WorkoutType.Name, WorkoutName, Convert.ToInt32(Sets), Convert.ToInt32(Reps), Convert.ToInt32(Duration), Convert.ToInt32(RestTime),Day,Description, isCompleted,VideoLink);
+            var workout = new Workout(coachId, clientId, WorkoutType.Name, WorkoutName, Convert.ToInt32(Sets), Convert.ToInt32(Reps), Convert.ToInt32(Duration), Convert.ToInt32(RestTime),Day,Description, IsCompleted,VideoLink);
             var result = await networkService.PostAsync<HttpResponseMessage>(APIConstants.PostWorkoutUri(), workout);
             var httpCode = result.StatusCode;
 
             if (httpCode == System.Net.HttpStatusCode.OK)
             {
                 await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelSuccessTitle, AppResource.AddWorkoutSaved, "OK");
+                await AppShell.Current.GoToAsync("..");
             }
+            else if (httpCode == System.Net.HttpStatusCode.InternalServerError)
+            {
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelErrorTitle, AppResource.ViewModelErrorMessage, "OK");
+            }
+            else
+                return;
         }
 
     }
