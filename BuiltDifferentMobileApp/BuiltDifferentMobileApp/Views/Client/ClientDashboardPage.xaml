@@ -12,7 +12,8 @@
         <ToolbarItem Command="{Binding ViewMyProfileCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
-            </ToolbarItem.IconImageSource>        </ToolbarItem>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </TabbedPage.ToolbarItems>
 
 </TabbedPage>
