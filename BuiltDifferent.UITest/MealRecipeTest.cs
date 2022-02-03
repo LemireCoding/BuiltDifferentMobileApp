@@ -12,12 +12,12 @@ namespace BuiltDifferent.UITest
 {
     [TestFixture(Platform.Android)]
     //[TestFixture(Platform.iOS)]
-    public class MarkAsDoneMeal
+    public class MealRecipeTest
     {
         IApp app;
         Platform platform;
 
-        public MarkAsDoneMeal(Platform platform)
+        public MealRecipeTest(Platform platform)
         {
             this.platform = platform;
         }
@@ -49,31 +49,32 @@ namespace BuiltDifferent.UITest
             }
         }
 
-      
+
+       
+
 
         [Test]
-        public void Set_Meal_Done()
-        {
-            //T.1
+         public void View_Recipe()
+         {
+             //T.1
 
-            if (platform == Platform.Android)
-            {
-              
-                app.Tap(x => x.Marked("Meals"));
+             if (platform == Platform.Android)
+             {
+                 app.Tap(x => x.Marked("Meals"));
                 app.Tap(e => e.Marked("MealName"));
-                app.Tap(e => e.Id("NoResourceEntry-54"));
-                app.WaitForElement("message");
-                Assert.IsTrue(app.Query(x => x.Id("message").Text("Meal Eaten")).Any());
+                 app.Tap(e => e.Marked("viewRecipeButton"));
+                
+                 Assert.IsTrue(app.Query(x => x.Id("NoResourceEntry-57").Text("Pancakes")).Any());
 
-            }
-            //if IOS
-            else
-            {
-                return;
-            }
-        }
+             }
+             //if IOS
+             else
+             {
+                 return;
+             }
+         }
 
-    
+         
 
 
 

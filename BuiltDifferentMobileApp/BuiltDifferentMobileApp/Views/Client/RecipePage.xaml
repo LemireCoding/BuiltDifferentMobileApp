@@ -5,7 +5,7 @@
             >
     <ContentPage.Content>
         <StackLayout Margin="5,0,5,0">
-            <Label Margin="5,20,5,10"  Text="{Binding MealName}"  FontSize="35"
+            <Label AutomationId="MealTitleRecipe" Margin="5,20,5,10"   Text="{Binding MealName}"  FontSize="35"
                    FontAttributes="Bold" HorizontalTextAlignment="Center"/>
             <ScrollView
                         IsClippedToBounds="true"
