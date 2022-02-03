@@ -75,6 +75,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
         public MyProfilePageClientViewModel() {
+            Name = "";
+            StartWeight = 0;
+            CurrentWeight = 0;
             GetUserInfo();
 
             isEnabled = false;
@@ -89,16 +92,24 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             Models.Client user = (Models.Client)accountService.CurrentUser;
             var userInfo = await networkService.GetAsync<Models.Client>(APIConstants.GetClientProfileUri(user.userId));
 
-            if(userInfo == null) return;
+            if (userInfo == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Could not load client's profile!", "Returning to previous page", "OK");
+                await Shell.Current.GoToAsync("..");
+                IsBusy = false;
+                return;
+            }
+            else
+            {
+                accountService.CurrentUser = userInfo;
 
-            accountService.CurrentUser = userInfo;
-
-            Id = userInfo.id;
-            Name = userInfo.name;
-            UserId = userInfo.userId;
-            ProfilePicture = userInfo.profilePicture;
-            StartWeight = userInfo.startWeight;
-            CurrentWeight = userInfo.currentWeight;
+                Id = userInfo.id;
+                Name = userInfo.name;
+                UserId = userInfo.userId;
+                ProfilePicture = userInfo.profilePicture;
+                StartWeight = userInfo.startWeight;
+                CurrentWeight = userInfo.currentWeight;
+            }            
         }
 
         private async Task Edit()
