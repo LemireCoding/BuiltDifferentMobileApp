@@ -38,9 +38,9 @@ namespace BuiltDifferentMobileApp.Services.AccountServices {
                     var result = JsonConvert.DeserializeObject<Dictionary<string, string>>(serializedUser);
 
                     if(result.ContainsKey("waitingApproval")) {
-                        CurrentUser = JsonConvert.DeserializeObject<Client>(serializedUser);
+                        CurrentUser = JsonConvert.DeserializeObject<Client>(serializedUser); 
                         CurrentUserRole = AccountConstants.Client;
-                        AppShellViewModel.UpdateUserRole(AccountConstants.Client);
+                        AppShellViewModel.UpdateUserRole(AccountConstants.Client, false, ((Client)CurrentUser).coachId != 0);
                     }
                     else if(result.ContainsKey("isVerified")) {
                         CurrentUser = JsonConvert.DeserializeObject<Coach>(serializedUser);

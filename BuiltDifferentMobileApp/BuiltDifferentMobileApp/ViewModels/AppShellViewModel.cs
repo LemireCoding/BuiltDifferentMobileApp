@@ -24,21 +24,31 @@ namespace BuiltDifferentMobileApp.ViewModels {
             set => SetProperty(ref isUnverifiedCoach, value);
         }
 
-        private bool isClient;
-        public bool IsClient {
-            get => isClient;
-            set => SetProperty(ref isClient, value);
+
+
+        private bool isClientWithCoach;
+        public bool IsClientWithCoach
+        {
+            get => isClientWithCoach;
+            set => SetProperty(ref isClientWithCoach, value);
+        }
+
+        private bool isClientWithoutCoach;
+        public bool IsClientWithoutCoach
+        {
+            get => isClientWithoutCoach;
+            set => SetProperty(ref isClientWithoutCoach, value);
         }
 
         public AppShellViewModel() {
             RemoveAllUserRoles();
         }
 
-        public void UpdateUserRole(string role, bool verified = false) {
+        public void UpdateUserRole(string role, bool verified = false, bool hasCoach = false) {
             if(role == AccountConstants.Coach) {
-                IsClient = false;
+                IsClientWithCoach = false;
                 IsAdmin = false;
-
+                isClientWithCoach = false;
                 if(verified) {
                     IsUnverifiedCoach = false;
                     IsVerifiedCoach = true;
@@ -48,16 +58,27 @@ namespace BuiltDifferentMobileApp.ViewModels {
                 }
             }
             else if(role == AccountConstants.Client) {
-                IsClient = true;
+               
                 IsUnverifiedCoach = false;
                 IsVerifiedCoach = false;
                 IsAdmin = false;
+                if (hasCoach)
+                {
+                    IsClientWithoutCoach = false;
+                    IsClientWithCoach = true;
+                }
+                else
+                {
+                    IsClientWithoutCoach = true;
+                    IsClientWithCoach = false;
+                }
             }
             else if(role == AccountConstants.Admin) {
-                IsClient = false;
+                IsClientWithCoach = false;
                 IsUnverifiedCoach = false;
                 IsVerifiedCoach = false;
                 IsAdmin = true;
+              
             }
             else {
                 RemoveAllUserRoles();
@@ -65,7 +86,7 @@ namespace BuiltDifferentMobileApp.ViewModels {
         }
 
         public void RemoveAllUserRoles() {
-            IsClient = false;
+            IsClientWithCoach = false;
             IsUnverifiedCoach = false;
             IsVerifiedCoach = false;
             IsAdmin = false;
