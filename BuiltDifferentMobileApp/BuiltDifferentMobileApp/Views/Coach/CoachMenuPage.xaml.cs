@@ -32,7 +32,8 @@ namespace BuiltDifferentMobileApp.Views.Coach
             base.OnAppearing();
             if (Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.Equals("fr"))
             {
-                ((CoachMenuPageViewModel)BindingContext).Title = "Le " + AppResource.ClientDashboardTitle + " a " + $"{ClientName}";
+                ((CoachMenuPageViewModel)BindingContext).Title = "Le " + AppResource.ClientDashboardTitle + " à " + $"{ClientName}";
+
             }
             else
             {
@@ -50,19 +51,19 @@ namespace BuiltDifferentMobileApp.Views.Coach
                 ((CoachMenuPageViewModel)BindingContext).Title = $"{ClientName}" + AppResource.ClientDashboardTitle;
 
                 }
-                
-
-                var workoutPage = new CoachWorkoutPage {
-                    BindingContext = new CoachWorkoutViewModel(ClientName, ClientId)
-                };
-
-                var mealPage = new CoachMealPage {
-                    BindingContext = new CoachMealViewModel(ClientName, ClientId)
-                };
-
-                Children.Add(workoutPage);
-                Children.Add(mealPage);
             }
+               
+            var workoutPage = new CoachWorkoutPage {
+                BindingContext = new CoachWorkoutViewModel(ClientName, ClientId)
+            };
+
+            var mealPage = new CoachMealPage {
+                BindingContext = new CoachMealViewModel(ClientName, ClientId)
+            };
+
+            Children.Add(workoutPage);
+            Children.Add(mealPage);
+            
         }
 
     }
