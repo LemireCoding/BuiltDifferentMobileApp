@@ -47,6 +47,7 @@ namespace BuiltDifferentMobileApp.ViewModels {
         public void UpdateUserRole(string role, bool verified = false, bool hasCoach = false) {
             if(role == AccountConstants.Coach) {
                 IsClientWithCoach = false;
+                IsClientWithoutCoach = false;
                 IsAdmin = false;
                 isClientWithCoach = false;
                 if(verified) {
@@ -75,6 +76,7 @@ namespace BuiltDifferentMobileApp.ViewModels {
             }
             else if(role == AccountConstants.Admin) {
                 IsClientWithCoach = false;
+                IsClientWithoutCoach = false;
                 IsUnverifiedCoach = false;
                 IsVerifiedCoach = false;
                 IsAdmin = true;
@@ -87,6 +89,7 @@ namespace BuiltDifferentMobileApp.ViewModels {
 
         public void RemoveAllUserRoles() {
             IsClientWithCoach = false;
+            IsClientWithoutCoach = false;
             IsUnverifiedCoach = false;
             IsVerifiedCoach = false;
             IsAdmin = false;
