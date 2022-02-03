@@ -84,7 +84,13 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
                         await Shell.Current.GoToAsync($"//{nameof(NewCoachPage)}");
                     }
                 } else if(accountService.CurrentUserRole == AccountConstants.Client) {
-                    await Shell.Current.GoToAsync($"//{nameof(ClientMenuPage)}");
+                    if(((Models.Client)accountService.CurrentUser).coachId == 0)
+                    {
+                        await Shell.Current.GoToAsync($"//{nameof(ClientCoachCriteriasPage)}");
+                    } else
+                    {
+                        await Shell.Current.GoToAsync($"//{nameof(ClientDashboardPage)}");
+                    }  
                 }
             } else if((int)response == 404) {
                 ErrorText = AccountNotFoundText;

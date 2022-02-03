@@ -15,6 +15,7 @@ namespace BuiltDifferentMobileApp.Views.Client
         public ClientDashboardPage()
         {
             InitializeComponent();
+            this.BindingContext = new ClientDashboardPageViewModel();
         }
 
         protected override void OnAppearing()
