@@ -388,7 +388,7 @@
     <comment>6-ClientCoachSelectionPage</comment>
   </data>
   <data name="CoachWorkoutClientPlanTitle" xml:space="preserve">
-    <value> plan d'exercice</value>
+    <value>Plan d'exercice</value>
     <comment>11-CoachWorkoutsPage</comment>
   </data>
   <data name="CoachWorkoutTitle" xml:space="preserve">

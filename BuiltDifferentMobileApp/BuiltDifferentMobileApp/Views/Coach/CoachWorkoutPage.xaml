@@ -12,7 +12,6 @@
                    FontAttributes="Bold" HorizontalTextAlignment="Center">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="{Binding WorkoutPageTitle}" />
                         <Span Text="{x:Static resource:AppResource.CoachWorkoutClientPlanTitle}" />
                     </FormattedString>
                 </Label.FormattedText>
