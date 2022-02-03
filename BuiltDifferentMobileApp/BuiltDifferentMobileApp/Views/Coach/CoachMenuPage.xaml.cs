@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -29,14 +30,27 @@ namespace BuiltDifferentMobileApp.Views.Coach
 
         protected override void OnAppearing() {
             base.OnAppearing();
-            if(Children.Count != 2) {
-                if(ClientName.EndsWith("s")) {
-                    ClientName += "'";
-                } else {
-                    ClientName += "'s";
-                }
+            if (Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.Equals("fr"))
+            {
+                ((CoachMenuPageViewModel)BindingContext).Title = "Le " + AppResource.ClientDashboardTitle + " a " + $"{ClientName}";
+            }
+            else
+            {
+                if (Children.Count != 2)
+                {
+                    if (ClientName.EndsWith("s"))
+                    {
+                        ClientName += "'";
+                    }
+                    else
+                    {
+                        ClientName += "'s";
+                    }
 
                 ((CoachMenuPageViewModel)BindingContext).Title = $"{ClientName}" + AppResource.ClientDashboardTitle;
+
+                }
+                
 
                 var workoutPage = new CoachWorkoutPage {
                     BindingContext = new CoachWorkoutViewModel(ClientName, ClientId)
