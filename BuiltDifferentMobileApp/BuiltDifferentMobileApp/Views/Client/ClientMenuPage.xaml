@@ -9,7 +9,7 @@
     </ContentPage.BindingContext>
     
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Profile" Command="{Binding ViewMyProfileCommand}">
+        <ToolbarItem Text="Profile" Command="{Binding ViewMyProfileCommand}" AutomationId="Profile">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
             </ToolbarItem.IconImageSource>        </ToolbarItem>

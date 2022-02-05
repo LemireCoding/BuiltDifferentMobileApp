@@ -84,6 +84,7 @@ namespace BuiltDifferent.UITest
             if (platform == Platform.Android)
             {
                 app.Tap(x => x.Marked("Profile"));
+                app.Tap(x => x.Marked("EditButton"));
                 app.Tap(x => x.Marked("CurrentWeight"));
                 app.EnterText("150");
                 app.DismissKeyboard();
@@ -106,6 +107,7 @@ namespace BuiltDifferent.UITest
             if (platform == Platform.Android)
             {
                 app.Tap(x => x.Marked("Profile"));
+                app.Tap(x => x.Marked("EditButton"));
                 app.Tap(x => x.Marked("Name"));
                 app.ClearText(x => x.Marked("Name_Container"));
                 app.Tap(x => x.Marked("Submit"));
@@ -127,6 +129,7 @@ namespace BuiltDifferent.UITest
             if (platform == Platform.Android)
             {
                 app.Tap(x => x.Marked("Profile"));
+                app.Tap(x => x.Marked("EditButton"));
                 app.Tap(x => x.Marked("CurrentWeight"));
                 app.EnterText("150");
                 app.DismissKeyboard();
