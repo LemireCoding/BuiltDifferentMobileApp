@@ -236,20 +236,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
 
            
             var pic = await networkService.GetStreamAsync(APIConstants.GetProfilePictureUri());
-
             PreviewPicture = ImageSource.FromStream(() => pic);
-            //{
-            //    MemoryStream ms = new MemoryStream(byteArrayIn);
-            //    Image returnImage = Image.FromStream(ms);
-            //    return returnImage;
-            //}
-            //var picture = pic.ReadAsByteArrayAsync();
-            //Image img = new Image();
-            //img.Source = pic.Source;
-
-            //var stream = await pic.OpenReadAsync();
-
-            //PreviewPicture = ImageSource.FromStream(() => stream);
             OnPropertyChanged("PreviewPicture");
         }
 
@@ -359,7 +346,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "An error occurred on the server. Please try saving again.", "OK");
                 }
-
             }
             else
                 return;
