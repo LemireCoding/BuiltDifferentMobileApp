@@ -236,6 +236,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
 
            
             var pic = await networkService.GetStreamAsync(APIConstants.GetProfilePictureUri());
+
             PreviewPicture = ImageSource.FromStream(() => pic);
             OnPropertyChanged("PreviewPicture");
         }
