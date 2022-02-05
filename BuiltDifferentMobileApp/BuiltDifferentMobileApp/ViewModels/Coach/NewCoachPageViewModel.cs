@@ -166,8 +166,10 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
                 return;
             }
 
+            string translatedGender = SelectedGender == AppResource.MaleGender ? "Male" : "Female";
+
             var coachProfile = new Dictionary<string, string>() {
-                { "gender", SelectedGender == AppResource.OtherGender ? OtherGender.Trim() : SelectedGender },
+                { "gender", SelectedGender == AppResource.OtherGender ? OtherGender.Trim() : translatedGender },
                 { "description", Description.Trim() },
                 { "pricing", parsedPricing.ToString() },
                 { "offersWorkout", OfferWorkouts.ToString() },
