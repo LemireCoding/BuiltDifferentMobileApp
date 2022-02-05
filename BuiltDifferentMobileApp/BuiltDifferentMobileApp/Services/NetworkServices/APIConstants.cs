@@ -132,6 +132,15 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         {
             return $"{BaseAddress}/profile";
         }
-        
+
+        public static string PostUploadProfilePicture()
+        {
+            return $"{BaseAddress}/profile/upload";
+        }
+        public static string GetProfilePictureUri()
+        {
+            return $"{BaseAddress}/profile/picture";
+        }
+
     }
 }

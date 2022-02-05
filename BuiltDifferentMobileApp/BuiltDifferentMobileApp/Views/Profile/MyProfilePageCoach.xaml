@@ -27,7 +27,10 @@
         <ScrollView>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -38,15 +41,14 @@
 
                 <Label Grid.Row="0" Grid.Column="1" Text="Your Info" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold"/>
 
-                <StackLayout Grid.Row="1" Grid.Column="1" Spacing="12">
-                    <StackLayout>
-                        <Image Source="https://picsum.photos/id/56/200" HeightRequest="100" HorizontalOptions="Center">
-                            <Image.GestureRecognizers IsEnabled="{Binding IsEnabled}" >
-                                <TapGestureRecognizer Command="{Binding UploadImageCommand}" />
-                            </Image.GestureRecognizers>
-                        </Image>
+                <StackLayout Grid.Row="1" Grid.Column="1">
+                    <StackLayout Orientation="Vertical">
+                        <Image Source="{Binding PreviewPicture}" HeightRequest="175"/>
+                        <Button Text="Upload Profile Picture (png)" Command="{Binding UploadImageCommand}" IsEnabled="{Binding IsEnabled}" AutomationId="ProfilePicturePicker"/>
                     </StackLayout>
-                    <StackLayout Spacing="2">
+                </StackLayout>
+                <StackLayout Grid.Row="2" Grid.Column="1">
+                <StackLayout>
                         <Label Text="Name" />
                         <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                             <Entry Text="{Binding Name}" IsEnabled="{Binding IsEnabled}" AutomationId="NameInput"/>
@@ -76,6 +78,8 @@
                             <Picker ItemsSource="{Binding GenderTypes}"  IsEnabled="{Binding IsEnabled}" SelectedItem="{Binding Gender}"/>
                         </Frame>
                     </StackLayout>
+                </StackLayout>
+                <StackLayout Grid.Row="3" Grid.Column="1">
                     <StackLayout Orientation="Horizontal">
                         <CheckBox IsChecked="{Binding IsAvailable}" VerticalOptions="Center" Color="{StaticResource RedSecondary}" IsEnabled="{Binding IsEnabled}" />
                         <Label Text="Available for new clients" VerticalOptions="Center"/>
@@ -92,6 +96,8 @@
                         <CheckBox IsChecked="{Binding IsVerified}" VerticalOptions="Center" Color="{StaticResource RedPrimary}" IsEnabled="False"/>
                         <Label Text="Is verified" VerticalOptions="Center"/>
                     </StackLayout>
+                </StackLayout>
+                <StackLayout Grid.Row="4" Grid.Column="1">
                     <StackLayout>
                         <Button  Margin="10" Text="Save" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SubmitCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Submit"/>
                     </StackLayout>
