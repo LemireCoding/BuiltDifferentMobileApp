@@ -9,14 +9,15 @@ namespace BuiltDifferentMobileApp.Models
         public string name { get; set; }
         public int userId { get; set; }
         public int currentWeight { get; set; }
-        public string profilePicture { get; set; }
+        public int profilePictureId { get; set; }
 
-        public ClientProfileDTO(string name, int userId, int currentWeight, string profilePicture)
+        public ClientProfileDTO(string name, int userId, int currentWeight, int profilePictureId)
         {
             this.name = name;
             this.userId = userId;
             this.currentWeight = currentWeight;
-            this.profilePicture = profilePicture;
+            this.profilePictureId = profilePictureId;
         }
+
     }
 }

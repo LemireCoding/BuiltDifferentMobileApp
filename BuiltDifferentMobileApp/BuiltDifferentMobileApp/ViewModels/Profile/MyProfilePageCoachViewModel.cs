@@ -188,11 +188,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             Description = "";
             Pricing = 0.0;
             ProfilePictureId = 0;
+
             PreviewPicture = null;
-
-
             ProfilePicture = null;
-
 
             GetUserInfo();
 

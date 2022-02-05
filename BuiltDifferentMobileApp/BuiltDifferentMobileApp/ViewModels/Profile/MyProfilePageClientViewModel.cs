@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.ObjectModel;
@@ -14,8 +15,19 @@ using Xamarin.Forms;
 namespace BuiltDifferentMobileApp.ViewModels.Profile {
     public class MyProfilePageClientViewModel : ViewModelBase {
 
-        private string profilePicture;
-        public string ProfilePicture
+        private int profilePictureId;
+        public int ProfilePictureId
+        {
+            get => profilePictureId;
+            set
+            {
+                SetProperty(ref profilePictureId, value);
+                OnPropertyChanged(nameof(IsEnabled));
+
+            }
+        }
+        private FileResult profilePicture;
+        public FileResult ProfilePicture
         {
             get => profilePicture;
             set
@@ -25,7 +37,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
             }
         }
-        public FileResult PhotoPath { get; private set; }
 
         private string name;
         public string Name
@@ -65,6 +76,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             set => SetProperty(ref isEnabled, value);
         }
         private int UserId;
+        public object PreviewPicture { get; set; }
 
         public AsyncCommand SubmitCommand { get; }
         public AsyncCommand UploadImageCommand { get; }
@@ -74,6 +86,14 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
         public MyProfilePageClientViewModel() {
+            Name = "";
+            StartWeight = 0;
+            CurrentWeight = 0;
+            ProfilePictureId = 0;
+
+            ProfilePicture = null;
+            PreviewPicture = null;
+
             GetUserInfo();
 
             isEnabled = false;
@@ -91,9 +111,15 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
             Name = userInfo.name;
             UserId = userInfo.userId;
-            ProfilePicture = userInfo.profilePicture;
             StartWeight = userInfo.startWeight;
             CurrentWeight = userInfo.currentWeight;
+            ProfilePictureId = userInfo.profilePictureId;
+
+            var pic = await networkService.GetStreamAsync(APIConstants.GetProfilePictureUri());
+
+            PreviewPicture = ImageSource.FromStream(() => pic);
+            OnPropertyChanged("PreviewPicture");
+
         }
 
         private async Task Edit()
@@ -111,20 +137,58 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
         private async Task Upload()
         {
-            throw new NotImplementedException();
+            var customFileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>> {
+                { DevicePlatform.iOS, new[] { "image/png" } },
+                { DevicePlatform.Android, new[] { "image/png" } },
+            });
 
-            //This has been left commented in order to facilitate profilePicture Upload
+            var options = new PickOptions
+            {
+                PickerTitle = "Please select your profilePicture (png)",
+                FileTypes = customFileTypes,
+            };
 
-            //var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
-            //{
-            //    Title = "Please Pick a Profile Picture"
-            //});
-            //if (result != null)
-            //{
-            //    var stream = await result.OpenReadAsync();
-            //    ProfilePicture = ImageSource.FromStream(() => stream);
-            //}
-            //OnPropertyChanged("ProfilePicture");
+            try
+            {
+                var file = await FilePicker.PickAsync(options);
+
+                if (file != null && file.ContentType == "image/png")
+                {
+                    var stream = await file.OpenReadAsync();
+
+                    PreviewPicture = ImageSource.FromStream(() => stream);
+                    OnPropertyChanged("PreviewPicture");
+
+                    ProfilePicture = file;
+                }
+                else
+                    await Application.Current.MainPage.DisplayAlert("Image format", "Please select a png file.", "OK");
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
+        private async Task<MultipartFormDataContent> GetMultiPartFormContent()
+        {
+            try
+            {
+                MultipartFormDataContent formContent = new MultipartFormDataContent();
+
+                // Read file contents & set MIME appopriately, image/png
+                StreamContent fileContent = new StreamContent(await ProfilePicture.OpenReadAsync());
+                fileContent.Headers.ContentType = new MediaTypeHeaderValue(ProfilePicture.ContentType);
+
+                // Add it to the form content as "profilePicture"
+                formContent.Add(fileContent, "profilePicture", Guid.NewGuid().ToString());
+
+                return formContent;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private async Task Submit()
@@ -136,14 +200,23 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
                 await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
                 return;
             }
-
-            var profile = new ClientProfileDTO(Name, UserId, CurrentWeight, ProfilePicture);
             if (IsEnabled)
             {
                 IsEnabled = false;
+
+                var multipartFormContent = await GetMultiPartFormContent();
+
+                if (multipartFormContent == null)
+                {
+                    IsBusy = false;
+                    return;
+                }
+
+                await networkService.PostAsyncHttpResponseMessage(APIConstants.PostUploadProfilePicture(), multipartFormContent, true);
+
+                var profile = new ClientProfileDTO(Name, UserId, CurrentWeight, ProfilePictureId);
                 var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutProfileUri(), profile);
                 var httpCode = result.StatusCode;
-
                 if (httpCode == System.Net.HttpStatusCode.OK)
                 {
                     await Application.Current.MainPage.DisplayAlert("Success", "Profile Saved", "OK");
@@ -151,14 +224,12 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
                 }
                 else if (httpCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Error", "An error occurred on the server. Please try saving again.", "OK");
                 }
                 else if (httpCode == System.Net.HttpStatusCode.InternalServerError)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Error", "An error occured on the server. Please try saving again.", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Error", "An error occurred on the server. Please try saving again.", "OK");
                 }
-                else
-                    return;
             }
             else
                 return;
