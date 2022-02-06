@@ -186,7 +186,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             Day4 = week[4].Date;
             Day5 = week[5].Date;
             Day6 = week[6].Date;
-            WeekOfText = Day0.ToString("MM/dd/yyyy") + " - " + Day6.ToString("MM/dd/yyyy");
+
+            WeekOfText = $"{Day0:M} - {Day6:M}";
         }
 
         private void SetCurrentlySelectedDay(int day) {
@@ -337,7 +338,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
                 if (httpCode == System.Net.HttpStatusCode.OK)
                 {
-
                     await Application.Current.MainPage.DisplayAlert("Good", "Workout set as done", "OK");
                     GetWorkouts();
                 }
