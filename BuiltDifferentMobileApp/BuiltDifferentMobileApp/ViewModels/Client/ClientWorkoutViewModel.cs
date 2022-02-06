@@ -23,6 +23,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         public AsyncCommand AddCommand { get; }
         public AsyncCommand<int> EditCommand { get; }
 
+        private int collectionViewHeight;
+        public int CollectionViewHeight { get => collectionViewHeight; set => SetProperty(ref collectionViewHeight, value); }
+
         private DateTime SelectedDay { get; set; }
 
         public string WorkoutPageTitle { get; set; }
@@ -80,7 +83,23 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             WeekdaySelectedCommand = new AsyncCommand<string>(WeekdaySelected);
             WeekdaySelected((int)SelectedDay.DayOfWeek);
 
+            AdjustCollectionViewHeight();
             GetWorkouts();
+        }
+
+        private void AdjustCollectionViewHeight() {
+            if(Workouts == null || Workouts.Count == 0) {
+                CollectionViewHeight = 300;
+            }
+            else if(Workouts.Count >= 5) {
+                int newHeight = 350;
+                for(int i = 1; i <= Workouts.Count - 5; i++) {
+                    newHeight += 25;
+                }
+                CollectionViewHeight = newHeight;
+            } else {
+                CollectionViewHeight = 350;
+            }
         }
 
         private Task ChangeWeek(string amount) {
@@ -315,6 +334,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             ) return;
 
             Workouts = new ObservableRangeCollection<WorkoutDTO>(OriginalWorkoutList.Where(x => x.day.ToString("MMMM dd, yyyy") == SelectedDay.ToString("MMMM dd, yyyy")));
+            AdjustCollectionViewHeight();
             OnPropertyChanged("Workouts");
         }
 

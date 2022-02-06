@@ -26,9 +26,17 @@
                     <Grid Grid.Column="0" Grid.Row="0" Margin="0,265,0,0" >
                         <!-- COLLECTION VIEW START -->
                         <StackLayout Grid.Column="0" Grid.Row="0" Spacing="0" Margin="0,75,0,0" Padding="10,75,10,0"
-                                 BackgroundColor="#3F3F3F">
+                                     BackgroundColor="#3F3F3F">
+
+                            <Frame BackgroundColor="#303030" Padding="4" Margin="0,0,0,12">
+                                <StackLayout Margin="12,0" Padding="0" >
+                                    <Label Text="86% Completed" TextColor="White" HorizontalOptions="Center"/>
+                                    <ProgressBar Progress="0.86" ProgressColor="{StaticResource RedExtra}"/>
+                                </StackLayout>
+                            </Frame>
+                            
                             <!--InsertCommand when rerteieved -->
-                            <CollectionView HorizontalOptions="Center" ItemsSource="{Binding Workouts}">
+                            <CollectionView HorizontalOptions="Center" ItemsSource="{Binding Workouts}" HeightRequest="{Binding CollectionViewHeight}">
                                 <CollectionView.ItemsLayout>
                                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="4" />
                                 </CollectionView.ItemsLayout>
@@ -118,10 +126,6 @@
                                 </CollectionView.ItemTemplate>
                                 <CollectionView.EmptyView>
                                     <StackLayout HorizontalOptions="Center">
-                                        <Image 
-                                            IsAnimationPlaying="True"
-                                            WidthRequest="200"
-                                            HeightRequest="200" />
                                         <Label 
                                             Text="Wait for your Coach to add Workouts"
                                             HorizontalTextAlignment="Center"
