@@ -198,14 +198,14 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         private Task WeekdaySelected(string day) {
             SetCurrentlySelectedDay(int.Parse(day));
             FilterWorkouts();
-            WeekOfText = CurrentDay.ToString();
+            WeekOfText = CurrentDay.ToString("MM/dd/yyyy");
             return Task.CompletedTask;
         }
 
         private Task WeekdaySelected(int day) {
             SetCurrentlySelectedDay(day);
             FilterWorkouts();
-            WeekOfText = CurrentDay.ToString();
+            WeekOfText = CurrentDay.ToString("MM/dd/yyyy");
             return Task.CompletedTask;
         }
 
