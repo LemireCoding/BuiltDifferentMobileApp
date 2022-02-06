@@ -25,7 +25,7 @@
                 <ScrollView>
                     <Grid Grid.Column="0" Grid.Row="0" Margin="0,265,0,0" >
                         <!-- COLLECTION VIEW START -->
-                        <StackLayout Grid.Column="0" Grid.Row="0" Spacing="0" Margin="0,65,0,0" Padding="10,75,10,0"
+                        <StackLayout Grid.Column="0" Grid.Row="0" Spacing="0" Margin="0,75,0,0" Padding="10,75,10,0"
                                  BackgroundColor="#3F3F3F">
                             <!--InsertCommand when rerteieved -->
                             <CollectionView HorizontalOptions="Center" ItemsSource="{Binding Workouts}">
@@ -135,10 +135,26 @@
 
                         <!-- DATE PICKER START -->
                         <Frame Grid.Column="0" Grid.Row="0" Padding="12,6,12,6" HorizontalOptions="Center" VerticalOptions="Start"
-                               BackgroundColor="#303030" CornerRadius="12" Margin="0,24,0,0">
+                               BackgroundColor="#303030" CornerRadius="12" Margin="6,24,6,0">
                             <StackLayout>
-                                <Label Text="{Binding WeekOfText}" LineBreakMode="TailTruncation" FontSize="Subtitle" HorizontalOptions="Center" TextColor="White" />
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="6">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="35" />
+                                    </Grid.RowDefinitions>
+
+                                    <Button Text="&#xf053;" FontFamily="FAS" BackgroundColor="Transparent" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start"
+                                            Command="{Binding ChangeWeekCommand}" CommandParameter="-1"/>
+                                    <Label Text="{Binding WeekOfText}" LineBreakMode="TailTruncation" Grid.Column="1"
+                                           FontSize="Subtitle" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center"/>
+                                    <Button Text="&#xf054;" FontFamily="FAS" BackgroundColor="Transparent" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Start"
+                                            Command="{Binding ChangeWeekCommand}" CommandParameter="1"/>
+                                </Grid>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="6" HeightRequest="60">
                                     <StackLayout Margin="0" Padding="0" Spacing="4">
                                         <Button Text="Su" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="0"
                                             BackgroundColor="Transparent"

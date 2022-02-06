@@ -23,13 +23,15 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         public AsyncCommand AddCommand { get; }
         public AsyncCommand<int> EditCommand { get; }
 
-        private DateTime CurrentDay { get; set; }
+        private DateTime SelectedDay { get; set; }
 
         public string WorkoutPageTitle { get; set; }
 
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
         public AsyncCommand<string> WeekdaySelectedCommand { get; set; }
+        private int CurrentWeek { get; set; }
+        public AsyncCommand<string> ChangeWeekCommand { get; set; }
 
         private string weekOfText;
         public string WeekOfText { get => weekOfText; set => SetProperty(ref weekOfText, value); }
@@ -69,45 +71,122 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             var user = (Models.Client)accountService.CurrentUser;
             this.clientId = user.id;
 
-            CurrentDay = DateTime.Now.Date;
-            SetDayButtonValues((int)CurrentDay.DayOfWeek);
-            WeekOfText = "";
+            CurrentWeek = 0;
+            ChangeWeekCommand = new AsyncCommand<string>(ChangeWeek);
+
+            SelectedDay = DateTime.Now.Date;
+            SetDayButtonValues((int)SelectedDay.DayOfWeek);
 
             WeekdaySelectedCommand = new AsyncCommand<string>(WeekdaySelected);
-            WeekdaySelected((int)CurrentDay.DayOfWeek);
+            WeekdaySelected((int)SelectedDay.DayOfWeek);
 
             GetWorkouts();
         }
 
-        private void SetDayButtonValues(int currentDay) {
-            DateTime[] week = { Day0, Day1, Day2, Day3, Day4, Day5, Day6 };
+        private Task ChangeWeek(string amount) {
+            CurrentWeek += int.Parse(amount);
+            SetDayButtonValues((int)SelectedDay.DayOfWeek, CurrentWeek);
+            CheckAndSetIfSelected();
+            return Task.CompletedTask;
+        }
+
+        private void CheckAndSetIfSelected() {
+            string selectedDayToString = SelectedDay.ToString("MMMM dd, yyyy");
+
+            if(Day0.ToString("MMMM dd, yyyy") == selectedDayToString) {
+                SetCurrentlySelectedDay(0);
+            }
+            else if(Day1.ToString("MMMM dd, yyyy") == selectedDayToString) {
+                SetCurrentlySelectedDay(1);
+            } else if(Day2.ToString("MMMM dd, yyyy") == selectedDayToString) {
+                SetCurrentlySelectedDay(2);
+            } else if(Day3.ToString("MMMM dd, yyyy") == selectedDayToString) {
+                SetCurrentlySelectedDay(3);
+            } else if(Day4.ToString("MMMM dd, yyyy") == selectedDayToString) {
+                SetCurrentlySelectedDay(4);
+            } else if(Day5.ToString("MMMM dd, yyyy") == selectedDayToString) {
+                SetCurrentlySelectedDay(5);
+            } else if(Day6.ToString("MMMM dd, yyyy") == selectedDayToString) {
+                SetCurrentlySelectedDay(6);
+            } else {
+                SetCurrentlySelectedDay(-1);
+            }
+        }
+
+        private int GetDayOffset(int startingStep, int offset, char operand) {
+            int currentStep = startingStep;
+            int weeksNavigated = 0;
+            if(operand == '-') {
+                for(int i = -1; true; i--) {
+                    currentStep--;
+                    if(currentStep == -1) {
+                        currentStep = 6;
+                        weeksNavigated--;
+                    }
+
+                    if(weeksNavigated == offset) return i;
+                }
+            }
+            else if(operand == '+') {
+                for(int i = 1; true; i++) {
+                    currentStep++;
+                    if(currentStep == 7) {
+                        currentStep = 0;
+                        weeksNavigated++;
+                    }
+
+                    if(weeksNavigated == offset) return i;
+                }
+            }
+            else {
+                throw new Exception("Invalid Operand: " + operand);
+            }
+        }
+
+        private void SetDayButtonValues(int currentDay, int offset = 0) {
+            List<DateTime> week = new List<DateTime>() { new DateTime(), new DateTime(), new DateTime(), new DateTime(), new DateTime(), new DateTime(), new DateTime() };
             bool canLeft = true;
             bool canRight = true;
 
-            week[currentDay] = CurrentDay;
+            if(offset == 0) {
+                week[currentDay] = SelectedDay;
+            } else if(offset < 0){
+                week[6] = SelectedDay.AddDays(GetDayOffset((int)SelectedDay.DayOfWeek, offset, '-'));
+            } else if(offset > 0) {
+                week[0] = SelectedDay.AddDays(GetDayOffset((int)SelectedDay.DayOfWeek, offset, '+'));
+            }
             for(int i = 1; true; i++) {
                 if(canLeft) {
                     try {
-                        week[currentDay - i] = CurrentDay.AddDays(-i);
+                        if(offset == 0) {
+                            week[currentDay - i] = SelectedDay.AddDays(-i);
+                        } else {
+                            week[week.Count - 1 - i] = week[6].AddDays(-i);
+                        }
                     } catch { canLeft = false; }
                 }
 
                 if(canRight) {
                     try {
-                        week[currentDay + i] = CurrentDay.AddDays(i);
+                        if(offset == 0) {
+                            week[currentDay + i] = SelectedDay.AddDays(i);
+                        } else {
+                            week[i] = week[0].AddDays(i);
+                        }
                     } catch { canRight = false; }
                 }
 
                 if(!canLeft && !canRight) break;
             }
 
-            Day0 = week[0];
-            Day1 = week[1];
-            Day2 = week[2];
-            Day3 = week[3];
-            Day4 = week[4];
-            Day5 = week[5];
-            Day6 = week[6];
+            Day0 = week[0].Date;
+            Day1 = week[1].Date;
+            Day2 = week[2].Date;
+            Day3 = week[3].Date;
+            Day4 = week[4].Date;
+            Day5 = week[5].Date;
+            Day6 = week[6].Date;
+            WeekOfText = Day0.ToString("MM/dd/yyyy") + " - " + Day6.ToString("MM/dd/yyyy");
         }
 
         private void SetCurrentlySelectedDay(int day) {
@@ -120,7 +199,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
                     Day4Selected = false;
                     Day5Selected = false;
                     Day6Selected = false;
-                    CurrentDay = Day0;
+                    SelectedDay = Day0;
                     break;
                 case 1:
                     Day0Selected = false;
@@ -130,7 +209,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
                     Day4Selected = false;
                     Day5Selected = false;
                     Day6Selected = false;
-                    CurrentDay = Day1;
+                    SelectedDay = Day1;
                     break;
                 case 2:
                     Day0Selected = false;
@@ -140,7 +219,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
                     Day4Selected = false;
                     Day5Selected = false;
                     Day6Selected = false;
-                    CurrentDay = Day2;
+                    SelectedDay = Day2;
                     break;
                 case 3:
                     Day0Selected = false;
@@ -150,7 +229,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
                     Day4Selected = false;
                     Day5Selected = false;
                     Day6Selected = false;
-                    CurrentDay = Day3;
+                    SelectedDay = Day3;
                     break;
                 case 4:
                     Day0Selected = false;
@@ -160,7 +239,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
                     Day4Selected = true;
                     Day5Selected = false;
                     Day6Selected = false;
-                    CurrentDay = Day4;
+                    SelectedDay = Day4;
                     break;
                 case 5:
                     Day0Selected = false;
@@ -170,7 +249,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
                     Day4Selected = false;
                     Day5Selected = true;
                     Day6Selected = false;
-                    CurrentDay = Day5;
+                    SelectedDay = Day5;
                     break;
                 case 6:
                     Day0Selected = false;
@@ -180,7 +259,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
                     Day4Selected = false;
                     Day5Selected = false;
                     Day6Selected = true;
-                    CurrentDay = Day6;
+                    SelectedDay = Day6;
                     break;
                 default:
                     Day0Selected = false;
@@ -190,22 +269,23 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
                     Day4Selected = false;
                     Day5Selected = false;
                     Day6Selected = false;
-                    CurrentDay = Day0;
                     break;
             }
         }
 
         private Task WeekdaySelected(string day) {
             SetCurrentlySelectedDay(int.Parse(day));
+            CurrentWeek = 0;
+            SetDayButtonValues((int)SelectedDay.DayOfWeek);
             FilterWorkouts();
-            WeekOfText = CurrentDay.ToString("MM/dd/yyyy");
             return Task.CompletedTask;
         }
 
         private Task WeekdaySelected(int day) {
             SetCurrentlySelectedDay(day);
+            CurrentWeek = 0;
+            SetDayButtonValues((int)SelectedDay.DayOfWeek);
             FilterWorkouts();
-            WeekOfText = CurrentDay.ToString("MM/dd/yyyy");
             return Task.CompletedTask;
         }
 
@@ -222,8 +302,18 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         }
 
         public void FilterWorkouts() {
-            if(OriginalWorkoutList == null) return;
-            Workouts = new ObservableRangeCollection<WorkoutDTO>(OriginalWorkoutList.Where(x => x.day.ToString("MMMM dd, yyyy") == CurrentDay.ToString("MMMM dd, yyyy")));
+            if (
+               OriginalWorkoutList == null ||
+               Day0Selected == false &&
+               Day1Selected == false &&
+               Day2Selected == false &&
+               Day3Selected == false &&
+               Day4Selected == false &&
+               Day5Selected == false &&
+               Day6Selected == false
+            ) return;
+
+            Workouts = new ObservableRangeCollection<WorkoutDTO>(OriginalWorkoutList.Where(x => x.day.ToString("MMMM dd, yyyy") == SelectedDay.ToString("MMMM dd, yyyy")));
             OnPropertyChanged("Workouts");
         }
 
