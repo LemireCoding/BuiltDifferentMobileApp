@@ -1,4 +1,5 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Ressource;
 using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using BuiltDifferentMobileApp.Views;
@@ -47,7 +48,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 
         public CoachMealViewModel(string clientName, int clientId)
         {
-            MealPageTitle = $"{clientName} Meal Plan";
+            MealPageTitle = $"{clientName}";
             this.clientId = clientId;
             EditCommand = new AsyncCommand<int>(EditMeal);
             AddCommand = new AsyncCommand(AddMeal);
@@ -60,7 +61,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 
         private async Task AddMeal()
         {
-            var route = $"{nameof(AddMealPage)}";
+            var route = $"{nameof(AddMealPage)}?clientId={clientId}";
            
             await Shell.Current.GoToAsync(route);
         }
@@ -78,14 +79,13 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
         {
             
             MealGroups.Clear();
-
-            MealGroups.Add(new Grouping<string, Meal>("Breakfast", Meals.Where(x =>
+            MealGroups.Add(new Grouping<string, Meal>(AppResource.AddMealViewModelBreakfast, Meals.Where(x =>
                 x.mealType.Contains("Breakfast"))));
-            MealGroups.Add(new Grouping<string, Meal>("Lunch", Meals.Where(x =>
+            MealGroups.Add(new Grouping<string, Meal>(AppResource.AddMealViewModelLunch, Meals.Where(x =>
                 x.mealType.Contains("Lunch"))));
-            MealGroups.Add(new Grouping<string, Meal>("Dinner", Meals.Where(x =>
+            MealGroups.Add(new Grouping<string, Meal>(AppResource.AddMealViewModelDinner, Meals.Where(x =>
                 x.mealType.Contains("Dinner"))));
-            MealGroups.Add(new Grouping<string, Meal>("Snack", Meals.Where(x =>
+            MealGroups.Add(new Grouping<string, Meal>(AppResource.AddMealViewModelSnack, Meals.Where(x =>
                 x.mealType.Contains("Snack"))));
 
             OnPropertyChanged("MealGroups");
@@ -97,7 +97,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
         {
 
             var result = await networkService.GetAsync<ObservableRangeCollection<Meal>>(APIConstants.GetMealsByClientId(clientId));
-            if (result.Count == 0)
+            if (result == null || result.Count == 0)
             {
                 return;
             }

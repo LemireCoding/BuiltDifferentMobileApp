@@ -1,15 +1,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              x:Class="BuiltDifferentMobileApp.Views.Coach.AddWorkoutPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Profile" Command="{Binding GoToProfile}">
-            <ToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
-            </ToolbarItem.IconImageSource>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
-
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -17,21 +10,21 @@
             </Grid.RowDefinitions>
             <ScrollView Grid.Row="0">
                 <StackLayout Padding="50">
-                    <Label AutomationId="AddWorkoutTitle" Text="Create Workout" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="Black"/>
-                    <Entry AutomationId="WorkoutName"  Text="{Binding WorkoutName}" Placeholder="Exercise Name" Keyboard="Text" BackgroundColor="White" />
-                    <Label Text="Workout Type"/>
+                    <Label AutomationId="AddWorkoutTitle" Text="{x:Static resource:AppResource.AddWorkoutPageTitle}" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="Black"/>
+                    <Entry AutomationId="WorkoutName"  Text="{Binding WorkoutName}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageWorkoutName}" Keyboard="Text" BackgroundColor="White" />
+                    <Label Text="{x:Static resource:AppResource.AddWorkoutPageType}"/>
                     <Picker BackgroundColor="WhiteSmoke" ItemsSource="{Binding Types}" SelectedItem="{Binding WorkoutType, Mode=TwoWay}"  ItemDisplayBinding="{Binding Path=Name}"/>
-                    <Entry AutomationId="Sets" Text="{Binding Sets}" Placeholder="Sets" Keyboard="Numeric"/>
-                    <Entry AutomationId="Reps" Text="{Binding Reps}" Placeholder="Reps" Keyboard="Numeric"/>
-                    <Entry AutomationId="Duration" Text="{Binding Duration}" Placeholder="Duration (in minutes)" Keyboard="Numeric"/>
-                    <Entry AutomationId="RestTime" Text="{Binding RestTime}" Placeholder="Rest Time(seconds)" Keyboard="Numeric"/>
+                    <Entry AutomationId="Sets" Text="{Binding Sets}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageWorkoutSets}" Keyboard="Numeric"/>
+                    <Entry AutomationId="Reps" Text="{Binding Reps}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageReps}" Keyboard="Numeric"/>
+                    <Entry AutomationId="Duration" Text="{Binding Duration}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageDuration}" Keyboard="Numeric"/>
+                    <Entry AutomationId="RestTime" Text="{Binding RestTime}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageRestTime}" Keyboard="Numeric"/>
 
-                    <Entry AutomationId="Description" Text="{Binding Description}" Placeholder="Description" Keyboard="Text"/>
+                    <Entry AutomationId="Description" Text="{Binding Description}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageDescription}" Keyboard="Text"/>
                     <Label Text="Date"/>
                     <DatePicker MinimumDate="{x:Static sys:DateTime.Now}" Date="{Binding Day}" HorizontalOptions="Center"/>
-                    <Entry AutomationId="VideoLink" Text="{Binding VideoLink}" Placeholder="Youtube Video Link" Keyboard="Text"/>
+                    <Entry AutomationId="VideoLink" Text="{Binding VideoLink}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageVideoLink}" Keyboard="Text"/>
                     <Button AutomationId="SaveButton" Grid.Row="0" BorderColor="{StaticResource RedPrimary}" BorderWidth="1" FontAttributes="Bold" BackgroundColor="{StaticResource RedPrimary}" BorderRadius="10" TextColor="White" 
-                           Text="Create"  Margin="22,22,22,22" Command="{Binding SaveCommand}"/>
+                           Text="{x:Static resource:AppResource.SaveButton}"  Margin="22,22,22,22" Command="{Binding SaveCommand}"/>
 
                 </StackLayout>
             </ScrollView>

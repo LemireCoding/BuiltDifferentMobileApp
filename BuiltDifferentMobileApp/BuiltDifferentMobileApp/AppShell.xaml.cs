@@ -16,6 +16,8 @@ namespace BuiltDifferentMobileApp {
             // Admin pages
             Routing.RegisterRoute(nameof(AdminCoachApprovalProfilePage), typeof(AdminCoachApprovalProfilePage));
             Routing.RegisterRoute(nameof(AdminCoachApprovalPage), typeof(AdminCoachApprovalPage));
+            Routing.RegisterRoute(nameof(AdminApprovedCoachProfilePage), typeof(AdminApprovedCoachProfilePage));
+            Routing.RegisterRoute(nameof(AdminApprovedCoachesPage), typeof(AdminApprovedCoachesPage));
             Routing.RegisterRoute(nameof(AdminMenuPage), typeof(AdminMenuPage));
 
             // Coach pages
@@ -27,12 +29,17 @@ namespace BuiltDifferentMobileApp {
             Routing.RegisterRoute(nameof(CoachWorkoutPage), typeof(CoachWorkoutPage));
             Routing.RegisterRoute(nameof(CoachMenuPage), typeof(CoachMenuPage));
             Routing.RegisterRoute(nameof(CoachDashboardPage), typeof(CoachDashboardPage));
+            Routing.RegisterRoute(nameof(NewCoachPage), typeof(NewCoachPage));
 
             // Client pages
-            Routing.RegisterRoute(nameof(ClientMenuPage), typeof(ClientMenuPage));
-            Routing.RegisterRoute(nameof(ClientCoachCriteriasPage), typeof(ClientCoachCriteriasPage));
-            Routing.RegisterRoute(nameof(ClientCoachSelectionPage), typeof(ClientCoachSelectionPage));
+         
+            Routing.RegisterRoute(nameof(RecipePage), typeof(RecipePage));
+            Routing.RegisterRoute(nameof(ClientMealPage), typeof(ClientMealPage));
+            Routing.RegisterRoute(nameof(ClientWorkoutPage), typeof(ClientWorkoutPage));
             Routing.RegisterRoute(nameof(ClientDashboardPage), typeof(ClientDashboardPage));
+            Routing.RegisterRoute(nameof(ClientCoachSelectionPage), typeof(ClientCoachSelectionPage));
+            Routing.RegisterRoute(nameof(ClientCoachCriteriasPage), typeof(ClientCoachCriteriasPage));
+
 
             // Profile pages
             Routing.RegisterRoute(nameof(MyProfilePageAdmin), typeof(MyProfilePageAdmin));

@@ -1,4 +1,5 @@
-﻿using BuiltDifferentMobileApp.Services.AccountServices;
+﻿using BuiltDifferentMobileApp.Ressource;
+using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using BuiltDifferentMobileApp.Views.Login;
 using System;
@@ -21,10 +22,10 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
             set => SetProperty(ref email, value);
         }
 
-        private const string UnknownErrorText = "There was an unknown issue communicating with the server. Please try again later.";
-        private const string MissingInputs = "Please fill all required fields.";
-        private const string BadEmail = "Please enter a valid email.";
-        private const string ConfirmSentEmailText = "Thank You!\n\n If you have signed up with us previously, we will be sending you an email shortly with a link to reset your password.";
+        public string UnknownErrorText = AppResource.UnknownErrorText;
+        public string MissingInputs = AppResource.MissingInputs;
+        private string BadEmail = AppResource.BadEmail;
+        private string ConfirmSentEmailText = AppResource.ConfirmSentEmailText;
 
         private string errorText;
         public string ErrorText

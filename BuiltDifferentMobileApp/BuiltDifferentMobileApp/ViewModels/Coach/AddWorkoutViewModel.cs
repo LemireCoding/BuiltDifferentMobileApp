@@ -1,10 +1,13 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Ressource;
+using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
@@ -42,22 +45,26 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
         public bool IsCompleted { get => isCompleted; set => SetProperty(ref isCompleted, value); }
         public string VideoLink { get => videoLink; set => SetProperty(ref videoLink, value); }
 
-
+        private IAccountService accountService = AccountService.Instance;
         public List<WorkoutType> Types { get; set; }
 
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
         public AsyncCommand SaveCommand { get; }
-        public AddWorkoutViewModel()
+        public AddWorkoutViewModel(int clientId)
         {
-            
+            this.clientId = clientId;
+            var user = (Models.Coach)accountService.CurrentUser;
+            coachId = user.id;
             SaveCommand = new AsyncCommand(SaveWorkout);
             Day = DateTime.Now.Date;
+            VideoLink = "";
+            IsCompleted = false;
             Types = new List<WorkoutType>
         {
            
-            new WorkoutType("Warm Up"),
-            new WorkoutType("Cardio"),
-            new WorkoutType("Weight Training")
+            new WorkoutType(AppResource.AddWorkoutTypeWarmUp),
+            new WorkoutType(AppResource.AddWorkoutTypeCardio),
+            new WorkoutType(AppResource.AddWorkoutTypeWeightTraining)
         };
             
     }
@@ -71,18 +78,35 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
                 || string.IsNullOrEmpty(Duration)
                 || string.IsNullOrEmpty(Description))
             {
-                await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelFieldIssueTitle, AppResource.ViewModelFieldIssueMessage, "OK");
                 return;
             }
 
-            var workout = new Workout(1,2, WorkoutType.Name, WorkoutName, Convert.ToInt32(Sets), Convert.ToInt32(Reps), Convert.ToInt32(Duration), Convert.ToInt32(RestTime),Day,Description, isCompleted,VideoLink);
+            if (Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.Equals("fr"))
+            {
+                if (WorkoutType.Name == "Échauffement")
+                    WorkoutType.Name = "Warm Up";
+                else if (WorkoutType.Name == "Cardio")
+                    WorkoutType.Name = "Cardio";
+                else if (WorkoutType.Name == "Entraînement de musculation")
+                    WorkoutType.Name = "Weight Training";
+            }
+
+            var workout = new Workout(coachId, clientId, WorkoutType.Name, WorkoutName, Convert.ToInt32(Sets), Convert.ToInt32(Reps), Convert.ToInt32(Duration), Convert.ToInt32(RestTime),Day,Description, IsCompleted,VideoLink);
             var result = await networkService.PostAsync<HttpResponseMessage>(APIConstants.PostWorkoutUri(), workout);
             var httpCode = result.StatusCode;
 
             if (httpCode == System.Net.HttpStatusCode.OK)
             {
-                await Application.Current.MainPage.DisplayAlert("Good", "Workout Saved", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelSuccessTitle, AppResource.AddWorkoutSaved, "OK");
+                await AppShell.Current.GoToAsync("..");
             }
+            else if (httpCode == System.Net.HttpStatusCode.InternalServerError)
+            {
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelErrorTitle, AppResource.ViewModelErrorMessage, "OK");
+            }
+            else
+                return;
         }
 
     }

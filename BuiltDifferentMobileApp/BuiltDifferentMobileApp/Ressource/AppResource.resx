@@ -1,0 +1,652 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountAlreadyExists" xml:space="preserve">
+    <value>An account already exists for the email that you have entered.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="AccountNotFoundText" xml:space="preserve">
+    <value>The email you entered does not belong to an account. Please check your email and try again.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="AddMealSavedTitle" xml:space="preserve">
+    <value>Meal Saved.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="AddMealViewModelBreakfast" xml:space="preserve">
+    <value>Breakfast</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="AddMealViewModelDinner" xml:space="preserve">
+    <value>Dinner</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="AddMealViewModelLunch" xml:space="preserve">
+    <value>Lunch</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="AddMealViewModelSnack" xml:space="preserve">
+    <value>Snack</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="AddWorkoutPageDescription" xml:space="preserve">
+    <value>Description</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageDuration" xml:space="preserve">
+    <value> Duration (minutes)</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageReps" xml:space="preserve">
+    <value> Reps</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageRestTime" xml:space="preserve">
+    <value> Rest Time (seconds)</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageTitle" xml:space="preserve">
+    <value>Create Workout</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageType" xml:space="preserve">
+    <value>Workout Type</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageVideoLink" xml:space="preserve">
+    <value>YouTube Video Link</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageWorkoutName" xml:space="preserve">
+    <value>Exercice Name</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutPageWorkoutSets" xml:space="preserve">
+    <value> Sets</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutSaved" xml:space="preserve">
+    <value>Workout Saved.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="AddWorkoutTypeCardio" xml:space="preserve">
+    <value>Cardio</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutTypeWarmUp" xml:space="preserve">
+    <value>Warm Up</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AddWorkoutTypeWeightTraining" xml:space="preserve">
+    <value>Weight Training</value>
+    <comment>8-AddWorkoutPage</comment>
+  </data>
+  <data name="AdminCoachApprovalApprove" xml:space="preserve">
+    <value>Approve</value>
+    <comment>16-AdminCoachApprovalPage</comment>
+  </data>
+  <data name="AdminCoachApprovalDeny" xml:space="preserve">
+    <value>Deny</value>
+    <comment>16-AdminCoachApprovalPage</comment>
+  </data>
+  <data name="AdminCoachApprovalGender" xml:space="preserve">
+    <value>  , </value>
+    <comment>15-AdminCoachApprovalProfilePage</comment>
+  </data>
+  <data name="AdminCoachApprovalNoProfileMessage" xml:space="preserve">
+    <value>Returning to previous page.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="AdminCoachApprovalNoProfileTitle" xml:space="preserve">
+    <value>Could not load coach's profile!</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="AdminCoachApprovalPlansOfferedTitle" xml:space="preserve">
+    <value>Plans: </value>
+    <comment>16-AdminCoachApprovalPage</comment>
+  </data>
+  <data name="AdminCoachApprovalProfileTitle" xml:space="preserve">
+    <value>Coach Application</value>
+    <comment>15-AdminCoachApprovalProfilePage</comment>
+  </data>
+  <data name="AdminCoachApprovalRequests" xml:space="preserve">
+    <value>Requests</value>
+    <comment>14-AdminCoachApprovalPage</comment>
+  </data>
+  <data name="AdminCoachApprovalTitle" xml:space="preserve">
+    <value>Pending Coaches</value>
+    <comment>14-AdminCoachApprovalPage</comment>
+  </data>
+  <data name="AdminCoachNoPendingCoaches" xml:space="preserve">
+    <value>No pending coach requests</value>
+    <comment>14-AdminCoachApprovalPage</comment>
+  </data>
+  <data name="ApplyToBeACoach" xml:space="preserve">
+    <value>Apply to be a coach</value>
+    <comment>2-Register</comment>
+  </data>
+  <data name="ApprovalDeniedBody" xml:space="preserve">
+    <value>Sorry, your application has been denied</value>
+  </data>
+  <data name="ApprovalDeniedTitle" xml:space="preserve">
+    <value>Your application has been denied</value>
+  </data>
+  <data name="ApprovalPassedBody" xml:space="preserve">
+    <value>Now navigating to coach dashboard...</value>
+  </data>
+  <data name="ApprovalPassedTitle" xml:space="preserve">
+    <value>Your application has been approved</value>
+  </data>
+  <data name="ApprovalPendingBody" xml:space="preserve">
+    <value>Please wait until you have been approved or denied</value>
+  </data>
+  <data name="ApprovalPendingTitle" xml:space="preserve">
+    <value>Your application is currently pending review</value>
+  </data>
+  <data name="AvailabilityLabel" xml:space="preserve">
+    <value>Available for new clients?</value>
+    <comment>3-Profile</comment>
+  </data>
+  <data name="BadEmail" xml:space="preserve">
+    <value>Please enter a valid email.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="BadRequest" xml:space="preserve">
+    <value>The server could not parse your request. Please report this bug.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="CheckApplicationStatusButton" xml:space="preserve">
+    <value>Check Application Status</value>
+  </data>
+  <data name="ClientCoachCriteriaCoachingGenderF" xml:space="preserve">
+    <value>Female</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="ClientCoachCriteriaCoachingGenderM" xml:space="preserve">
+    <value>Male</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="ClientCoachCriteriaCoachingGenderPNTS" xml:space="preserve">
+    <value>Prefer Not To Say</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="ClientCoachCriteriaCoachingTypesBoth" xml:space="preserve">
+    <value>Workouts and Meals</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="ClientCoachCriteriaCoachingTypesMeals" xml:space="preserve">
+    <value>Workouts</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="ClientCoachCriteriaCoachingTypesWorkouts" xml:space="preserve">
+    <value>Meals</value>
+    <comment>15-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="ClientDashboardTitle" xml:space="preserve">
+    <value>Board</value>
+  </data>
+  <data name="CoachAddMealCaloriesLabel" xml:space="preserve">
+    <value> Calories</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealCarbsLabel" xml:space="preserve">
+    <value> Carbs</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealFatLabel" xml:space="preserve">
+    <value> Fat</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealImageLabel" xml:space="preserve">
+    <value>Paste an image link here</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealNameLabel" xml:space="preserve">
+    <value>Meal Name</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealProteinLabel" xml:space="preserve">
+    <value> Protein</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealRecipeLabel" xml:space="preserve">
+    <value>Type the ingredients and cook time.</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealTitle" xml:space="preserve">
+    <value>Add Meal</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachAddMealTypeLabel" xml:space="preserve">
+    <value>Meal Type</value>
+    <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachDashboardBoard" xml:space="preserve">
+    <value>Board</value>
+    <comment>9-CoachDashboardPage</comment>
+  </data>
+  <data name="CoachDashboardClientName" xml:space="preserve">
+    <value>Name</value>
+    <comment>9-CoachDashboardPage</comment>
+  </data>
+  <data name="CoachDashboardClientProgress" xml:space="preserve">
+    <value>Daily Progress</value>
+    <comment>9-CoachDashboardPage</comment>
+  </data>
+  <data name="CoachDashboardNumOfClient" xml:space="preserve">
+    <value># of clients</value>
+    <comment>9-CoachDashboardPage</comment>
+  </data>
+  <data name="CoachDashboardSearchClients" xml:space="preserve">
+    <value>Search clients</value>
+    <comment>9-CoachDashboardPage</comment>
+  </data>
+  <data name="CoachDashboardTitle" xml:space="preserve">
+    <value>Clients</value>
+    <comment>9-CoachDashboardPage</comment>
+  </data>
+  <data name="CoachDashboardYourClients" xml:space="preserve">
+    <value>Your Clients</value>
+    <comment>9-CoachDashboardPage</comment>
+  </data>
+  <data name="CoachDescriptionHelpText" xml:space="preserve">
+    <value>How would you describe yourself to clients?</value>
+  </data>
+  <data name="CoachDescriptionPlaceholder" xml:space="preserve">
+    <value>I am a fun coach, always aspiring to...</value>
+  </data>
+  <data name="CoachMealsClientPlanAdd" xml:space="preserve">
+    <value>Add</value>
+    <comment>10-CoachMealsPage</comment>
+  </data>
+  <data name="CoachMealsClientPlanTitle" xml:space="preserve">
+    <value>Meal Plan</value>
+    <comment>10-CoachMealsPage</comment>
+  </data>
+  <data name="CoachMealsEdit" xml:space="preserve">
+    <value>Edit</value>
+    <comment>10-CoachMealsPage</comment>
+  </data>
+  <data name="CoachMealsTitle" xml:space="preserve">
+    <value>Meals</value>
+    <comment>10-CoachMealsPage</comment>
+  </data>
+  <data name="CoachSelectionAvalibleListLabel" xml:space="preserve">
+    <value>Available Coach List</value>
+    <comment>6-ClientCoachSelectionPage</comment>
+  </data>
+  <data name="CoachSelectionNoAvalibleListLabel" xml:space="preserve">
+    <value>No Coach was found corresponding to your search.</value>
+    <comment>6-ClientCoachSelectionPage</comment>
+  </data>
+  <data name="CoachSelectionPriceLabel" xml:space="preserve">
+    <value> $/month</value>
+    <comment>6-ClientCoachSelectionPage</comment>
+  </data>
+  <data name="CoachSelectionPriceTitleLabel" xml:space="preserve">
+    <value>Price</value>
+    <comment>6-ClientCoachSelectionPage</comment>
+  </data>
+  <data name="CoachSelectionRequestButton" xml:space="preserve">
+    <value>Request</value>
+    <comment>6-ClientCoachSelectionPage</comment>
+  </data>
+  <data name="CoachWorkoutClientPlanTitle" xml:space="preserve">
+    <value> Workout Plan</value>
+    <comment>11-CoachWorkoutsPage</comment>
+  </data>
+  <data name="CoachWorkoutTitle" xml:space="preserve">
+    <value>Workouts</value>
+    <comment>11-CoachWorkoutsPage</comment>
+  </data>
+  <data name="CompleteAccountSetup" xml:space="preserve">
+    <value>Complete Account Setup</value>
+  </data>
+  <data name="ConfirmCoachSignUpButton" xml:space="preserve">
+    <value>Confirm Account Information</value>
+  </data>
+  <data name="ConfirmedPasswordPlaceholder" xml:space="preserve">
+    <value>Confirm Password</value>
+    <comment>2-Register</comment>
+  </data>
+  <data name="ConfirmSentEmailText" xml:space="preserve">
+    <value>Thank You! If you have signed up with us previously, we will be sending you an email shortly with a link to reset your password.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="CriteriasTitleLabel" xml:space="preserve">
+    <value>Find your coach and start your fitness journey as soon as possible!</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="CurrentWeightLabel" xml:space="preserve">
+    <value>Current Weight</value>
+    <comment>3-Profile</comment>
+  </data>
+  <data name="DifferentPasswords" xml:space="preserve">
+    <value>Passwords don't match!</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="DontHaveAccountLabel" xml:space="preserve">
+    <value>Don't have an account?</value>
+    <comment>1-Login</comment>
+  </data>
+  <data name="EditMealPageTitle" xml:space="preserve">
+    <value>Edit Meal</value>
+    <comment>12-EditMealPage</comment>
+  </data>
+  <data name="EditMealSaved" xml:space="preserve">
+    <value>Meal Updated.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="EditWorkoutNotFoundMessage" xml:space="preserve">
+    <value>Workout Not Found. Please try again</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="EditWorkoutPageTitle" xml:space="preserve">
+    <value>Edit Workout</value>
+    <comment>13-WorkoutEditPage</comment>
+  </data>
+  <data name="EditWorkoutSaved" xml:space="preserve">
+    <value>Workout Updated.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="EmailPlaceholder" xml:space="preserve">
+    <value>Email</value>
+    <comment>1-Login</comment>
+  </data>
+  <data name="FemaleGender" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="FileNameTextStart" xml:space="preserve">
+    <value>File name:</value>
+  </data>
+  <data name="FindACoachByCriteriaGenderLabel" xml:space="preserve">
+    <value>Select a gender, if you have a prefered coach gender</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByCriteriaLabel" xml:space="preserve">
+    <value>Let us find one for you!</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByCriteriaNameLabel" xml:space="preserve">
+    <value>Coach Name</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByCriteriaOrLabel" xml:space="preserve">
+    <value>- OR -</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByCriteriaSearchButton" xml:space="preserve">
+    <value>Search</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByCriteriaTypeLabel" xml:space="preserve">
+    <value>Select the coaching type that best fits you</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="FindACoachByNameLabel" xml:space="preserve">
+    <value>Find a coach by name</value>
+    <comment>5-ClientCoachCriteriaPage</comment>
+  </data>
+  <data name="ForgotPasswordLabel" xml:space="preserve">
+    <value>Forgot password ?</value>
+    <comment>1-Login</comment>
+  </data>
+  <data name="ForgotPasswordPrompt" xml:space="preserve">
+    <value>Please enter the email associated with your account.</value>
+    <comment>4-ForgotPassword</comment>
+  </data>
+  <data name="FullNamePlaceholder" xml:space="preserve">
+    <value>Full Name</value>
+    <comment>2-Register</comment>
+  </data>
+  <data name="GenderLabel" xml:space="preserve">
+    <value>Gender</value>
+    <comment>3-Profile</comment>
+  </data>
+  <data name="IncorrectLoginText" xml:space="preserve">
+    <value>Sorry, your password was incorrect. Please check your password and try again.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>The email that you have entered is not valid.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="IsVerifiedLabel" xml:space="preserve">
+    <value>Is verified</value>
+    <comment>3-Profile</comment>
+  </data>
+  <data name="LoginAttempsExceededText" xml:space="preserve">
+    <value>You have reached exceeded the maximum login attempts. Please try again later.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="LoginButton" xml:space="preserve">
+    <value>Log In</value>
+    <comment>1-Login</comment>
+  </data>
+  <data name="MaleGender" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="MealServiceLabel" xml:space="preserve">
+    <value>Offer meal coaching</value>
+    <comment>3-Profile</comment>
+  </data>
+  <data name="MissingCertificationError" xml:space="preserve">
+    <value>Please upload your certification.</value>
+  </data>
+  <data name="MissingInputs" xml:space="preserve">
+    <value>Please fill all required fields.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="OtherGender" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="PasswordPlaceholder" xml:space="preserve">
+    <value>Password</value>
+    <comment>1-Login</comment>
+  </data>
+  <data name="PasswordRequirementDigit" xml:space="preserve">
+    <value>Password must contain at least one digit.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="PasswordRequirementsLength" xml:space="preserve">
+    <value>Password must be 8 characters long.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="PasswordRequirementUppercase" xml:space="preserve">
+    <value>Password must contain at least one uppercase character.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="PasswordRequirmentSymbol" xml:space="preserve">
+    <value>Password must contain at least one symbol.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="PlanOffersHelpText" xml:space="preserve">
+    <value>What do you want to provide coaching for?</value>
+  </data>
+  <data name="PleaseSelectAGender" xml:space="preserve">
+    <value>Please select a gender</value>
+  </data>
+  <data name="PleaseSelectCertification" xml:space="preserve">
+    <value>Please select your certification</value>
+  </data>
+  <data name="PricingError" xml:space="preserve">
+    <value>Please enter a valid pricing.</value>
+  </data>
+  <data name="ProfileTitle" xml:space="preserve">
+    <value>Your Profile</value>
+    <comment>3-Profile</comment>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Save</value>
+    <comment>3-Profile</comment>
+  </data>
+  <data name="SelectPDFError" xml:space="preserve">
+    <value>Invalid file type. Please select a PDF.</value>
+  </data>
+  <data name="SignUpLabel" xml:space="preserve">
+    <value>Sign up</value>
+    <comment>1-Login</comment>
+  </data>
+  <data name="SpecifyGenderError" xml:space="preserve">
+    <value>Please specify your gender.</value>
+  </data>
+  <data name="StartWeightLabel" xml:space="preserve">
+    <value>Start Weight</value>
+    <comment>3-Profile</comment>
+  </data>
+  <data name="TypeLabel" xml:space="preserve">
+    <value>Type</value>
+    <comment>3-Profile</comment>
+  </data>
+  <data name="UnknownErrorText" xml:space="preserve">
+    <value>There was an unknown issue communicating with the server. Please try again later.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="UploadCertificationButton" xml:space="preserve">
+    <value>Upload Certification (PDF)</value>
+  </data>
+  <data name="ViewModelErrorMessage" xml:space="preserve">
+    <value>An error occured on the server. Please try saving again.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="ViewModelErrorTitle" xml:space="preserve">
+    <value>Error</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="ViewModelFieldIssueMessage" xml:space="preserve">
+    <value>Please fill ALL of the fields.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="ViewModelFieldIssueTitle" xml:space="preserve">
+    <value>Field Error</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="ViewModelProfileSuccessMessage" xml:space="preserve">
+    <value>Profile saved.</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="ViewModelSuccessTitle" xml:space="preserve">
+    <value>Success</value>
+    <comment>100-Alerts</comment>
+  </data>
+  <data name="WorkoutServiceLabel" xml:space="preserve">
+    <value>Offer workout coaching</value>
+    <comment>3-Profile</comment>
+  </data>
+</root>

@@ -3,29 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Coach"
              x:Class="BuiltDifferentMobileApp.Views.Coach.CoachDashboardPage"
-             Title="{Binding Title}"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
+             Title="{x:Static resource:AppResource.CoachDashboardTitle}"
              x:Name="MyCoachDashboardPage">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Profile" Command="{Binding ViewMyProfileCommand}" AutomationId="Profile">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
-            </ToolbarItem.IconImageSource>        </ToolbarItem>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <RefreshView IsRefreshing="{Binding IsBusy}"
                      Command="{Binding RefreshCommand}">
             <StackLayout BackgroundColor="{StaticResource PageBackground}" Padding="0,12,0,0" Margin="0">
-                <Label Text="Your Clients" FontSize="26" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="{StaticResource DarkGrey}"/>
-                
-                <SearchBar Placeholder="Search client" Text="{Binding SearchTerm}"/>
+                <Label Text="{x:Static resource:AppResource.CoachDashboardYourClients}" FontSize="26" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="{StaticResource DarkGrey}"/>
+
+                <SearchBar Placeholder="{x:Static resource:AppResource.CoachDashboardSearchClients}" Text="{Binding SearchTerm}"/>
                 
                 <CollectionView ItemsSource="{Binding Clients}"
                                 ItemSizingStrategy="MeasureAllItems">
 
                     <CollectionView.EmptyView>
-                        <Label Text="No clients." />
+                        <Label Text="{x:Static resource:AppResource.CoachDashboardNumOfClient}" />
                     </CollectionView.EmptyView>
 
                     <CollectionView.ItemTemplate>
@@ -47,8 +49,8 @@
                                             <Label Text="{Binding name}" LineBreakMode="TailTruncation" VerticalOptions="Center" FontSize="Large"/>
                                         </StackLayout>
 
-                                        <Label Grid.Row="0" Grid.Column="1" Text="69%" HorizontalOptions="Center" LineBreakMode="TailTruncation" VerticalOptions="Center" FontSize="Large"/>
-                                        <Button Grid.Row="0" Grid.Column="2" Text="Board"
+                                        <Label Grid.Row="0" Grid.Column="1" Text="10%" HorizontalOptions="Center" LineBreakMode="TailTruncation" VerticalOptions="Center" FontSize="Large"/>
+                                        <Button Grid.Row="0" Grid.Column="2" Text="{x:Static resource:AppResource.CoachDashboardBoard}"
                                                 Command="{Binding Source={x:Reference MyCoachDashboardPage}, Path=BindingContext.ViewClientsBoardCommand}" CommandParameter="{Binding .}" 
                                                 CornerRadius="8" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                                     </Grid>
@@ -68,8 +70,8 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
 
-                            <Label Text="Name" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" FontAttributes="Bold"/>
-                            <Label Text="Daily Progress" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" FontAttributes="Bold"/>
+                            <Label Text="{x:Static resource:AppResource.CoachDashboardClientName}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" FontAttributes="Bold"/>
+                            <Label Text="{x:Static resource:AppResource.CoachDashboardClientProgress}" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" FontAttributes="Bold"/>
                         </Grid>
                     </CollectionView.Header>
 

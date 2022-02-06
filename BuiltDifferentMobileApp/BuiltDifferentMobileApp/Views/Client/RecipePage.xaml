@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BuiltDifferentMobileApp.Views.Client.RecipePage"
+            >
+    <ContentPage.Content>
+        <StackLayout Margin="5,0,5,0">
+            <Label AutomationId="MealTitleRecipe" Margin="5,20,5,10"   Text="{Binding MealName}"  FontSize="35"
+                   FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <ScrollView
+                        IsClippedToBounds="true"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+                <StackLayout>
+                    <Label
+                                Text="{Binding Recipe}"
+                                HorizontalOptions="FillAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                   
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

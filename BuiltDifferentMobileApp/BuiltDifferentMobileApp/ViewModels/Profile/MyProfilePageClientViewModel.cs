@@ -1,4 +1,5 @@
 ﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Ressource;
 using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using Newtonsoft.Json;
@@ -68,7 +69,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
             }
         }
-
         private bool isEnabled;
         public bool IsEnabled
         {
@@ -77,6 +77,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         }
         private int UserId;
         public object PreviewPicture { get; set; }
+        private int Id;
 
         public AsyncCommand SubmitCommand { get; }
         public AsyncCommand UploadImageCommand { get; }
@@ -90,10 +91,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             StartWeight = 0;
             CurrentWeight = 0;
             ProfilePictureId = 0;
-
             ProfilePicture = null;
             PreviewPicture = null;
-
             GetUserInfo();
 
             isEnabled = false;
@@ -106,20 +105,32 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         private async Task GetUserInfo()
         {
             Models.Client user = (Models.Client)accountService.CurrentUser;
-            var userInfo = await networkService.GetAsync<Models.Client>(APIConstants.GetProfileUri());
-            accountService.CurrentUser = userInfo;
+            //TEST BEFORE MERGE
+            var userInfo = await networkService.GetAsync<Models.Client>(APIConstants.GetClientProfileUri(user.userId));
 
-            Name = userInfo.name;
-            UserId = userInfo.userId;
-            StartWeight = userInfo.startWeight;
-            CurrentWeight = userInfo.currentWeight;
-            ProfilePictureId = userInfo.profilePictureId;
+            if (userInfo == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Could not load client's profile!", "Returning to previous page", "OK");
+                await Shell.Current.GoToAsync("..");
+                IsBusy = false;
+                return;
+            }
+            else
+            {
+                accountService.CurrentUser = userInfo;
 
-            var pic = await networkService.GetStreamAsync(APIConstants.GetProfilePictureUri());
+                Id = userInfo.id;
+                Name = userInfo.name;
+                UserId = userInfo.userId;
+                StartWeight = userInfo.startWeight;
+                CurrentWeight = userInfo.currentWeight;
+                ProfilePictureId = userInfo.profilePictureId;
 
-            PreviewPicture = ImageSource.FromStream(() => pic);
-            OnPropertyChanged("PreviewPicture");
+                var pic = await networkService.GetStreamAsync(APIConstants.GetProfilePictureUri());
 
+                PreviewPicture = ImageSource.FromStream(() => pic);
+                OnPropertyChanged("PreviewPicture");
+            }
         }
 
         private async Task Edit()
@@ -197,13 +208,13 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
                 string.IsNullOrEmpty(Name)
                 )
             {
-                await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
+                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelFieldIssueTitle, AppResource.ViewModelFieldIssueMessage, "OK");
                 return;
             }
+
             if (IsEnabled)
             {
                 IsEnabled = false;
-
                 var multipartFormContent = await GetMultiPartFormContent();
 
                 if (multipartFormContent == null)

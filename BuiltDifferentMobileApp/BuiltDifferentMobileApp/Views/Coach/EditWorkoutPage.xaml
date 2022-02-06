@@ -2,10 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                xmlns:sys="clr-namespace:System;assembly=mscorlib"
+              xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              x:Class="BuiltDifferentMobileApp.Views.Coach.EditWorkoutPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Profile" Command="{Binding GoToProfile}">
+        <ToolbarItem Command="{Binding GoToProfile}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
             </ToolbarItem.IconImageSource>
@@ -19,18 +20,17 @@
             </Grid.RowDefinitions>
             <ScrollView Grid.Row="0">
                 <StackLayout Padding="50">
-                    <Label Text="Create / Edit Workout" AutomationId="AddWorkoutTitle" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="Black"/>
-                    <Entry AutomationId="WorkoutNameField" Text="{Binding WorkoutName}" Placeholder="Exercise Name" Keyboard="Text" BackgroundColor="White" />
-                    <Picker AutomationId="WorkoutTypeField" Title="Workout Type" ItemsSource="{Binding Types}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding WorkoutType}"/>
-                    <Entry AutomationId="SetsField" Text="{Binding Sets}" Placeholder="Sets" Keyboard="Numeric"/>
-                    <Entry AutomationId="RepsField" Text="{Binding Reps}" Placeholder="Reps" Keyboard="Numeric"/>
-                    <Entry AutomationId="DurationField" Text="{Binding Duration}" Placeholder="Duration (in minutes)" Keyboard="Numeric"/>
-                    <Entry AutomationId="RestTimeField" Text="{Binding RestTime}" Placeholder="Rest Time(seconds)" Keyboard="Numeric"/>
-                    <Entry AutomationId="WeightField" Text="{Binding Weight}" Placeholder="Weight(in lbs)" Keyboard="Numeric"/>
-                    <Entry AutomationId="DescriptionField" Text="{Binding Description}" Placeholder="Description" Keyboard="Text"/>
+                    <Label Text="{x:Static resource:AppResource.EditWorkoutPageTitle}" AutomationId="AddWorkoutTitle" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="Black"/>
+                    <Entry AutomationId="WorkoutNameField" Text="{Binding WorkoutName}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageWorkoutName}" Keyboard="Text" BackgroundColor="White" />
+                    <Picker AutomationId="WorkoutTypeField" Title="{x:Static resource:AppResource.AddWorkoutPageType}" ItemsSource="{Binding Types}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding WorkoutType}"/>
+                    <Entry AutomationId="SetsField" Text="{Binding Sets}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageWorkoutSets}" Keyboard="Numeric"/>
+                    <Entry AutomationId="RepsField" Text="{Binding Reps}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageReps}" Keyboard="Numeric"/>
+                    <Entry AutomationId="DurationField" Text="{Binding Duration}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageDuration}" Keyboard="Numeric"/>
+                    <Entry AutomationId="RestTimeField" Text="{Binding RestTime}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageRestTime}" Keyboard="Numeric"/>
+                    <Entry AutomationId="DescriptionField" Text="{Binding Description}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageDescription}" Keyboard="Text"/>
                     <Label Text="Date"/>
                     <DatePicker MinimumDate="{x:Static sys:DateTime.Now}" Date="{Binding Date}" HorizontalOptions="Center"/>
-                    <Entry AutomationId="DateField" Text="{Binding VideoLink}" Placeholder="Youtube Video Link" Keyboard="Text"/>
+                    <Entry AutomationId="DateField" Text="{Binding VideoLink}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageVideoLink}" Keyboard="Text"/>
                     <Button AutomationId="SaveButton" Grid.Row="0" BorderColor="{StaticResource RedPrimary}" BorderWidth="1" FontAttributes="Bold" BackgroundColor="{StaticResource RedPrimary}" BorderRadius="35" TextColor="White" 
                             HorizontalOptions="End" VerticalOptions="End" WidthRequest="70" HeightRequest="70" Margin="0,0,20,22" Command="{Binding SaveCommand}"/>
                 </StackLayout>

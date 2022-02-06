@@ -13,6 +13,20 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
         private static readonly string BaseAddress = $"http://{HOST}:{PORT}/api";
 
+
+        public static string GetAllRequestsByClient(int id)
+        {
+            return $"{BaseAddress}/requests/client/{id}";
+        }
+
+
+        public static string PostRequestURI()
+        {
+            //will need to add client id , etc...
+            return $"{BaseAddress}/requests";
+        }
+
+
         /*
          *  COACH URIS
          *  All endpoints on the api are available (post delete update not listed here yet)
@@ -128,7 +142,15 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return $"{BaseAddress}/profile";
         }
 
+        //TEST BEFORE MERGE!
+
         public static string PutProfileUri()
+        {
+            return $"{BaseAddress}/profile";
+        }
+
+        public static string GetClientProfileUri(int userId)
+
         {
             return $"{BaseAddress}/profile";
         }
@@ -140,6 +162,26 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         public static string GetProfilePictureUri()
         {
             return $"{BaseAddress}/profile/picture";
+        }
+
+        public static string UploadCertificationUri() {
+            return $"{BaseAddress}/certification/upload";
+        }
+
+        public static string GetCoachCertificationUri(int coachId) {
+            return $"{BaseAddress}/certification/{coachId}";
+        }
+
+        public static string GetCoachApprovalStatusUri(int coachId) {
+            return $"{BaseAddress}/certification/{coachId}/status";
+        }
+
+        public static string GetApproveDenyCoachUri(int coachId) {
+            return $"{BaseAddress}/admin/applications/{coachId}";
+        }
+
+        public static string GetUserAccountStatusUri(int userId) {
+            return $"{BaseAddress}/admin/user/{userId}/accountStatus";
         }
 
     }

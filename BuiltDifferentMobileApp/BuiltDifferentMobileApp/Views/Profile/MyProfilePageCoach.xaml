@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Profile"
              xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              x:Class="BuiltDifferentMobileApp.Views.Profile.MyProfilePageCoach">
 
     <ContentPage.BindingContext>
@@ -39,7 +40,7 @@
                     <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="1" Text="Your Info" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="{x:Static resource:AppResource.ProfileTitle}" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold"/>
 
                 <StackLayout Grid.Row="1" Grid.Column="1">
                     <StackLayout Orientation="Vertical">
@@ -49,31 +50,31 @@
                 </StackLayout>
                 <StackLayout Grid.Row="2" Grid.Column="1">
                 <StackLayout>
-                        <Label Text="Name" />
+                        <Label Text="{x:Static resource:AppResource.FullNamePlaceholder}" />
                         <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                             <Entry Text="{Binding Name}" IsEnabled="{Binding IsEnabled}" AutomationId="NameInput"/>
                         </Frame>
                     </StackLayout>
                     <StackLayout Spacing="2">
-                        <Label Text="Type Of Service Offered" />
+                        <Label Text="{x:Static resource:AppResource.TypeLabel}" />
                         <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                             <Picker ItemsSource="{Binding TypesOfServices}"  IsEnabled="{Binding IsEnabled}"  SelectedItem="{Binding Type}"/>
                         </Frame>
                     </StackLayout>
                     <StackLayout Spacing="2">
-                        <Label Text="Description" />
+                        <Label Text="{x:Static resource:AppResource.AddWorkoutPageDescription}" />
                         <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                             <Entry Text="{Binding Description}" IsEnabled="{Binding IsEnabled}" HorizontalOptions="FillAndExpand"/>
                         </Frame>
                     </StackLayout>
                     <StackLayout Spacing="2">
-                        <Label Text="Pricing" />
+                        <Label Text="{x:Static resource:AppResource.CoachSelectionPriceTitleLabel}" />
                         <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                             <Entry Text="{Binding Pricing}" IsEnabled="{Binding IsEnabled}" Keyboard="Numeric"/>
                         </Frame>
                     </StackLayout>
                     <StackLayout Spacing="2">
-                        <Label Text="Gender" />
+                        <Label Text="{x:Static resource:AppResource.GenderLabel}" />
                         <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                             <Picker ItemsSource="{Binding GenderTypes}"  IsEnabled="{Binding IsEnabled}" SelectedItem="{Binding Gender}"/>
                         </Frame>
@@ -82,19 +83,19 @@
                 <StackLayout Grid.Row="3" Grid.Column="1">
                     <StackLayout Orientation="Horizontal">
                         <CheckBox IsChecked="{Binding IsAvailable}" VerticalOptions="Center" Color="{StaticResource RedSecondary}" IsEnabled="{Binding IsEnabled}" />
-                        <Label Text="Available for new clients" VerticalOptions="Center"/>
+                        <Label Text="{x:Static resource:AppResource.AvailabilityLabel}" VerticalOptions="Center"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <CheckBox IsChecked="{Binding OffersWorkout}" VerticalOptions="Center" Color="{StaticResource RedSecondary}" IsEnabled="{Binding IsEnabled}" />
-                        <Label Text="Offer workout coaching" VerticalOptions="Center"/>
+                        <Label Text="{x:Static resource:AppResource.WorkoutServiceLabel}" VerticalOptions="Center"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <CheckBox IsChecked="{Binding OffersMeal}" VerticalOptions="Center" Color="{StaticResource RedSecondary}" IsEnabled="{Binding IsEnabled}" />
-                        <Label Text="Offer meal coaching" VerticalOptions="Center"/>
+                        <Label Text="{x:Static resource:AppResource.MealServiceLabel}" VerticalOptions="Center"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <CheckBox IsChecked="{Binding IsVerified}" VerticalOptions="Center" Color="{StaticResource RedPrimary}" IsEnabled="False"/>
-                        <Label Text="Is verified" VerticalOptions="Center"/>
+                        <Label Text="{x:Static resource:AppResource.IsVerifiedLabel}" VerticalOptions="Center"/>
                     </StackLayout>
                 </StackLayout>
                 <StackLayout Grid.Row="4" Grid.Column="1">

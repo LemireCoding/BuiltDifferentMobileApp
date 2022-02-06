@@ -33,7 +33,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
         public AsyncCommand<Models.Client> ViewClientsBoardCommand { get; }
 
         public CoachDashboardPageViewModel() {
-            Title = "Clients";
 
             ViewMyProfileCommand = new AsyncCommand(accountService.ViewMyProfileCommand);
             RefreshCommand = new AsyncCommand(FetchClients);
@@ -66,7 +65,10 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
 
             List<Models.Client> clients = await networkService.GetAsync<List<Models.Client>>(APIConstants.GetClientsForCoachId(coachId));
 
-            if(clients.Count != 0) {
+            if(clients == null) {
+                Clients = new ObservableRangeCollection<Models.Client>();
+            }
+            else if(clients.Count != 0) {
                 originalClients = clients;
                 Clients = new ObservableRangeCollection<Models.Client>(clients);
             } else {

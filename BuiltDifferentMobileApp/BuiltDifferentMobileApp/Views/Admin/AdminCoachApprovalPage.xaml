@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              x:Class="BuiltDifferentMobileApp.Views.Admin.AdminCoachApprovalPage"
-             Title="{Binding Title}">
+             Title="{x:Static resource:AppResource.AdminCoachApprovalTitle}">
 
     <ContentPage.Content>
         <RefreshView IsRefreshing="{Binding IsBusy}"
                      Command="{Binding RefreshCommand}">
             <StackLayout BackgroundColor="{StaticResource PageBackground}" Padding="0,12,0,0" Margin="0">
-                <Label Text="Requests" FontSize="26" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="{StaticResource DarkGrey}"/>
+                <Label Text="{x:Static resource:AppResource.AdminCoachApprovalRequests}" FontSize="26" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="{StaticResource DarkGrey}"/>
 
                 <CollectionView ItemsSource="{Binding Coaches}"
                                 ItemSizingStrategy="MeasureAllItems"
@@ -17,7 +18,7 @@
                                 SelectionChangedCommand="{Binding CoachSelectedCommand}">
 
                     <CollectionView.EmptyView>
-                        <Label Text="No pending coach requests." />
+                        <Label Text="{x:Static resource:AppResource.AdminCoachNoPendingCoaches}" />
                     </CollectionView.EmptyView>
 
                     <CollectionView.ItemTemplate>

@@ -30,10 +30,8 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             httpClient.Timeout = TimeSpan.FromSeconds(15);
         }
 
-        private async Task CheckIfSuspendedOrTokenExpired(HttpResponseMessage response)
-        {
-            if (response.StatusCode == HttpStatusCode.Forbidden)
-            {
+        private async Task CheckIfSuspendedOrTokenExpired(HttpResponseMessage response) {
+            if(response.StatusCode == HttpStatusCode.Forbidden) {
                 accountService.RemoveCurrentUser();
                 await Application.Current.MainPage.DisplayAlert("Your account requires you to relogin", "You will now be returned to the login page", "OK");
                 await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
@@ -41,18 +39,15 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             }
         }
 
-        public async Task<TResult> GetAsync<TResult>(string uri)
-        {
-            try
-            {
+        public async Task<TResult> GetAsync<TResult>(string uri) {
+            try {
                 HttpResponseMessage response = await httpClient.GetAsync(uri);
 
                 await CheckIfSuspendedOrTokenExpired(response);
 
                 string serialized = await response.Content.ReadAsStringAsync();
 
-                if (response.IsSuccessStatusCode)
-                {
+                if(response.IsSuccessStatusCode) {
                     var result = JsonConvert.DeserializeObject<TResult>(serialized);
 
                     return result;
@@ -60,32 +55,26 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
                 return default(TResult);
             }
-            catch (OperationCanceledException)
-            {
+            catch(OperationCanceledException) {
                 return default(TResult);
             }
 
         }
 
-        public async Task<Stream> GetStreamAsync(string uri)
-        {
-            try
-            {
+        public async Task<Stream> GetStreamAsync(string uri) {
+            try {
                 Stream stream = null;
 
                 var response = await httpClient.GetAsync(uri);
 
                 await CheckIfSuspendedOrTokenExpired(response);
 
-                if (response.IsSuccessStatusCode)
-                {
+                if(response.IsSuccessStatusCode) {
                     stream = await httpClient.GetStreamAsync(uri);
                 }
 
                 return stream ?? null;
-            }
-            catch (OperationCanceledException)
-            {
+            } catch(OperationCanceledException) {
                 return null;
             }
 
@@ -125,15 +114,12 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             {
                 HttpResponseMessage response = null;
 
-                if (!MultiPartFormData)
-                {
+                if(!MultiPartFormData) {
                     var json = JsonConvert.SerializeObject(data);
                     var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
 
                     response = await httpClient.PostAsync(uri, jsonString);
-                }
-                else
-                {
+                } else {
                     response = await httpClient.PostAsync(uri, (MultipartFormDataContent)data);
                 }
 
@@ -150,8 +136,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
                 return default(TResult);
             }
-            catch (OperationCanceledException)
-            {
+            catch(OperationCanceledException) {
                 return default(TResult);
             }
         }
@@ -166,28 +151,22 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
                 await CheckIfSuspendedOrTokenExpired(response);
 
                 return response.IsSuccessStatusCode;
-            }
-            catch (OperationCanceledException)
-            {
+            } catch(OperationCanceledException) {
                 return false;
             }
         }
 
-        public async Task<HttpStatusCode> LoginAsync(string uri, object user)
-        {
-            try
-            {
+        public async Task<HttpStatusCode> LoginAsync(string uri, object user) {
+            try {
                 var json = JsonConvert.SerializeObject(user);
                 var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage loginResponse = await httpClient.PostAsync(uri, jsonString);
 
-                if (loginResponse.IsSuccessStatusCode)
-                {
+                if(loginResponse.IsSuccessStatusCode) {
                     HttpHeaders headers = loginResponse.Headers;
 
-                    if (headers.TryGetValues("Authorization", out IEnumerable<string> values))
-                    {
+                    if(headers.TryGetValues("Authorization", out IEnumerable<string> values)) {
                         var JWTToken = values.First();
 
                         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", JWTToken);
@@ -196,53 +175,42 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
                         bool matchedAccountType = await accountService.SetCurrentUser(profileResponse);
 
-                        if (!matchedAccountType)
-                        {
+                        if(!matchedAccountType) {
                             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "");
                         }
                     }
                 }
 
                 return loginResponse.StatusCode;
-            }
-            catch (OperationCanceledException)
-            {
+            } catch(OperationCanceledException) {
                 return HttpStatusCode.RequestTimeout;
             }
         }
 
-        public async Task UpdateCurrentUser()
-        {
-            try
-            {
+        public async Task UpdateCurrentUser() {
+            try {
                 HttpResponseMessage response = await httpClient.GetAsync(APIConstants.GetLoginUri());
 
                 await CheckIfSuspendedOrTokenExpired(response);
 
                 bool matchedAccountType = await accountService.SetCurrentUser(response);
-            }
-            catch (Exception) { }
+            } catch(Exception) { }
         }
 
-        public async Task<HttpStatusCode> RegisterAsync(string uri, object user)
-        {
-            try
-            {
+        public async Task<HttpStatusCode> RegisterAsync(string uri, object user) {
+            try {
                 var json = JsonConvert.SerializeObject(user);
                 var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage loginResponse = await httpClient.PostAsync(uri, jsonString);
 
                 return loginResponse.StatusCode;
-            }
-            catch (OperationCanceledException)
-            {
+            } catch(OperationCanceledException) {
                 return HttpStatusCode.RequestTimeout;
             }
         }
 
-        public void RemoveJWTToken()
-        {
+        public void RemoveJWTToken() {
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "");
             accountService.RemoveCurrentUser();
         }
@@ -254,15 +222,12 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             {
                 HttpResponseMessage response = null;
 
-                if (!MultiPartFormData)
-                {
+                if(!MultiPartFormData) {
                     var json = JsonConvert.SerializeObject(data);
                     var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
 
                     response = await httpClient.PostAsync(uri, jsonString);
-                }
-                else
-                {
+                } else {
                     response = await httpClient.PostAsync(uri, (MultipartFormDataContent)data);
                 }
 
@@ -276,10 +241,8 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             }
         }
 
-        public async Task<HttpStatusCode> PutAsyncHttpResponseMessage(string uri, object obj)
-        {
-            try
-            {
+        public async Task<HttpStatusCode> PutAsyncHttpResponseMessage(string uri, object obj) {
+            try {
                 var json = JsonConvert.SerializeObject(obj);
                 HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -288,9 +251,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
                 await CheckIfSuspendedOrTokenExpired(response);
 
                 return response.StatusCode;
-            }
-            catch (OperationCanceledException)
-            {
+            } catch(OperationCanceledException) {
                 return HttpStatusCode.RequestTimeout;
             }
         }

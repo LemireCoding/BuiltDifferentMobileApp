@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Profile" 
              xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              x:Class="BuiltDifferentMobileApp.Views.Profile.MyProfilePageClient">
 
     <ContentPage.Resources>
@@ -19,7 +20,8 @@
         <ToolbarItem Text="Edit" Command="{Binding EditProfileCommand}" AutomationId="EditButton">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="FAS" Glyph="&#xf304;"/>
-            </ToolbarItem.IconImageSource>        </ToolbarItem>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -37,7 +39,7 @@
                     <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="1" Text="Your Info" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" AutomationId="Title"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="{x:Static resource:AppResource.ProfileTitle}" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" AutomationId="Title"/>
 
                 <StackLayout Grid.Row="1" Grid.Column="1">
                     <StackLayout Orientation="Vertical">
@@ -47,15 +49,15 @@
                 </StackLayout>
                 <StackLayout Grid.Row="2" Grid.Column="1">
                     <StackLayout>
-                        <Label Text="Name" />
+                        <Label Text="{x:Static resource:AppResource.FullNamePlaceholder}" />
                         <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}" >
                             <Entry IsEnabled="{Binding IsEnabled}"  Text="{Binding Name}"/>
                         </Frame>
-                        <Label Text="Start Weight" />
+                        <Label Text="{x:Static resource:AppResource.StartWeightLabel}" />
                         <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                             <Entry IsEnabled="False" Text="{Binding StartWeight}" Keyboard="Numeric"/>
                         </Frame>
-                        <Label Text="Current Weight" />
+                        <Label Text="{x:Static resource:AppResource.CurrentWeightLabel}" />
                         <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                             <Entry IsEnabled="{Binding IsEnabled}" Text="{Binding CurrentWeight}" Keyboard="Numeric" AutomationId="CurrentWeight"/>
                         </Frame>
@@ -63,7 +65,7 @@
                 </StackLayout>
                 <StackLayout Grid.Row="3" Grid.Column="1">
                     <StackLayout>
-                        <Button  Margin="10" Text="Save" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SubmitCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Submit"/>
+                        <Button  Margin="10" Text="{x:Static resource:AppResource.SaveButton}" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SubmitCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Submit"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

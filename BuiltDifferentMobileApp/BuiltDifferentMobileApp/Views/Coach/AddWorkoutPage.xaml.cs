@@ -12,12 +12,20 @@ using Xamarin.Forms.Xaml;
 namespace BuiltDifferentMobileApp.Views.Coach
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [QueryProperty(nameof(clientId), nameof(clientId))]
     public partial class AddWorkoutPage : ContentPage
     {
+        public int clientId { get; set; }
         public AddWorkoutPage()
         {
             InitializeComponent();
-            BindingContext = new AddWorkoutViewModel();
+
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            BindingContext = new AddWorkoutViewModel(clientId);
         }
     }
 }

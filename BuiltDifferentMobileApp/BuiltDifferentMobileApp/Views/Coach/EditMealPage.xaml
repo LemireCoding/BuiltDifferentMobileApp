@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              x:Class="BuiltDifferentMobileApp.Views.Coach.EditMealPage">
     <ContentPage.Content>
         <Grid>
@@ -9,15 +10,15 @@
             </Grid.RowDefinitions>
             <ScrollView Grid.Row="0">
                 <StackLayout Padding="50">
-                    <Label Text="{Binding Title}" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="{StaticResource Grey}"/>
-                    <Entry Text="{Binding MealName}" Placeholder="Meal Name" Keyboard="Text"/>
-                    <Picker Title="Meal Type"  ItemsSource="{Binding Types}"  SelectedItem="{Binding MealType}"/>
-                    <Entry Text="{Binding Calories}" Placeholder="Workout Type" Keyboard="Numeric"/>
-                    <Entry Text="{Binding Protein}" Placeholder="Sets" Keyboard="Numeric"/>
-                    <Entry Text="{Binding Carbs}" Placeholder="Sets" Keyboard="Numeric"/>
-                    <Entry Text="{Binding Fat}" Placeholder="Reps" Keyboard="Numeric"/>
-                    <Editor Text="{Binding Recipe}" Placeholder="Type the Ingredients and Cook Time" Keyboard="Text"/>
-                    <Entry Text="{Binding ImageLink}" Placeholder="Paste an image link here" Keyboard="Text"/>
+                    <Label Text="{x:Static resource:AppResource.EditMealPageTitle}" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="{StaticResource Grey}"/>
+                    <Entry Text="{Binding MealName}" Placeholder="{x:Static resource:AppResource.CoachAddMealNameLabel}" Keyboard="Text"/>
+                    <Picker Title="{x:Static resource:AppResource.CoachAddMealTypeLabel}"  ItemsSource="{Binding Types}"  SelectedItem="{Binding MealType}"/>
+                    <Entry Text="{Binding Calories}" Placeholder="{x:Static resource:AppResource.CoachAddMealCaloriesLabel}" Keyboard="Numeric"/>
+                    <Entry Text="{Binding Protein}" Placeholder="{x:Static resource:AppResource.CoachAddMealProteinLabel}" Keyboard="Numeric"/>
+                    <Entry Text="{Binding Carbs}" Placeholder="{x:Static resource:AppResource.CoachAddMealCarbsLabel}" Keyboard="Numeric"/>
+                    <Entry Text="{Binding Fat}" Placeholder="{x:Static resource:AppResource.CoachAddMealFatLabel}" Keyboard="Numeric"/>
+                    <Editor Text="{Binding Recipe}" Placeholder="{x:Static resource:AppResource.CoachAddMealRecipeLabel}" Keyboard="Text"/>
+                    <Entry Text="{Binding ImageLink}" Placeholder="{x:Static resource:AppResource.CoachAddMealImageLabel}" Keyboard="Text"/>
                     
                     <Label Text="Date"/>
                     <DatePicker  Date="{Binding Day}" HorizontalOptions="Center"/>

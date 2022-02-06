@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Coach"
+             xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
+             xmlns:translate="clr-namespace:BuiltDifferentMobileApp.Ressource"
+             x:Class="BuiltDifferentMobileApp.Views.Coach.NewCoachPage"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BoolToInvertedBoolConverter x:Key="boolToInvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <RefreshView IsRefreshing="{Binding IsBusy}">
+            <Grid>
+                <StackLayout BackgroundColor="{StaticResource PageBackground}" Grid.Row="0" Grid.Column="0">
+                    <StackLayout Padding="20" Spacing="16" BackgroundColor="{StaticResource PageBackground}">
+                        <StackLayout>
+                            <Label Text="{x:Static translate:AppResource.GenderLabel}" FontAttributes="Bold" />
+                            <StackLayout Orientation="Horizontal">
+                                <Picker ItemsSource="{Binding GenderPickerList}" SelectedItem="{Binding SelectedGender, Mode=TwoWay}" HorizontalOptions="Start" Title="{x:Static translate:AppResource.PleaseSelectAGender}"
+                                        IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="GenderPicker" />
+                                <Entry Text="{Binding OtherGender}" MaxLength="32" Placeholder="Please specify." IsVisible="{Binding OtherGenderInputVisible}"
+                                       HorizontalOptions="Start" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
+                                       AutomationId="CustomGender"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Label Text="{x:Static translate:AppResource.CoachDescriptionHelpText}" FontAttributes="Bold" />
+                            <Entry Text="{Binding Description}" MaxLength="250" Placeholder="{x:Static translate:AppResource.CoachDescriptionPlaceholder}"
+                                   IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
+                                   AutomationId="Description"/>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Label Text="Pricing" FontAttributes="Bold"/>
+                            <Entry Text="{Binding Pricing}" Keyboard="Numeric" Placeholder="29.99" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
+                                   AutomationId="CoachPricing" />
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Label Text="{x:Static translate:AppResource.PlanOffersHelpText}" FontAttributes="Bold"/>
+                            <StackLayout Orientation="Horizontal">
+                                <CheckBox VerticalOptions="Center" IsChecked="{Binding OfferWorkouts}" Color="{StaticResource RedSecondary}"
+                                          IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
+                                          AutomationId="OfferWorkouts"/>
+                                <Label Text="{x:Static translate:AppResource.ClientCoachCriteriaCoachingTypesMeals}" VerticalOptions="Center"/>
+                                <CheckBox VerticalOptions="Center" IsChecked="{Binding OfferMeals}" Color="{StaticResource RedSecondary}"
+                                          IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
+                                          AutomationId="OfferMeals"/>
+                                <Label Text="{x:Static translate:AppResource.ClientCoachCriteriaCoachingTypesWorkouts}" VerticalOptions="Center" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Vertical">
+                            <Button Text="{x:Static translate:AppResource.UploadCertificationButton}" Command="{Binding SelectCertificationFileCommand}"
+                                    IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
+                                    AutomationId="FilePicker"/>
+                            <Label Text="{Binding FileName}" HorizontalOptions="Center"/>
+                        </StackLayout>
+
+                        <Label Text="{Binding ErrorText}" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Red" AutomationId="ErrorText"/>
+                    </StackLayout>
+                    <Button Text="{x:Static translate:AppResource.ConfirmCoachSignUpButton}" VerticalOptions="EndAndExpand" CornerRadius="0" Command="{Binding SubmitFormCommand}"
+                            IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
+                            AutomationId="Submit"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="0" Grid.Column="0"
+                             BackgroundColor="#50000000"
+                             IsVisible="{Binding HasSubmittedCertification}">
+                    <Frame BorderColor="{StaticResource DarkGrey}" Margin="12,12,12,100" CornerRadius="6" VerticalOptions="CenterAndExpand">
+                        <StackLayout>
+                            <Label Text="{Binding PendingApprovalTitle}" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"/>
+                            <Label Text="{Binding PendingApprovalBody}" TextColor="Gray" HorizontalOptions="Center" />
+                            <Button Text="{x:Static translate:AppResource.CheckApplicationStatusButton}" Command="{Binding CheckIfSubmissionApprovedCommand}"
+                                    HorizontalOptions="Center" Margin="0,12,0,0"
+                                    AutomationId="CheckSubmissionStatus"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            
+            </Grid>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

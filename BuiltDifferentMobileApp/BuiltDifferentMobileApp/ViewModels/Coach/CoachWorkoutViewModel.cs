@@ -36,7 +36,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 
         public CoachWorkoutViewModel(string clientName, int clientId)
         {
-            WorkoutPageTitle = $"{clientName} Workout Plan";
+            WorkoutPageTitle = $"{clientName}";
             this.clientId = clientId;
             Day = DateTime.Now.Date;
             EditCommand = new AsyncCommand<int>(EditWorkout);
@@ -48,7 +48,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
         public async Task GetWorkouts()
         {
             var result = await networkService.GetAsync<ObservableRangeCollection<WorkoutDTO>>(APIConstants.GetWorkoutsByClientId(clientId));
-            if (result.Count == 0)
+            if (result == null || result.Count == 0)
             {
                 return;
             }
@@ -58,7 +58,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
         }
         private async Task AddWorkout()
         {
-            var route = $"{nameof(AddWorkoutPage)}";
+            var route = $"{nameof(AddWorkoutPage)}?clientId={clientId}";
             await Shell.Current.GoToAsync(route);
         }
 
