@@ -67,7 +67,7 @@
 
                                                     <behaviors:Expander.ContentTemplate>
                                                         <DataTemplate>
-                                                            <Grid HeightRequest="180" BackgroundColor="#6B6B6B" Padding="2, 0">
+                                                            <Grid HeightRequest="180" BackgroundColor="{StaticResource PageBackground}" Padding="2, 0">
                                                                 <Grid.RowDefinitions>
                                                                     <RowDefinition Height="180" />
 
