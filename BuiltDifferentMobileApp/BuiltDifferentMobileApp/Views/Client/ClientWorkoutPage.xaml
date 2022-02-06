@@ -1,126 +1,210 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit" xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
+             xmlns:client="clr-namespace:BuiltDifferentMobileApp.ViewModels.Client"
              x:Class="BuiltDifferentMobileApp.Views.Client.ClientWorkoutPage"
              x:Name="TheWorkoutPageClient"
-              Title="Workouts">
+             Title="Workouts">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:BoolToColorButtonWorkoutDoneConverter x:Key="boolToColorButtonWorkoutDoneConverter" />
-
             <converters:BoolToTextButtonWorkoutDoneConverter x:Key="boolToTextButtonWorkoutDoneConverter" />
+            <converters:BoolToSelectedWeekdayColorConverter x:Key="boolToSelectedWeekdayColorConverter" />
+            <converters:BoolToExpandOrCompletedIconConverter x:Key="boolToExpandOrCompletedIconConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
+    
     <ContentPage.Content>
-        <StackLayout Margin="5,0,5,0">
-            <Label Margin="5,20,5,10" AutomationId="WorkoutTitle" Text="{Binding WorkoutPageTitle}"  FontSize="35"
-                   FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+        <StackLayout BackgroundColor="#3F3F3F">
+            <Grid>
+                <Image Grid.Column="0" Grid.Row="0" VerticalOptions="Start"
+                       Source="https://www.planetfitness.com/sites/default/files/feature-image/xbreak-workout_602724.jpg.pagespeed.ic.v8byD7su-e.jpg"
+                       HeightRequest="300" Aspect="AspectFill"/>
+                <ScrollView>
+                    <Grid Grid.Column="0" Grid.Row="0" Margin="0,265,0,0" >
+                        <!-- COLLECTION VIEW START -->
+                        <StackLayout Grid.Column="0" Grid.Row="0" Spacing="0" Margin="0,65,0,0" Padding="10,75,10,0"
+                                 BackgroundColor="#3F3F3F">
+                            <!--InsertCommand when rerteieved -->
+                            <CollectionView HorizontalOptions="Center" ItemsSource="{Binding Workouts}">
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="4" />
+                                </CollectionView.ItemsLayout>
 
-
-            <DatePicker HorizontalOptions="Center"  Date="{Binding Day}"  />
-            
-
-            <!--InsertCommand when rerteieved -->
-            <CollectionView Margin="10"
-                ItemsSource="{Binding Workouts}"
-                            >
-
-
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Margin="15,15,15,15" >
-                            <behaviors:Expander>
-                                <behaviors:Expander.Header>
-                                    <Grid
-                                Padding="1">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition />
-                                        </Grid.ColumnDefinitions>
-                                        <Label 
-                                    Grid.Column="0" 
-                                    Text="{Binding workoutName} "
-                                    FontAttributes="Bold"
-                                    FontSize="Medium" />
-                                        <!-- ="{Binding Sets, StringFormat='Sets {0}'}" -->
-                                        <Label 
-                                    Grid.Column="3"
-                                    HorizontalTextAlignment="End"
-                                    FontSize="Large"
-                                    FontFamily="FAS" 
-                                    Text="&#xf107;" />
-                                    </Grid>
-
-                                </behaviors:Expander.Header>
-                                <behaviors:Expander.ContentTemplate>
+                                <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid  HeightRequest="180"
-                                    Padding="4">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="180" />
+                                        <Frame BackgroundColor="#303030" Padding="1" CornerRadius="0">
+                                            <Grid HorizontalOptions="Center">
+                                                <behaviors:Expander>
+                                                    <behaviors:Expander.Header>
+                                                        <Frame Padding="0" Margin="0" BackgroundColor="Transparent" CornerRadius="0">
+                                                            <Grid Padding="10">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition />
+                                                                    <ColumnDefinition />
+                                                                    <ColumnDefinition />
+                                                                    <ColumnDefinition />
+                                                                </Grid.ColumnDefinitions>
+                                                                <Label 
+                                                                    Grid.Column="0" 
+                                                                    Text="{Binding workoutName} "
+                                                                    FontAttributes="Bold"
+                                                                    FontSize="Medium" 
+                                                                    TextColor="{StaticResource LightGrey}"/>
+                                                                <!-- ="{Binding Sets, StringFormat='Sets {0}'}" -->
+                                                                <Label 
+                                                                    Grid.Column="3"
+                                                                    HorizontalTextAlignment="End"
+                                                                    FontSize="Large"
+                                                                    FontFamily="FAS" 
+                                                                    Text="{Binding isCompleted, Converter={StaticResource boolToExpandOrCompletedIconConverter}}"
+                                                                    TextColor="{StaticResource LightGrey}"/>
+                                                            </Grid>
+                                                        </Frame>
+                                                    </behaviors:Expander.Header>
 
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="2.5*"/>
-                                                <ColumnDefinition/>
-                                            </Grid.ColumnDefinitions>
-                                            <Frame Padding="0" CornerRadius="10">
-                                                <WebView Source="{Binding videoLink}" 
-         HorizontalOptions="Fill" VerticalOptions="Fill"
-         IsVisible="True" />
-                                            </Frame>
-                                            <StackLayout Margin="10,10,0,10" Grid.Column="1">
-                                                <Button IsEnabled="True" CornerRadius="12" BackgroundColor="{Binding isCompleted, Converter={StaticResource boolToColorButtonWorkoutDoneConverter}}" Text="{Binding isCompleted, Converter={StaticResource boolToTextButtonWorkoutDoneConverter}}" Command="{Binding Source={x:Reference TheWorkoutPageClient}, Path=BindingContext.MarkDone}" CommandParameter="{Binding id}"/>
+                                                    <behaviors:Expander.ContentTemplate>
+                                                        <DataTemplate>
+                                                            <Grid HeightRequest="180" BackgroundColor="#6B6B6B" Padding="2, 0">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="180" />
 
-                                                <Label 
-                                    Grid.Column="1"
-                                    HorizontalTextAlignment="Start"
-                                    Text="{Binding sets, StringFormat='{0} Sets'} "
-                                    FontAttributes="Bold"
-                                    FontSize="Medium"/>
-                                                <!-- ="{Binding Reps, StringFormat='Sets {0}'}" -->
-                                                <Label 
-                                    Grid.Column="2"
-                                    HorizontalTextAlignment="Start"
-                                    Text="{Binding reps, StringFormat='{0} Reps'} "
-                                    FontAttributes="Bold"
-                                    FontSize="Medium" />
+                                                                </Grid.RowDefinitions>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="2*"/>
+                                                                    <ColumnDefinition />
+                                                                </Grid.ColumnDefinitions>
+                                                                <Frame Padding="0" Margin="4" CornerRadius="10">
+                                                                    <WebView Source="{Binding videoLink}" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="True" />
+                                                                </Frame>
+                                                                <StackLayout Margin="2, 4" Grid.Column="1">
+                                                                    <Button IsEnabled="True" CornerRadius="12" HorizontalOptions="Start"
+                                                                        BackgroundColor="{Binding isCompleted, Converter={StaticResource boolToColorButtonWorkoutDoneConverter}}"
+                                                                        Text="{Binding isCompleted, Converter={StaticResource boolToTextButtonWorkoutDoneConverter}}"
+                                                                        Command="{Binding Source={x:Reference TheWorkoutPageClient}, Path=BindingContext.MarkDone}" CommandParameter="{Binding id}"/>
 
-                                                <Label 
-                                    Grid.Column="2"
-                                    HorizontalTextAlignment="Start"
-                                    Text="{Binding restTime, StringFormat='{0} Rest (s)'} "
-                                    FontAttributes="Bold"
-                                    FontSize="Medium" />
+                                                                    <Label 
+                                                                        Grid.Column="1"
+                                                                        HorizontalTextAlignment="Start"
+                                                                        Text="{Binding sets, StringFormat='{0} Sets'} "
+                                                                        FontAttributes="Bold"
+                                                                        FontSize="Medium"/>
+                                                                        <!-- ="{Binding Reps, StringFormat='Sets {0}'}" -->
+                                                                    <Label 
+                                                                        Grid.Column="2"
+                                                                        HorizontalTextAlignment="Start"
+                                                                        Text="{Binding reps, StringFormat='{0} Reps'} "
+                                                                        FontAttributes="Bold"
+                                                                        FontSize="Medium" />
 
-                                            </StackLayout>
+                                                                    <Label 
+                                                                        Grid.Column="2"
+                                                                        HorizontalTextAlignment="Start"
+                                                                        Text="{Binding restTime, StringFormat='{0} Rest (s)'} "
+                                                                        FontAttributes="Bold"
+                                                                        FontSize="Medium" />
 
-                                        </Grid>
+                                                                </StackLayout>
 
+                                                            </Grid>
+
+                                                        </DataTemplate>
+                                                    </behaviors:Expander.ContentTemplate>
+                                                </behaviors:Expander>
+
+                                            </Grid>
+                                        </Frame>
                                     </DataTemplate>
-                                </behaviors:Expander.ContentTemplate>
-                            </behaviors:Expander>
+                                </CollectionView.ItemTemplate>
+                                <CollectionView.EmptyView>
+                                    <StackLayout HorizontalOptions="Center">
+                                        <Image 
+                                            IsAnimationPlaying="True"
+                                            WidthRequest="200"
+                                            HeightRequest="200" />
+                                        <Label 
+                                            Text="Wait for your Coach to add Workouts"
+                                            HorizontalTextAlignment="Center"
+                                            Padding="20,10,10,10"
+                                            TextColor="White" />
+                                    </StackLayout>
+                                </CollectionView.EmptyView>
+                            </CollectionView>
+                        </StackLayout>
+                        <!-- COLLECTION VIEW END -->
 
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <StackLayout HorizontalOptions="Center">
-                        <Image 
-                            IsAnimationPlaying="True"
-                            WidthRequest="200"
-                            HeightRequest="200" />
-                        <Label 
-                            Text="Wait for your Coach to add Workouts"
-                            HorizontalTextAlignment="Center"
-                            Padding="20,10,10,10"
-                            />
-                    </StackLayout>
-                </CollectionView.EmptyView>
-            </CollectionView>
+                        <!-- DATE PICKER START -->
+                        <Frame Grid.Column="0" Grid.Row="0" Padding="12,6,12,6" HorizontalOptions="Center" VerticalOptions="Start"
+                               BackgroundColor="#303030" CornerRadius="12" Margin="0,24,0,0">
+                            <StackLayout>
+                                <Label Text="{Binding WeekOfText}" LineBreakMode="TailTruncation" FontSize="Subtitle" HorizontalOptions="Center" TextColor="White" />
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="6">
+                                    <StackLayout Margin="0" Padding="0" Spacing="4">
+                                        <Button Text="Su" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="0"
+                                            BackgroundColor="Transparent"
+                                            BorderColor="{Binding Day0Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
+                                            BorderWidth="2" TextColor="{Binding Day0Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}"/>
+                                        <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day0Selected}" IsEnabled="False"
+                                            BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                    <StackLayout Margin="0" Padding="0" Spacing="4">
+                                        <Button Text="Mo" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="1"
+                                            BackgroundColor="Transparent"
+                                            BorderColor="{Binding Day1Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
+                                            BorderWidth="2" TextColor="{Binding Day1Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}"/>
+                                        <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day1Selected}" IsEnabled="False"
+                                            BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                    <StackLayout Margin="0" Padding="0" Spacing="4">
+                                        <Button Text="Tu" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="2"
+                                            BackgroundColor="Transparent"
+                                            BorderColor="{Binding Day2Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
+                                            BorderWidth="2" TextColor="{Binding Day2Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}"/>
+                                        <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day2Selected}" IsEnabled="False"
+                                            BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                    <StackLayout Margin="0" Padding="0" Spacing="4">
+                                        <Button Text="We" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="3"
+                                            BackgroundColor="Transparent"
+                                            BorderColor="{Binding Day3Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
+                                            BorderWidth="2" TextColor="{Binding Day3Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}"/>
+                                        <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day3Selected}" IsEnabled="False"
+                                            BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                    <StackLayout Margin="0" Padding="0" Spacing="4">
+                                        <Button Text="Th" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="4"
+                                            BackgroundColor="Transparent"
+                                            BorderColor="{Binding Day4Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
+                                            BorderWidth="2" TextColor="{Binding Day4Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}"/>
+                                        <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day4Selected}" IsEnabled="False"
+                                            BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                    <StackLayout Margin="0" Padding="0" Spacing="4">
+                                        <Button Text="Fr" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="5"
+                                            BackgroundColor="Transparent"
+                                            BorderColor="{Binding Day5Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
+                                            BorderWidth="2" TextColor="{Binding Day5Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}"/>
+                                        <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day5Selected}" IsEnabled="False"
+                                            BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                    <StackLayout Margin="0" Padding="0" Spacing="4">
+                                        <Button Text="Sa" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="6"
+                                            BackgroundColor="Transparent"
+                                            BorderColor="{Binding Day6Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
+                                            BorderWidth="2" TextColor="{Binding Day6Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}"/>
+                                        <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day6Selected}" IsEnabled="False"
+                                            BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                        <!-- DATE PICKER END -->
 
+                    </Grid>
+                </ScrollView>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

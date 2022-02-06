@@ -18,24 +18,49 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         private IAccountService accountService = AccountService.Instance;
         private int clientId;
         public AsyncCommand<int> MarkDone { get; }
+        private List<WorkoutDTO> OriginalWorkoutList { get; set; }
         public ObservableRangeCollection<WorkoutDTO> Workouts { get; set; }
         public AsyncCommand AddCommand { get; }
         public AsyncCommand<int> EditCommand { get; }
-        private DateTime day;
-        public DateTime Day
-        {
-            get => day;
-            set
-            {
-                SetProperty(ref day, value);
-                GetWorkouts();
 
-            }
-        }
+        private DateTime CurrentDay { get; set; }
 
         public string WorkoutPageTitle { get; set; }
 
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
+
+        public AsyncCommand<string> WeekdaySelectedCommand { get; set; }
+
+        private string weekOfText;
+        public string WeekOfText { get => weekOfText; set => SetProperty(ref weekOfText, value); }
+
+        private DateTime Day0 { get; set; }
+        private bool day0Selected;
+        public bool Day0Selected { get => day0Selected; set => SetProperty(ref day0Selected, value); }
+
+        private DateTime Day1 { get; set; }
+        private bool day1Selected;
+        public bool Day1Selected { get => day1Selected; set => SetProperty(ref day1Selected, value); }
+
+        private DateTime Day2 { get; set; }
+        private bool day2Selected;
+        public bool Day2Selected { get => day2Selected; set => SetProperty(ref day2Selected, value); }
+
+        private DateTime Day3 { get; set; }
+        private bool day3Selected;
+        public bool Day3Selected { get => day3Selected; set => SetProperty(ref day3Selected, value); }
+
+        private DateTime Day4 { get; set; }
+        private bool day4Selected;
+        public bool Day4Selected { get => day4Selected; set => SetProperty(ref day4Selected, value); }
+
+        private DateTime Day5 { get; set; }
+        private bool day5Selected;
+        public bool Day5Selected { get => day5Selected; set => SetProperty(ref day5Selected, value); }
+
+        private DateTime Day6 { get; set; }
+        private bool day6Selected;
+        public bool Day6Selected { get => day6Selected; set => SetProperty(ref day6Selected, value); }
 
         public ClientWorkoutViewModel()
         {
@@ -43,36 +68,181 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             WorkoutPageTitle = $"Your Workout Plan";
             var user = (Models.Client)accountService.CurrentUser;
             this.clientId = user.id;
-            Day = DateTime.Now.Date;
-          
+
+            CurrentDay = DateTime.Now.Date;
+            SetDayButtonValues((int)CurrentDay.DayOfWeek);
+            WeekOfText = "";
+
+            WeekdaySelectedCommand = new AsyncCommand<string>(WeekdaySelected);
+            WeekdaySelected((int)CurrentDay.DayOfWeek);
 
             GetWorkouts();
+        }
+
+        private void SetDayButtonValues(int currentDay) {
+            DateTime[] week = { Day0, Day1, Day2, Day3, Day4, Day5, Day6 };
+            bool canLeft = true;
+            bool canRight = true;
+
+            week[currentDay] = CurrentDay;
+            for(int i = 1; true; i++) {
+                if(canLeft) {
+                    try {
+                        week[currentDay - i] = CurrentDay.AddDays(-i);
+                    } catch { canLeft = false; }
+                }
+
+                if(canRight) {
+                    try {
+                        week[currentDay + i] = CurrentDay.AddDays(i);
+                    } catch { canRight = false; }
+                }
+
+                if(!canLeft && !canRight) break;
+            }
+
+            Day0 = week[0];
+            Day1 = week[1];
+            Day2 = week[2];
+            Day3 = week[3];
+            Day4 = week[4];
+            Day5 = week[5];
+            Day6 = week[6];
+        }
+
+        private void SetCurrentlySelectedDay(int day) {
+            switch(day) {
+                case 0:
+                    Day0Selected = true;
+                    Day1Selected = false;
+                    Day2Selected = false;
+                    Day3Selected = false;
+                    Day4Selected = false;
+                    Day5Selected = false;
+                    Day6Selected = false;
+                    CurrentDay = Day0;
+                    break;
+                case 1:
+                    Day0Selected = false;
+                    Day1Selected = true;
+                    Day2Selected = false;
+                    Day3Selected = false;
+                    Day4Selected = false;
+                    Day5Selected = false;
+                    Day6Selected = false;
+                    CurrentDay = Day1;
+                    break;
+                case 2:
+                    Day0Selected = false;
+                    Day1Selected = false;
+                    Day2Selected = true;
+                    Day3Selected = false;
+                    Day4Selected = false;
+                    Day5Selected = false;
+                    Day6Selected = false;
+                    CurrentDay = Day2;
+                    break;
+                case 3:
+                    Day0Selected = false;
+                    Day1Selected = false;
+                    Day2Selected = false;
+                    Day3Selected = true;
+                    Day4Selected = false;
+                    Day5Selected = false;
+                    Day6Selected = false;
+                    CurrentDay = Day3;
+                    break;
+                case 4:
+                    Day0Selected = false;
+                    Day1Selected = false;
+                    Day2Selected = false;
+                    Day3Selected = false;
+                    Day4Selected = true;
+                    Day5Selected = false;
+                    Day6Selected = false;
+                    CurrentDay = Day4;
+                    break;
+                case 5:
+                    Day0Selected = false;
+                    Day1Selected = false;
+                    Day2Selected = false;
+                    Day3Selected = false;
+                    Day4Selected = false;
+                    Day5Selected = true;
+                    Day6Selected = false;
+                    CurrentDay = Day5;
+                    break;
+                case 6:
+                    Day0Selected = false;
+                    Day1Selected = false;
+                    Day2Selected = false;
+                    Day3Selected = false;
+                    Day4Selected = false;
+                    Day5Selected = false;
+                    Day6Selected = true;
+                    CurrentDay = Day6;
+                    break;
+                default:
+                    Day0Selected = false;
+                    Day1Selected = false;
+                    Day2Selected = false;
+                    Day3Selected = false;
+                    Day4Selected = false;
+                    Day5Selected = false;
+                    Day6Selected = false;
+                    CurrentDay = Day0;
+                    break;
+            }
+        }
+
+        private Task WeekdaySelected(string day) {
+            SetCurrentlySelectedDay(int.Parse(day));
+            FilterWorkouts();
+            WeekOfText = CurrentDay.ToString();
+            return Task.CompletedTask;
+        }
+
+        private Task WeekdaySelected(int day) {
+            SetCurrentlySelectedDay(day);
+            FilterWorkouts();
+            WeekOfText = CurrentDay.ToString();
+            return Task.CompletedTask;
         }
 
         public async Task GetWorkouts()
         {
             var result = await networkService.GetAsync<ObservableRangeCollection<WorkoutDTO>>(APIConstants.GetWorkoutsByClientId(clientId));
-            if (result == null||result.Count == 0 )
+            if (result == null || result.Count == 0 )
             {
+                OriginalWorkoutList = null;
                 return;
             }
-            Workouts = new ObservableRangeCollection<WorkoutDTO>(result.Where(x => x.day.ToString("MMMM dd, yyyy") == Day.ToString("MMMM dd, yyyy")));
-            OnPropertyChanged("Workouts");
+            OriginalWorkoutList = result.ToList();
+            FilterWorkouts();
         }
 
+        public void FilterWorkouts() {
+            if(OriginalWorkoutList == null) return;
+            Workouts = new ObservableRangeCollection<WorkoutDTO>(OriginalWorkoutList.Where(x => x.day.ToString("MMMM dd, yyyy") == CurrentDay.ToString("MMMM dd, yyyy")));
+            OnPropertyChanged("Workouts");
+        }
 
 
         public async Task Done(int id)
         {
 
             var route = APIConstants.GetWorkoutsByWorkoutId(id);
+
             var workout = await networkService.GetAsync<Workout>(route);
+            if(workout == null) return;
 
             if (workout.isCompleted == false)
             {
                 workout.isCompleted = true;
-                var test = JsonConvert.SerializeObject(workout);
+
                 var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.UpdateWorkoutByWorkoutId(id), workout);
+                if(result == null) return;
+
                 var httpCode = result.StatusCode;
 
                 if (httpCode == System.Net.HttpStatusCode.OK)
@@ -80,8 +250,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
                     await Application.Current.MainPage.DisplayAlert("Good", "Workout set as done", "OK");
                     GetWorkouts();
-
-
                 }
                 else
                 {
@@ -91,8 +259,10 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             else
             {
                 workout.isCompleted = false;
-                var test = JsonConvert.SerializeObject(workout);
+
                 var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.UpdateWorkoutByWorkoutId(id), workout);
+                if(result == null) return;
+
                 var httpCode = result.StatusCode;
 
                 if (httpCode == System.Net.HttpStatusCode.OK)
@@ -100,8 +270,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
                     await Application.Current.MainPage.DisplayAlert("Good", "Workout set as not done", "OK");
                     GetWorkouts();
-
-
                 }
                 else
                 {
