@@ -93,12 +93,12 @@
         COACH PAGES
     -->
 
-    <FlyoutItem Title="Clients" IsVisible="{Binding IsVerifiedCoach}">
-        <ShellContent Route="CoachDashboardPage" ContentTemplate="{DataTemplate coachpages:CoachDashboardPage}" />
+    <FlyoutItem Title="Clients" IsVisible="{Binding IsVerifiedCoach}" AutomationId="CoachClients">
+        <ShellContent Route="CoachDashboardPage" ContentTemplate="{DataTemplate coachpages:CoachDashboardPage}"  />
     </FlyoutItem>
-    
-    <FlyoutItem Title="Requests" IsVisible="{Binding IsVerifiedCoach}">
-        <ShellContent Route="CoachClientApprovalPage" ContentTemplate="{DataTemplate coachpages:CoachClientApprovalPage}" />
+
+    <FlyoutItem Title="Requests" IsVisible="{Binding IsVerifiedCoach}"  AutomationId="ClientRequests">
+        <ShellContent Route="CoachClientApprovalPage" ContentTemplate="{DataTemplate coachpages:CoachClientApprovalPage}"/>
     </FlyoutItem>
 
     <FlyoutItem Title="Apply for approval" IsVisible="{Binding IsUnverifiedCoach}">
@@ -142,7 +142,7 @@
     -->
 
     <FlyoutItem Title="Log out">
-        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate loginpages:LoginPage}" Shell.FlyoutBehavior="Disabled" FlyoutItemIsVisible="False"/>
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate loginpages:LoginPage}" Shell.FlyoutBehavior="Disabled" FlyoutItemIsVisible="False" AutomationId="Log out"/>
     </FlyoutItem>
 
 </Shell>

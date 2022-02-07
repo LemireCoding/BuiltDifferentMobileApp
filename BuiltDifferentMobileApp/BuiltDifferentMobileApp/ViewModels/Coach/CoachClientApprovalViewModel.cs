@@ -55,7 +55,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 
             if (response >= 200 && response <= 299)
             {
-                await Application.Current.MainPage.DisplayAlert("Client Request Accepted", "Get Coaching! you have a new client.", "OK");
+                await Application.Current.MainPage.DisplayAlert("Client Request Accepted", "Get Coaching! You have a new client.", "OK");
                 FetchPendingRequests();
             }
             else
@@ -75,7 +75,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 
             if (response >= 200 && response <= 299)
             {
-                await Application.Current.MainPage.DisplayAlert("Client Request Denied", "We'll let the client know that you cannot accept his request at this time.", "OK");
+                await Application.Current.MainPage.DisplayAlert("Client Request Denied", "We'll let the client know that you cannot accept their request at this time.", "OK");
                 FetchPendingRequests();
             }
             else

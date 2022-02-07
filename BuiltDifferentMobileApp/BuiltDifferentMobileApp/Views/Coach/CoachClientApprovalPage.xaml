@@ -34,13 +34,13 @@
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
-                                            <Image Grid.Column="0" Source="icon_about.png" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                                            <Image Grid.Column="0" Source="icon_about.png" VerticalOptions="Center" HorizontalOptions="EndAndExpand" AutomationId="RequestInfo"/>
                                             <Label 
                                                 Grid.Column="1" 
                                                 VerticalOptions="Center"
                                                 Text="{Binding clientName}"
                                                 FontAttributes="Bold"
-                                                FontSize="Medium" />
+                                                FontSize="Medium" AutomationId="ClientNameRequest" />
                                             <StackLayout Orientation="Horizontal" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="End">
                                                 <Button Command="{Binding Source={x:Reference MyClientApprovalPage}, Path=BindingContext.RespondToClientRequestDenyCommand}" CommandParameter="{Binding .}" Text="{x:Static resource:AppResource.AdminCoachApprovalDeny}" AutomationId="DenyClientButton"/>
                                                 <Button Command="{Binding Source={x:Reference MyClientApprovalPage}, Path=BindingContext.RespondToClientRequestAcceptCommand}" CommandParameter="{Binding .}" Text="{x:Static resource:AppResource.CoachClientRequestAccept}" AutomationId="AcceptClientButton"/>
