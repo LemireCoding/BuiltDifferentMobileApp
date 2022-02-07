@@ -35,10 +35,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
         public CoachClientApprovalViewModel()
         {
 
-            //FIGURE WHY its sending a 1 for coachId
-
             this.CoachId = ((Models.Coach)accountService.CurrentUser).id;
             ClientName = "";
+            
             RefreshCommand = new AsyncCommand(FetchPendingRequests);
             RespondToClientRequestAcceptCommand = new AsyncCommand<Models.RequestClientInfo>(RespondToClientRequestAccept);
             RespondToClientRequestDenyCommand = new AsyncCommand<Models.RequestClientInfo>(RespondToClientRequestDeny);

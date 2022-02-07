@@ -36,7 +36,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             var user = (Models.Client)accountService.CurrentUser;
             this.clientId = user.id;
             this.clientName = user.name;
-            this.planSelected = CoachingType;
+            planSelected = "Not Specified";
             SendRequest = new AsyncCommand<int>(Request);
             GetCoaches();
         }
@@ -92,7 +92,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
                 var routeClientRequests = APIConstants.GetAllRequestsByClient(clientId);
                 var clientRequests = await networkService.GetAsync<List<Request>>(routeClientRequests);
 
-                if (clientRequests == null)
+                if (clientRequests.Count==0)
                 {
                     var routeSendRequest = APIConstants.PostRequestURI();
 
