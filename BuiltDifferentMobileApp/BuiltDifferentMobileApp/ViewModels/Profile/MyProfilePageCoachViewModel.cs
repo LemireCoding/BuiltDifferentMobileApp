@@ -251,34 +251,29 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
                 GetUserInfo();
             }
         }
+
         private async Task Upload()
         {
-            var customFileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>> {
-                { DevicePlatform.iOS, new[] { "image/png" } },
-                { DevicePlatform.Android, new[] { "image/png" } },
-            });
-
-            var options = new PickOptions
+            var options = new MediaPickerOptions
             {
-                PickerTitle = "Please select your profilePicture (png)",
-                FileTypes = customFileTypes,
+                Title = "Please select your Profile Picture"
             };
 
             try
             {
-                var file = await FilePicker.PickAsync(options);
+                var picture = await MediaPicker.PickPhotoAsync(options);
 
-                if (file != null && file.ContentType == "image/png")
+                if (picture != null && picture.ContentType == "image/gif" || picture.ContentType == "image/png" || picture.ContentType == "image/jpeg" || picture.ContentType == "image/bmp" || picture.ContentType == "image/jpg")
                 {
-                    var stream = await file.OpenReadAsync();
+                    var stream = await picture.OpenReadAsync();
 
                     PreviewPicture = ImageSource.FromStream(() => stream);
                     OnPropertyChanged("PreviewPicture");
 
-                    ProfilePicture = file;
+                    ProfilePicture = picture;
                 }
                 else
-                    await Application.Current.MainPage.DisplayAlert("Image format", "Please select a png file.", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Image format", "Please select a valid image. (jpg|jpeg|png|gif|bmp)", "OK");
             }
             catch (Exception)
             {
@@ -292,12 +287,12 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             {
                 MultipartFormDataContent formContent = new MultipartFormDataContent();
 
-                // Read file contents & set MIME appopriately, image/png
-                StreamContent fileContent = new StreamContent(await ProfilePicture.OpenReadAsync());
-                fileContent.Headers.ContentType = new MediaTypeHeaderValue(ProfilePicture.ContentType);
+                // Read picture contents & set MIME appopriately, image/*
+                StreamContent pictureContent = new StreamContent(await ProfilePicture.OpenReadAsync());
+                pictureContent.Headers.ContentType = new MediaTypeHeaderValue(ProfilePicture.ContentType);
 
                 // Add it to the form content as "profilePicture"
-                formContent.Add(fileContent, "profilePicture", Guid.NewGuid().ToString());
+                formContent.Add(pictureContent, "profilePicture", Guid.NewGuid().ToString());
 
                 return formContent;
             }
@@ -330,8 +325,15 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
                 await networkService.PostAsyncHttpResponseMessage(APIConstants.PostUploadProfilePicture(), multipartFormContent, true );
 
                 var profile = new CoachProfileDTO(Name, UserId, Type, IsAvailable, OffersMeal, OffersWorkout, CertificationId, Gender, IsVerified, Description, Pricing, ProfilePictureId);
+
+                if (profile == null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "Sorry! We are having an issue retrieving your profile. Please try again.", "OK");
+                }
+
                 var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutProfileUri(), profile);
                 var httpCode = result.StatusCode;
+
                 if (httpCode == System.Net.HttpStatusCode.OK)
                 {
                     await Application.Current.MainPage.DisplayAlert("Success", "Profile Saved", "OK");
@@ -345,6 +347,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "An error occurred on the server. Please try saving again.", "OK");
                 }
+                else return;
             }
             else
                 return;
