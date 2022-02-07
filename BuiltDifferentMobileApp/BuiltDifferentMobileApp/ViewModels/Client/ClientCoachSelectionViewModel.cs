@@ -92,7 +92,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
                 var routeClientRequests = APIConstants.GetAllRequestsByClient(clientId);
                 var clientRequests = await networkService.GetAsync<List<Request>>(routeClientRequests);
 
-                if (clientRequests.Count==0)
+                if (clientRequests.Count == 0)
                 {
                     var routeSendRequest = APIConstants.PostRequestURI();
 
@@ -120,12 +120,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             {
                 return;
             }
-
-
-
-
         }
-
-
     }
 }
