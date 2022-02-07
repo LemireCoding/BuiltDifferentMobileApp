@@ -96,6 +96,10 @@
     <FlyoutItem Title="Clients" IsVisible="{Binding IsVerifiedCoach}">
         <ShellContent Route="CoachDashboardPage" ContentTemplate="{DataTemplate coachpages:CoachDashboardPage}" />
     </FlyoutItem>
+    
+    <FlyoutItem Title="Requests" IsVisible="{Binding IsVerifiedCoach}">
+        <ShellContent Route="CoachClientApprovalPage" ContentTemplate="{DataTemplate coachpages:CoachClientApprovalPage}" />
+    </FlyoutItem>
 
     <FlyoutItem Title="Apply for approval" IsVisible="{Binding IsUnverifiedCoach}">
         <ShellContent Route="NewCoachPage" ContentTemplate="{DataTemplate coachpages:NewCoachPage}" />

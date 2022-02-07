@@ -337,6 +337,21 @@
     <value>Meal Type</value>
     <comment>7-AddMealPage</comment>
   </data>
+  <data name="CoachClientApprovalNoRequests" xml:space="preserve">
+    <value>No Requests</value>
+    <comment>17-CoachClientApprovalPage</comment>
+  </data>
+  <data name="CoachClientApprovalTitle" xml:space="preserve">
+    <value>Client Requests</value>
+    <comment>17-CoachClientApprovalPage</comment>
+  </data>
+  <data name="CoachClientApprovalYourRequests" xml:space="preserve">
+    <value>Your Requests</value>
+    <comment>17-CoachClientApprovalPage</comment>
+  </data>
+  <data name="CoachClientRequestAccept" xml:space="preserve">
+    <value>Accept</value>
+  </data>
   <data name="CoachDashboardBoard" xml:space="preserve">
     <value>Board</value>
     <comment>9-CoachDashboardPage</comment>

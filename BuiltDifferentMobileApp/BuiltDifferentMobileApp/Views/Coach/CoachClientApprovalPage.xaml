@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
+             x:Class="BuiltDifferentMobileApp.Views.Coach.CoachClientApprovalPage"
+             x:Name="MyClientApprovalPage"
+             Title="{x:Static resource:AppResource.CoachClientApprovalTitle}">
+
+    <ContentPage.Content>
+        <RefreshView IsRefreshing="{Binding IsBusy}"
+                     Command="{Binding RefreshCommand}">
+            <StackLayout BackgroundColor="{StaticResource PageBackground}" Padding="12,12,10,12" Margin="0">
+                <Label Text="{x:Static resource:AppResource.CoachClientApprovalYourRequests}" FontSize="26" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="{StaticResource DarkGrey}"/>
+
+                <CollectionView ItemsSource="{Binding ClientRequests}"
+                                ItemSizingStrategy="MeasureAllItems"
+                                SelectedItem="{Binding SelectedRequest}"
+                                SelectionMode="Single"
+                                SelectionChangedCommand="{Binding SelectedrequestCommand}">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="5">
+                                <behaviors:Expander>
+                                    <behaviors:Expander.Header>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Image Grid.Column="0" Source="icon_about.png" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                                            <Label 
+                                                Grid.Column="1" 
+                                                VerticalOptions="Center"
+                                                Text="{Binding clientName}"
+                                                FontAttributes="Bold"
+                                                FontSize="Medium" />
+                                            <StackLayout Orientation="Horizontal" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="End">
+                                                <Button Command="{Binding Source={x:Reference MyClientApprovalPage}, Path=BindingContext.RespondToClientRequestDenyCommand}" CommandParameter="{Binding .}" Text="{x:Static resource:AppResource.AdminCoachApprovalDeny}" AutomationId="DenyClientButton"/>
+                                                <Button Command="{Binding Source={x:Reference MyClientApprovalPage}, Path=BindingContext.RespondToClientRequestAcceptCommand}" CommandParameter="{Binding .}" Text="{x:Static resource:AppResource.CoachClientRequestAccept}" AutomationId="AcceptClientButton"/>
+                                            </StackLayout>
+                                        </Grid>
+                                    </behaviors:Expander.Header>
+                                    
+                                    <behaviors:Expander.ContentTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                                                    <Label Text="Plan:" LineBreakMode="TailTruncation" FontSize="Body" FontAttributes="Bold"/>
+                                                    <Label Text="{Binding planSelected}" LineBreakMode="TailTruncation" FontSize="Body"/>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                                                    <Label Text="Data Requested:" LineBreakMode="TailTruncation" FontSize="Body" FontAttributes="Bold"/>
+                                                    <Label Text="{Binding requestDate}" LineBreakMode="TailTruncation" FontSize="Body"/>
+                                                </StackLayout>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </behaviors:Expander.ContentTemplate>
+                                </behaviors:Expander>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <Label Text="{x:Static resource:AppResource.CoachClientApprovalNoRequests}" />
+                    </CollectionView.EmptyView>
+                </CollectionView>
+            </StackLayout>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>
