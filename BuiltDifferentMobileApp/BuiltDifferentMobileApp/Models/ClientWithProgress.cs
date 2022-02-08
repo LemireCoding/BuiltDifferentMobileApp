@@ -16,7 +16,7 @@ namespace BuiltDifferentMobileApp.Models
         public int profilePictureId { get; set; }
         public string percentage { get; set; }
 
-        public ClientWithProgress(int id, string name, int userId, int coachId, bool waitingApproval, int startWeight, int currentWeight, int profilePicture, string percentage)
+        public ClientWithProgress(int id, string name, int userId, int coachId, bool waitingApproval, int startWeight, int currentWeight, int profilePictureId, string percentage)
         {
             this.id = id;
             this.name = name;
