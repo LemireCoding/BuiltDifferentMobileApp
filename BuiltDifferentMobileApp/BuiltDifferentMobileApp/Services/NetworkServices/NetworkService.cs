@@ -119,7 +119,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
                     var jsonString = new StringContent(json, Encoding.UTF8, "application/json");
 
                     response = await httpClient.PostAsync(uri, jsonString);
-                } else {    
+                } else {
                     response = await httpClient.PostAsync(uri, (MultipartFormDataContent)data);
                 }
 
@@ -133,7 +133,7 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
                     return result;
                 }
-                
+
                 return default(TResult);
             }
             catch(OperationCanceledException) {
