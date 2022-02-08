@@ -11,6 +11,6 @@ namespace BuiltDifferentMobileApp.Models {
         public bool waitingApproval { get; set; }
         public int startWeight { get; set; }
         public int currentWeight { get; set; }
-        public string profilePicture { get; set; }
+        public int profilePictureId { get; set; }
     }
 }

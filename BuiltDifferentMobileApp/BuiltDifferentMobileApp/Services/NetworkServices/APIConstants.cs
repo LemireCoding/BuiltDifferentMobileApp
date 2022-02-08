@@ -26,6 +26,20 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return $"{BaseAddress}/requests";
         }
 
+        /*
+        * Coach Client Accept/Deny URI
+        */
+
+        public static string UpdateApproveDenyRequestUri(int clientId)
+        {
+            return $"{BaseAddress}/requests/applications/{clientId}";
+        }
+
+        public static string GetPendingRequestsUri(int coachId)
+        {
+            return $"{BaseAddress}/requests/coach/pending/{coachId}";
+        }
+
 
         /*
          *  COACH URIS
@@ -138,18 +152,36 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         public static string GetCoachByIdUri(int coachId) {
             return $"{BaseAddress}/coaches/{coachId}";
         }
+
         /*
          * Profile URI
          */
-        public static string PutProfileUri(int userId)
-        {
-            return $"{BaseAddress}/profile";
-        }
-        public static string GetClientProfileUri(int userId)
+        public static string GetProfileUri()
         {
             return $"{BaseAddress}/profile";
         }
 
+        //TEST BEFORE MERGE!
+
+        public static string PutProfileUri()
+        {
+            return $"{BaseAddress}/profile";
+        }
+
+        public static string GetClientProfileUri(int userId)
+
+        {
+            return $"{BaseAddress}/profile";
+        }
+
+        public static string PostUploadProfilePicture()
+        {
+            return $"{BaseAddress}/profile/upload";
+        }
+        public static string GetProfilePictureUri()
+        {
+            return $"{BaseAddress}/profile/picture";
+        }
 
         public static string UploadCertificationUri() {
             return $"{BaseAddress}/certification/upload";
