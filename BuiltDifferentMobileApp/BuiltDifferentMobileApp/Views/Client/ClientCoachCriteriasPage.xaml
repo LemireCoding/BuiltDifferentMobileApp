@@ -3,12 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
              x:Class="BuiltDifferentMobileApp.Views.Client.ClientCoachCriteriasPage"
              xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{x:Static resource:AppResource.ProfileTitle}" Command="{Binding ViewMyProfileCommand}">
-            <ToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
-            </ToolbarItem.IconImageSource>        </ToolbarItem>
-    </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         

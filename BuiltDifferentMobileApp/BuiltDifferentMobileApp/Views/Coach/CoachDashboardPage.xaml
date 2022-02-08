@@ -41,7 +41,7 @@
                                     </SwipeItems>
                                 </SwipeView.RightItems>
                                 <StackLayout>
-                                <Frame BorderColor="Black" BackgroundColor="White" CornerRadius="0" Margin="0" Padding="10">
+                                <Frame BorderColor="Black" BackgroundColor="White" CornerRadius="0" Margin="0" Padding="10" AutomationId="Client">
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -54,7 +54,7 @@
 
                                         <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
                                             <Image Source="https://pngset.com/images/katie-notopoulos-katienotopoulos-i-write-about-tech-round-profile-image-placeholder-text-number-symbol-word-transparent-png-201415.png" HeightRequest="40"/>
-                                            <Label Text="{Binding name}" LineBreakMode="TailTruncation" VerticalOptions="Center" FontSize="Large"/>
+                                                <Label Text="{Binding name}" LineBreakMode="TailTruncation" VerticalOptions="Center" FontSize="Large" AutomationId="ClientName"/>
                                         </StackLayout>
 
                                         <Label Grid.Row="0" Grid.Column="1" Text="10%" HorizontalOptions="Center" LineBreakMode="TailTruncation" VerticalOptions="Center" FontSize="Large"/>

@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="AdminInteractWithCoachAccountsTests.cs" />
     <Compile Include="ClientCriteriaFormTests.cs" />
+    <Compile Include="ClientRemoveTests.cs" />
     <Compile Include="ForgotPasswordTests.cs" />
     <Compile Include="CreateAccountTests.cs" />
     <Compile Include="MarkAsDoneMeal.cs" />
