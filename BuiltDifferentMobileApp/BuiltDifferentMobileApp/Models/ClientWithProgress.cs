@@ -13,10 +13,10 @@ namespace BuiltDifferentMobileApp.Models
         public bool waitingApproval { get; set; }
         public int startWeight { get; set; }
         public int currentWeight { get; set; }
-        public string profilePicture { get; set; }
+        public int profilePictureId { get; set; }
         public string percentage { get; set; }
 
-        public ClientWithProgress(int id, string name, int userId, int coachId, bool waitingApproval, int startWeight, int currentWeight, string profilePicture, string percentage)
+        public ClientWithProgress(int id, string name, int userId, int coachId, bool waitingApproval, int startWeight, int currentWeight, int profilePicture, string percentage)
         {
             this.id = id;
             this.name = name;
@@ -25,7 +25,7 @@ namespace BuiltDifferentMobileApp.Models
             this.waitingApproval = waitingApproval;
             this.startWeight = startWeight;
             this.currentWeight = currentWeight;
-            this.profilePicture = profilePicture;
+            this.profilePictureId = profilePictureId;
             this.percentage = percentage;
         }
     }

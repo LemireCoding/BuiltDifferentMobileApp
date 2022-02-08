@@ -127,7 +127,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
                         client.waitingApproval,
                         client.startWeight,
                         client.currentWeight,
-                        client.profilePicture,
+                        client.profilePictureId,
                         percentage);
 
                     orig.Add(clientWithProgress);
