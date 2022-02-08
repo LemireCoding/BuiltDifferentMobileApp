@@ -57,7 +57,7 @@
                     <Grid  >
                         <behaviors:Expander>
                             <behaviors:Expander.Header>
-                                <Label Text="{x:Static resource:AppResource.FindACoachByNameLabel}"  FontSize="18"  FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="{StaticResource DarkGrey}"/>
+                                <Label Text="{x:Static resource:AppResource.FindACoachByNameLabel}"  FontSize="18"  FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="{StaticResource DarkGrey}" AutomationId="FindCoachByName"/>
 
                             </behaviors:Expander.Header>
                             <behaviors:Expander.ContentTemplate>

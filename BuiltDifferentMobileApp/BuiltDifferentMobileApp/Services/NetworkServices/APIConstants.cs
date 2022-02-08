@@ -26,6 +26,20 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return $"{BaseAddress}/requests";
         }
 
+        /*
+        * Coach Client Accept/Deny URI
+        */
+
+        public static string UpdateApproveDenyRequestUri(int clientId)
+        {
+            return $"{BaseAddress}/requests/applications/{clientId}";
+        }
+
+        public static string GetPendingRequestsUri(int coachId)
+        {
+            return $"{BaseAddress}/requests/coach/pending/{coachId}";
+        }
+
 
         /*
          *  COACH URIS

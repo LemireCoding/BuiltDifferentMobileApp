@@ -574,6 +574,42 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Requests.
+        /// </summary>
+        public static string CoachClientApprovalNoRequests {
+            get {
+                return ResourceManager.GetString("CoachClientApprovalNoRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client Requests.
+        /// </summary>
+        public static string CoachClientApprovalTitle {
+            get {
+                return ResourceManager.GetString("CoachClientApprovalTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Requests.
+        /// </summary>
+        public static string CoachClientApprovalYourRequests {
+            get {
+                return ResourceManager.GetString("CoachClientApprovalYourRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accept.
+        /// </summary>
+        public static string CoachClientRequestAccept {
+            get {
+                return ResourceManager.GetString("CoachClientRequestAccept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Board.
         /// </summary>
         public static string CoachDashboardBoard {
