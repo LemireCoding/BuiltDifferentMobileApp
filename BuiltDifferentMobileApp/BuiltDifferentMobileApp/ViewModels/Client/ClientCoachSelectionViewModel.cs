@@ -18,6 +18,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
     public class ClientCoachSelectionViewModel : ViewModelBase
     {
         private int clientId;
+        private string clientName;
+        private string planSelected;
         private string coachName, gender, coachingType;
         public string CoachName { get => coachName; set => SetProperty(ref coachName, value); }
         public AsyncCommand<int> SendRequest { get; }
@@ -33,6 +35,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             CoachingType = coachingT;
             var user = (Models.Client)accountService.CurrentUser;
             this.clientId = user.id;
+            this.clientName = user.name;
+            planSelected = "Not Specified";
             SendRequest = new AsyncCommand<int>(Request);
             GetCoaches();
         }
@@ -88,11 +92,11 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
                 var routeClientRequests = APIConstants.GetAllRequestsByClient(clientId);
                 var clientRequests = await networkService.GetAsync<List<Request>>(routeClientRequests);
 
-                if (clientRequests == null)
+                if (clientRequests.Count == 0)
                 {
                     var routeSendRequest = APIConstants.PostRequestURI();
 
-                    var request = new RequestDTO("PENDING",id, clientId);
+                    var request = new RequestDTO("PENDING",id, clientId, clientName, planSelected);
                     var test = JsonConvert.SerializeObject(request);
                     var result = await networkService.PostAsync<HttpResponseMessage>(routeSendRequest, request);
                     var httpCode = result.StatusCode;
@@ -116,12 +120,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             {
                 return;
             }
-
-
-
-
         }
-
-
     }
 }

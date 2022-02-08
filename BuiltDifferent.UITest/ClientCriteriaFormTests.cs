@@ -56,6 +56,7 @@ namespace BuiltDifferent.UITest
        {
            app.Repl();
        }
+
         [Test]
         public void Reach_Selection_Page()
         {
@@ -63,7 +64,7 @@ namespace BuiltDifferent.UITest
 
             if (platform == Platform.Android)
             {
-                app.Tap(e => e.Id("NoResourceEntry-31"));
+                app.Tap(e => e.Marked("FindCoachByName"));
                 app.EnterText(e => e.Marked("CoachNameField"), "Coach Bob");
                 app.DismissKeyboard();
                 app.Tap(e => e.Marked("SearchCoach"));
