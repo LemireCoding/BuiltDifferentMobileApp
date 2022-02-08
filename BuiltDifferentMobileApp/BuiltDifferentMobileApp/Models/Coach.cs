@@ -16,5 +16,6 @@ namespace BuiltDifferentMobileApp.Models {
         public bool isVerified { get; set; }
         public string description { get; set; }
         public double pricing { get; set; }
+        public int profilePictureId{ get; set; }
     }
 }

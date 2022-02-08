@@ -42,6 +42,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoachProfileTests.cs" />
     <Compile Include="AdminInteractWithCoachAccountsTests.cs" />
     <Compile Include="ClientCriteriaFormTests.cs" />
     <Compile Include="CoachClientAcceptDenyTests.cs" />
@@ -55,7 +56,7 @@
     <Compile Include="MealRecipeTest.cs" />
     <Compile Include="MealTests.cs" />
     <Compile Include="AppInitializer.cs" />
-    <Compile Include="ProfileTests.cs" />
+    <Compile Include="ClientProfileTests.cs" />
     <Compile Include="WorkoutTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
