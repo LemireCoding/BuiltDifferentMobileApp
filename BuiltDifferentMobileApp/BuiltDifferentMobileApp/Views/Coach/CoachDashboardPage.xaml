@@ -21,8 +21,8 @@
                 <Label Text="{x:Static resource:AppResource.CoachDashboardYourClients}" FontSize="26" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="{StaticResource DarkGrey}"/>
 
                 <SearchBar Placeholder="{x:Static resource:AppResource.CoachDashboardSearchClients}" Text="{Binding SearchTerm}"/>
-                
-                <CollectionView ItemsSource="{Binding Clients}"
+
+                <CollectionView ItemsSource="{Binding ClientsOnBoard}"
                                 ItemSizingStrategy="MeasureAllItems">
 
                     <CollectionView.EmptyView>
@@ -48,7 +48,7 @@
                                             <Label Text="{Binding name}" LineBreakMode="TailTruncation" VerticalOptions="Center" FontSize="Large"/>
                                         </StackLayout>
 
-                                        <Label Grid.Row="0" Grid.Column="1" Text="10%" HorizontalOptions="Center" LineBreakMode="TailTruncation" VerticalOptions="Center" FontSize="Large"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding percentage}" HorizontalOptions="Center" LineBreakMode="TailTruncation" VerticalOptions="Center" FontSize="Large"/>
                                         <Button Grid.Row="0" Grid.Column="2" Text="{x:Static resource:AppResource.CoachDashboardBoard}"
                                                 Command="{Binding Source={x:Reference MyCoachDashboardPage}, Path=BindingContext.ViewClientsBoardCommand}" CommandParameter="{Binding .}" 
                                                 CornerRadius="8" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
