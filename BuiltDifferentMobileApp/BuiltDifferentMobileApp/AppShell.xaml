@@ -113,6 +113,10 @@
         <ShellContent Route="ClientCoachCriteriasPage" ContentTemplate="{DataTemplate clientpages:ClientCoachCriteriasPage}" />
     </FlyoutItem>
 
+    <FlyoutItem Title="Your Requests" IsVisible="{Binding IsClientWithoutCoach}">
+        <ShellContent Route="ClientRequestCenterPage" ContentTemplate="{DataTemplate clientpages:ClientRequestsCenterPage}" />
+    </FlyoutItem>
+
 
 
 

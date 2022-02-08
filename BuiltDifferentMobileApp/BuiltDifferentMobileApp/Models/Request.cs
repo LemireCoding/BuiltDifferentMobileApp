@@ -12,5 +12,6 @@ namespace BuiltDifferentMobileApp.Models
         public int clientId { get; set; }
         public DateTime approvalDate { get; set; }
         public DateTime requestDate { get; set; }
+        public string coachName { get; set; }
     }
 }

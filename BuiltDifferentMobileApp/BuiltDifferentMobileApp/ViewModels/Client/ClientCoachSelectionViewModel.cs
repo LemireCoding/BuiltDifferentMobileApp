@@ -87,8 +87,12 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             {
                 var routeClientRequests = APIConstants.GetAllRequestsByClient(clientId);
                 var clientRequests = await networkService.GetAsync<List<Request>>(routeClientRequests);
-
-                if (clientRequests == null)
+                if (clientRequests == null )
+                {
+                    await Application.Current.MainPage.DisplayAlert("A Problem Occured", "We could not process the request", "OK");
+                    return;
+                }
+                if (clientRequests.Count == 0)
                 {
                     var routeSendRequest = APIConstants.PostRequestURI();
 
