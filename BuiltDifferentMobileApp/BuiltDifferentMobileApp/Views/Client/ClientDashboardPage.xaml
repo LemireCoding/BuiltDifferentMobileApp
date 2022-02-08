@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BuiltDifferentMobileApp.Views.Client.ClientDashboardPage"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="BuiltDifferentMobileApp.Views.Client.ClientDashboardPage"
             xmlns:mypages="clr-namespace:BuiltDifferentMobileApp.Views.Coach;assembly=BuiltDifferentMobileApp"
             xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Coach"
             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
             BackgroundColor="#660708" BarBackgroundColor="#660708"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.IsSwipePagingEnabled="False"
             Title="{x:Static resource:AppResource.ClientDashboardTitle}">
 
     <TabbedPage.ToolbarItems>

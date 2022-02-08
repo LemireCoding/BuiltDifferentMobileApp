@@ -45,6 +45,7 @@
     <Compile Include="CoachProfileTests.cs" />
     <Compile Include="AdminInteractWithCoachAccountsTests.cs" />
     <Compile Include="ClientCriteriaFormTests.cs" />
+    <Compile Include="ClientPlanTests.cs" />
     <Compile Include="CoachClientAcceptDenyTests.cs" />
     <Compile Include="ForgotPasswordTests.cs" />
     <Compile Include="CreateAccountTests.cs" />
