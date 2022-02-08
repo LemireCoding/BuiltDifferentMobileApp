@@ -32,9 +32,18 @@
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout>
-                                <Frame BorderColor="Black" BackgroundColor="White" CornerRadius="0" Margin="0" Padding="10" AutomationId="Client">
-                                    <Grid>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems Mode="Execute">
+                                        <SwipeItem Text="Delete" 
+                                        BackgroundColor="{StaticResource RedSecondary }"
+                                                Command="{Binding Source={x:Reference MyCoachDashboardPage}, Path=BindingContext.RemoveClientCommand}" 
+                                                CommandParameter="{Binding .}"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <StackLayout>
+                                    <Frame BorderColor="Black" BackgroundColor="White" CornerRadius="0" Margin="0" Padding="10" AutomationId="Client">
+                                        <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                         </Grid.RowDefinitions>
@@ -53,9 +62,10 @@
                                         <Button Grid.Row="0" Grid.Column="2" Text="{x:Static resource:AppResource.CoachDashboardBoard}"
                                                 Command="{Binding Source={x:Reference MyCoachDashboardPage}, Path=BindingContext.ViewClientsBoardCommand}" CommandParameter="{Binding .}" 
                                                 CornerRadius="8" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
-                                    </Grid>
-                                </Frame>
-                            </StackLayout>
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                           </SwipeView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
 
