@@ -119,7 +119,6 @@
                                                         </DataTemplate>
                                                     </behaviors:Expander.ContentTemplate>
                                                 </behaviors:Expander>
-
                                             </Grid>
                                         </Frame>
                                     </DataTemplate>

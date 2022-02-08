@@ -358,7 +358,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
                 if (httpCode == System.Net.HttpStatusCode.OK)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Good", "Workout set as done", "OK");
+                    //await Application.Current.MainPage.DisplayAlert("Good", "Workout set as done", "OK");
                     GetWorkouts();
                 }
                 else
@@ -378,7 +378,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
                 if (httpCode == System.Net.HttpStatusCode.OK)
                 {
 
-                    await Application.Current.MainPage.DisplayAlert("Good", "Workout set as not done", "OK");
+                    //await Application.Current.MainPage.DisplayAlert("Good", "Workout set as not done", "OK");
                     GetWorkouts();
                 }
                 else
