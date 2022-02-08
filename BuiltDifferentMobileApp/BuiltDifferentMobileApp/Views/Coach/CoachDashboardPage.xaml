@@ -31,7 +31,16 @@
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems Mode="Execute">
+                                        <SwipeItem Text="Delete" 
+                                           BackgroundColor="{StaticResource RedSecondary }"
+                                                   Command="{Binding Source={x:Reference MyCoachDashboardPage}, Path=BindingContext.RemoveClientCommand}" 
+                                                   CommandParameter="{Binding .}"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <StackLayout>
                                 <Frame BorderColor="Black" BackgroundColor="White" CornerRadius="0" Margin="0" Padding="10">
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -55,6 +64,7 @@
                                     </Grid>
                                 </Frame>
                             </StackLayout>
+                            </SwipeView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
 
