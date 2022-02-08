@@ -17,7 +17,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
     {
         private IAccountService accountService = AccountService.Instance;
         private int clientId;
-        public AsyncCommand<int> MarkDone { get; }
+        public AsyncCommand<WorkoutDTO> MarkDone { get; }
         private List<WorkoutDTO> OriginalWorkoutList { get; set; }
         public ObservableRangeCollection<WorkoutDTO> Workouts { get; set; }
         public AsyncCommand AddCommand { get; }
@@ -69,7 +69,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
         public ClientWorkoutViewModel()
         {
-            MarkDone = new AsyncCommand<int>(Done);
+            MarkDone = new AsyncCommand<WorkoutDTO>(Done);
             WorkoutPageTitle = $"Your Workout Plan";
             var user = (Models.Client)accountService.CurrentUser;
             this.clientId = user.id;
@@ -339,57 +339,18 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         }
 
 
-        public async Task Done(int id)
+        public async Task Done(WorkoutDTO workout)
         {
-
-            var route = APIConstants.GetWorkoutsByWorkoutId(id);
-
-            var workout = await networkService.GetAsync<Workout>(route);
             if(workout == null) return;
 
-            if (workout.isCompleted == false)
-            {
-                workout.isCompleted = true;
+            workout.isCompleted = !workout.isCompleted;
 
-                var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.UpdateWorkoutByWorkoutId(id), workout);
-                if(result == null) return;
+            var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.UpdateWorkoutByWorkoutId(workout.id), workout);
 
-                var httpCode = result.StatusCode;
-
-                if (httpCode == System.Net.HttpStatusCode.OK)
-                {
-                    //await Application.Current.MainPage.DisplayAlert("Good", "Workout set as done", "OK");
-                    GetWorkouts();
-                }
-                else
-                {
-                    return;
-                }
+            if(result == null) return;
+            else if(result.StatusCode == System.Net.HttpStatusCode.OK) {
+                GetWorkouts();
             }
-            else
-            {
-                workout.isCompleted = false;
-
-                var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.UpdateWorkoutByWorkoutId(id), workout);
-                if(result == null) return;
-
-                var httpCode = result.StatusCode;
-
-                if (httpCode == System.Net.HttpStatusCode.OK)
-                {
-
-                    //await Application.Current.MainPage.DisplayAlert("Good", "Workout set as not done", "OK");
-                    GetWorkouts();
-                }
-                else
-                {
-                    return;
-                }
-            }
-
-
-
-
         }
     }
 }

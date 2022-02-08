@@ -18,7 +18,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
     {
         private int clientId;
 
-        public AsyncCommand<int> MarkEaten { get; }
+        public AsyncCommand<Meal> MarkEaten { get; }
 
         public AsyncCommand<int> ShowRecipe { get; }
 
@@ -83,7 +83,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
         public ClientMealViewModel()
         {
-            MarkEaten = new AsyncCommand<int>(Eaten);
+            MarkEaten = new AsyncCommand<Meal>(Eaten);
             ShowRecipe = new AsyncCommand<int>(Recipe);
             var user = (Models.Client)accountService.CurrentUser;
             this.clientId = user.id;
@@ -381,53 +381,17 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             FilterMeals();
         }
 
-        public async Task Eaten(int id)
+        public async Task Eaten(Meal meal)
         {
-            var route = APIConstants.GetMealByIdUri(id);
-            var meal = await networkService.GetAsync<Meal>(route);
+            if(meal == null) return;
 
-            if(meal == null) {
-                return;
-            }
-            else if(meal.isEaten == false)
-            {
-                meal.isEaten = true;
+            meal.isEaten = !meal.isEaten;
 
-                var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutMealUri(id), meal);
+            var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutMealUri(meal.id), meal);
 
-                if(result == null) return;
-
-                var httpCode = result.StatusCode;
-
-                if (httpCode == System.Net.HttpStatusCode.OK)
-                {
-                    //await Application.Current.MainPage.DisplayAlert("Good", "Meal Eaten", "OK");
-                    GetMeals();
-                }
-                else
-                {
-                    return;
-                }
-            }
-            else
-            {
-                meal.isEaten = false;
-
-                var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutMealUri(id), meal);
-
-                if(result == null) return;
-
-                var httpCode = result.StatusCode;
-
-                if (httpCode == System.Net.HttpStatusCode.OK)
-                {
-                    //await Application.Current.MainPage.DisplayAlert("Good", "Meal Not Eaten", "OK");
-                    GetMeals();
-                }
-                else
-                {
-                    return;
-                }
+            if(result == null) return;
+            else if(result.StatusCode == System.Net.HttpStatusCode.OK) {
+                GetMeals();
             }
         }
 

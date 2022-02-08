@@ -48,7 +48,7 @@
                                                 <behaviors:Expander>
                                                     <behaviors:Expander.Header>
                                                         <Frame Padding="0" Margin="0" BackgroundColor="Transparent" CornerRadius="0">
-                                                            <Grid Padding="10">
+                                                            <Grid Padding="18">
                                                                 <Grid.ColumnDefinitions>
                                                                     <ColumnDefinition Width="300"/>
                                                                     <ColumnDefinition />
@@ -89,7 +89,7 @@
                                                                     <Button IsEnabled="True" CornerRadius="12" HorizontalOptions="Start"
                                                                         BackgroundColor="{Binding isCompleted, Converter={StaticResource boolToColorButtonWorkoutDoneConverter}}"
                                                                         Text="{Binding isCompleted, Converter={StaticResource boolToTextButtonWorkoutDoneConverter}}"
-                                                                        Command="{Binding Source={x:Reference TheWorkoutPageClient}, Path=BindingContext.MarkDone}" CommandParameter="{Binding id}"/>
+                                                                        Command="{Binding Source={x:Reference TheWorkoutPageClient}, Path=BindingContext.MarkDone}" CommandParameter="{Binding .}"/>
 
                                                                     <Label 
                                                                         Grid.Column="1"
@@ -151,18 +151,18 @@
                                     </Grid.RowDefinitions>
 
                                     <Button Text="&#xf053;" FontFamily="FAS" BackgroundColor="Transparent" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start"
-                                            Command="{Binding ChangeWeekCommand}" CommandParameter="-1"/>
+                                            Command="{Binding ChangeWeekCommand}" CommandParameter="-1" AutomationId="PreviousWeekButton"/>
                                     <Label Text="{Binding WeekOfText}" LineBreakMode="TailTruncation" Grid.Column="1"
                                            FontSize="Subtitle" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center"/>
                                     <Button Text="&#xf054;" FontFamily="FAS" BackgroundColor="Transparent" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Start"
-                                            Command="{Binding ChangeWeekCommand}" CommandParameter="1"/>
+                                            Command="{Binding ChangeWeekCommand}" CommandParameter="1" AutomationId="NextWeekButton"/>
                                 </Grid>
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="6" HeightRequest="60">
                                     <StackLayout Margin="0" Padding="0" Spacing="4">
                                         <Button Text="Su" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="0"
                                             BackgroundColor="Transparent"
                                             BorderColor="{Binding Day0Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
-                                            BorderWidth="2" TextColor="{Binding Day0Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}"/>
+                                            BorderWidth="2" TextColor="{Binding Day0Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" AutomationId="Day0Button"/>
                                         <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day0Selected}" IsEnabled="False"
                                             BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
                                     </StackLayout>
@@ -170,7 +170,7 @@
                                         <Button Text="Mo" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="1"
                                             BackgroundColor="Transparent"
                                             BorderColor="{Binding Day1Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
-                                            BorderWidth="2" TextColor="{Binding Day1Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}"/>
+                                            BorderWidth="2" TextColor="{Binding Day1Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" AutomationId="Day1Button"/>
                                         <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day1Selected}" IsEnabled="False"
                                             BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
                                     </StackLayout>
@@ -178,7 +178,7 @@
                                         <Button Text="Tu" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="2"
                                             BackgroundColor="Transparent"
                                             BorderColor="{Binding Day2Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
-                                            BorderWidth="2" TextColor="{Binding Day2Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}"/>
+                                            BorderWidth="2" TextColor="{Binding Day2Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" AutomationId="Day2Button"/>
                                         <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day2Selected}" IsEnabled="False"
                                             BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
                                     </StackLayout>
@@ -186,7 +186,7 @@
                                         <Button Text="We" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="3"
                                             BackgroundColor="Transparent"
                                             BorderColor="{Binding Day3Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
-                                            BorderWidth="2" TextColor="{Binding Day3Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}"/>
+                                            BorderWidth="2" TextColor="{Binding Day3Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" AutomationId="Day3Button"/>
                                         <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day3Selected}" IsEnabled="False"
                                             BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
                                     </StackLayout>
@@ -194,7 +194,7 @@
                                         <Button Text="Th" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="4"
                                             BackgroundColor="Transparent"
                                             BorderColor="{Binding Day4Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
-                                            BorderWidth="2" TextColor="{Binding Day4Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}"/>
+                                            BorderWidth="2" TextColor="{Binding Day4Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" AutomationId="Day4Button"/>
                                         <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day4Selected}" IsEnabled="False"
                                             BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
                                     </StackLayout>
@@ -202,7 +202,7 @@
                                         <Button Text="Fr" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="5"
                                             BackgroundColor="Transparent"
                                             BorderColor="{Binding Day5Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
-                                            BorderWidth="2" TextColor="{Binding Day5Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}"/>
+                                            BorderWidth="2" TextColor="{Binding Day5Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" AutomationId="Day5Button"/>
                                         <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day5Selected}" IsEnabled="False"
                                             BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
                                     </StackLayout>
@@ -210,7 +210,7 @@
                                         <Button Text="Sa" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="6"
                                             BackgroundColor="Transparent"
                                             BorderColor="{Binding Day6Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
-                                            BorderWidth="2" TextColor="{Binding Day6Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}"/>
+                                            BorderWidth="2" TextColor="{Binding Day6Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" AutomationId="Day6Button"/>
                                         <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day6Selected}" IsEnabled="False"
                                             BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
                                     </StackLayout>
