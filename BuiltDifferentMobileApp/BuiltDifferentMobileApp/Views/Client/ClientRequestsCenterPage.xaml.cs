@@ -18,5 +18,15 @@ namespace BuiltDifferentMobileApp.Views.Client
             InitializeComponent();
             BindingContext = new ClientRequestsCenterViewModel();
         }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (BindingContext != null)
+            {
+                var viewModel = (ClientRequestsCenterViewModel)BindingContext;
+                await viewModel.GetRequests();
+            }
+        }
     }
 }

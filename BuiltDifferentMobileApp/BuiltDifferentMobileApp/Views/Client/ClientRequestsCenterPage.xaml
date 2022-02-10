@@ -1,7 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
-             x:Class="BuiltDifferentMobileApp.Views.Client.ClientRequestsCenterPage">
+             x:Class="BuiltDifferentMobileApp.Views.Client.ClientRequestsCenterPage"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
+             x:Name="RequestCenterPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Profile" Command="{Binding ViewMyProfileCommand}" AutomationId="Profile">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="#3F3F3F">
             <Grid>
@@ -28,7 +37,7 @@
                                                                         <ColumnDefinition Width="240"/>
                                                                         <ColumnDefinition />
                                                                     </Grid.ColumnDefinitions>
-                                                                    <Label VerticalOptions="Center" FontAttributes="Bold"
+                                                                    <Label AutomationId="CoachNameLabel" VerticalOptions="Center" FontAttributes="Bold"
                                                                     FontSize="Medium" 
                                                                     TextColor="{StaticResource LightGrey}"  Grid.Column="0" Text="{Binding coachName}"/>
                                                                     
@@ -61,7 +70,9 @@
                                                                     FontAttributes="Bold"
                                                                     FontSize="Medium" 
                                                                     TextColor="{StaticResource LightGrey}"/>
-                                                                    <Label Grid.Row="1" Grid.Column="0"  IsVisible="False"  Text="{Binding approvalDate, StringFormat='Approved on : {0}'}">
+                                                                    <Label   FontAttributes="Bold"
+                                                                    FontSize="Medium" 
+                                                                    TextColor="{StaticResource LightGrey}" Grid.Row="1" Grid.Column="0"  IsVisible="False"  Text="{Binding approvalDate, StringFormat='Approved on : {0}'}">
                                                                         <Label.Triggers>
                                                                             <DataTrigger TargetType="Label" Binding="{Binding status}" Value="APPROVED">
                                                                                 <Setter Property="IsVisible" Value="True"/>
@@ -69,14 +80,16 @@
                                                                         </Label.Triggers>
                                                                     </Label>
 
-                                                                    <Label Grid.Row="1" Grid.Column="0" IsVisible="False" Text="{Binding approvalDate, StringFormat='Denied on : {0}'}">
+                                                                    <Label   FontAttributes="Bold"
+                                                                    FontSize="Medium" 
+                                                                    TextColor="{StaticResource LightGrey}" Grid.Row="1" Grid.Column="0" IsVisible="False" Text="{Binding approvalDate, StringFormat='Denied on : {0}'}">
                                                                         <Label.Triggers>
                                                                             <DataTrigger TargetType="Label" Binding="{Binding status}" Value="DENIED">
                                                                                 <Setter Property="IsVisible" Value="True"/>
                                                                             </DataTrigger>
                                                                         </Label.Triggers>
                                                                     </Label>
-                                                                    <Button Grid.Row="1" Grid.Column="1" BackgroundColor="{StaticResource RedPrimary}"  IsVisible="False" Text="Cancel" Command="{Binding CancelRequest}" CommandParameter="{Binding .}">
+                                                                    <Button AutomationId="CancelButton" Grid.Row="1" Grid.Column="1" BackgroundColor="{StaticResource RedPrimary}"  IsVisible="False" Text="{x:Static resource:AppResource.CancelRequestButton}" Command="{Binding Source={x:Reference RequestCenterPage}, Path=BindingContext.CancelRequest}" CommandParameter="{Binding .}">
                                                                         <Button.Triggers>
                                                                             <DataTrigger TargetType="Button" Binding="{Binding status}" Value="PENDING">
                                                                                 <Setter Property="IsVisible" Value="True"/>
@@ -99,7 +112,7 @@
                                 <CollectionView.EmptyView>
                                     <StackLayout HorizontalOptions="Center">
                                         <Label 
-                                            Text="You Have Not Made Any Requests Yet"
+                                            Text="{x:Static resource:AppResource.RequestCenterNoItem}"
                                             HorizontalTextAlignment="Center"
                                             Padding="20,10,10,10"
                                             TextColor="White" />
@@ -114,7 +127,7 @@
                             <StackLayout>
                                 
                                 <StackLayout HorizontalOptions="Center" Orientation="Horizontal"  Spacing="6" HeightRequest="60">
-                                    <Label FontSize="35" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" Text="Your Requests Center" />
+                                    <Label AutomationId="RequestsCenterTitle" FontSize="35" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" Text="{x:Static resource:AppResource.RequestCenterTitle}" />
                                 </StackLayout>
                             </StackLayout>
                         </Frame>

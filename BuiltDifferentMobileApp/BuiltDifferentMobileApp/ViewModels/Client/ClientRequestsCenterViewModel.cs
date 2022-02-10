@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.ObjectModel;
+using Xamarin.Forms;
 
 namespace BuiltDifferentMobileApp.ViewModels.Client
 {
@@ -20,15 +21,21 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
         public AsyncCommand <Request>CancelRequest { get; }
 
-
+        public AsyncCommand ViewMyProfileCommand { get; }
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
         public ClientRequestsCenterViewModel()
         {
+            ViewMyProfileCommand = new AsyncCommand(accountService.ViewMyProfileCommand);
             var user = (Models.Client)accountService.CurrentUser;
             this.clientId = user.id;
             CancelRequest = new AsyncCommand<Request>(Cancel);
             GetRequests();
+        }
+
+        public ClientRequestsCenterViewModel(string test)
+        {
+            
         }
 
         public async Task GetRequests()
@@ -56,7 +63,17 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
         public async Task Cancel(Request request)
         {
-            return;
+            Requests.Remove(request);
+            bool response = await networkService.DeleteAsync(APIConstants.DeleteRequestURI(request.id));
+            if (response)
+            {
+                await Application.Current.MainPage.DisplayAlert("Success", "The request to this coach was canceled", "OK");
+                GetRequests();
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Could not cancel request to coach", "OK");
+            }
         }
 
 
