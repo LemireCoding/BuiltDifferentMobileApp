@@ -5,6 +5,7 @@
        xmlns:clientpages="clr-namespace:BuiltDifferentMobileApp.Views.Client"
        xmlns:adminpages="clr-namespace:BuiltDifferentMobileApp.Views.Admin"
        xmlns:loginpages="clr-namespace:BuiltDifferentMobileApp.Views.Login"
+       xmlns:paymentpages="clr-namespace:BuiltDifferentMobileApp.Views.Payment"
        xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels" x:DataType="viewmodels:AppShellViewModel"
        Title="BuiltDifferentMobileApp"
        x:Class="BuiltDifferentMobileApp.AppShell">
@@ -113,8 +114,13 @@
         <ShellContent Route="ClientCoachCriteriasPage" ContentTemplate="{DataTemplate clientpages:ClientCoachCriteriasPage}" />
     </FlyoutItem>
 
+    <!--
+        PAYMENT PAGES
+    -->
 
-
+    <FlyoutItem Title="Payment" IsVisible="{Binding IsClientWithCoach}">
+        <ShellContent Route="PaymentPage" ContentTemplate="{DataTemplate paymentpages:PaymentPage}"/>
+    </FlyoutItem>
 
 
     <!--
