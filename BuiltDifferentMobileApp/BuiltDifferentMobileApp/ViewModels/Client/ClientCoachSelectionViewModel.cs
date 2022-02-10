@@ -103,7 +103,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
                     if (httpCode == System.Net.HttpStatusCode.OK)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Request Sent Successfully", "Wait For your Coach to respond", "OK");
+                        await Application.Current.MainPage.DisplayAlert("Request Sent Successfully", "Wait for your Coach to respond", "OK");
                         
                     } else
                     {
