@@ -1,4 +1,5 @@
-﻿using BuiltDifferentMobileApp.Services.AccountServices;
+﻿using BuiltDifferentMobileApp.Models;
+using BuiltDifferentMobileApp.Services.AccountServices;
 using BuiltDifferentMobileApp.Services.NetworkServices;
 using BuiltDifferentMobileApp.Views.Coach;
 using System;
@@ -30,12 +31,14 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
 
         public AsyncCommand ViewMyProfileCommand { get; }
         public AsyncCommand RefreshCommand { get; }
+        public AsyncCommand<Models.ClientWithProgress> RemoveClientCommand { get; }
         public AsyncCommand<Models.ClientWithProgress> ViewClientsBoardCommand { get; }
 
         public CoachDashboardPageViewModel() {
 
             ViewMyProfileCommand = new AsyncCommand(accountService.ViewMyProfileCommand);
             RefreshCommand = new AsyncCommand(FetchClients);
+            RemoveClientCommand = new AsyncCommand<Models.ClientWithProgress>(RemoveClient);
             ViewClientsBoardCommand = new AsyncCommand<Models.ClientWithProgress>(ViewClientsBoard);
 
             FetchClients();
@@ -56,6 +59,31 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             if(client == null || IsBusy) return;
 
             await Shell.Current.GoToAsync($"{nameof(CoachMenuPage)}?ClientId={client.id}&ClientName={client.name}");
+        }
+
+
+        private async Task RemoveClient(Models.ClientWithProgress client)
+        {
+            IsBusy = true;
+            int coachId = ((Models.Coach)accountService.CurrentUser).id;
+            int response;
+            var accepted = await Application.Current.MainPage.DisplayAlert("Remove Client", "Are you sure you want to remove this client?", "Confirm", "Cancel");
+
+            if (!accepted) return;
+            ClientRemoveDTO removeClientInfo = new ClientRemoveDTO(client.id, 0);
+
+            response = (int)await networkService.PutAsyncHttpResponseMessage(APIConstants.UpdateClientRemoveFromServiceUri(client.id, coachId),  removeClientInfo);
+
+            if (response >= 200 && response <= 299)
+            {
+                await Application.Current.MainPage.DisplayAlert("Client Removed", "We'll let the client know that they have been removed from your services.", "OK");
+                FetchClients();
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert($"Server Error ({response})", "Could not remove the client. Please try again.", "OK");
+            }
+            IsBusy = false;
         }
 
         public async Task FetchClients() {

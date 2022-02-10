@@ -139,6 +139,11 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return $"{BaseAddress}/coach/{coachId}/clients";
         }
 
+        public static string UpdateClientRemoveFromServiceUri(int clientId, int coachId)
+        {
+            return $"{BaseAddress}/coaches/{coachId}/clients/remove/{clientId}";
+        }
+
         public static string GetRegisterNewAccountUri() {
             return $"{BaseAddress}/register";
         }
