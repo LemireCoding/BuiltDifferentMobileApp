@@ -13,7 +13,7 @@ namespace BuiltDifferentMobileApp.Models
         public DateTime approvalDate { get; set; }
         public DateTime requestDate { get; set; }
         public string coachName { get; set; }
-        
+
         public Request(int id, string status, int coachId, int clientId, DateTime approvalDate, DateTime requestDate,string coachName)
         {
             this.id = id;
@@ -24,6 +24,7 @@ namespace BuiltDifferentMobileApp.Models
             this.requestDate = requestDate;
             this.coachName = coachName;
         }
+
 
     }
 }
