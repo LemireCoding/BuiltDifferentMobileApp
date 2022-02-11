@@ -19,7 +19,10 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return $"{BaseAddress}/requests/client/{id}";
         }
 
-
+        public static string DeleteRequestURI(int id)
+        {
+            return $"{BaseAddress}/requests/{id}";
+        }
         public static string PostRequestURI()
         {
             //will need to add client id , etc...

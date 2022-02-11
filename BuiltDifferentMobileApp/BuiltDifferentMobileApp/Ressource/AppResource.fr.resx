@@ -251,6 +251,10 @@
     <value>Le serveur n'a pas pu analyser votre demande. Veuillez signaler cet erreur.</value>
     <comment>100-Alerts</comment>
   </data>
+  <data name="CancelRequestButton" xml:space="preserve">
+    <value>Canceller</value>
+    <comment>92-ClientRequestCenterPage</comment>
+  </data>
   <data name="CheckApplicationStatusButton" xml:space="preserve">
     <value>Vérifier l’état de l’application</value>
   </data>
@@ -586,6 +590,14 @@
   <data name="ProfileTitle" xml:space="preserve">
     <value>Votre profile</value>
     <comment>3-Profile</comment>
+  </data>
+  <data name="RequestCenterNoItem" xml:space="preserve">
+    <value>Vous n'avez pas fait de demande d'admission</value>
+    <comment>114-ClientRequestCenterPage</comment>
+  </data>
+  <data name="RequestCenterTitle" xml:space="preserve">
+    <value>Votre Centre de Demandes</value>
+    <comment>130-ClientRequestCenterPage</comment>
   </data>
   <data name="SaveButton" xml:space="preserve">
     <value>Sauvegarder</value>

@@ -421,6 +421,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string CancelRequestButton {
+            get {
+                return ResourceManager.GetString("CancelRequestButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check Application Status.
         /// </summary>
         public static string CheckApplicationStatusButton {
@@ -1209,6 +1218,24 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string ProfileTitle {
             get {
                 return ResourceManager.GetString("ProfileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You Have Not Made Any Requests Yet.
+        /// </summary>
+        public static string RequestCenterNoItem {
+            get {
+                return ResourceManager.GetString("RequestCenterNoItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Requests Center.
+        /// </summary>
+        public static string RequestCenterTitle {
+            get {
+                return ResourceManager.GetString("RequestCenterTitle", resourceCulture);
             }
         }
         

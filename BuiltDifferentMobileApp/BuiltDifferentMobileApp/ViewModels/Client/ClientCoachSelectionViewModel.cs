@@ -12,6 +12,7 @@ using MvvmHelpers.Commands;
 using BuiltDifferentMobileApp.Services.AccountServices;
 using Xamarin.Forms;
 using Newtonsoft.Json;
+using BuiltDifferentMobileApp.Views.Client;
 
 namespace BuiltDifferentMobileApp.ViewModels.Client
 {
@@ -91,8 +92,22 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             {
                 var routeClientRequests = APIConstants.GetAllRequestsByClient(clientId);
                 var clientRequests = await networkService.GetAsync<List<Request>>(routeClientRequests);
+                if (clientRequests == null )
+                {
+                    await Application.Current.MainPage.DisplayAlert("A Problem Occured", "We could not process the request", "OK");
+                    return;
+                }
 
-                if (clientRequests.Count == 0)
+                bool hasPending = false; 
+                foreach(Request request in clientRequests)
+                {
+                    if(request.status == "PENDING")
+                    {
+                        hasPending = true;
+                        break;
+                    }
+                }
+                if (!hasPending)
                 {
                     var routeSendRequest = APIConstants.PostRequestURI();
 
@@ -103,8 +118,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
                     if (httpCode == System.Net.HttpStatusCode.OK)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Request Sent Successfully", "Wait for your Coach to respond", "OK");
-                        
+                        await Application.Current.MainPage.DisplayAlert("Request Sent Successfully", "Wait For your Coach to respond", "OK");
+                        await Shell.Current.GoToAsync($"{nameof(ClientRequestsCenterPage)}");
+
                     } else
                     {
                         await Application.Current.MainPage.DisplayAlert("Request Not Sent", "We encountered a problem", "OK");

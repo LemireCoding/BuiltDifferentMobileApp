@@ -271,6 +271,10 @@
     <value>The server could not parse your request. Please report this bug.</value>
     <comment>100-Alerts</comment>
   </data>
+  <data name="CancelRequestButton" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>92- Client RequestsCenterPage</comment>
+  </data>
   <data name="CheckApplicationStatusButton" xml:space="preserve">
     <value>Check Application Status</value>
   </data>
@@ -606,6 +610,14 @@
   <data name="ProfileTitle" xml:space="preserve">
     <value>Your Profile</value>
     <comment>3-Profile</comment>
+  </data>
+  <data name="RequestCenterNoItem" xml:space="preserve">
+    <value>You Have Not Made Any Requests Yet</value>
+    <comment>114-ClientRequestsCenterPage</comment>
+  </data>
+  <data name="RequestCenterTitle" xml:space="preserve">
+    <value>Your Requests Center</value>
+    <comment>130- ClientRequestsCenterPage</comment>
   </data>
   <data name="SaveButton" xml:space="preserve">
     <value>Save</value>
