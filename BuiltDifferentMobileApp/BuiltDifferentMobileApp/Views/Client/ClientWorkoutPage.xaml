@@ -30,8 +30,8 @@
 
                             <Frame BackgroundColor="#303030" Padding="4" Margin="0,0,0,12">
                                 <StackLayout Margin="12,0" Padding="0" >
-                                    <Label Text="86% Completed" TextColor="White" HorizontalOptions="Center"/>
-                                    <ProgressBar Progress="0.86" ProgressColor="{StaticResource RedExtra}"/>
+                                    <Label Text="{Binding Dailyprogresstext}" TextColor="White" HorizontalOptions="Center"/>
+                                    <ProgressBar Progress="{Binding Dailyprogress}" ProgressColor="{StaticResource RedExtra}"/>
                                 </StackLayout>
                             </Frame>
                             

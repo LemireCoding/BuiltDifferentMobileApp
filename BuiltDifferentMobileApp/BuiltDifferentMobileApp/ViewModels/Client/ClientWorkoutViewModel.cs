@@ -67,6 +67,11 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         private bool day6Selected;
         public bool Day6Selected { get => day6Selected; set => SetProperty(ref day6Selected, value); }
 
+        public double dailyprogress;
+        public double Dailyprogress { get => dailyprogress; set => SetProperty(ref dailyprogress, value); }
+        public string dailyprogresstext;
+        public string Dailyprogresstext { get => dailyprogresstext; set => SetProperty(ref dailyprogresstext, value); }
+
         public ClientWorkoutViewModel()
         {
             MarkDone = new AsyncCommand<WorkoutDTO>(Done);
@@ -336,7 +341,33 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             Workouts = new ObservableRangeCollection<WorkoutDTO>(OriginalWorkoutList.Where(x => x.day.ToString("MMMM dd, yyyy") == SelectedDay.ToString("MMMM dd, yyyy")));
             AdjustCollectionViewHeight();
             OnPropertyChanged("Workouts");
+            UpdateProgress();
         }
+
+        public void UpdateProgress()
+        {
+            if (Workouts.Count == 0)
+            {
+                Dailyprogress = 0.00;
+                Dailyprogresstext = "0 %";
+            }
+            else
+            {
+                double totalWorkouts = Workouts.Count();
+                double completedWorkouts = Workouts.Count(x => x.isCompleted == true);
+
+                double progressDouble = completedWorkouts / totalWorkouts;
+                Dailyprogress = progressDouble;
+                Dailyprogresstext = (progressDouble * 100).ToString() + " %";
+
+            }
+
+            OnPropertyChanged("Dailyprogress");
+            OnPropertyChanged("Dailyprogresstext");
+
+        }
+
+
 
 
         public async Task Done(WorkoutDTO workout)
