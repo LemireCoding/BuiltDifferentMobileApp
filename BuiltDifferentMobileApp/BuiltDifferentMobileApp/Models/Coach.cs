@@ -17,5 +17,6 @@ namespace BuiltDifferentMobileApp.Models {
         public string description { get; set; }
         public double pricing { get; set; }
         public int profilePictureId{ get; set; }
+        public string payPalLink { get; set; }
     }
 }

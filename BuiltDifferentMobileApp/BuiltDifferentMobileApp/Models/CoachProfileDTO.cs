@@ -18,8 +18,10 @@ namespace BuiltDifferentMobileApp.Models
         public string description { get; set; }
         public double pricing { get; set; }
         public int profilePictureId { get; set; }
+        public string payPalLink { get; set; }
 
-        public CoachProfileDTO(string name, int userId, string type, bool isAvailable, bool offersMeal, bool offersWorkout, int certificationId, string gender, bool isVerified, string description, double pricing, int profilePictureId){
+        public CoachProfileDTO(string name, int userId, string type, bool isAvailable, bool offersMeal, bool offersWorkout, int certificationId, string gender, bool isVerified, string description, double pricing, int profilePictureId, string payPalLink)
+        {
             this.name = name;
             this.userId = userId;
             this.type = type;
@@ -32,6 +34,7 @@ namespace BuiltDifferentMobileApp.Models
             this.description = description;
             this.pricing = pricing;
             this.profilePictureId = profilePictureId;
+            this.payPalLink = payPalLink;
         }
 
     }
