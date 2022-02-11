@@ -30,7 +30,7 @@
 
                             <Frame BackgroundColor="#303030" Padding="4" Margin="0,0,0,12">
                                 <StackLayout Margin="12,0" Padding="0" >
-                                    <Label Text="{Binding Dailyprogresstext}" TextColor="White" HorizontalOptions="Center"/>
+                                    <Label AutomationId="DailyProgressText" Text="{Binding Dailyprogresstext}" TextColor="White" HorizontalOptions="Center"/>
                                     <ProgressBar Progress="{Binding Dailyprogress}" ProgressColor="{StaticResource RedExtra}"/>
                                 </StackLayout>
                             </Frame>
@@ -64,7 +64,7 @@
                                                             </Grid.ColumnDefinitions>
 
                                                             <Label Text="{Binding mealName}"
-                                                                   AutomationId="MealName"
+                                                                   AutomationId="mealItemTitle"
                                                                    FontAttributes="Bold"
                                                                    FontSize="Medium"
                                                                    VerticalTextAlignment="Center"
@@ -125,7 +125,7 @@
                                                                         <ColumnDefinition/>
                                                                     </Grid.ColumnDefinitions>
 
-                                                                    <Button Grid.Column="0" IsEnabled="True" CornerRadius="12" BackgroundColor="{Binding isEaten, Converter={StaticResource boolToColorButtonMealEatenConverter}}" Text="{Binding isEaten, Converter={StaticResource boolToTextButtonMealEatenConverter}}" Command="{Binding Source={x:Reference TheMealPage}, Path=BindingContext.MarkEaten}" CommandParameter="{Binding .}"/>
+                                                                    <Button AutomationId="MarkEatenButton" Grid.Column="0" IsEnabled="True" CornerRadius="12" BackgroundColor="{Binding isEaten, Converter={StaticResource boolToColorButtonMealEatenConverter}}" Text="{Binding isEaten, Converter={StaticResource boolToTextButtonMealEatenConverter}}" Command="{Binding Source={x:Reference TheMealPage}, Path=BindingContext.MarkEaten}" CommandParameter="{Binding .}"/>
 
 
                                                                     <Button AutomationId="viewRecipeButton" Grid.Column="1" IsEnabled="True" FontFamily="{StaticResource Recipe}"  FontSize="30" TextColor="White" CornerRadius="12" BackgroundColor="{StaticResource RedPrimary}"  Text="&#xf15c;" x:Name="doc-text-inv" Command="{Binding Source={x:Reference TheMealPage}, Path=BindingContext.ShowRecipe}" CommandParameter="{Binding id}"/>
