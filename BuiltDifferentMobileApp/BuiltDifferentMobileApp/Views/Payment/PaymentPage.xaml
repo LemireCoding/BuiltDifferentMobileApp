@@ -36,7 +36,7 @@
                         <Label Text="Price: " FontSize="Medium" FontAttributes="Bold"/>
                         <Label Text="{Binding Price, StringFormat='{0:C}'}" FontSize="Body"/>
                     </StackLayout>
-                    <Button Grid.Row="2" Grid.Column="1" BackgroundColor="{StaticResource RedSecondary}" CornerRadius="20" TextColor="White" Command="{Binding MakeAPaymentCommand}" Text="Make Payment" VerticalOptions="CenterAndExpand"/>
+                    <Button Grid.Row="2" Grid.Column="1" BackgroundColor="{StaticResource RedSecondary}" CornerRadius="20" TextColor="White" Command="{Binding MakeAPaymentCommand}" Text="Make Payment" VerticalOptions="CenterAndExpand" AutomationId="PaymentButton"/>
                 </StackLayout>
             </Grid>
             

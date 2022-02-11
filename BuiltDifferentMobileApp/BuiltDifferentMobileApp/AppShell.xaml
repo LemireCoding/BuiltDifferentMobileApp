@@ -119,7 +119,7 @@
     -->
 
     <FlyoutItem Title="Payment" IsVisible="{Binding IsClientWithCoach}">
-        <ShellContent Route="PaymentPage" ContentTemplate="{DataTemplate paymentpages:PaymentPage}"/>
+        <ShellContent Route="PaymentPage" ContentTemplate="{DataTemplate paymentpages:PaymentPage}" AutomationId="Payment"/>
     </FlyoutItem>
 
 

@@ -67,7 +67,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Payment
             var coach = await networkService.GetAsync<Models.CoachPaymentDTO>(APIConstants.GetCoachByIdUri(user.coachId));
             if (coach == null)
             {
-                await Application.Current.MainPage.DisplayAlert("Could not load coach's profile!", "Returning to previous page", "OK");
+                await Application.Current.MainPage.DisplayAlert("Could not load payment information!", "Returning to previous page", "OK");
                 IsBusy = false;
                 return;
             }
@@ -87,7 +87,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Payment
             {
                 if (string.IsNullOrWhiteSpace(PayPalLink))
                 {
-                    await Application.Current.MainPage.DisplayAlert("Could not load coach's profile!", "Returning to previous page", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Error", "Your coach has not set up their PayPal Account link. Returning to previous page", "OK");
                     await Shell.Current.GoToAsync("..");
                     IsBusy = false;
                     return;
