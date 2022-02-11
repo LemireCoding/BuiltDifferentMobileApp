@@ -251,6 +251,10 @@
     <value>Le serveur n'a pas pu analyser votre demande. Veuillez signaler cet erreur.</value>
     <comment>100-Alerts</comment>
   </data>
+  <data name="CancelRequestButton" xml:space="preserve">
+    <value>Canceller</value>
+    <comment>92-ClientRequestCenterPage</comment>
+  </data>
   <data name="CheckApplicationStatusButton" xml:space="preserve">
     <value>Vérifier l’état de l’application</value>
   </data>
@@ -316,6 +320,21 @@
   <data name="CoachAddMealTypeLabel" xml:space="preserve">
     <value>Type de repas</value>
     <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachClientApprovalNoRequests" xml:space="preserve">
+    <value>Aucune demande</value>
+    <comment>17-CoachClientApprovalPage</comment>
+  </data>
+  <data name="CoachClientApprovalTitle" xml:space="preserve">
+    <value>Demandes de clients</value>
+    <comment>17-CoachClientApprovalPage</comment>
+  </data>
+  <data name="CoachClientApprovalYourRequests" xml:space="preserve">
+    <value>Vos demandes de clients</value>
+    <comment>17-CoachClientApprovalPage</comment>
+  </data>
+  <data name="CoachClientRequestAccept" xml:space="preserve">
+    <value>Accepter</value>
   </data>
   <data name="CoachDashboardBoard" xml:space="preserve">
     <value>Plan</value>
@@ -571,6 +590,14 @@
   <data name="ProfileTitle" xml:space="preserve">
     <value>Votre profile</value>
     <comment>3-Profile</comment>
+  </data>
+  <data name="RequestCenterNoItem" xml:space="preserve">
+    <value>Vous n'avez pas fait de demande d'admission</value>
+    <comment>114-ClientRequestCenterPage</comment>
+  </data>
+  <data name="RequestCenterTitle" xml:space="preserve">
+    <value>Votre Centre de Demandes</value>
+    <comment>130-ClientRequestCenterPage</comment>
   </data>
   <data name="SaveButton" xml:space="preserve">
     <value>Sauvegarder</value>

@@ -12,12 +12,15 @@ using MvvmHelpers.Commands;
 using BuiltDifferentMobileApp.Services.AccountServices;
 using Xamarin.Forms;
 using Newtonsoft.Json;
+using BuiltDifferentMobileApp.Views.Client;
 
 namespace BuiltDifferentMobileApp.ViewModels.Client
 {
     public class ClientCoachSelectionViewModel : ViewModelBase
     {
         private int clientId;
+        private string clientName;
+        private string planSelected;
         private string coachName, gender, coachingType;
         public string CoachName { get => coachName; set => SetProperty(ref coachName, value); }
         public AsyncCommand<int> SendRequest { get; }
@@ -33,6 +36,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             CoachingType = coachingT;
             var user = (Models.Client)accountService.CurrentUser;
             this.clientId = user.id;
+            this.clientName = user.name;
+            planSelected = "Not Specified";
             SendRequest = new AsyncCommand<int>(Request);
             GetCoaches();
         }
@@ -87,12 +92,26 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             {
                 var routeClientRequests = APIConstants.GetAllRequestsByClient(clientId);
                 var clientRequests = await networkService.GetAsync<List<Request>>(routeClientRequests);
+                if (clientRequests == null )
+                {
+                    await Application.Current.MainPage.DisplayAlert("A Problem Occured", "We could not process the request", "OK");
+                    return;
+                }
 
-                if (clientRequests == null)
+                bool hasPending = false; 
+                foreach(Request request in clientRequests)
+                {
+                    if(request.status == "PENDING")
+                    {
+                        hasPending = true;
+                        break;
+                    }
+                }
+                if (!hasPending)
                 {
                     var routeSendRequest = APIConstants.PostRequestURI();
 
-                    var request = new RequestDTO("PENDING",id, clientId);
+                    var request = new RequestDTO("PENDING",id, clientId, clientName, planSelected);
                     var test = JsonConvert.SerializeObject(request);
                     var result = await networkService.PostAsync<HttpResponseMessage>(routeSendRequest, request);
                     var httpCode = result.StatusCode;
@@ -100,7 +119,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
                     if (httpCode == System.Net.HttpStatusCode.OK)
                     {
                         await Application.Current.MainPage.DisplayAlert("Request Sent Successfully", "Wait For your Coach to respond", "OK");
-                        
+                        await Shell.Current.GoToAsync($"{nameof(ClientRequestsCenterPage)}");
+
                     } else
                     {
                         await Application.Current.MainPage.DisplayAlert("Request Not Sent", "We encountered a problem", "OK");
@@ -116,12 +136,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             {
                 return;
             }
-
-
-
-
         }
-
-
     }
 }

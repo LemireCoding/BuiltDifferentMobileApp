@@ -271,6 +271,10 @@
     <value>The server could not parse your request. Please report this bug.</value>
     <comment>100-Alerts</comment>
   </data>
+  <data name="CancelRequestButton" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>92- Client RequestsCenterPage</comment>
+  </data>
   <data name="CheckApplicationStatusButton" xml:space="preserve">
     <value>Check Application Status</value>
   </data>
@@ -336,6 +340,21 @@
   <data name="CoachAddMealTypeLabel" xml:space="preserve">
     <value>Meal Type</value>
     <comment>7-AddMealPage</comment>
+  </data>
+  <data name="CoachClientApprovalNoRequests" xml:space="preserve">
+    <value>No Requests</value>
+    <comment>17-CoachClientApprovalPage</comment>
+  </data>
+  <data name="CoachClientApprovalTitle" xml:space="preserve">
+    <value>Client Requests</value>
+    <comment>17-CoachClientApprovalPage</comment>
+  </data>
+  <data name="CoachClientApprovalYourRequests" xml:space="preserve">
+    <value>Your Requests</value>
+    <comment>17-CoachClientApprovalPage</comment>
+  </data>
+  <data name="CoachClientRequestAccept" xml:space="preserve">
+    <value>Accept</value>
   </data>
   <data name="CoachDashboardBoard" xml:space="preserve">
     <value>Board</value>
@@ -591,6 +610,14 @@
   <data name="ProfileTitle" xml:space="preserve">
     <value>Your Profile</value>
     <comment>3-Profile</comment>
+  </data>
+  <data name="RequestCenterNoItem" xml:space="preserve">
+    <value>You Have Not Made Any Requests Yet</value>
+    <comment>114-ClientRequestsCenterPage</comment>
+  </data>
+  <data name="RequestCenterTitle" xml:space="preserve">
+    <value>Your Requests Center</value>
+    <comment>130- ClientRequestsCenterPage</comment>
   </data>
   <data name="SaveButton" xml:space="preserve">
     <value>Save</value>

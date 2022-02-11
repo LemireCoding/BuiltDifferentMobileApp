@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Text;
+using Xamarin.Forms;
+
+namespace BuiltDifferentMobileApp.Services.Converters {
+    public class BoolToSelectedWeekdayColorConverter : IValueConverter {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            return (bool)value ? "#A4161A" : "White";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            return (bool)value ? "#A4161A" : "White";
+        }
+    }
+}

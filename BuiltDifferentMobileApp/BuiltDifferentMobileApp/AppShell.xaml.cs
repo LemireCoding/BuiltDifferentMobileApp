@@ -22,6 +22,7 @@ namespace BuiltDifferentMobileApp {
             Routing.RegisterRoute(nameof(AdminMenuPage), typeof(AdminMenuPage));
 
             // Coach pages
+            Routing.RegisterRoute(nameof(CoachClientApprovalPage), typeof(CoachClientApprovalPage));
             Routing.RegisterRoute(nameof(AddWorkoutPage), typeof(AddWorkoutPage));
             Routing.RegisterRoute(nameof(EditWorkoutPage), typeof(EditWorkoutPage));
             Routing.RegisterRoute(nameof(AddMealPage), typeof(AddMealPage));
@@ -38,6 +39,7 @@ namespace BuiltDifferentMobileApp {
             Routing.RegisterRoute(nameof(ClientMealPage), typeof(ClientMealPage));
             Routing.RegisterRoute(nameof(ClientWorkoutPage), typeof(ClientWorkoutPage));
             Routing.RegisterRoute(nameof(ClientDashboardPage), typeof(ClientDashboardPage));
+            Routing.RegisterRoute(nameof(ClientRequestsCenterPage), typeof(ClientRequestsCenterPage));
             Routing.RegisterRoute(nameof(ClientCoachSelectionPage), typeof(ClientCoachSelectionPage));
             Routing.RegisterRoute(nameof(ClientCoachCriteriasPage), typeof(ClientCoachCriteriasPage));
 

@@ -19,11 +19,28 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return $"{BaseAddress}/requests/client/{id}";
         }
 
-
+        public static string DeleteRequestURI(int id)
+        {
+            return $"{BaseAddress}/requests/{id}";
+        }
         public static string PostRequestURI()
         {
             //will need to add client id , etc...
             return $"{BaseAddress}/requests";
+        }
+
+        /*
+        * Coach Client Accept/Deny URI
+        */
+
+        public static string UpdateApproveDenyRequestUri(int clientId)
+        {
+            return $"{BaseAddress}/requests/applications/{clientId}";
+        }
+
+        public static string GetPendingRequestsUri(int coachId)
+        {
+            return $"{BaseAddress}/requests/coach/pending/{coachId}";
         }
 
 
@@ -122,6 +139,11 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return $"{BaseAddress}/coach/{coachId}/clients";
         }
 
+        public static string UpdateClientRemoveFromServiceUri(int clientId, int coachId)
+        {
+            return $"{BaseAddress}/coaches/{coachId}/clients/remove/{clientId}";
+        }
+
         public static string GetRegisterNewAccountUri() {
             return $"{BaseAddress}/register";
         }
@@ -133,18 +155,36 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         public static string GetCoachByIdUri(int coachId) {
             return $"{BaseAddress}/coaches/{coachId}";
         }
+
         /*
          * Profile URI
          */
-        public static string PutProfileUri(int userId)
-        {
-            return $"{BaseAddress}/profile";
-        }
-        public static string GetClientProfileUri(int userId)
+        public static string GetProfileUri()
         {
             return $"{BaseAddress}/profile";
         }
 
+        //TEST BEFORE MERGE!
+
+        public static string PutProfileUri()
+        {
+            return $"{BaseAddress}/profile";
+        }
+
+        public static string GetClientProfileUri(int userId)
+
+        {
+            return $"{BaseAddress}/profile";
+        }
+
+        public static string PostUploadProfilePicture()
+        {
+            return $"{BaseAddress}/profile/upload";
+        }
+        public static string GetProfilePictureUri()
+        {
+            return $"{BaseAddress}/profile/picture";
+        }
 
         public static string UploadCertificationUri() {
             return $"{BaseAddress}/certification/upload";

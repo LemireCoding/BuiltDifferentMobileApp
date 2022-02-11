@@ -421,6 +421,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string CancelRequestButton {
+            get {
+                return ResourceManager.GetString("CancelRequestButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check Application Status.
         /// </summary>
         public static string CheckApplicationStatusButton {
@@ -570,6 +579,42 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string CoachAddMealTypeLabel {
             get {
                 return ResourceManager.GetString("CoachAddMealTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Requests.
+        /// </summary>
+        public static string CoachClientApprovalNoRequests {
+            get {
+                return ResourceManager.GetString("CoachClientApprovalNoRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client Requests.
+        /// </summary>
+        public static string CoachClientApprovalTitle {
+            get {
+                return ResourceManager.GetString("CoachClientApprovalTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Requests.
+        /// </summary>
+        public static string CoachClientApprovalYourRequests {
+            get {
+                return ResourceManager.GetString("CoachClientApprovalYourRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accept.
+        /// </summary>
+        public static string CoachClientRequestAccept {
+            get {
+                return ResourceManager.GetString("CoachClientRequestAccept", resourceCulture);
             }
         }
         
@@ -1173,6 +1218,24 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string ProfileTitle {
             get {
                 return ResourceManager.GetString("ProfileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You Have Not Made Any Requests Yet.
+        /// </summary>
+        public static string RequestCenterNoItem {
+            get {
+                return ResourceManager.GetString("RequestCenterNoItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Requests Center.
+        /// </summary>
+        public static string RequestCenterTitle {
+            get {
+                return ResourceManager.GetString("RequestCenterTitle", resourceCulture);
             }
         }
         
