@@ -30,7 +30,7 @@
 
                             <Frame BackgroundColor="#303030" Padding="4" Margin="0,0,0,12">
                                 <StackLayout Margin="12,0" Padding="0" >
-                                    <Label Text="{Binding Dailyprogresstext}" TextColor="White" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding Dailyprogresstext}" TextColor="White" HorizontalOptions="Center" AutomationId="DailyProgressText"/>
                                     <ProgressBar Progress="{Binding Dailyprogress}" ProgressColor="{StaticResource RedExtra}"/>
                                 </StackLayout>
                             </Frame>
@@ -54,6 +54,7 @@
                                                                     <ColumnDefinition />
                                                                 </Grid.ColumnDefinitions>
                                                                 <Label 
+                                                                    AutomationId="workoutItemTitle"
                                                                     Grid.Column="0" 
                                                                     Text="{Binding workoutName}"
                                                                     FontAttributes="Bold"
@@ -86,7 +87,7 @@
                                                                     <WebView Source="{Binding videoLink}" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="True" />
                                                                 </Frame>
                                                                 <StackLayout Margin="2, 4" Grid.Column="1">
-                                                                    <Button IsEnabled="True" CornerRadius="12" HorizontalOptions="Start"
+                                                                    <Button AutomationId="MarkDoneButton" IsEnabled="True" CornerRadius="12" HorizontalOptions="Start"
                                                                         BackgroundColor="{Binding isCompleted, Converter={StaticResource boolToColorButtonWorkoutDoneConverter}}"
                                                                         Text="{Binding isCompleted, Converter={StaticResource boolToTextButtonWorkoutDoneConverter}}"
                                                                         Command="{Binding Source={x:Reference TheWorkoutPageClient}, Path=BindingContext.MarkDone}" CommandParameter="{Binding .}"/>
