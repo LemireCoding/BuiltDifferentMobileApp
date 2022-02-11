@@ -81,6 +81,11 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         private bool day6Selected;
         public bool Day6Selected { get => day6Selected; set => SetProperty(ref day6Selected, value); }
 
+        public double dailyprogress;
+        public double Dailyprogress { get => dailyprogress; set => SetProperty(ref dailyprogress, value); }
+        public string dailyprogresstext;
+        public string Dailyprogresstext { get => dailyprogresstext; set => SetProperty(ref dailyprogresstext, value); }
+
         public ClientMealViewModel()
         {
             MarkEaten = new AsyncCommand<Meal>(Eaten);
@@ -334,7 +339,31 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
             Meals = new ObservableRangeCollection<Meal>(OriginalMeals.Where(x => x.day.ToString("MMMM dd, yyyy") == SelectedDay.ToString("MMMM dd, yyyy")));
             OnPropertyChanged("Meals");
+            UpdateProgress();
             CreateMealGroups();
+        }
+
+        public void UpdateProgress()
+        {
+            if (Meals.Count == 0)
+            {
+                Dailyprogress = 0.00;
+                Dailyprogresstext = "0 %";
+            }
+            else
+            {
+                double totalMeals = Meals.Count();
+                double completedMeals = Meals.Count(x => x.isEaten == true);
+
+                double progressDouble = completedMeals / totalMeals;
+                Dailyprogress = progressDouble;
+                Dailyprogresstext = (progressDouble * 100).ToString() + " %";
+
+            }
+
+            OnPropertyChanged("Dailyprogress");
+            OnPropertyChanged("Dailyprogresstext");
+
         }
 
         public void CreateMealGroups()
