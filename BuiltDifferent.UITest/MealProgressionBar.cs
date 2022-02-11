@@ -48,6 +48,7 @@ namespace BuiltDifferent.UITest
             if (platform == Platform.Android)
             {
                 LoginClient();
+                app.Tap(x => x.Marked("Meals"));
                 app.WaitForElement(x => x.Marked("DailyProgressText"));
                 Assert.IsTrue(app.Query(x => x.Marked("DailyProgressText")).Length > 0);
 
