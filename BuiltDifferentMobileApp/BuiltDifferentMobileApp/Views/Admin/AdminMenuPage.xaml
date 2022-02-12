@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Admin"
-             x:Class="BuiltDifferentMobileApp.Views.Admin.AdminMenuPage">
+             x:Class="BuiltDifferentMobileApp.Views.Admin.AdminMenuPage"
+             Title="{Binding Title}">
 
     <ContentPage.BindingContext>
         <viewmodels:AdminMenuPageViewModel />
@@ -12,14 +13,46 @@
         <ToolbarItem Text="Profile" Command="{Binding ViewMyProfileCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
-            </ToolbarItem.IconImageSource>        </ToolbarItem>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <StackLayout Grid.Row="0" BackgroundColor="#3F3F3F" Padding="12">
+            
+                <!-- DATE PICKER START -->
+                <Frame Grid.Column="0" Grid.Row="0" Padding="12,6,12,6" HorizontalOptions="Center" VerticalOptions="Start" BackgroundColor="#303030" CornerRadius="12">
+                    <StackLayout>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35" />
+                            </Grid.RowDefinitions>
+
+                            <Button Text="&#xf053;" FontFamily="FAS" BackgroundColor="Transparent" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start"
+                                    Command="{Binding ChangeWeekCommand}" CommandParameter="-1" AutomationId="PreviousWeekButton"/>
+                            <Label Text="{Binding WeekOfText}" LineBreakMode="TailTruncation" Grid.Column="1"
+                                   FontSize="Subtitle" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center"/>
+                            <Button Text="&#xf054;" FontFamily="FAS" BackgroundColor="Transparent" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Start"
+                                    Command="{Binding ChangeWeekCommand}" CommandParameter="1" AutomationId="NextWeekButton"/>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+                <!-- DATE PICKER END -->
+
+                <Label Text="aaa" FontSize="Title" TextColor="White"/>
+                <Label Text="aaa" FontSize="Title" TextColor="White"/>
+                <Label Text="aaa" FontSize="Title" TextColor="White"/>
+                <Label Text="aaa" FontSize="Title" TextColor="White"/>
+                <Label Text="aaa" FontSize="Title" TextColor="White"/>
+                <Label Text="aaa" FontSize="Title" TextColor="White"/>
+
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
