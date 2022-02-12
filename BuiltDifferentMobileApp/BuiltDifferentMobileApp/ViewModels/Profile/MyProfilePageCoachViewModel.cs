@@ -160,6 +160,19 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             get => profilePictureId;
             set => SetProperty(ref profilePictureId, value);
         }
+
+        private string payPalLink;
+        public string PayPalLink
+        {
+            get => payPalLink;
+            set
+            {
+                SetProperty(ref payPalLink, value);
+                OnPropertyChanged(nameof(IsEnabled));
+
+            }
+        }
+
         public object PreviewPicture { get; set; }
 
         private int UserId;
@@ -188,6 +201,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             Description = "";
             Pricing = 0.0;
             ProfilePictureId = 0;
+            PayPalLink = "";
 
             PreviewPicture = null;
             ProfilePicture = null;
@@ -231,6 +245,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             IsVerified = userInfo.isVerified;
             Description = userInfo.description;
             Pricing = userInfo.pricing;
+            PayPalLink = userInfo.payPalLink;
 
            
             var pic = await networkService.GetStreamAsync(APIConstants.GetProfilePictureUri());
@@ -324,7 +339,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
 
                 await networkService.PostAsyncHttpResponseMessage(APIConstants.PostUploadProfilePicture(), multipartFormContent, true );
 
-                var profile = new CoachProfileDTO(Name, UserId, Type, IsAvailable, OffersMeal, OffersWorkout, CertificationId, Gender, IsVerified, Description, Pricing, ProfilePictureId);
+                var profile = new CoachProfileDTO(Name, UserId, Type, IsAvailable, OffersMeal, OffersWorkout, CertificationId, Gender, IsVerified, Description, Pricing, ProfilePictureId, PayPalLink);
 
                 if (profile == null)
                 {

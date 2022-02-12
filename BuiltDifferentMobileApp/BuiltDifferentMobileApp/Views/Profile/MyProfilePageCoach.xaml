@@ -79,6 +79,12 @@
                             <Picker ItemsSource="{Binding GenderTypes}"  IsEnabled="{Binding IsEnabled}" SelectedItem="{Binding Gender}"/>
                         </Frame>
                     </StackLayout>
+                    <StackLayout Spacing="2">
+                        <Label Text="PayPal Link" />
+                        <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
+                            <Entry Text="{Binding PayPalLink}" IsEnabled="{Binding IsEnabled}" Keyboard="Numeric"/>
+                        </Frame>
+                    </StackLayout>
                 </StackLayout>
                 <StackLayout Grid.Row="3" Grid.Column="1">
                     <StackLayout Orientation="Horizontal">

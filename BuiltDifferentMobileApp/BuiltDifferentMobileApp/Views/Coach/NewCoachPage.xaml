@@ -43,6 +43,11 @@
                         </StackLayout>
 
                         <StackLayout>
+                            <StackLayout>
+                                <Label Text="PayPal Link" FontAttributes="Bold"/>
+                                <Entry Text="{Binding PayPalLink}" Keyboard="Text" Placeholder="https://paypal.me/username123" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
+                                   AutomationId="PayPalLink" />
+                            </StackLayout>
                             <Label Text="{x:Static translate:AppResource.PlanOffersHelpText}" FontAttributes="Bold"/>
                             <StackLayout Orientation="Horizontal">
                                 <CheckBox VerticalOptions="Center" IsChecked="{Binding OfferWorkouts}" Color="{StaticResource RedSecondary}"
