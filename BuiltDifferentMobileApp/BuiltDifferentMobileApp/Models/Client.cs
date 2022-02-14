@@ -12,5 +12,6 @@ namespace BuiltDifferentMobileApp.Models {
         public int startWeight { get; set; }
         public int currentWeight { get; set; }
         public int profilePictureId { get; set; }
+        public double height { get; set; }
     }
 }

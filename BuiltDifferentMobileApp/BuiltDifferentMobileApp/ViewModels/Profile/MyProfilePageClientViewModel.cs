@@ -13,8 +13,21 @@ using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace BuiltDifferentMobileApp.ViewModels.Profile {
-    public class MyProfilePageClientViewModel : ViewModelBase {
+namespace BuiltDifferentMobileApp.ViewModels.Profile
+{
+    public class MyProfilePageClientViewModel : ViewModelBase
+    {
+        private FileResult profilePicture;
+        public FileResult ProfilePicture
+        {
+            get => profilePicture;
+            set
+            {
+                SetProperty(ref profilePicture, value);
+                OnPropertyChanged(nameof(IsEnabled));
+
+            }
+        }
 
         private int profilePictureId;
         public int ProfilePictureId
@@ -23,17 +36,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             set
             {
                 SetProperty(ref profilePictureId, value);
-                OnPropertyChanged(nameof(IsEnabled));
-
-            }
-        }
-        private FileResult profilePicture;
-        public FileResult ProfilePicture
-        {
-            get => profilePicture;
-            set
-            {
-                SetProperty(ref profilePicture, value);
                 OnPropertyChanged(nameof(IsEnabled));
 
             }
@@ -63,12 +65,26 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         public int CurrentWeight
         {
             get => currentWeight;
-            set {
+            set
+            {
                 SetProperty(ref currentWeight, value);
                 OnPropertyChanged(nameof(IsEnabled));
 
             }
         }
+
+        private double height;
+        public double Height
+        {
+            get => height;
+            set
+            {
+                SetProperty(ref height, value);
+                OnPropertyChanged(nameof(IsEnabled));
+
+            }
+        }
+
         private bool isEnabled;
         public bool IsEnabled
         {
@@ -77,7 +93,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         }
         private int UserId;
         public object PreviewPicture { get; set; }
-        private int Id;
+        // private int Id;
 
         public AsyncCommand SubmitCommand { get; }
         public AsyncCommand UploadImageCommand { get; }
@@ -86,16 +102,22 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         private IAccountService accountService = AccountService.Instance;
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
-        public MyProfilePageClientViewModel() {
+        public MyProfilePageClientViewModel()
+        {
             Name = "";
+            StartWeight = 0;
+            UserId = 0;
             StartWeight = 0;
             CurrentWeight = 0;
             ProfilePictureId = 0;
             ProfilePicture = null;
             PreviewPicture = null;
+            Height = 0;
+            //ADDED FIELD 
+
             GetUserInfo();
 
-            isEnabled = false;
+            IsEnabled = false;
 
             SubmitCommand = new AsyncCommand(Submit);
             UploadImageCommand = new AsyncCommand(Upload);
@@ -105,9 +127,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
         private async Task GetUserInfo()
         {
             Models.Client user = (Models.Client)accountService.CurrentUser;
-            //TEST BEFORE MERGE
-            var userInfo = await networkService.GetAsync<Models.Client>(APIConstants.GetClientProfileUri(user.userId));
-
+            var userInfo = await networkService.GetAsync<Models.Client>(APIConstants.GetProfileUri());
             if (userInfo == null)
             {
                 await Application.Current.MainPage.DisplayAlert("Could not load client's profile!", "Returning to previous page", "OK");
@@ -119,15 +139,16 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
             {
                 accountService.CurrentUser = userInfo;
 
-                Id = userInfo.id;
+                UserId = userInfo.id;
                 Name = userInfo.name;
                 UserId = userInfo.userId;
                 StartWeight = userInfo.startWeight;
                 CurrentWeight = userInfo.currentWeight;
                 ProfilePictureId = userInfo.profilePictureId;
+                Height = userInfo.height;
 
                 var pic = await networkService.GetStreamAsync(APIConstants.GetProfilePictureUri());
-                if(pic == null)
+                if (pic == null)
                 {
                     return;
                 }
@@ -201,28 +222,26 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile {
 
         private async Task Submit()
         {
-            if (
-                string.IsNullOrEmpty(Name)
-                )
+            if (string.IsNullOrEmpty(Name))
             {
-                await Application.Current.MainPage.DisplayAlert(AppResource.ViewModelFieldIssueTitle, AppResource.ViewModelFieldIssueMessage, "OK");
+                await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
                 return;
             }
 
             if (IsEnabled)
             {
                 IsEnabled = false;
+
                 var multipartFormContent = await GetMultiPartFormContent();
 
                 if (multipartFormContent == null)
                 {
                     IsBusy = false;
-                    return;
                 }
 
                 await networkService.PostAsyncHttpResponseMessage(APIConstants.PostUploadProfilePicture(), multipartFormContent, true);
 
-                var profile = new ClientProfileDTO(Name, UserId, CurrentWeight, ProfilePictureId);
+                var profile = new ClientProfileDTO(Name, UserId, CurrentWeight, ProfilePictureId, Height);
                 if (profile == null)
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "Sorry! We are having an issue retrieving your profile. Please try again.", "OK");

@@ -208,7 +208,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
 
             GetUserInfo();
 
-            isEnabled = false;
+            IsEnabled = false;
 
             SubmitCommand = new AsyncCommand(Submit);
             UploadImageCommand = new AsyncCommand(Upload);
@@ -232,26 +232,39 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
         {
             Models.Coach user = (Models.Coach)accountService.CurrentUser;
             var userInfo = await networkService.GetAsync<Models.Coach>(APIConstants.GetProfileUri());
-            accountService.CurrentUser = userInfo;
+            if (userInfo == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Could not load client's profile!", "Returning to previous page", "OK");
+                await Shell.Current.GoToAsync("..");
+                IsBusy = false;
+                return;
+            }
+            else
+            {
+                accountService.CurrentUser = userInfo;
 
-            Name = userInfo.name;
-            UserId = userInfo.userId;
-            Type = userInfo.type;
-            IsAvailable = userInfo.isAvailable;
-            OffersMeal = userInfo.offersMeal;
-            OffersWorkout = userInfo.offersWorkout;
-            CertificationId = userInfo.certificationId;
-            Gender = userInfo.gender;
-            IsVerified = userInfo.isVerified;
-            Description = userInfo.description;
-            Pricing = userInfo.pricing;
-            PayPalLink = userInfo.payPalLink;
+                Name = userInfo.name;
+                UserId = userInfo.userId;
+                Type = userInfo.type;
+                IsAvailable = userInfo.isAvailable;
+                OffersMeal = userInfo.offersMeal;
+                OffersWorkout = userInfo.offersWorkout;
+                CertificationId = userInfo.certificationId;
+                Gender = userInfo.gender;
+                IsVerified = userInfo.isVerified;
+                Description = userInfo.description;
+                Pricing = userInfo.pricing;
+                PayPalLink = userInfo.payPalLink;
 
-           
-            var pic = await networkService.GetStreamAsync(APIConstants.GetProfilePictureUri());
 
-            PreviewPicture = ImageSource.FromStream(() => pic);
-            OnPropertyChanged("PreviewPicture");
+                var pic = await networkService.GetStreamAsync(APIConstants.GetProfilePictureUri());
+                if (pic == null)
+                {
+                    return;
+                }
+                PreviewPicture = ImageSource.FromStream(() => pic);
+                OnPropertyChanged("PreviewPicture");
+            }
         }
 
         private async Task Edit()
@@ -337,7 +350,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
                     return;
                 }
 
-                await networkService.PostAsyncHttpResponseMessage(APIConstants.PostUploadProfilePicture(), multipartFormContent, true );
+                await networkService.PostAsyncHttpResponseMessage(APIConstants.PostUploadProfilePicture(), multipartFormContent, true);
 
                 var profile = new CoachProfileDTO(Name, UserId, Type, IsAvailable, OffersMeal, OffersWorkout, CertificationId, Gender, IsVerified, Description, Pricing, ProfilePictureId, PayPalLink);
 

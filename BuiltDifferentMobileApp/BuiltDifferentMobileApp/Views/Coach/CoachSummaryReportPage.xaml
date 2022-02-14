@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BuiltDifferentMobileApp.Views.Coach.CoachSummaryReportPage"
+             xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Coach"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource" 
+             Title="Reports"
+             x:Name="MyCoachSummaryReportPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <RefreshView IsRefreshing="{Binding IsBusy}"
+                     Command="{Binding RefreshCommand}">
+                <Frame>
+                    <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                            <StackLayout Grid.Row="0">
+                                <Label Text="Weekly Report" FontSize="Large" HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="1" Orientation="Horizontal">
+                                <Label Text="Current Period:" FontAttributes="Bold" />
+                            <Label Text="{Binding coachReport.startDate, StringFormat='Start: {0:d/M/yyyy}'}"/>
+                            <Label Text="{Binding coachReport.endDate, StringFormat='End: {0:d/M/yyyy}'}"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="2" Orientation="Horizontal">
+                                <Label Text="Coach Name:"  FontAttributes="Bold"/>
+                                <Label Text="{Binding coachReport.coachName}"/>
+                            </StackLayout>
+                        
+                        <StackLayout Grid.Row="3" Orientation="Horizontal">
+                            <Label Text="# of Clients:"  FontAttributes="Bold"/>
+                            <Label Text="{Binding coachReport.numberOfClients}"/>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="4">
+                            <Frame BackgroundColor="{StaticResource ExtraLightGrey}">
+                                <CollectionView ItemsSource="{Binding coachReport.clientReports}" ItemSizingStrategy="MeasureAllItems">
+
+                                    <CollectionView.EmptyView>
+                                        <Label Text="There are no client at this time" />
+                                    </CollectionView.EmptyView>
+
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <Image Grid.Column="0" Source=" https://pngset.com/images/katie-notopoulos-katienotopoulos-i-write-about-tech-round-profile-image-placeholder-text-number-symbol-word-transparent-png-201415.png" HeightRequest="40"/>
+                                                <Label Grid.Column="1" Text="{Binding clientName}" VerticalOptions="Center"/>
+                                                <Label Grid.Column="2" Text="{Binding bmi, StringFormat='{0:0}'}"  VerticalOptions="Center" />
+                                                <Label Grid.Column="3" Text="{Binding caloriesConsumed}"  VerticalOptions="Center"/>
+                                                <Label Grid.Column="4" Text="{Binding workoutsDone}"  VerticalOptions="Center"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+
+                                    <CollectionView.Header>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <BoxView BackgroundColor="{StaticResource RedSecondary}" Grid.ColumnSpan="5"/>
+
+                                            <Label Grid.Column="0" Text="Picture" FontAttributes="Bold" TextColor="White" />
+                                            <Label Grid.Column="1" Text="Client Name" FontAttributes="Bold" TextColor="White" />
+                                            <Label Grid.Column="2" Text="BMI" FontAttributes="Bold" TextColor="White" />
+                                            <Label Grid.Column="3" Text="Calories Consumed" FontAttributes="Bold" TextColor="White"/>
+                                            <Label Grid.Column="4" Text="Workouts Done" FontAttributes="Bold" TextColor="White" />
+                                        </Grid>
+                                    </CollectionView.Header>
+                                </CollectionView>
+                            </Frame>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </RefreshView>
+            </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
