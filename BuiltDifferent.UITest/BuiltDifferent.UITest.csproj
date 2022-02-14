@@ -50,6 +50,7 @@
     <Compile Include="ClientRemoveTests.cs" />
     <Compile Include="ClientPlanTests.cs" />
     <Compile Include="CoachClientAcceptDenyTests.cs" />
+    <Compile Include="CoachSummaryReportTests.cs" />
     <Compile Include="ForgotPasswordTests.cs" />
     <Compile Include="CreateAccountTests.cs" />
     <Compile Include="MarkAsDoneMeal.cs" />
