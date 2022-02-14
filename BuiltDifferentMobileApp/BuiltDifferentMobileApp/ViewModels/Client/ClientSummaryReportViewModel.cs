@@ -197,12 +197,15 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         public double progressDay6SkipW;
         public double ProgressDay6SkipW { get => progressDay6SkipW; set => SetProperty(ref progressDay6SkipW, value); }
 
+      
+
+        public AsyncCommand ViewMyProfileCommand { get; }
         public ClientSummaryReportViewModel()
         {
             
             var user = (Models.Client)accountService.CurrentUser;
             this.clientId = user.id;
-            
+            ViewMyProfileCommand = new AsyncCommand(accountService.ViewMyProfileCommand);
             CurrentWeek = 0;
             ChangeWeekCommand = new AsyncCommand<string>(ChangeWeek);
 
