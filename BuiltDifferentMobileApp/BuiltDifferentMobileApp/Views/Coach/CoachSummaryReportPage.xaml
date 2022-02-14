@@ -62,7 +62,7 @@
                                                 <Image Grid.Column="0" Source=" https://pngset.com/images/katie-notopoulos-katienotopoulos-i-write-about-tech-round-profile-image-placeholder-text-number-symbol-word-transparent-png-201415.png" HeightRequest="40"/>
                                                 <Label Grid.Column="1" Text="{Binding clientName}" VerticalOptions="Center" AutomationId="ClientName"/>
                                                 <Label Grid.Column="2" Text="{Binding bmi, StringFormat='{0:0}'}"  VerticalOptions="Center" AutomationId="ClientBMI"/>
-                                                <Label Grid.Column="3" Text="{Binding caloriesConsumed}"  VerticalOptions="Center"/>
+                                                <Label Grid.Column="3" Text="{Binding caloriesConsumed}"  VerticalOptions="Center" AutomationId="ClientCalories"/>
                                                 <Label Grid.Column="4" Text="{Binding workoutsDone}"  VerticalOptions="Center"/>
                                             </Grid>
                                         </DataTemplate>

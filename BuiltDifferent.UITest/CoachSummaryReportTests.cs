@@ -19,11 +19,11 @@ namespace BuiltDifferent.UITest
         {
             this.platform = platform;
         }
-        [Test]
-        public void OpenRepl()
-        {
-            app.Repl();
-        }
+        //[Test]
+        //public void OpenRepl()
+        //{
+        //    app.Repl();
+        //}
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
@@ -77,6 +77,30 @@ namespace BuiltDifferent.UITest
                 app.Tap(e => e.Marked("CoachReports"));
                 app.WaitForElement("ClientName");
                 Assert.IsTrue(app.Query(x => x.Marked("ClientName").Text("Bob Jones")).Any());
+            }
+            else return;
+        }
+        [Test, Order(4)]
+        public void BMI_Calculation()
+        {
+            if (platform == Platform.Android)
+            {
+                app.Tap(c => c.Class("AppCompatImageButton"));
+                app.Tap(e => e.Marked("CoachReports"));
+                app.WaitForElement("ClientBMI");
+                Assert.IsTrue(app.Query(x => x.Marked("ClientBMI").Text("0")).Any());
+            }
+            else return;
+        }
+        [Test, Order(5)]
+        public void Calories_Consumed()
+        {
+            if (platform == Platform.Android)
+            {
+                app.Tap(c => c.Class("AppCompatImageButton"));
+                app.Tap(e => e.Marked("CoachReports"));
+                app.WaitForElement("ClientCalories");
+                Assert.IsTrue(app.Query(x => x.Marked("ClientCalories").Text("400")).Any());
             }
             else return;
         }
