@@ -69,6 +69,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
         public bool OfferWorkouts { get; set; }
         public bool OfferMeals { get; set; }
         public string FileName { get; set; }
+        public string PayPalLink { get; set; }
 
         public bool HasSubmittedCertification { get; set; }
 
@@ -90,6 +91,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             OfferMeals = false;
             FileName = "";
             Certification = null;
+            PayPalLink = "";
 
             GenderPickerList = new List<string>() {
                 AppResource.MaleGender, AppResource.FemaleGender, AppResource.OtherGender
@@ -137,7 +139,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
             if(HasSubmittedCertification) return;
             IsBusy = true;
 
-            if(string.IsNullOrWhiteSpace(Description) || string.IsNullOrWhiteSpace(Pricing) || !GenderPickerList.Contains(SelectedGender)) {
+            if(string.IsNullOrWhiteSpace(Description) || string.IsNullOrWhiteSpace(Pricing) || !GenderPickerList.Contains(SelectedGender) || string.IsNullOrWhiteSpace(PayPalLink)) {
                 ErrorText = MissingInputs;
                 IsBusy = false;
                 return;
@@ -174,6 +176,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach {
                 { "pricing", parsedPricing.ToString() },
                 { "offersWorkout", OfferWorkouts.ToString() },
                 { "offersMeal", OfferMeals.ToString() },
+                { "payPalLink", PayPalLink.ToString() },
             };
 
             var uploadProfile = (int)await networkService.PutAsyncHttpResponseMessage(APIConstants.GetCoachByIdUri(accountService.CurrentUser.id), coachProfile);

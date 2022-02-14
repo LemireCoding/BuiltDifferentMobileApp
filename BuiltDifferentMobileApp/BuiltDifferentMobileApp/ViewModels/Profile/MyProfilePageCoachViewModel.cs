@@ -160,6 +160,19 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             get => profilePictureId;
             set => SetProperty(ref profilePictureId, value);
         }
+
+        private string payPalLink;
+        public string PayPalLink
+        {
+            get => payPalLink;
+            set
+            {
+                SetProperty(ref payPalLink, value);
+                OnPropertyChanged(nameof(IsEnabled));
+
+            }
+        }
+
         public object PreviewPicture { get; set; }
 
         private int UserId;
@@ -188,13 +201,14 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             Description = "";
             Pricing = 0.0;
             ProfilePictureId = 0;
+            PayPalLink = "";
 
             PreviewPicture = null;
             ProfilePicture = null;
 
             GetUserInfo();
 
-            isEnabled = false;
+            IsEnabled = false;
 
             SubmitCommand = new AsyncCommand(Submit);
             UploadImageCommand = new AsyncCommand(Upload);
@@ -218,25 +232,39 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
         {
             Models.Coach user = (Models.Coach)accountService.CurrentUser;
             var userInfo = await networkService.GetAsync<Models.Coach>(APIConstants.GetProfileUri());
-            accountService.CurrentUser = userInfo;
+            if (userInfo == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Could not load client's profile!", "Returning to previous page", "OK");
+                await Shell.Current.GoToAsync("..");
+                IsBusy = false;
+                return;
+            }
+            else
+            {
+                accountService.CurrentUser = userInfo;
 
-            Name = userInfo.name;
-            UserId = userInfo.userId;
-            Type = userInfo.type;
-            IsAvailable = userInfo.isAvailable;
-            OffersMeal = userInfo.offersMeal;
-            OffersWorkout = userInfo.offersWorkout;
-            CertificationId = userInfo.certificationId;
-            Gender = userInfo.gender;
-            IsVerified = userInfo.isVerified;
-            Description = userInfo.description;
-            Pricing = userInfo.pricing;
+                Name = userInfo.name;
+                UserId = userInfo.userId;
+                Type = userInfo.type;
+                IsAvailable = userInfo.isAvailable;
+                OffersMeal = userInfo.offersMeal;
+                OffersWorkout = userInfo.offersWorkout;
+                CertificationId = userInfo.certificationId;
+                Gender = userInfo.gender;
+                IsVerified = userInfo.isVerified;
+                Description = userInfo.description;
+                Pricing = userInfo.pricing;
+                PayPalLink = userInfo.payPalLink;
 
-           
-            var pic = await networkService.GetStreamAsync(APIConstants.GetProfilePictureUri());
 
-            PreviewPicture = ImageSource.FromStream(() => pic);
-            OnPropertyChanged("PreviewPicture");
+                var pic = await networkService.GetStreamAsync(APIConstants.GetProfilePictureUri());
+                if (pic == null)
+                {
+                    return;
+                }
+                PreviewPicture = ImageSource.FromStream(() => pic);
+                OnPropertyChanged("PreviewPicture");
+            }
         }
 
         private async Task Edit()
@@ -322,9 +350,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
                     return;
                 }
 
-                await networkService.PostAsyncHttpResponseMessage(APIConstants.PostUploadProfilePicture(), multipartFormContent, true );
+                await networkService.PostAsyncHttpResponseMessage(APIConstants.PostUploadProfilePicture(), multipartFormContent, true);
 
-                var profile = new CoachProfileDTO(Name, UserId, Type, IsAvailable, OffersMeal, OffersWorkout, CertificationId, Gender, IsVerified, Description, Pricing, ProfilePictureId);
+                var profile = new CoachProfileDTO(Name, UserId, Type, IsAvailable, OffersMeal, OffersWorkout, CertificationId, Gender, IsVerified, Description, Pricing, ProfilePictureId, PayPalLink);
 
                 if (profile == null)
                 {

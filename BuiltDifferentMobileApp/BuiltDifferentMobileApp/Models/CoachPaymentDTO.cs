@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BuiltDifferentMobileApp.Models {
-    public class Coach : User {
-        public override int id { get; set; }
-        public override string name { get; set; }
-        public override int userId { get; set; }
+namespace BuiltDifferentMobileApp.Models
+{
+    public class CoachPaymentDTO
+    {
+        public int id { get; set; }
+        public string name { get; set; }
         public string type { get; set; }
         public bool isAvailable { get; set; }
         public bool offersMeal { get; set; }
@@ -16,7 +17,6 @@ namespace BuiltDifferentMobileApp.Models {
         public bool isVerified { get; set; }
         public string description { get; set; }
         public double pricing { get; set; }
-        public int profilePictureId{ get; set; }
         public string payPalLink { get; set; }
     }
 }

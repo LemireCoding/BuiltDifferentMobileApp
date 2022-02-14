@@ -3,6 +3,7 @@ using BuiltDifferentMobileApp.Views.Admin;
 using BuiltDifferentMobileApp.Views.Client;
 using BuiltDifferentMobileApp.Views.Coach;
 using BuiltDifferentMobileApp.Views.Login;
+using BuiltDifferentMobileApp.Views.Payment;
 using BuiltDifferentMobileApp.Views.Profile;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace BuiltDifferentMobileApp {
             Routing.RegisterRoute(nameof(AdminMenuPage), typeof(AdminMenuPage));
 
             // Coach pages
+            Routing.RegisterRoute(nameof(CoachSummaryReportPage), typeof(CoachSummaryReportPage));
             Routing.RegisterRoute(nameof(CoachClientApprovalPage), typeof(CoachClientApprovalPage));
             Routing.RegisterRoute(nameof(AddWorkoutPage), typeof(AddWorkoutPage));
             Routing.RegisterRoute(nameof(EditWorkoutPage), typeof(EditWorkoutPage));
@@ -33,7 +35,7 @@ namespace BuiltDifferentMobileApp {
             Routing.RegisterRoute(nameof(NewCoachPage), typeof(NewCoachPage));
 
             // Client pages
-         
+            Routing.RegisterRoute(nameof(PaymentPage), typeof(PaymentPage));
             Routing.RegisterRoute(nameof(RecipePage), typeof(RecipePage));
             Routing.RegisterRoute(nameof(ClientMealPage), typeof(ClientMealPage));
             Routing.RegisterRoute(nameof(ClientWorkoutPage), typeof(ClientWorkoutPage));

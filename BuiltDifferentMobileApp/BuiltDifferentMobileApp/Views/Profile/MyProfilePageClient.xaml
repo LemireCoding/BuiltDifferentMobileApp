@@ -55,11 +55,15 @@
                         </Frame>
                         <Label Text="{x:Static resource:AppResource.StartWeightLabel}" />
                         <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                            <Entry IsEnabled="False" Text="{Binding StartWeight}" Keyboard="Numeric"/>
+                            <Entry IsEnabled="{Binding IsEnabled}" Text="{Binding StartWeight}" Keyboard="Numeric"/>
                         </Frame>
                         <Label Text="{x:Static resource:AppResource.CurrentWeightLabel}" />
                         <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                             <Entry IsEnabled="{Binding IsEnabled}" Text="{Binding CurrentWeight}" Keyboard="Numeric" AutomationId="CurrentWeight"/>
+                        </Frame>
+                        <Label Text="Height" />
+                        <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
+                            <Entry IsEnabled="{Binding IsEnabled}" Text="{Binding Height}" Keyboard="Numeric" AutomationId="Height"/>
                         </Frame>
                     </StackLayout>
                 </StackLayout>
