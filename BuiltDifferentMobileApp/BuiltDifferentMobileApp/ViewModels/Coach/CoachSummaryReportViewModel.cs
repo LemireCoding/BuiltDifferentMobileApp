@@ -36,15 +36,14 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
 
             //coachInfo
             Models.Coach coach = await networkService.GetAsync<Models.Coach>(APIConstants.GetCoachByCoachId(coachId));
-
+            
             //Number of clients
             List<Models.Client> clients = await networkService.GetAsync<List<Models.Client>>(APIConstants.GetClientsForCoachId(coachId));
 
-            if (clients == null)
+            if (coach == null || clients == null)
             {
                 await Application.Current.MainPage.DisplayAlert($"Error", "There was an issue retrieving some information. Please try again", "OK");
             }
-
             else if (clients.Count > 0)
             {
                 coachReport.coachName = coach.name;
