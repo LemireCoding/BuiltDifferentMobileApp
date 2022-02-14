@@ -1042,6 +1042,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Height in cm.
+        /// </summary>
+        public static string HeightLabel {
+            get {
+                return ResourceManager.GetString("HeightLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sorry, your password was incorrect. Please check your password and try again..
         /// </summary>
         public static string IncorrectLoginText {

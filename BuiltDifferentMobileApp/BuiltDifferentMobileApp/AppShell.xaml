@@ -121,6 +121,10 @@
         <ShellContent Route="ClientRequestCenterPage" ContentTemplate="{DataTemplate clientpages:ClientRequestsCenterPage}" />
     </FlyoutItem>
 
+    <FlyoutItem Title="Summary Report" IsVisible="{Binding IsClientWithCoach}" AutomationId="SummaryReport">
+        <ShellContent Route="ClientSummaryReportPage" ContentTemplate="{DataTemplate clientpages:ClientSummaryReportPage}" />
+    </FlyoutItem>
+
 
 
 

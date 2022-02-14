@@ -518,6 +518,10 @@
     <value>sexe</value>
     <comment>3-Profile</comment>
   </data>
+  <data name="HeightLabel" xml:space="preserve">
+    <value>Mesure de hauteur en cm</value>
+    <comment>65-MyProfilePageClient</comment>
+  </data>
   <data name="IncorrectLoginText" xml:space="preserve">
     <value>Désolé, votre mot de passe est incorrect. Veuillez vérifier votre mot de passe et réessayer.</value>
     <comment>100-Alerts</comment>

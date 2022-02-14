@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.3.1" />
@@ -32,6 +33,9 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>AppResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Client\ClientSummaryReportPage.xaml.cs">
+      <DependentUpon>ClientSummaryReportPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Coach\AddWorkoutPage.xaml.cs">
       <DependentUpon>AddWorkoutPage.xaml</DependentUpon>
@@ -68,6 +72,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Client\ClientRequestsCenterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Client\ClientSummaryReportPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Client\ClientWorkoutPage.xaml">
