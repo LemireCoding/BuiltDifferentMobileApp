@@ -228,9 +228,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
 
         private async Task Submit()
         {
-            if (string.IsNullOrEmpty(Name))
+            if (string.IsNullOrEmpty(Name) || CurrentWeight == 0)
             {
-                await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields", "OK");
+                await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields. ", "OK");
                 return;
             }
 
