@@ -781,4 +781,44 @@
     <value>Payer</value>
     <comment/>
   </data>
+  <data name="Clients" xml:space="preserve">
+    <value>Clients</value>
+    <comment/>
+  </data>
+  <data name="Requests" xml:space="preserve">
+    <value>Demandes de client</value>
+    <comment/>
+  </data>
+  <data name="ApplyApproval" xml:space="preserve">
+    <value>Demande d'autorisation</value>
+    <comment/>
+  </data>
+  <data name="ClientDashboard" xml:space="preserve">
+    <value>Tableau</value>
+    <comment/>
+  </data>
+  <data name="CoachCriterias" xml:space="preserve">
+    <value>Trouver un entraîneur</value>
+    <comment/>
+  </data>
+  <data name="YourRequests" xml:space="preserve">
+    <value>Vos demandes</value>
+    <comment/>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+    <comment/>
+  </data>
+  <data name="VerifiedCoaches" xml:space="preserve">
+    <value>Entraîneurs vérifiés</value>
+    <comment/>
+  </data>
+  <data name="PendingCoaches" xml:space="preserve">
+    <value>Entraîneurs en attente</value>
+    <comment/>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Déconnexion</value>
+    <comment/>
+  </data>
 </root>

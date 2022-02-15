@@ -801,4 +801,48 @@
     <value>Make Payment</value>
     <comment/>
   </data>
+  <data name="Clients" xml:space="preserve">
+    <value>Clients</value>
+    <comment/>
+  </data>
+  <data name="Requests" xml:space="preserve">
+    <value>Requests</value>
+    <comment/>
+  </data>
+  <data name="ApplyApproval" xml:space="preserve">
+    <value>Apply for approval</value>
+    <comment/>
+  </data>
+  <data name="ClientDashboard" xml:space="preserve">
+    <value>Client Dashboard</value>
+    <comment/>
+  </data>
+  <data name="CoachCriterias" xml:space="preserve">
+    <value>Coach Search</value>
+    <comment/>
+  </data>
+  <data name="YourRequests" xml:space="preserve">
+    <value>Your Requests</value>
+    <comment/>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Payment</value>
+    <comment/>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+    <comment/>
+  </data>
+  <data name="VerifiedCoaches" xml:space="preserve">
+    <value>Verified Coaches</value>
+    <comment/>
+  </data>
+  <data name="PendingCoaches" xml:space="preserve">
+    <value>Pending Coaches</value>
+    <comment/>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Log out</value>
+    <comment/>
+  </data>
 </root>
