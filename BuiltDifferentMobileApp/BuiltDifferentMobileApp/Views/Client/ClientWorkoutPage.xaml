@@ -114,7 +114,7 @@
                                                                         <Label.FormattedText>
                                                                 <FormattedString>
                                                                 <Span Text="{Binding reps}" />
-                                                                <Span Text="{x:Static resource:AppResource.AddWorkoutPageWorkoutReps}" />
+                                                                <Span Text="{x:Static resource:AppResource.AddWorkoutPageReps}" />
                                                                 </FormattedString>
                                                                 </Label.FormattedText>
                                                                 </Label>

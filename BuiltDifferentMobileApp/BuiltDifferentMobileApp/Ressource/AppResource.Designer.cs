@@ -1481,5 +1481,50 @@ namespace BuiltDifferentMobileApp.Ressource {
                 return ResourceManager.GetString("PaymentInfo", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string Requests {
+            get {
+                return ResourceManager.GetString("Requests", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string CoachRequests {
+            get {
+                return ResourceManager.GetString("CoachRequests", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string ClientRequestApprovalDate {
+            get {
+                return ResourceManager.GetString("ClientRequestApprovalDate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string WeeklyReport {
+            get {
+                return ResourceManager.GetString("WeeklyReport", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string CoachName {
+            get {
+                return ResourceManager.GetString("CoachName", resourceCulture);
+            }
+        }
     }
 }
