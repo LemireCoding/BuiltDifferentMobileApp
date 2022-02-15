@@ -4,7 +4,8 @@
              xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Profile" 
              xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
              xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
-             x:Class="BuiltDifferentMobileApp.Views.Profile.MyProfilePageClient">
+             x:Class="BuiltDifferentMobileApp.Views.Profile.MyProfilePageClient"
+             Title="{x:Static resource:AppResource.ProfileTitle}">
 
     <ContentPage.Resources>
         <ResourceDictionary>

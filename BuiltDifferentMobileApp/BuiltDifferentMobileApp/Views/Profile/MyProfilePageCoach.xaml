@@ -4,7 +4,8 @@
              xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Profile"
              xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
              xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
-             x:Class="BuiltDifferentMobileApp.Views.Profile.MyProfilePageCoach">
+             x:Class="BuiltDifferentMobileApp.Views.Profile.MyProfilePageCoach"
+             Title="{x:Static resource:AppResource.ProfileTitle}">
 
     <ContentPage.BindingContext>
         <viewmodels:MyProfilePageCoachViewModel />
@@ -80,7 +81,7 @@
                         </Frame>
                     </StackLayout>
                     <StackLayout Spacing="2">
-                        <Label Text="PayPal Link" />
+                        <Label Text="{x:Static resource:AppResource.PayPalLink}" />
                         <Frame Padding="0" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
                             <Entry Text="{Binding PayPalLink}" IsEnabled="{Binding IsEnabled}" Keyboard="Numeric"/>
                         </Frame>
@@ -106,7 +107,7 @@
                 </StackLayout>
                 <StackLayout Grid.Row="4" Grid.Column="1">
                     <StackLayout>
-                        <Button  Margin="10" Text="Save" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SubmitCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Submit"/>
+                        <Button  Margin="10" Text="{x:Static resource:AppResource.SaveButton}" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SubmitCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Submit"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>
