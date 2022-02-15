@@ -39,31 +39,45 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         private string weekOfText;
         public string WeekOfText { get => weekOfText; set => SetProperty(ref weekOfText, value); }
 
-        private DateTime Day0 { get; set; }
+        private DateTime day0;
+        public DateTime Day0 { get => day0; set => SetProperty(ref day0, value); }
+
         private bool day0Selected;
         public bool Day0Selected { get => day0Selected; set => SetProperty(ref day0Selected, value); }
 
-        private DateTime Day1 { get; set; }
+        private DateTime day1;
+        public DateTime Day1 { get => day1; set => SetProperty(ref day1, value); }
+
         private bool day1Selected;
         public bool Day1Selected { get => day1Selected; set => SetProperty(ref day1Selected, value); }
 
-        private DateTime Day2 { get; set; }
+        private DateTime day2;
+        public DateTime Day2 { get => day2; set => SetProperty(ref day2, value); }
+
         private bool day2Selected;
         public bool Day2Selected { get => day2Selected; set => SetProperty(ref day2Selected, value); }
 
-        private DateTime Day3 { get; set; }
+        private DateTime day3;
+        public DateTime Day3 { get => day3; set => SetProperty(ref day3, value); }
+
         private bool day3Selected;
         public bool Day3Selected { get => day3Selected; set => SetProperty(ref day3Selected, value); }
 
-        private DateTime Day4 { get; set; }
+        private DateTime day4;
+        public DateTime Day4 { get => day4; set => SetProperty(ref day4, value); }
+
         private bool day4Selected;
         public bool Day4Selected { get => day4Selected; set => SetProperty(ref day4Selected, value); }
 
-        private DateTime Day5 { get; set; }
+        private DateTime day5;
+        public DateTime Day5 { get => day5; set => SetProperty(ref day5, value); }
+
         private bool day5Selected;
         public bool Day5Selected { get => day5Selected; set => SetProperty(ref day5Selected, value); }
 
-        private DateTime Day6 { get; set; }
+        private DateTime day6;
+        public DateTime Day6 { get => day6; set => SetProperty(ref day6, value); }
+
         private bool day6Selected;
         public bool Day6Selected { get => day6Selected; set => SetProperty(ref day6Selected, value); }
 
