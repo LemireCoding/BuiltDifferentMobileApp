@@ -538,6 +538,10 @@
     <value>Gender</value>
     <comment>3-Profile</comment>
   </data>
+  <data name="HeightLabel" xml:space="preserve">
+    <value>Height in cm</value>
+    <comment>65- MyProfileClient</comment>
+  </data>
   <data name="IncorrectLoginText" xml:space="preserve">
     <value>Sorry, your password was incorrect. Please check your password and try again.</value>
     <comment>100-Alerts</comment>

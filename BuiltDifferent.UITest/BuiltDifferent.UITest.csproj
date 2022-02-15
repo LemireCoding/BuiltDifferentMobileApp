@@ -28,6 +28,9 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microcharts.Forms">
+      <Version>0.9.5.9</Version>
+    </PackageReference>
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="Xamarin.Forms.SaveOpenPDFPackage">
       <Version>1.0.0</Version>
@@ -50,6 +53,7 @@
     <Compile Include="ClientRemoveTests.cs" />
     <Compile Include="ClientPlanTests.cs" />
     <Compile Include="CoachClientAcceptDenyTests.cs" />
+    <Compile Include="CoachSummaryReportTests.cs" />
     <Compile Include="ForgotPasswordTests.cs" />
     <Compile Include="CreateAccountTests.cs" />
     <Compile Include="MarkAsDoneMeal.cs" />

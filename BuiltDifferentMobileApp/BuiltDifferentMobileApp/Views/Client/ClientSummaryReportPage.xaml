@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+   
+    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BuiltDifferentMobileApp.Views.Client.ClientSummaryReportPage"
+              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+              >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Profile" Command="{Binding ViewMyProfileCommand}" AutomationId="Profile">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#3F3F3F">
+            <Grid>
+                <Label Grid.Column="0" Grid.Row="0" BackgroundColor="{StaticResource RedPrimary}" HeightRequest="60" VerticalOptions="Start" />
+                <ScrollView>
+                    <Grid Grid.Column="0" Grid.Row="0" Margin="0,10,0,0" >
+                        <StackLayout Grid.Column="0" Grid.Row="0" Spacing="0" Margin="0,40,0,0" Padding="10,75,10,0"
+                                     BackgroundColor="#3F3F3F">
+
+
+                            <Frame Grid.Column="0" Grid.Row="0" Padding="12,6,12,6" HorizontalOptions="FillAndExpand" VerticalOptions="Start"
+                               BackgroundColor="#303030" CornerRadius="12" Margin="12,24,12,0">
+                                <StackLayout>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0"  Grid.ColumnSpan="3" Text="Body Weight Progress" FontSize="Large" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" />
+                                        <Label  Grid.Column="0" Grid.Row="1" Text="{Binding StartWeight, StringFormat='{0} Lbs'}" FontSize="Medium" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" />
+                                        <Label  Grid.Column="1" Grid.Row="1" Text="To" FontSize="Medium" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" />
+                                        <Label  Grid.Column="2" Grid.Row="1"  Text="{Binding CurrentWeight, StringFormat='{0} Lbs'}" FontSize="Medium" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" />
+                                        <Label Grid.Column="0" Grid.Row="2"  Grid.ColumnSpan="3" Text="{Binding DifferenceInPds, StringFormat='Gain/Loss : {0} Lbs'}" FontSize="Medium" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" />
+
+                                    </Grid>
+                                     </StackLayout>
+                            </Frame>
+
+                            <Frame Grid.Column="0" Grid.Row="0" Padding="12,6,12,6" HorizontalOptions="FillAndExpand" VerticalOptions="Start"
+                               BackgroundColor="#303030" CornerRadius="12" Margin="12,24,12,0">
+                                <StackLayout>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                           
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                        
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" Text="Your Current Body Mass Index" FontSize="Large" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" />
+                                        <Label  Grid.Column="0" Grid.Row="1" Text="{Binding Bmi, StringFormat='{0:0.00}'}" HorizontalTextAlignment="Center"  FontSize="Medium" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" />
+                                        
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame Grid.Column="0" Grid.Row="0" Padding="12,6,12,6" HorizontalOptions="Center" VerticalOptions="Start"
+                               BackgroundColor="#303030" CornerRadius="12" Margin="12,24,12,0">
+                               
+                                <StackLayout>
+                                    <Label HorizontalTextAlignment="Center"  Text="Training and Nutrition statistics will be shown based on the selected week below" FontSize="Medium" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" />
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="50"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="35" />
+                                        </Grid.RowDefinitions>
+
+                                        <Button Text="&#xf053;" FontFamily="FAS" BackgroundColor="Transparent" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start"
+                                            Command="{Binding ChangeWeekCommand}" CommandParameter="-1" AutomationId="PreviousWeekButton"/>
+                                        <Label Text="{Binding WeekOfText}" LineBreakMode="TailTruncation" Grid.Column="1"
+                                           FontSize="Subtitle" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center"/>
+                                        <Button Text="&#xf054;" FontFamily="FAS" BackgroundColor="Transparent" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Start"
+                                            Command="{Binding ChangeWeekCommand}" CommandParameter="1" AutomationId="NextWeekButton"/>
+                                    </Grid>
+                                    
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame Grid.Column="0" Grid.Row="0" Padding="12,6,12,6" HorizontalOptions="FillAndExpand" VerticalOptions="Start"
+                               BackgroundColor="#303030" CornerRadius="12" Margin="12,24,12,0"  HeightRequest="300">
+                                <StackLayout>
+                                    <Label Text="Training" FontSize="Medium" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" />
+                                    <Label Text="Red : Completed" TextColor="White"/>
+                                    <Label Text="White : Not completed" TextColor="White"/>
+                                    <Label Text="Empty : No workout assigned" TextColor="White"/>
+
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <Label Grid.Row="0" Grid.Column="0" TextColor="White"  Text="{Binding Day0Text}"/>
+                                        <StackLayout Grid.Row="0" Grid.Column="1">
+                                            <ProgressBar Margin="0"  Progress="{Binding ProgressDay0Completed}" ProgressColor="{StaticResource RedExtra}"/>
+                                            <ProgressBar Margin="0,-15,0,0" Progress="{Binding ProgressDay0SkipW}" ProgressColor="White"/>
+                                        </StackLayout>
+
+                                        <Label Grid.Row="1" Grid.Column="0" TextColor="White"   Text="{Binding Day1Text}"/>
+                                        <StackLayout Grid.Row="1" Grid.Column="1">
+                                            <ProgressBar  Margin="0" Progress="{Binding ProgressDay1Completed}" ProgressColor="{StaticResource RedExtra}"/>
+                                            <ProgressBar Margin="0,-15,0,0" Progress="{Binding ProgressDay1SkipW}" ProgressColor="White"/>
+                                        </StackLayout>
+
+                                        <Label Grid.Row="2" Grid.Column="0" TextColor="White"   Text="{Binding Day2Text}"/>
+                                        <StackLayout Grid.Row="2" Grid.Column="1">
+                                            <ProgressBar  Margin="0" Progress="{Binding ProgressDay2Completed}" ProgressColor="{StaticResource RedExtra}"/>
+                                            <ProgressBar Margin="0,-15,0,0" Progress="{Binding ProgressDay2SkipW}" ProgressColor="White"/>
+                                        </StackLayout>
+
+                                        <Label Grid.Row="3" Grid.Column="0" TextColor="White"   Text="{Binding Day3Text}"/>
+                                        <StackLayout Grid.Row="3" Grid.Column="1">
+                                            <ProgressBar  Margin="0" Progress="{Binding ProgressDay3Completed}" ProgressColor="{StaticResource RedExtra}"/>
+                                            <ProgressBar Margin="0,-15,0,0" Progress="{Binding ProgressDay3SkipW}" ProgressColor="White"/>
+                                        </StackLayout>
+                                        <Label Grid.Row="4" Grid.Column="0" TextColor="White"   Text="{Binding Day4Text}"/>
+
+                                        <StackLayout Grid.Row="4" Grid.Column="1">
+                                            <ProgressBar  Margin="0" Progress="{Binding ProgressDay4Completed}" ProgressColor="{StaticResource RedExtra}"/>
+                                            <ProgressBar Margin="0,-15,0,0" Progress="{Binding ProgressDay4SkipW}" ProgressColor="White"/>
+                                        </StackLayout>
+
+                                        <Label Grid.Row="5" Grid.Column="0" TextColor="White"   Text="{Binding Day5Text}"/>
+
+                                        <StackLayout Grid.Row="5" Grid.Column="1">
+                                            <ProgressBar  Margin="0" Progress="{Binding ProgressDay5Completed}" ProgressColor="{StaticResource RedExtra}"/>
+                                            <ProgressBar Margin="0,-15,0,0" Progress="{Binding ProgressDay5SkipW}" ProgressColor="White"/>
+                                        </StackLayout>
+
+                                        <Label Grid.Row="6" Grid.Column="0" TextColor="White"   Text="{Binding Day6Text}"/>
+                                        <StackLayout Grid.Row="6" Grid.Column="1">
+                                            <ProgressBar  Margin="0" Progress="{Binding ProgressDay6Completed}" ProgressColor="{StaticResource RedExtra}"/>
+                                            <ProgressBar Margin="0,-15,0,0" Progress="{Binding ProgressDay6SkipW}" ProgressColor="White"/>
+                                        </StackLayout>
+                                    </Grid>
+
+
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame Grid.Column="0" Grid.Row="0" Padding="12,6,12,6" HorizontalOptions="FillAndExpand" VerticalOptions="Start"
+                               BackgroundColor="#303030" CornerRadius="12" Margin="12,24,12,12"  HeightRequest="300">
+                                <StackLayout>
+                                    <Label Text="Nutrition" FontSize="Medium" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" />
+                                    <Label Text="Red : Eaten" TextColor="White"/>
+                                    <Label Text="White : Not eaten" TextColor="White"/>
+                                    <Label Text="Empty : No meal assigned" TextColor="White"/>
+                                    
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <Label Grid.Row="0" Grid.Column="0" TextColor="White"  Text="{Binding Day0Text}"/>
+                                        <StackLayout Grid.Row="0" Grid.Column="1">
+                                            <ProgressBar Margin="0"  Progress="{Binding ProgressDay0Eaten}" ProgressColor="{StaticResource RedExtra}"/>
+                                            <ProgressBar Margin="0,-15,0,0" Progress="{Binding ProgressDay0Skip}" ProgressColor="White"/>
+                                        </StackLayout>
+
+
+
+                                        <Label Grid.Row="1" Grid.Column="0" TextColor="White"   Text="{Binding Day1Text}"/>
+                                        <StackLayout Grid.Row="1" Grid.Column="1">
+                                            <ProgressBar  Margin="0" Progress="{Binding ProgressDay1Eaten}" ProgressColor="{StaticResource RedExtra}"/>
+                                            <ProgressBar Margin="0,-15,0,0" Progress="{Binding ProgressDay1Skip}" ProgressColor="White"/>
+                                        </StackLayout>
+
+                                        <Label Grid.Row="2" Grid.Column="0" TextColor="White"   Text="{Binding Day2Text}"/>
+                                        <StackLayout Grid.Row="2" Grid.Column="1">
+                                            <ProgressBar  Margin="0" Progress="{Binding ProgressDay2Eaten}" ProgressColor="{StaticResource RedExtra}"/>
+                                            <ProgressBar Margin="0,-15,0,0" Progress="{Binding ProgressDay2Skip}" ProgressColor="White"/>
+                                        </StackLayout>
+
+                                        <Label Grid.Row="3" Grid.Column="0" TextColor="White"   Text="{Binding Day3Text}"/>
+                                        <StackLayout Grid.Row="3" Grid.Column="1">
+                                            <ProgressBar  Margin="0" Progress="{Binding ProgressDay3Eaten}" ProgressColor="{StaticResource RedExtra}"/>
+                                            <ProgressBar Margin="0,-15,0,0" Progress="{Binding ProgressDay3Skip}" ProgressColor="White"/>
+                                        </StackLayout>
+                                        <Label Grid.Row="4" Grid.Column="0" TextColor="White"   Text="{Binding Day4Text}"/>
+
+                                        <StackLayout Grid.Row="4" Grid.Column="1">
+                                            <ProgressBar  Margin="0" Progress="{Binding ProgressDay4Eaten}" ProgressColor="{StaticResource RedExtra}"/>
+                                            <ProgressBar Margin="0,-15,0,0" Progress="{Binding ProgressDay4Skip}" ProgressColor="White"/>
+                                        </StackLayout>
+
+                                        <Label Grid.Row="5" Grid.Column="0" TextColor="White"   Text="{Binding Day5Text}"/>
+
+                                        <StackLayout Grid.Row="5" Grid.Column="1">
+                                            <ProgressBar  Margin="0" Progress="{Binding ProgressDay5Eaten}" ProgressColor="{StaticResource RedExtra}"/>
+                                            <ProgressBar Margin="0,-15,0,0" Progress="{Binding ProgressDay5Skip}" ProgressColor="White"/>
+                                        </StackLayout>
+
+                                        <Label Grid.Row="6" Grid.Column="0" TextColor="White"   Text="{Binding Day6Text}"/>
+                                        <StackLayout Grid.Row="6" Grid.Column="1">
+                                            <ProgressBar  Margin="0" Progress="{Binding ProgressDay6Eaten}" ProgressColor="{StaticResource RedExtra}"/>
+                                            <ProgressBar Margin="0,-15,0,0" Progress="{Binding ProgressDay6Skip}" ProgressColor="White"/>
+                                        </StackLayout>
+                                    </Grid>
+                                    
+
+                                </StackLayout>
+                            </Frame>
+
+                        </StackLayout>
+
+                       
+
+                        <Frame Grid.Column="0" Grid.Row="0" Padding="12,6,12,6" HorizontalOptions="FillAndExpand" VerticalOptions="Start"
+                               BackgroundColor="#303030" CornerRadius="12" Margin="12,24,12,0">
+                            <StackLayout>
+
+                                <StackLayout HorizontalOptions="Center" Orientation="Horizontal"  Spacing="6" HeightRequest="60">
+                                    <Label AutomationId="SummaryReportTitle" FontSize="35" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" Text="Summary Report" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+
+
+                    </Grid>
+                </ScrollView>
+            </Grid>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

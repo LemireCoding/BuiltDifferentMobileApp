@@ -2,24 +2,93 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Admin"
-             x:Class="BuiltDifferentMobileApp.Views.Admin.AdminMenuPage">
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
+             x:Class="BuiltDifferentMobileApp.Views.Admin.AdminMenuPage"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:IntToGreyedOutOnPositiveConverter x:Key="intToGreyedOutOnPositiveConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.BindingContext>
         <viewmodels:AdminMenuPageViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Profile" Command="{Binding ViewMyProfileCommand}" AutomationId="Profile">
+        <ToolbarItem Text="Profile" Command="{Binding ViewMyProfileCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
-            </ToolbarItem.IconImageSource>        </ToolbarItem>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
-    
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <ScrollView>
+                <StackLayout Grid.Row="0" Grid.Column="0" BackgroundColor="#3F3F3F" Padding="12" Spacing="12">
+                    <Frame BackgroundColor="{StaticResource RedPrimary}" CornerRadius="12" Padding="10">
+                        <StackLayout>
+                            <Label Text="{Binding TotalCoaches, StringFormat='Total Coaches: {0}'}" TextColor="White" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="{StaticResource RedPrimary}" CornerRadius="12" Padding="10">
+                        <StackLayout>
+                            <Label Text="{Binding TotalClients, StringFormat='Total Clients: {0}'}" TextColor="White" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- DATE PICKER START -->
+                    <Frame Padding="12,6,12,6" HorizontalOptions="Center" VerticalOptions="Start" BackgroundColor="#303030" CornerRadius="12">
+                        <StackLayout>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="35" />
+                                </Grid.RowDefinitions>
+
+                                <Button Text="&#xf053;" FontFamily="FAS" BackgroundColor="Transparent" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start"
+                                        Command="{Binding ChangeWeekCommand}" CommandParameter="-1" AutomationId="PreviousWeekButton"/>
+                                <Label Text="{Binding WeekOfText}" LineBreakMode="TailTruncation" Grid.Column="1"
+                                        FontSize="Subtitle" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center"/>
+                                <Button Text="&#xf054;" FontFamily="FAS" BackgroundColor="Transparent" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Start"
+                                        Command="{Binding ChangeWeekCommand}" CommandParameter="1" AutomationId="NextWeekButton" TextColor="{Binding CurrentWeek, Converter={StaticResource intToGreyedOutOnPositiveConverter}}"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <!-- DATE PICKER END -->
+
+                    <Frame BackgroundColor="#303030" CornerRadius="12" Padding="10">
+                        <StackLayout>
+                            <Label Text="Weekly User Growth" TextColor="White" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
+                            <microcharts:ChartView Chart="{Binding WeeklyGrowth}" HeightRequest="250"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="#303030" CornerRadius="12" Padding="10">
+                        <StackLayout>
+                            <Label Text="Weekly Joined User Types" TextColor="White" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
+                            <microcharts:ChartView Chart="{Binding ClientCoachPie}" HeightRequest="250"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="#303030" CornerRadius="12" Padding="10">
+                        <StackLayout>
+                            <Label Text="Weekly Coach Applications" TextColor="White" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
+                            <microcharts:ChartView Chart="{Binding CoachesApplying}" HeightRequest="250"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+            <!-- Button to download PDF in the future maybe -->
+            <Button Text="&#xf56d;" FontSize="20" Grid.Row="0" Grid.Column="0" FontFamily="FAS" VerticalOptions="End" HorizontalOptions="End" CornerRadius="25" WidthRequest="50" Margin="0,0,6,6" IsVisible="False"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
