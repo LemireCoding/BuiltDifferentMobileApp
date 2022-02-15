@@ -9,7 +9,6 @@
        xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels"
        x:DataType="viewmodels:AppShellViewModel"
        FlyoutBackgroundColor="#303030"
->>>>>>> 5775540 (UI updates & improvements)
        Title="BuiltDifferentMobileApp"
        x:Class="BuiltDifferentMobileApp.AppShell">
 
