@@ -6,7 +6,9 @@
        xmlns:adminpages="clr-namespace:BuiltDifferentMobileApp.Views.Admin"
        xmlns:loginpages="clr-namespace:BuiltDifferentMobileApp.Views.Login"
        xmlns:paymentpages="clr-namespace:BuiltDifferentMobileApp.Views.Payment"
-       xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels" x:DataType="viewmodels:AppShellViewModel"
+       xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels"
+       x:DataType="viewmodels:AppShellViewModel"
+       FlyoutBackgroundColor="#303030"
        Title="BuiltDifferentMobileApp"
        x:Class="BuiltDifferentMobileApp.AppShell">
 
@@ -50,7 +52,7 @@
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
                                     <Setter Property="BackgroundColor" Value="{x:OnPlatform UWP=Transparent, iOS=White}" />
-                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{StaticResource RedPrimary}" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="White" />
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Selected">
@@ -143,7 +145,7 @@
         ADMIN PAGES
     -->
 
-    <FlyoutItem Title="Menu" IsVisible="{Binding IsAdmin}">
+    <FlyoutItem Title="Reports" IsVisible="{Binding IsAdmin}">
         <ShellContent Route="AdminMenuPage" ContentTemplate="{DataTemplate adminpages:AdminMenuPage}" />
     </FlyoutItem>
 

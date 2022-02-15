@@ -39,31 +39,45 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         private string weekOfText;
         public string WeekOfText { get => weekOfText; set => SetProperty(ref weekOfText, value); }
 
-        private DateTime Day0 { get; set; }
+        private DateTime day0;
+        public DateTime Day0 { get => day0; set => SetProperty(ref day0, value); }
+
         private bool day0Selected;
         public bool Day0Selected { get => day0Selected; set => SetProperty(ref day0Selected, value); }
 
-        private DateTime Day1 { get; set; }
+        private DateTime day1;
+        public DateTime Day1 { get => day1; set => SetProperty(ref day1, value); }
+
         private bool day1Selected;
         public bool Day1Selected { get => day1Selected; set => SetProperty(ref day1Selected, value); }
 
-        private DateTime Day2 { get; set; }
+        private DateTime day2;
+        public DateTime Day2 { get => day2; set => SetProperty(ref day2, value); }
+
         private bool day2Selected;
         public bool Day2Selected { get => day2Selected; set => SetProperty(ref day2Selected, value); }
 
-        private DateTime Day3 { get; set; }
+        private DateTime day3;
+        public DateTime Day3 { get => day3; set => SetProperty(ref day3, value); }
+
         private bool day3Selected;
         public bool Day3Selected { get => day3Selected; set => SetProperty(ref day3Selected, value); }
 
-        private DateTime Day4 { get; set; }
+        private DateTime day4;
+        public DateTime Day4 { get => day4; set => SetProperty(ref day4, value); }
+
         private bool day4Selected;
         public bool Day4Selected { get => day4Selected; set => SetProperty(ref day4Selected, value); }
 
-        private DateTime Day5 { get; set; }
+        private DateTime day5;
+        public DateTime Day5 { get => day5; set => SetProperty(ref day5, value); }
+
         private bool day5Selected;
         public bool Day5Selected { get => day5Selected; set => SetProperty(ref day5Selected, value); }
 
-        private DateTime Day6 { get; set; }
+        private DateTime day6;
+        public DateTime Day6 { get => day6; set => SetProperty(ref day6, value); }
+
         private bool day6Selected;
         public bool Day6Selected { get => day6Selected; set => SetProperty(ref day6Selected, value); }
 
@@ -71,6 +85,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         public double Dailyprogress { get => dailyprogress; set => SetProperty(ref dailyprogress, value); }
         public string dailyprogresstext;
         public string Dailyprogresstext { get => dailyprogresstext; set => SetProperty(ref dailyprogresstext, value); }
+
+        private bool canMoveForward;
+        public bool CanMoveForward { get => canMoveForward; set => SetProperty(ref canMoveForward, value); }
 
         public ClientWorkoutViewModel()
         {
@@ -81,6 +98,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
             CurrentWeek = 0;
             ChangeWeekCommand = new AsyncCommand<string>(ChangeWeek);
+            CanMoveForward = true;
 
             SelectedDay = DateTime.Now.Date;
             SetDayButtonValues((int)SelectedDay.DayOfWeek);
@@ -108,7 +126,10 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         }
 
         private Task ChangeWeek(string amount) {
-            CurrentWeek += int.Parse(amount);
+            int increase = int.Parse(amount);
+            if(increase > 0 && CanMoveForward) return Task.CompletedTask;
+
+            CurrentWeek += increase;
             SetDayButtonValues((int)SelectedDay.DayOfWeek, CurrentWeek);
             CheckAndSetIfSelected();
             return Task.CompletedTask;
@@ -137,36 +158,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             }
         }
 
-        private int GetDayOffset(int startingStep, int offset, char operand) {
-            int currentStep = startingStep;
-            int weeksNavigated = 0;
-            if(operand == '-') {
-                for(int i = -1; true; i--) {
-                    currentStep--;
-                    if(currentStep == -1) {
-                        currentStep = 6;
-                        weeksNavigated--;
-                    }
-
-                    if(weeksNavigated == offset) return i;
-                }
-            }
-            else if(operand == '+') {
-                for(int i = 1; true; i++) {
-                    currentStep++;
-                    if(currentStep == 7) {
-                        currentStep = 0;
-                        weeksNavigated++;
-                    }
-
-                    if(weeksNavigated == offset) return i;
-                }
-            }
-            else {
-                throw new Exception("Invalid Operand: " + operand);
-            }
-        }
-
         private void SetDayButtonValues(int currentDay, int offset = 0) {
             List<DateTime> week = new List<DateTime>() { new DateTime(), new DateTime(), new DateTime(), new DateTime(), new DateTime(), new DateTime(), new DateTime() };
             bool canLeft = true;
@@ -174,10 +165,10 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
             if(offset == 0) {
                 week[currentDay] = SelectedDay;
-            } else if(offset < 0){
-                week[6] = SelectedDay.AddDays(GetDayOffset((int)SelectedDay.DayOfWeek, offset, '-'));
+            } else if(offset < 0) {
+                week[6] = SelectedDay.AddDays(-(int)SelectedDay.DayOfWeek + (int)DayOfWeek.Sunday + (7 * offset)).AddDays(6);
             } else if(offset > 0) {
-                week[0] = SelectedDay.AddDays(GetDayOffset((int)SelectedDay.DayOfWeek, offset, '+'));
+                week[0] = SelectedDay.AddDays(-(int)SelectedDay.DayOfWeek + (int)DayOfWeek.Sunday + (7 * offset));
             }
             for(int i = 1; true; i++) {
                 if(canLeft) {
@@ -212,6 +203,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             Day6 = week[6].Date;
 
             WeekOfText = $"{Day0:M} - {Day6:M}";
+
+            CanMoveForward = Day0.Date == DateTime.Now.Date.AddDays(-(int)DateTime.Now.DayOfWeek + (int)DayOfWeek.Sunday + 7).Date;
         }
 
         private void SetCurrentlySelectedDay(int day) {

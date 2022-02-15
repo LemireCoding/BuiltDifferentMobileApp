@@ -13,6 +13,8 @@
             <converters:BoolToSelectedWeekdayColorConverter x:Key="boolToSelectedWeekdayColorConverter" />
             <converters:BoolToTextButtonMealEatenConverter x:Key="boolToTextButtonMealEatenConverter" />
             <converters:BoolToExpandOrCompletedIconConverter x:Key="boolToExpandOrCompletedIconConverter" />
+            <converters:BoolToGreyedOutConverter x:Key="boolToGreyedOutConverter" />
+            <converters:DateToVisibleBooleanConverter x:Key="dateToVisibleBooleanConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -171,7 +173,7 @@
                                     <Label Text="{Binding WeekOfText}" LineBreakMode="TailTruncation" Grid.Column="1"
                                            FontSize="Subtitle" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center"/>
                                     <Button Text="&#xf054;" FontFamily="FAS" BackgroundColor="Transparent" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Start"
-                                            Command="{Binding ChangeWeekCommand}" CommandParameter="1" AutomationId="NextWeekButton"/>
+                                            Command="{Binding ChangeWeekCommand}" CommandParameter="1" AutomationId="NextWeekButton" TextColor="{Binding CanMoveForward, Converter={StaticResource boolToGreyedOutConverter}}"/>
                                 </Grid>
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="6" HeightRequest="60">
                                     <StackLayout Margin="0" Padding="0" Spacing="4">
@@ -179,56 +181,84 @@
                                             BackgroundColor="Transparent"
                                             BorderColor="{Binding Day0Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
                                             BorderWidth="2" TextColor="{Binding Day0Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" AutomationId="Day0Button"/>
-                                        <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day0Selected}" IsEnabled="False"
-                                            BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                        <Grid>
+                                            <Button WidthRequest="8" HeightRequest="8" BorderRadius="6"  IsEnabled="False" IsVisible="{Binding Day0, Converter={StaticResource dateToVisibleBooleanConverter}}"
+                                                    BackgroundColor="{StaticResource DarkGrey}" HorizontalOptions="Center"/>
+                                            <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day0Selected}" IsEnabled="False"
+                                                    BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                        </Grid>
                                     </StackLayout>
                                     <StackLayout Margin="0" Padding="0" Spacing="4">
                                         <Button Text="Mo" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="1"
                                             BackgroundColor="Transparent"
                                             BorderColor="{Binding Day1Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
                                             BorderWidth="2" TextColor="{Binding Day1Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" AutomationId="Day1Button"/>
-                                        <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day1Selected}" IsEnabled="False"
-                                            BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                        <Grid>
+                                            <Button WidthRequest="8" HeightRequest="8" BorderRadius="6"  IsEnabled="False" IsVisible="{Binding Day1, Converter={StaticResource dateToVisibleBooleanConverter}}"
+                                                    BackgroundColor="{StaticResource DarkGrey}" HorizontalOptions="Center"/>
+                                            <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day1Selected}" IsEnabled="False"
+                                                    BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                        </Grid>
                                     </StackLayout>
                                     <StackLayout Margin="0" Padding="0" Spacing="4">
                                         <Button Text="Tu" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="2"
                                             BackgroundColor="Transparent"
                                             BorderColor="{Binding Day2Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
                                             BorderWidth="2" TextColor="{Binding Day2Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" AutomationId="Day2Button"/>
-                                        <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day2Selected}" IsEnabled="False"
-                                            BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                        <Grid>
+                                            <Button WidthRequest="8" HeightRequest="8" BorderRadius="6"  IsEnabled="False" IsVisible="{Binding Day2, Converter={StaticResource dateToVisibleBooleanConverter}}"
+                                                    BackgroundColor="{StaticResource DarkGrey}" HorizontalOptions="Center"/>
+                                            <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day2Selected}" IsEnabled="False"
+                                                    BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                        </Grid>
                                     </StackLayout>
                                     <StackLayout Margin="0" Padding="0" Spacing="4">
                                         <Button Text="We" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="3"
                                             BackgroundColor="Transparent"
                                             BorderColor="{Binding Day3Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
                                             BorderWidth="2" TextColor="{Binding Day3Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" AutomationId="Day3Button"/>
-                                        <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day3Selected}" IsEnabled="False"
-                                            BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                        <Grid>
+                                            <Button WidthRequest="8" HeightRequest="8" BorderRadius="6"  IsEnabled="False" IsVisible="{Binding Day3, Converter={StaticResource dateToVisibleBooleanConverter}}"
+                                                    BackgroundColor="{StaticResource DarkGrey}" HorizontalOptions="Center"/>
+                                            <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day3Selected}" IsEnabled="False"
+                                                    BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                        </Grid>
                                     </StackLayout>
                                     <StackLayout Margin="0" Padding="0" Spacing="4">
                                         <Button Text="Th" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="4"
                                             BackgroundColor="Transparent"
                                             BorderColor="{Binding Day4Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
                                             BorderWidth="2" TextColor="{Binding Day4Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" AutomationId="Day4Button"/>
-                                        <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day4Selected}" IsEnabled="False"
-                                            BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                        <Grid>
+                                            <Button WidthRequest="8" HeightRequest="8" BorderRadius="6"  IsEnabled="False" IsVisible="{Binding Day4, Converter={StaticResource dateToVisibleBooleanConverter}}"
+                                                    BackgroundColor="{StaticResource DarkGrey}" HorizontalOptions="Center"/>
+                                            <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day4Selected}" IsEnabled="False"
+                                                    BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                        </Grid>
                                     </StackLayout>
                                     <StackLayout Margin="0" Padding="0" Spacing="4">
                                         <Button Text="Fr" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="5"
                                             BackgroundColor="Transparent"
                                             BorderColor="{Binding Day5Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
                                             BorderWidth="2" TextColor="{Binding Day5Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" AutomationId="Day5Button"/>
-                                        <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day5Selected}" IsEnabled="False"
-                                            BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                        <Grid>
+                                            <Button WidthRequest="8" HeightRequest="8" BorderRadius="6"  IsEnabled="False" IsVisible="{Binding Day5, Converter={StaticResource dateToVisibleBooleanConverter}}"
+                                                    BackgroundColor="{StaticResource DarkGrey}" HorizontalOptions="Center"/>
+                                            <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day5Selected}" IsEnabled="False"
+                                                    BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                        </Grid>
                                     </StackLayout>
                                     <StackLayout Margin="0" Padding="0" Spacing="4">
                                         <Button Text="Sa" WidthRequest="48" HeightRequest="48" BorderRadius="23" Command="{Binding WeekdaySelectedCommand}" CommandParameter="6"
                                             BackgroundColor="Transparent"
                                             BorderColor="{Binding Day6Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" TextTransform="None"
                                             BorderWidth="2" TextColor="{Binding Day6Selected, Converter={StaticResource boolToSelectedWeekdayColorConverter}}" AutomationId="Day6Button"/>
-                                        <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day6Selected}" IsEnabled="False"
-                                            BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                        <Grid>
+                                            <Button WidthRequest="8" HeightRequest="8" BorderRadius="6"  IsEnabled="False" IsVisible="{Binding Day6, Converter={StaticResource dateToVisibleBooleanConverter}}"
+                                                    BackgroundColor="{StaticResource DarkGrey}" HorizontalOptions="Center"/>
+                                            <Button WidthRequest="8" HeightRequest="8" BorderRadius="6" IsVisible="{Binding Day6Selected}" IsEnabled="False"
+                                                    BackgroundColor="{StaticResource RedSecondary}" HorizontalOptions="Center"/>
+                                        </Grid>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
