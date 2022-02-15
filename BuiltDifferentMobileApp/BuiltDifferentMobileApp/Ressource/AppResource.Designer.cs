@@ -1373,5 +1373,113 @@ namespace BuiltDifferentMobileApp.Ressource {
                 return ResourceManager.GetString("WorkoutServiceLabel", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string Clients {
+            get {
+                return ResourceManager.GetString("Clients", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string ApprovedCoachPageTitle {
+            get {
+                return ResourceManager.GetString("ApprovedCoachPageTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string CoachRequestInfoTitle {
+            get {
+                return ResourceManager.GetString("CoachRequestInfoTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string WaitForCoachToAddMeals {
+            get {
+                return ResourceManager.GetString("WaitForCoachToAddMeals", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string ClientRequestSent {
+            get {
+                return ResourceManager.GetString("ClientRequestSent", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string WaitForCoachAddWorkouts {
+            get {
+                return ResourceManager.GetString("WaitForCoachAddWorkouts", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string Recipe {
+            get {
+                return ResourceManager.GetString("Recipe", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string Plan {
+            get {
+                return ResourceManager.GetString("Plan", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string Reports {
+            get {
+                return ResourceManager.GetString("Reports", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string PayPalLink {
+            get {
+                return ResourceManager.GetString("PayPalLink", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string PaymentInfo {
+            get {
+                return ResourceManager.GetString("PaymentInfo", resourceCulture);
+            }
+        }
     }
 }
