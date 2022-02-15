@@ -150,34 +150,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             }
         }
 
-        private int GetDayOffset(int startingStep, int offset, char operand) {
-            int currentStep = startingStep;
-            int weeksNavigated = 0;
-            if(operand == '-') {
-                for(int i = -1; true; i--) {
-                    currentStep--;
-                    if(currentStep == -1) {
-                        currentStep = 6;
-                        weeksNavigated--;
-                    }
-
-                    if(weeksNavigated == offset) return i;
-                }
-            } else if(operand == '+') {
-                for(int i = 1; true; i++) {
-                    currentStep++;
-                    if(currentStep == 7) {
-                        currentStep = 0;
-                        weeksNavigated++;
-                    }
-
-                    if(weeksNavigated == offset) return i;
-                }
-            } else {
-                throw new Exception("Invalid Operand: " + operand);
-            }
-        }
-
         private void SetDayButtonValues(int currentDay, int offset = 0) {
             List<DateTime> week = new List<DateTime>() { new DateTime(), new DateTime(), new DateTime(), new DateTime(), new DateTime(), new DateTime(), new DateTime() };
             bool canLeft = true;
@@ -186,9 +158,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             if(offset == 0) {
                 week[currentDay] = SelectedDay;
             } else if(offset < 0) {
-                week[6] = SelectedDay.AddDays(GetDayOffset((int)SelectedDay.DayOfWeek, offset, '-'));
+                week[6] = SelectedDay.AddDays(-(int)SelectedDay.DayOfWeek + (int)DayOfWeek.Sunday + (7 * offset)).AddDays(6);
             } else if(offset > 0) {
-                week[0] = SelectedDay.AddDays(GetDayOffset((int)SelectedDay.DayOfWeek, offset, '+'));
+                week[0] = SelectedDay.AddDays(-(int)SelectedDay.DayOfWeek + (int)DayOfWeek.Sunday + (7 * offset));
             }
             for(int i = 1; true; i++) {
                 if(canLeft) {
