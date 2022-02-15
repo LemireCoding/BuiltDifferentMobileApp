@@ -223,27 +223,21 @@
   </data>
   <data name="ApprovalDeniedBody" xml:space="preserve">
     <value>Désolé, votre certification a été refusée</value>
-    <comment/>
   </data>
   <data name="ApprovalDeniedTitle" xml:space="preserve">
     <value>Votre certification a été refusée.</value>
-    <comment/>
   </data>
   <data name="ApprovalPassedBody" xml:space="preserve">
     <value>Passons maintenant au tableau de bord de l’entraîneur...</value>
-    <comment/>
   </data>
   <data name="ApprovalPassedTitle" xml:space="preserve">
     <value>Votre certification a été approuvée</value>
-    <comment/>
   </data>
   <data name="ApprovalPendingBody" xml:space="preserve">
     <value>Veuillez attendre d’avoir été approuvé ou refusé</value>
-    <comment/>
   </data>
   <data name="ApprovalPendingTitle" xml:space="preserve">
     <value>Votre certification est en attente d'examen</value>
-    <comment/>
   </data>
   <data name="AvailabilityLabel" xml:space="preserve">
     <value>Disponible pour de nouveaux clients?</value>
@@ -263,7 +257,6 @@
   </data>
   <data name="CheckApplicationStatusButton" xml:space="preserve">
     <value>Vérifier l’état de l’application</value>
-    <comment/>
   </data>
   <data name="ClientCoachCriteriaCoachingGenderF" xml:space="preserve">
     <value>Femme</value>
@@ -291,7 +284,6 @@
   </data>
   <data name="ClientDashboardTitle" xml:space="preserve">
     <value>Tableau</value>
-    <comment/>
   </data>
   <data name="CoachAddMealCaloriesLabel" xml:space="preserve">
     <value> calories</value>
@@ -343,7 +335,6 @@
   </data>
   <data name="CoachClientRequestAccept" xml:space="preserve">
     <value>Accepter</value>
-    <comment/>
   </data>
   <data name="CoachDashboardBoard" xml:space="preserve">
     <value>Plan</value>
@@ -375,11 +366,9 @@
   </data>
   <data name="CoachDescriptionHelpText" xml:space="preserve">
     <value>Comment vous décririez-vous aux clients?</value>
-    <comment/>
   </data>
   <data name="CoachDescriptionPlaceholder" xml:space="preserve">
     <value>Je suis un coach amusant, aspirant toujours à...</value>
-    <comment/>
   </data>
   <data name="CoachMealsClientPlanAdd" xml:space="preserve">
     <value>Ajouter</value>
@@ -427,11 +416,9 @@
   </data>
   <data name="CompleteAccountSetup" xml:space="preserve">
     <value>Terminer la configuration du compte</value>
-    <comment/>
   </data>
   <data name="ConfirmCoachSignUpButton" xml:space="preserve">
     <value>Confirmer</value>
-    <comment/>
   </data>
   <data name="ConfirmedPasswordPlaceholder" xml:space="preserve">
     <value>Confirmez le mot de passe</value>
@@ -483,11 +470,9 @@
   </data>
   <data name="FemaleGender" xml:space="preserve">
     <value>Femme</value>
-    <comment/>
   </data>
   <data name="FileNameTextStart" xml:space="preserve">
     <value>Nom du fichier:</value>
-    <comment/>
   </data>
   <data name="FindACoachByCriteriaGenderLabel" xml:space="preserve">
     <value>Sélectionnez un sexe, si vous avez une préférence pour le sexe de l'entaineur.</value>
@@ -555,7 +540,6 @@
   </data>
   <data name="MaleGender" xml:space="preserve">
     <value>Homme</value>
-    <comment/>
   </data>
   <data name="MealServiceLabel" xml:space="preserve">
     <value>Offre les plans de repas</value>
@@ -563,7 +547,6 @@
   </data>
   <data name="MissingCertificationError" xml:space="preserve">
     <value>Veuillez télécharger votre certification</value>
-    <comment/>
   </data>
   <data name="MissingInputs" xml:space="preserve">
     <value>Veuillez remplir tous les champs obligatoires.</value>
@@ -571,7 +554,6 @@
   </data>
   <data name="OtherGender" xml:space="preserve">
     <value>Autre</value>
-    <comment/>
   </data>
   <data name="PasswordPlaceholder" xml:space="preserve">
     <value>Mot de passe</value>
@@ -595,19 +577,15 @@
   </data>
   <data name="PlanOffersHelpText" xml:space="preserve">
     <value>À quoi voulez-vous fournir du coaching?</value>
-    <comment/>
   </data>
   <data name="PleaseSelectAGender" xml:space="preserve">
     <value>Veuillez sélectionner un sexe</value>
-    <comment/>
   </data>
   <data name="PleaseSelectCertification" xml:space="preserve">
     <value>Veuillez choisir votre certification</value>
-    <comment/>
   </data>
   <data name="PricingError" xml:space="preserve">
     <value>Veuillez entrer un prix valide.</value>
-    <comment/>
   </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Votre profile</value>
@@ -627,7 +605,6 @@
   </data>
   <data name="SelectPDFError" xml:space="preserve">
     <value>Type de fichier non valide. Veuillez sélectionner un fichier PDF.</value>
-    <comment/>
   </data>
   <data name="SignUpLabel" xml:space="preserve">
     <value> S'inscrire!</value>
@@ -635,7 +612,6 @@
   </data>
   <data name="SpecifyGenderError" xml:space="preserve">
     <value>Veuillez préciser votre sexe</value>
-    <comment/>
   </data>
   <data name="StartWeightLabel" xml:space="preserve">
     <value>Mesure du poids initial</value>
@@ -683,43 +659,33 @@
   </data>
   <data name="NoVerifiedCoaches" xml:space="preserve">
     <value>Aucun entraîneur vérifié</value>
-    <comment/>
   </data>
   <data name="CoachRequests" xml:space="preserve">
     <value>Demandes</value>
-    <comment/>
   </data>
   <data name="CoachRequestInfoTitle" xml:space="preserve">
     <value>Profil de l'entraîneur</value>
-    <comment/>
   </data>
   <data name="ApprovedCoachPageTitle" xml:space="preserve">
     <value>Entraîneur vérifié</value>
-    <comment/>
   </data>
   <data name="WaitForCoachToAddMeals" xml:space="preserve">
     <value>Attendez que votre entraîneur ajoute un plan de repas.</value>
-    <comment/>
   </data>
   <data name="ClientRequestSent" xml:space="preserve">
     <value>Envoyer : </value>
-    <comment/>
   </data>
   <data name="ClientRequestApprovalDate" xml:space="preserve">
     <value>Approvée le : </value>
-    <comment/>
   </data>
   <data name="AWaitForCoachAddWorkouts" xml:space="preserve">
     <value>Attendez que votre entraîneur ajoute un plan d'entraînement.</value>
-    <comment/>
   </data>
   <data name="Recipe" xml:space="preserve">
     <value>Recette</value>
-    <comment/>
   </data>
   <data name="Plan" xml:space="preserve">
     <value>Plan</value>
-    <comment/>
   </data>
   <data name="DateRequested" xml:space="preserve">
     <value>Date de la demande: </value>

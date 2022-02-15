@@ -83,7 +83,7 @@
                                                                     FontSize="Medium" 
                                                                     TextColor="{StaticResource LightGrey}" 
                                                                     Grid.Row="1" Grid.Column="0"  
-                                                                    IsVisible="False"  
+                                                                    IsVisible="False">
                                                                     <Label.FormattedText>
                                                                 <FormattedString>
                                                                 <Span Text="{Binding approvalDate}" />
