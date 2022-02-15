@@ -1697,5 +1697,14 @@ namespace BuiltDifferentMobileApp.Ressource {
                 return ResourceManager.GetString("CaloriesConsumed", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Requests.
+        /// </summary>
+        public static string WorkoutsDone {
+            get {
+                return ResourceManager.GetString("WorkoutsDone", resourceCulture);
+            }
+        }
     }
 }
