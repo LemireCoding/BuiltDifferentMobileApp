@@ -35,7 +35,7 @@
                             <SwipeView>
                                 <SwipeView.RightItems>
                                     <SwipeItems Mode="Execute">
-                                        <SwipeItem Text="Delete" 
+                                        <SwipeItem Text="{x:Static resource:AppResource.Delete}" 
                                         BackgroundColor="{StaticResource RedSecondary }"
                                                 Command="{Binding Source={x:Reference MyCoachDashboardPage}, Path=BindingContext.RemoveClientCommand}" 
                                                 CommandParameter="{Binding .}"/>

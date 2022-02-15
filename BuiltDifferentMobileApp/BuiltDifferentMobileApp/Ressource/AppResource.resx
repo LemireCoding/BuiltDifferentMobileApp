@@ -737,4 +737,60 @@
     <value>Recipe</value>
     <comment/>
   </data>
+  <data name="Plan" xml:space="preserve">
+    <value>Plan</value>
+    <comment/>
+  </data>
+  <data name="DateRequested" xml:space="preserve">
+    <value>Date requested: </value>
+    <comment/>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+    <comment/>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Report</value>
+    <comment/>
+  </data>
+  <data name="WeeklyReport" xml:space="preserve">
+    <value>Weekly Report</value>
+    <comment/>
+  </data>
+  <data name="CurrentPeriod" xml:space="preserve">
+    <value>Current Period: </value>
+    <comment/>
+  </data>
+  <data name="CoachName" xml:space="preserve">
+    <value>Coach Name: </value>
+    <comment/>
+  </data>
+  <data name="NumberOfClients" xml:space="preserve">
+    <value># of Clients: </value>
+    <comment/>
+  </data>
+  <data name="Picture" xml:space="preserve">
+    <value>Picture</value>
+    <comment/>
+  </data>
+  <data name="ClientName" xml:space="preserve">
+    <value>Client Name</value>
+    <comment/>
+  </data>
+  <data name="BMI" xml:space="preserve">
+    <value>BMI</value>
+    <comment/>
+  </data>
+  <data name="CaloriesConsumed" xml:space="preserve">
+    <value>Calories Consumed</value>
+    <comment/>
+  </data>
+  <data name="WorkoutsDone" xml:space="preserve">
+    <value>Workouts Done</value>
+    <comment/>
+  </data>
+  <data name="PayPalLink" xml:space="preserve">
+    <value>PayPal Link</value>
+    <comment/>
+  </data>
 </root>

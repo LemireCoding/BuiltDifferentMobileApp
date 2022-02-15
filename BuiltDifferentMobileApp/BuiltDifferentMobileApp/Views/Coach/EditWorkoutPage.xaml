@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
-             x:Class="BuiltDifferentMobileApp.Views.Coach.EditWorkoutPage">
+             x:Class="BuiltDifferentMobileApp.Views.Coach.EditWorkoutPage"
+             Title="{x:Static resource:AppResource.EditWorkoutPageTitle}">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding GoToProfile}">
