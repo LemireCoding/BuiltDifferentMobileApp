@@ -26,6 +26,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
             clientReportInfo = new List<ClientReportInfo>();
             RefreshCommand = new AsyncCommand(FetchReport);
             FetchReport();
+
         }
 
         public async Task FetchReport()
@@ -44,6 +45,12 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
             {
                 await Application.Current.MainPage.DisplayAlert($"Error", "There was an issue retrieving some information. Please try again", "OK");
             }
+            if(coachReport.coachName != null)
+            {
+                return;
+                IsBusy = false;
+            }
+
             else if (clients.Count > 0)
             {
                 coachReport.coachName = coach.name;
@@ -112,7 +119,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Coach
             double bmi = 0;
             double heightIN = client.height;
             int weightLBS = client.currentWeight;
-            bmi = (weightLBS / Math.Pow(heightIN, 2)) * 703;
+            bmi = weightLBS / Math.Pow(heightIN, 2) * 703;
             return bmi;
         }
     }
