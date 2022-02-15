@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BuiltDifferentMobileApp.ViewModels.Admin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,11 @@ namespace BuiltDifferentMobileApp.Views.Admin {
     public partial class AdminMenuPage : ContentPage {
         public AdminMenuPage() {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing() {
+            base.OnAppearing();
+            BindingContext = new AdminMenuPageViewModel();
         }
     }
 }

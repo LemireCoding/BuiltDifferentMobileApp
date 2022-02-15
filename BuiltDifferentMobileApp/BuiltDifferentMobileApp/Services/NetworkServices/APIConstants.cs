@@ -206,5 +206,13 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return $"{BaseAddress}/admin/user/{userId}/accountStatus";
         }
 
+        public static string GetUsersCreatedBetweenRange(DateTime startDate, DateTime endDate) {
+            return $"{BaseAddress}/admin/stats/users-registered?start={startDate.ToString("MM dd yyyy").Replace(' ', '-')}&end={endDate.ToString("MM dd yyyy").Replace(' ', '-')}";
+        }
+
+        public static string GetCertificationStatusesCreatedBetweenRange(DateTime startDate, DateTime endDate) {
+            return $"{BaseAddress}/certifications?start={startDate.ToString("MM dd yyyy").Replace(' ', '-')}&end={endDate.ToString("MM dd yyyy").Replace(' ', '-')}";
+        }
+
     }
 }
