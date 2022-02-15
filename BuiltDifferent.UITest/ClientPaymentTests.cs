@@ -23,7 +23,7 @@ namespace BuiltDifferent.UITest
             this.platform = platform;
         }
 
-        [SetUp]
+        [OneTimeSetUp]
         public void BeforeEachTest()
         {
             app = AppInitializer.StartApp(platform);
@@ -49,7 +49,7 @@ namespace BuiltDifferent.UITest
                 File.Move(screenshot.FullName, Path.Combine(screenshot.DirectoryName, $"{title}-{lineNumber}{screenshot.Extension}"));
             }
         }
-        [Test]
+        [Test,Order(1)]
         public void Navigate_to_payment()
         {
             if (platform == Platform.Android)
@@ -61,7 +61,7 @@ namespace BuiltDifferent.UITest
             else return;
         }
 
-        [Test]
+        [Test, Order(2)]
         public void Navigate_to_payment_paypal()
         {
             if (platform == Platform.Android)
@@ -69,7 +69,7 @@ namespace BuiltDifferent.UITest
                 app.Tap(c => c.Class("AppCompatImageButton"));
                 app.Tap(x => x.Marked("Payment"));
                 app.Tap(x => x.Marked("PaymentButton"));
-                Thread.Sleep(8000);
+                Thread.Sleep(2000);
                 //according to stackOverflow, it is not possible to test a browser unless it is placed in a WebView. Not the case here.
                 //the query below was an atempt at texting.
                 //app.Query (w => w.WebView ().InvokeJS ("document.getElementById('css-163u2e0 ppvx_text--heading-md___5-6-6-beta-0').value"))

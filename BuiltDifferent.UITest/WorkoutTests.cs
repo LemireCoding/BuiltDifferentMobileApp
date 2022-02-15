@@ -22,7 +22,7 @@ namespace BuiltDifferent.UITest
             this.platform = platform;
         }
 
-        [SetUp]
+        [OneTimeSetUp]
         public void BeforeEachTest()
         {
             app = AppInitializer.StartApp(platform);
@@ -38,6 +38,9 @@ namespace BuiltDifferent.UITest
 
             app.WaitForElement(e => e.Marked("Login"));
             app.Tap(e => e.Marked("Login"));
+
+            app.Tap(x => x.Text("Board"));
+            app.Tap("AddButton");
         }
 
         private void SaveScreenshot([CallerMemberName] string title = "", [CallerLineNumber] int lineNumber = -1)
@@ -58,41 +61,14 @@ namespace BuiltDifferent.UITest
         //    app.Repl();
         //}
 
-
-        [Test]
-        public void Workout_page_visible()
-        {
-            //T.1
-
-            if (platform == Platform.Android)
-            {
-                app.Tap(c => c.Class("AppCompatImageButton"));
-                app.Tap(x => x.Text("Workouts"));
-                bool result = app.Query(e => e.Text("Olivier's Workout Plan")).Any();
-                Assert.IsTrue(result);
-
-            }
-            //if IOS
-            else
-            {
-                return;
-            }
-        }
-
-
-        [Test]
+        [Test, Order(1)]
         public void Add_workout_page_visible()
         {
-            //T.2
 
             if (platform == Platform.Android)
             {
-                app.Tap(c => c.Class("AppCompatImageButton"));
-                app.Tap(x => x.Text("Workouts"));
-                app.Tap("AddButton");
-
-                bool result = app.Query(e => e.Marked("AddWorkoutTitle")).Any();
-
+                app.WaitForElement(e => e.Marked("AddWorkoutTitle"));
+                Assert.IsTrue(app.Query(e => e.Marked("AddWorkoutTitle").Text("Add Workout")).Any());
             }
             //if IOS
             else
@@ -102,20 +78,17 @@ namespace BuiltDifferent.UITest
 
         }
 
-        [Test]
+        [Test, Order(2)]
         public void Add_workout_missing_fields_error_mssg()
         {
-            //T.3
 
             if (platform == Platform.Android)
             {
-                app.Tap(c => c.Class("AppCompatImageButton"));
-                app.Tap(x => x.Text("Workouts"));
-                app.Tap("AddButton");
                 app.ScrollDownTo(c => c.Marked("SaveButton"));
                 app.Tap(x => x.Marked("SaveButton"));
-                app.WaitForElement("message");
-                Assert.IsTrue(app.Query(x => x.Id("message").Text("Please fill ALL of the fields")).Any());
+                app.WaitForElement(x => x.Id("message"));
+                Assert.IsTrue(app.Query(x => x.Id("message").Text("Please fill ALL of the fields.")).Any());
+                app.Tap("OK");
             }
             //if IOS
             else
@@ -123,22 +96,19 @@ namespace BuiltDifferent.UITest
                 return;
             }
         }
-        /**
-        [Test]
+
+        [Test, Order(3)]
         public void Add_workout_success()
         {
-        //    T.4
 
             if (platform == Platform.Android)
             {
-                app.Tap(c => c.Class("AppCompatImageButton"));
-                app.Tap(x => x.Id("NoResourceEntry-11"));
-
-                app.SwipeRightToLeft();
-                app.Tap("AddButton");
+                app.ScrollUpTo(x => x.Marked("WorkoutName"));
                 app.Tap(x => x.Marked("WorkoutName"));
                 app.EnterText("Test Workout Name");
                 app.DismissKeyboard();
+                app.Tap(x => x.Marked("WorkoutTypePicker"));
+                app.Tap(x => x.Text("Cardio"));
                 app.Tap(x => x.Marked("Sets"));
                 app.EnterText("1");
                 app.DismissKeyboard();
@@ -157,17 +127,17 @@ namespace BuiltDifferent.UITest
                 app.Tap(x => x.Marked("VideoLink"));
                 app.EnterText("youtube.com");
                 app.DismissKeyboard();
-                app.ScrollDownTo(c => c.Text("Create"));
+                app.ScrollDownTo(c => c.Marked("SaveButton"));
                 app.Tap(x => x.Marked("SaveButton"));
                 app.WaitForElement("message");
-                Assert.IsTrue(app.Query(x => x.Id("message").Text("Workout Saved")).Any());
+                Assert.IsTrue(app.Query(x => x.Id("message").Text("Workout Saved.")).Any());
+                app.Tap(x => x.Text("OK"));
             }
-           //if IOS
+            //if IOS
             else
             {
                 return;
             }
         }
-        **/
     }
 }

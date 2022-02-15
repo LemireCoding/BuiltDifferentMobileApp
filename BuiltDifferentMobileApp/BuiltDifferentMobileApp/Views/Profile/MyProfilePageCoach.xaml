@@ -44,7 +44,7 @@
 
                 <StackLayout Grid.Row="1" Grid.Column="1">
                     <StackLayout Orientation="Vertical">
-                        <Image Source="{Binding PreviewPicture}" HeightRequest="175"/>
+                        <Image Source="{Binding PreviewPicture}" HeightRequest="175" AutomationId="ProfilePicturePreview"/>
                         <Button Text="Upload Profile Picture (png)" Command="{Binding UploadImageCommand}" IsEnabled="{Binding IsEnabled}" AutomationId="ProfilePicturePicker"/>
                     </StackLayout>
                 </StackLayout>

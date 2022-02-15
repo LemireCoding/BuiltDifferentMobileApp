@@ -41,11 +41,11 @@ namespace BuiltDifferent.UITest
             app.Tap(e => e.Marked("Login"));
         }
 
-        [Test]
-        public void OpenRepl()
-        {
-            app.Repl();
-        }
+        //[Test]
+        //public void OpenRepl()
+        //{
+        //    app.Repl();
+        //}
 
         [Test, Order(1)]
         public void Delete_Newly_Created_Pending_Request()
@@ -66,6 +66,7 @@ namespace BuiltDifferent.UITest
                 app.Tap(e => e.Marked("CancelButton"));
                 app.WaitForElement("message");
                 Assert.IsTrue(app.Query(x => x.Id("message").Text("The request to this coach was canceled")).Any());
+                app.Tap("OK");
 
             }
             else return;

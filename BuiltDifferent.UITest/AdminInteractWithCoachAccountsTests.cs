@@ -18,7 +18,8 @@ namespace BuiltDifferent.UITest {
         }
 
         [SetUp]
-        public void BeforeEachTest() {
+        public void BeforeEachTest()
+        {
             app = AppInitializer.StartApp(platform);
 
             // Login
@@ -33,16 +34,71 @@ namespace BuiltDifferent.UITest {
             app.Tap(e => e.Marked("Login"));
         }
 
-        private void GoToFlyoutPage(string pageFlyoutName) {
+        private void GoToFlyoutPage(string pageFlyoutName)
+        {
             app.Tap(c => c.Class("AppCompatImageButton"));
             app.Tap(x => x.Text(pageFlyoutName));
         }
 
-        [Test]
-        public void Approve_Pending_Coach() {
-            if(platform == Platform.Android) {
+        [Test, Order(1)]
+        public void Coach_Submit_certification_for_approve()
+        {
+            if (platform == Platform.Android)
+            {
+                app.Tap(c => c.Class("AppCompatImageButton"));
+                app.Tap(c => c.Text("Log out"));
+                app.WaitForElement(e => e.Marked("Email"), "chloe.dunwoody@hotmail.com");
+                app.ClearText(x => x.Marked("Email"));
+                app.EnterText(e => e.Marked("Email"), "chloe.dunwoody@hotmail.com");
+
+                app.ClearText(x => x.Marked("Password"));
+                app.WaitForElement(e => e.Marked("Password"), "coach2");
+                app.EnterText(e => e.Marked("Password"), "coach2");
+
+                app.DismissKeyboard();
+
+                app.WaitForElement(e => e.Marked("Login"));
+                app.Tap(e => e.Marked("Login"));
+
+                app.Tap(x => x.Marked("GenderPicker"));
+
+                app.Tap(x => x.Text("Male"));
+
+                app.EnterText(x => x.Marked("Description"), "COACH DESCRIPTION");
+
+                app.EnterText(x => x.Marked("CoachPricing"), "10.00");
+
+                app.EnterText(x => x.Marked("PayPalLink"), "http://paypal.me.com");
+
+                app.Tap(x => x.Marked("OfferMeals"));
+
+                //MUST SELECT MANUALLY!!!
+
+                app.Tap(x => x.Marked("FilePicker"));
+
+                app.WaitForElement(x => x.Marked("Submit"));
+                app.Tap(x => x.Marked("Submit"));
+
+                app.WaitForElement(e => e.Marked("CheckSubmissionStatus"));
+
+                app.Tap(c => c.Class("AppCompatImageButton"));
+                app.Tap(e => e.Marked("Log out"));
+            }
+            //if IOS
+            else
+            {
+                return;
+            }
+        }
+
+        [Test, Order(2)]
+        public void Approve_Pending_Coach()
+        {
+            //ISSUE NO PENDING
+            if (platform == Platform.Android)
+            {
                 GoToFlyoutPage("Pending Coaches");
-                app.Tap(e => e.Text("Coach Samuel"));
+                app.Tap(e => e.Text("Coach Chloe"));
 
                 app.WaitForElement(x => x.Marked("CoachName"));
                 string profileCoachName = app.Query(x => x.Marked("CoachName"))[0].Text;
@@ -54,18 +110,21 @@ namespace BuiltDifferent.UITest {
                 app.Tap("Confirm");
 
                 GoToFlyoutPage("Verified Coaches");
-                Assert.IsNotNull(app.Query(x => x.Text("Coach Samuel")).FirstOrDefault());
-                Assert.AreEqual(profileCoachName, "Coach Samuel");
+                Assert.IsNotNull(app.Query(x => x.Text("Coach Chloe")).FirstOrDefault());
+                Assert.AreEqual(profileCoachName, "Coach Chloe");
             }
             //if IOS
-            else {
+            else
+            {
                 return;
             }
         }
 
-        [Test]
-        public void View_Verified_Coach_Profile() {
-            if(platform == Platform.Android) {
+        [Test, Order(3)]
+        public void View_Verified_Coach_Profile()
+        {
+            if (platform == Platform.Android)
+            {
                 GoToFlyoutPage("Verified Coaches");
                 app.Tap(e => e.Text("Coach Bob"));
 
@@ -73,16 +132,19 @@ namespace BuiltDifferent.UITest {
                 Assert.AreEqual(app.Query(x => x.Marked("CoachName"))[0].Text, "Coach Bob");
             }
             //if IOS
-            else {
+            else
+            {
                 return;
             }
         }
 
-        [Test]
-        public void Set_Coach_Account_Status() {
-            if(platform == Platform.Android) {
+        [Test, Order(4)]
+        public void Set_Coach_Account_Status()
+        {
+            if (platform == Platform.Android)
+            {
                 GoToFlyoutPage("Verified Coaches");
-                app.Tap(e => e.Text("Coach Bob"));
+                app.Tap(e => e.Text("Coach Goofy"));
 
                 app.WaitForElement(x => x.Marked("SetCoachAccountStatusButton"));
 
@@ -95,7 +157,8 @@ namespace BuiltDifferent.UITest {
                 Assert.AreNotEqual(initialButtonText, postButtonText);
             }
             //if IOS
-            else {
+            else
+            {
                 return;
             }
         }

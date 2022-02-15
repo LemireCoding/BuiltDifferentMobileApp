@@ -13,7 +13,7 @@
                     <Label AutomationId="AddWorkoutTitle" Text="{x:Static resource:AppResource.AddWorkoutPageTitle}" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="Black"/>
                     <Entry AutomationId="WorkoutName"  Text="{Binding WorkoutName}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageWorkoutName}" Keyboard="Text" BackgroundColor="White" />
                     <Label Text="{x:Static resource:AppResource.AddWorkoutPageType}"/>
-                    <Picker BackgroundColor="WhiteSmoke" ItemsSource="{Binding Types}" SelectedItem="{Binding WorkoutType, Mode=TwoWay}"  ItemDisplayBinding="{Binding Path=Name}"/>
+                    <Picker BackgroundColor="WhiteSmoke" ItemsSource="{Binding Types}" SelectedItem="{Binding WorkoutType, Mode=TwoWay}"  ItemDisplayBinding="{Binding Path=Name}" AutomationId="WorkoutTypePicker"/>
                     <Entry AutomationId="Sets" Text="{Binding Sets}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageWorkoutSets}" Keyboard="Numeric"/>
                     <Entry AutomationId="Reps" Text="{Binding Reps}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageReps}" Keyboard="Numeric"/>
                     <Entry AutomationId="Duration" Text="{Binding Duration}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageDuration}" Keyboard="Numeric"/>
@@ -23,9 +23,7 @@
                     <Label Text="Date"/>
                     <DatePicker MinimumDate="{x:Static sys:DateTime.Now}" Date="{Binding Day}" HorizontalOptions="Center"/>
                     <Entry AutomationId="VideoLink" Text="{Binding VideoLink}" Placeholder="{x:Static resource:AppResource.AddWorkoutPageVideoLink}" Keyboard="Text"/>
-                    <Button AutomationId="SaveButton" Grid.Row="0" BorderColor="{StaticResource RedPrimary}" BorderWidth="1" FontAttributes="Bold" BackgroundColor="{StaticResource RedPrimary}" BorderRadius="10" TextColor="White" 
-                           Text="{x:Static resource:AppResource.SaveButton}"  Margin="22,22,22,22" Command="{Binding SaveCommand}"/>
-
+                    <Button  AutomationId="SaveButton" Margin="10" Text="{x:Static resource:AppResource.SaveButton}" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SaveCommand}"/>
                 </StackLayout>
             </ScrollView>
         </Grid>

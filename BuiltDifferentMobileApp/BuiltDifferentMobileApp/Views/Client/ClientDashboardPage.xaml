@@ -11,7 +11,7 @@
             Title="{x:Static resource:AppResource.ClientDashboardTitle}">
 
     <TabbedPage.ToolbarItems>
-        <ToolbarItem Command="{Binding ViewMyProfileCommand}">
+        <ToolbarItem Command="{Binding ViewMyProfileCommand}" AutomationId="Profile">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
             </ToolbarItem.IconImageSource>
