@@ -2,9 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Admin"
-             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" 
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
              x:Class="BuiltDifferentMobileApp.Views.Admin.AdminMenuPage"
              Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:IntToGreyedOutOnPositiveConverter x:Key="intToGreyedOutOnPositiveConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.BindingContext>
         <viewmodels:AdminMenuPageViewModel />
@@ -22,6 +29,18 @@
         <Grid>
             <ScrollView>
                 <StackLayout Grid.Row="0" Grid.Column="0" BackgroundColor="#3F3F3F" Padding="12" Spacing="12">
+                    <Frame BackgroundColor="{StaticResource RedPrimary}" CornerRadius="12" Padding="10">
+                        <StackLayout>
+                            <Label Text="{Binding TotalCoaches, StringFormat='Total Coaches: {0}'}" TextColor="White" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="{StaticResource RedPrimary}" CornerRadius="12" Padding="10">
+                        <StackLayout>
+                            <Label Text="{Binding TotalClients, StringFormat='Total Clients: {0}'}" TextColor="White" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+
                     <!-- DATE PICKER START -->
                     <Frame Padding="12,6,12,6" HorizontalOptions="Center" VerticalOptions="Start" BackgroundColor="#303030" CornerRadius="12">
                         <StackLayout>
@@ -40,7 +59,7 @@
                                 <Label Text="{Binding WeekOfText}" LineBreakMode="TailTruncation" Grid.Column="1"
                                         FontSize="Subtitle" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center"/>
                                 <Button Text="&#xf054;" FontFamily="FAS" BackgroundColor="Transparent" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Start"
-                                        Command="{Binding ChangeWeekCommand}" CommandParameter="1" AutomationId="NextWeekButton"/>
+                                        Command="{Binding ChangeWeekCommand}" CommandParameter="1" AutomationId="NextWeekButton" TextColor="{Binding CurrentWeek, Converter={StaticResource intToGreyedOutOnPositiveConverter}}"/>
                             </Grid>
                         </StackLayout>
                     </Frame>
@@ -48,15 +67,22 @@
 
                     <Frame BackgroundColor="#303030" CornerRadius="12" Padding="10">
                         <StackLayout>
-                            <Label Text="Total User Growth" TextColor="White" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
+                            <Label Text="Weekly User Growth" TextColor="White" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
                             <microcharts:ChartView Chart="{Binding WeeklyGrowth}" HeightRequest="250"/>
                         </StackLayout>
                     </Frame>
 
                     <Frame BackgroundColor="#303030" CornerRadius="12" Padding="10">
                         <StackLayout>
-                            <Label Text="Type of Users Joined This Week" TextColor="White" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
+                            <Label Text="Weekly Joined User Types" TextColor="White" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
                             <microcharts:ChartView Chart="{Binding ClientCoachPie}" HeightRequest="250"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="#303030" CornerRadius="12" Padding="10">
+                        <StackLayout>
+                            <Label Text="Weekly Coach Applications" TextColor="White" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
+                            <microcharts:ChartView Chart="{Binding CoachesApplying}" HeightRequest="250"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>

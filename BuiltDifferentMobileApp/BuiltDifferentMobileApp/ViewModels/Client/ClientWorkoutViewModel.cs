@@ -72,6 +72,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         public string dailyprogresstext;
         public string Dailyprogresstext { get => dailyprogresstext; set => SetProperty(ref dailyprogresstext, value); }
 
+        private bool canMoveForward;
+        public bool CanMoveForward { get => canMoveForward; set => SetProperty(ref canMoveForward, value); }
+
         public ClientWorkoutViewModel()
         {
             MarkDone = new AsyncCommand<WorkoutDTO>(Done);
@@ -81,6 +84,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
             CurrentWeek = 0;
             ChangeWeekCommand = new AsyncCommand<string>(ChangeWeek);
+            CanMoveForward = true;
 
             SelectedDay = DateTime.Now.Date;
             SetDayButtonValues((int)SelectedDay.DayOfWeek);
@@ -108,7 +112,10 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
         }
 
         private Task ChangeWeek(string amount) {
-            CurrentWeek += int.Parse(amount);
+            int increase = int.Parse(amount);
+            if(increase > 0 && CanMoveForward) return Task.CompletedTask;
+
+            CurrentWeek += increase;
             SetDayButtonValues((int)SelectedDay.DayOfWeek, CurrentWeek);
             CheckAndSetIfSelected();
             return Task.CompletedTask;
@@ -182,6 +189,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             Day6 = week[6].Date;
 
             WeekOfText = $"{Day0:M} - {Day6:M}";
+
+            CanMoveForward = Day0.Date == DateTime.Now.Date.AddDays(-(int)DateTime.Now.DayOfWeek + (int)DayOfWeek.Sunday + 7).Date;
         }
 
         private void SetCurrentlySelectedDay(int day) {
