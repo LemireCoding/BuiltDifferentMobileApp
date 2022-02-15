@@ -1562,5 +1562,104 @@ namespace BuiltDifferentMobileApp.Ressource {
                 return ResourceManager.GetString("ClientName", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string ClientDashboard {
+            get {
+                return ResourceManager.GetString("ClientDashboard", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string NoVerifiedCoaches {
+            get {
+                return ResourceManager.GetString("NoVerifiedCoaches", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string NumberOfClients {
+            get {
+                return ResourceManager.GetString("NumberOfClients", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string MakePayment {
+            get {
+                return ResourceManager.GetString("MakePayment", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string PendingCoaches {
+            get {
+                return ResourceManager.GetString("PendingCoaches", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string VerifiedCoaches {
+            get {
+                return ResourceManager.GetString("VerifiedCoaches", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string Menu {
+            get {
+                return ResourceManager.GetString("Menu", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
+        /// </summary>
+        public static string Payment {
+            get {
+                return ResourceManager.GetString("Payment", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Your Requests.
+        /// </summary>
+        public static string YourRequests {
+            get {
+                return ResourceManager.GetString("YourRequests", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Your Requests.
+        /// </summary>
+        public static string CoachCriterias {
+            get {
+                return ResourceManager.GetString("CoachCriterias", resourceCulture);
+            }
+        }
     }
 }
