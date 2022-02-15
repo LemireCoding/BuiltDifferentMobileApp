@@ -108,8 +108,8 @@
     <FlyoutItem Title="{x:Static resource:AppResource.ApplyApproval}" IsVisible="{Binding IsUnverifiedCoach}">
         <ShellContent Route="NewCoachPage" ContentTemplate="{DataTemplate coachpages:NewCoachPage}" />
     </FlyoutItem>
-
-    <FlyoutItem Title="{x:Static resource:AppResource.Reports}" IsVisible="{Binding IsVerifiedCoach}">
+  
+  <FlyoutItem Title="{x:Static resource:AppResource.Reports}" IsVisible="{Binding IsVerifiedCoach}" AutomationId="CoachReports">
         <ShellContent Route="CoachSummaryReportPage" ContentTemplate="{DataTemplate coachpages:CoachSummaryReportPage}" />
     </FlyoutItem>
 

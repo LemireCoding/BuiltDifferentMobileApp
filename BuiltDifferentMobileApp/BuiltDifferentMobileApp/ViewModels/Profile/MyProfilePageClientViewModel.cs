@@ -29,18 +29,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             }
         }
 
-        private int profilePictureId;
-        public int ProfilePictureId
-        {
-            get => profilePictureId;
-            set
-            {
-                SetProperty(ref profilePictureId, value);
-                OnPropertyChanged(nameof(IsEnabled));
-
-            }
-        }
-
         private string name;
         public string Name
         {
@@ -85,6 +73,18 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             }
         }
 
+        private int profilePictureId;
+        public int ProfilePictureId
+        {
+            get => profilePictureId;
+            set
+            {
+                SetProperty(ref profilePictureId, value);
+                OnPropertyChanged(nameof(IsEnabled));
+
+            }
+        }
+
         private bool isEnabled;
         public bool IsEnabled
         {
@@ -93,7 +93,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
         }
         private int UserId;
         public object PreviewPicture { get; set; }
-        // private int Id;
 
         public AsyncCommand SubmitCommand { get; }
         public AsyncCommand UploadImageCommand { get; }
@@ -109,11 +108,12 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             UserId = 0;
             StartWeight = 0;
             CurrentWeight = 0;
+            Height = 0;
             ProfilePictureId = 0;
+
             ProfilePicture = null;
             PreviewPicture = null;
-            Height = 0;
-            //ADDED FIELD 
+            
 
             GetUserInfo();
 
@@ -239,9 +239,10 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
                     IsBusy = false;
                 }
 
-                await networkService.PostAsyncHttpResponseMessage(APIConstants.PostUploadProfilePicture(), multipartFormContent, true);
+                var picture = await networkService.PostAsyncHttpResponseMessage(APIConstants.PostUploadProfilePicture(), multipartFormContent, true);
 
-                var profile = new ClientProfileDTO(Name, UserId, CurrentWeight, ProfilePictureId, Height);
+                var profile = new ClientProfileDTO(Name, UserId, CurrentWeight, Height);
+               
                 if (profile == null)
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "Sorry! We are having an issue retrieving your profile. Please try again.", "OK");

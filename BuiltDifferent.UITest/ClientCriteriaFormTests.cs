@@ -22,7 +22,7 @@ namespace BuiltDifferent.UITest
             this.platform = platform;
         }
 
-        [SetUp]
+        [OneTimeSetUp]
         public void BeforeEachTest()
         {
             app = AppInitializer.StartApp(platform);
@@ -51,16 +51,15 @@ namespace BuiltDifferent.UITest
 
         //will look at for IOS testing(will replicate what is seen on actual physical device
 
-        [Test]
-        public void OpenRepl()
-       {
-           app.Repl();
-       }
+       // [Test]
+       // public void OpenRepl()
+       //{
+       //    app.Repl();
+       //}
 
-        [Test]
+        [Test, Order(1)]
         public void Reach_Selection_Page()
         {
-            //T.1
 
             if (platform == Platform.Android)
             {

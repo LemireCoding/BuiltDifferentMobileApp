@@ -110,10 +110,12 @@ namespace BuiltDifferent.UITest
                 app.WaitForElement(c => c.Marked("Confirm").Parent().Class("AlertDialogLayout"));
                 app.Tap("Confirm");
                 Assert.IsTrue(app.Query(x => x.Id("message").Text("We'll let the client know that you cannot accept their request at this time.")).Any());
+                app.Tap("OK");
             }
             else return;
         }
 
+        //cant go back 
         [Test, Order(4)]
         public void Accept_Client_Request_Ensure_Client_is_found()
         {
@@ -128,7 +130,9 @@ namespace BuiltDifferent.UITest
                 app.Tap(e => e.Marked("RequestCoach"));
                 app.WaitForElement(c => c.Marked("OK").Parent().Class("AlertDialogLayout"));
                 app.Tap("OK");
-                app.Tap(c => c.Class("AppCompatImageButton"));
+
+                //ISSUE cant go BACK
+                app.Back();
                 app.Tap(c => c.Class("AppCompatImageButton"));
                 app.Tap(e => e.Marked("Log out"));
 
@@ -148,23 +152,24 @@ namespace BuiltDifferent.UITest
             else return;
         }
 
-        //[Test, Order(4)]
-        //public void Accept_Client_Request()
-        //{
-        //    if (platform == Platform.Android)
-        //    {
-        //        LoginCoach();
-        //        app.Tap(c => c.Class("AppCompatImageButton"));
-        //        app.Tap(e => e.Marked("ClientRequests"));
-        //        app.Tap(e => e.Marked("RequestInfo"));
-        //        app.Tap(e => e.Marked("AcceptClientButton"));
-        //        app.WaitForElement(c => c.Marked("Confirm").Parent().Class("AlertDialogLayout"));
-        //        app.Tap("Confirm");
-        //        Assert.IsTrue(app.Query(x => x.Id("RequestInfo").Text("Get Coaching! You have a new client.")).Any());
-        //    }
-        //    else return;
-        //}
+        [Test, Order(4)]
+        public void Accept_Client_Request()
+        {
+            if (platform == Platform.Android)
+            {
+                LoginCoach();
+                app.Tap(c => c.Class("AppCompatImageButton"));
+                app.Tap(e => e.Marked("ClientRequests"));
+                app.Tap(e => e.Marked("RequestInfo"));
+                app.Tap(e => e.Marked("AcceptClientButton"));
+                app.WaitForElement(c => c.Marked("Confirm").Parent().Class("AlertDialogLayout"));
+                app.Tap("Confirm");
+                app.WaitForElement("message");
+                Assert.IsTrue(app.Query(x => x.Id("message").Text("Get Coaching! You have a new client.")).Any());
+            }
+            else return;
+        }
 
-        
+
     }
 }

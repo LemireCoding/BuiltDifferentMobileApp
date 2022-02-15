@@ -7,18 +7,18 @@
              Title="{x:Static resource:AppResource.Reports}"
              x:Name="MyCoachSummaryReportPage">
     <ContentPage.Content>
-        <ScrollView>
-            <RefreshView IsRefreshing="{Binding IsBusy}"
+        <RefreshView IsRefreshing="{Binding IsBusy}"
                      Command="{Binding RefreshCommand}">
+            <ScrollView>
                 <Frame>
                     <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
                             <StackLayout Grid.Row="0">
@@ -26,10 +26,10 @@
                             </StackLayout>
 
                             <StackLayout Grid.Row="1" Orientation="Horizontal">
-                                <Label Text="{x:Static resource:AppResource.CurrentPeriod}" FontAttributes="Bold" />
+                            <Label Text="{x:Static resource:AppResource.CurrentPeriod}" FontAttributes="Bold" />
                             <Label Text="{Binding coachReport.startDate, StringFormat='Start: {0:d/M/yyyy}'}"/>
                             <Label Text="{Binding coachReport.endDate, StringFormat='End: {0:d/M/yyyy}'}"/>
-                            </StackLayout>
+                        </StackLayout>
 
                             <StackLayout Grid.Row="2" Orientation="Horizontal">
                                 <Label Text="{x:Static resource:AppResource.CoachName}"  FontAttributes="Bold"/>
@@ -39,7 +39,7 @@
                         <StackLayout Grid.Row="3" Orientation="Horizontal">
                             <Label Text="{x:Static resource:AppResource.NumberOfClients}"  FontAttributes="Bold"/>
                             <Label Text="{Binding coachReport.numberOfClients}"/>
-                        </StackLayout>
+                          </StackLayout>
 
                         <StackLayout Grid.Row="4">
                             <Frame BackgroundColor="{StaticResource ExtraLightGrey}">
@@ -60,9 +60,9 @@
                                                     <ColumnDefinition/>
                                                 </Grid.ColumnDefinitions>
                                                 <Image Grid.Column="0" Source=" https://pngset.com/images/katie-notopoulos-katienotopoulos-i-write-about-tech-round-profile-image-placeholder-text-number-symbol-word-transparent-png-201415.png" HeightRequest="40"/>
-                                                <Label Grid.Column="1" Text="{Binding clientName}" VerticalOptions="Center"/>
-                                                <Label Grid.Column="2" Text="{Binding bmi, StringFormat='{0:0}'}"  VerticalOptions="Center" />
-                                                <Label Grid.Column="3" Text="{Binding caloriesConsumed}"  VerticalOptions="Center"/>
+                                                <Label Grid.Column="1" Text="{Binding clientName}" VerticalOptions="Center" AutomationId="ClientName"/>
+                                                <Label Grid.Column="2" Text="{Binding bmi, StringFormat='{0:0}'}"  VerticalOptions="Center" AutomationId="ClientBMI"/>
+                                                <Label Grid.Column="3" Text="{Binding caloriesConsumed}"  VerticalOptions="Center" AutomationId="ClientCalories"/>
                                                 <Label Grid.Column="4" Text="{Binding workoutsDone}"  VerticalOptions="Center"/>
                                             </Grid>
                                         </DataTemplate>
@@ -78,12 +78,11 @@
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
                                             <BoxView BackgroundColor="{StaticResource RedSecondary}" Grid.ColumnSpan="5"/>
-
-                                            <Label Grid.Column="0" Text="{x:Static resource:AppResource.Picture}" FontAttributes="Bold" TextColor="White" />
-                                            <Label Grid.Column="1" Text="{x:Static resource:AppResource.ClientName}" FontAttributes="Bold" TextColor="White" />
-                                            <Label Grid.Column="2" Text="{x:Static resource:AppResource.BMI}" FontAttributes="Bold" TextColor="White" />
-                                            <Label Grid.Column="3" Text="{x:Static resource:AppResource.CaloriesConsumed}" FontAttributes="Bold" TextColor="White"/>
-                                            <Label Grid.Column="4" Text="{x:Static resource:AppResource.WorkoutsDone}" FontAttributes="Bold" TextColor="White" />
+                                            <Label Grid.Column="0" Text="{x:Static resource:AppResource.Picture}" FontAttributes="Bold" TextColor="White" LineBreakMode="WordWrap"/>
+                                            <Label Grid.Column="1" Text="{x:Static resource:AppResource.ClientName}" FontAttributes="Bold" TextColor="White" LineBreakMode="WordWrap"/>
+                                            <Label Grid.Column="2" Text="{x:Static resource:AppResource.BMI}" FontAttributes="Bold" TextColor="White" LineBreakMode="WordWrap"/>
+                                            <Label Grid.Column="3" Text="{x:Static resource:AppResource.CaloriesConsumed}" FontAttributes="Bold" TextColor="White" LineBreakMode="WordWrap"/>
+                                            <Label Grid.Column="4" Text="{x:Static resource:AppResource.WorkoutsDone}" FontAttributes="Bold" TextColor="White" LineBreakMode="WordWrap" />
                                         </Grid>
                                     </CollectionView.Header>
                                 </CollectionView>
@@ -91,7 +90,7 @@
                         </StackLayout>
                     </Grid>
                 </Frame>
-            </RefreshView>
             </ScrollView>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>

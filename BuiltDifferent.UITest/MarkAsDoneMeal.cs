@@ -22,7 +22,7 @@ namespace BuiltDifferent.UITest
             this.platform = platform;
         }
 
-        [SetUp]
+        [OneTimeSetUp]
         public void BeforeEachTest()
         {
             app = AppInitializer.StartApp(platform);
@@ -49,35 +49,26 @@ namespace BuiltDifferent.UITest
             }
         }
 
-      
 
-        [Test]
-        public void Set_Meal_Done()
+
+        [Test, Order(1)]
+        public void Test_Meal_Eaten()
         {
-            //T.1
-
             if (platform == Platform.Android)
             {
-              
-                app.Tap(x => x.Marked("Meals"));
-                app.Tap(e => e.Marked("MealName"));
-                app.Tap(e => e.Id("NoResourceEntry-54"));
-                app.WaitForElement("message");
-                Assert.IsTrue(app.Query(x => x.Id("message").Text("Meal Eaten")).Any());
+                app.Tap(e => e.Text("Meals"));
+                app.Tap(e => e.Text("Tu"));
+                app.ScrollDownTo(c => c.Text("Sandwich"));
+                app.Tap(e => e.Text("Sandwich"));
+                app.Tap(e => e.Text("Eaten"));
+                int unmarkButtons = app.Query(e => e.Text("Unmark")).Length;
 
+                Assert.AreEqual(1, unmarkButtons);
             }
-            //if IOS
             else
             {
                 return;
             }
         }
-
-    
-
-
-
-
-
     }
 }

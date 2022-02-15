@@ -22,7 +22,7 @@ namespace BuiltDifferent.UITest
             this.platform = platform;
         }
 
-        [SetUp]
+        [OneTimeSetUp]
         public void BeforeEachTest()
         {
             app = AppInitializer.StartApp(platform);
@@ -38,6 +38,10 @@ namespace BuiltDifferent.UITest
 
             app.WaitForElement(e => e.Marked("Login"));
             app.Tap(e => e.Marked("Login"));
+
+            app.Tap(x => x.Text("Board"));
+            app.Tap(x => x.Marked("Meals"));
+            app.Tap("AddButton");
         }
 
         private void SaveScreenshot([CallerMemberName] string title = "", [CallerLineNumber] int lineNumber = -1)
@@ -58,62 +62,18 @@ namespace BuiltDifferent.UITest
         //    app.Repl();
         //}
 
-
-        [Test]
-        public void Meal_page_visible()
-        {
-            //T.1
-
-            if (platform == Platform.Android)
-            {
-                app.Tap(c => c.Class("AppCompatImageButton"));
-                app.Tap(x => x.Text("Meals"));
-                bool result = app.Query(e => e.Marked("MealPageTitle")).Any();
-                Assert.IsTrue(result);
-
-            }
-            //if IOS
-            else
-            {
-                return;
-            }
-        }
-
-        [Test]
-        public void AddMeal_page_visible()
-        {
-            //T.1.2
-
-            if (platform == Platform.Android)
-            {
-                app.Tap(c => c.Class("AppCompatImageButton"));
-                app.Tap(x => x.Text("Meals"));
-                app.Tap("AddButton");
-                bool result = app.Query(e => e.Marked("AddMealPageTitle")).Any();
-                Assert.IsTrue(result);
-            }
-            //if IOS
-            else
-            {
-                return;
-            }
-        }
-
-
-        [Test]
+        [Test, Order(1)]
         public void Add_meal_missing_fields_error_mssg()
         {
-            //T.1.3
+             
 
             if (platform == Platform.Android)
             {
-                app.Tap(c => c.Class("AppCompatImageButton"));
-                app.Tap(x => x.Text("Meals"));
-                app.Tap(x => x.Marked("AddButton"));
                 app.ScrollDownTo(c => c.Marked("SaveButton"));
                 app.Tap(x => x.Marked("SaveButton"));
                 app.WaitForElement("message");
-                Assert.IsTrue(app.Query(x => x.Id("message").Text("Please fill ALL of the fields")).Any());
+                Assert.IsTrue(app.Query(x => x.Id("message").Text("Please fill ALL of the fields.")).Any());
+                app.Tap("OK");
             }
             //if IOS
             else
@@ -121,16 +81,30 @@ namespace BuiltDifferent.UITest
                 return;
             }
         }
-        [Test]
-        public void Add_meal_with_valid_fields_confirmation_mssg ()
+
+        [Test, Order(2)]
+        public void AddMeal_page_visible()
         {
-            //T.1.4
+             
 
             if (platform == Platform.Android)
             {
-                app.Tap(c => c.Class("AppCompatImageButton"));
-                app.Tap(x => x.Text("Meals"));
-                app.Tap("AddButton");
+                app.ScrollUpTo(x => x.Marked("AddMealPageTitle"));
+                Assert.IsTrue(app.Query(e => e.Marked("AddMealPageTitle").Text("Add Meal")).Any());
+            }
+            //if IOS
+            else
+            {
+                return;
+            }
+        }
+
+        [Test, Order(3)]
+        public void Add_meal_with_valid_fields_confirmation_mssg ()
+        {
+
+            if (platform == Platform.Android)
+            {
                 app.Tap(x => x.Marked("MealNameField"));
                 app.EnterText("Test Meal Name");
                 app.DismissKeyboard();
@@ -139,7 +113,8 @@ namespace BuiltDifferent.UITest
                 app.ScrollDownTo(c => c.Marked("SaveButton"));
                 app.Tap(x => x.Marked("SaveButton"));
                 app.WaitForElement("message");
-                Assert.IsTrue(app.Query(x => x.Id("message").Text("Meal Saved")).Any());
+                Assert.IsTrue(app.Query(x => x.Id("message").Text("Meal Saved.")).Any());
+                app.Tap("OK");
             }
             //if IOS
             else
@@ -148,16 +123,13 @@ namespace BuiltDifferent.UITest
             }
         }
 
-        [Test]
+        [Test, Order(4)]
         public void Add_meal_with_valid_fields_display_new_meal_on_dashboard()
         {
-            //T.1.5
 
             if (platform == Platform.Android)
             {
-                app.Tap(c => c.Class("AppCompatImageButton"));
-                app.Tap(x => x.Text("Meals"));
-                app.Tap("AddButton");
+                app.ScrollUpTo(c => c.Marked("MealNameField"));
                 app.Tap(x => x.Marked("MealNameField"));
                 app.EnterText("Test Meal Name");
                 app.DismissKeyboard();
@@ -167,6 +139,7 @@ namespace BuiltDifferent.UITest
                 app.Tap(x => x.Marked("SaveButton"));
                 app.WaitForElement("message");
                 app.Tap(x => x.Text("OK"));
+                app.ScrollDownTo(x => x.Text("Test Meal Name"));
                 Assert.IsTrue(app.Query(x => x.Text("Test Meal Name")).Any());
             }
             //if IOS

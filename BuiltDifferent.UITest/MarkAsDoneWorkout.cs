@@ -22,7 +22,7 @@ namespace BuiltDifferent.UITest
             this.platform = platform;
         }
 
-        [SetUp]
+        [OneTimeSetUp]
         public void BeforeEachTest()
         {
             app = AppInitializer.StartApp(platform);
@@ -51,30 +51,24 @@ namespace BuiltDifferent.UITest
 
         //will look at for IOS testing(will replicate what is seen on actual physical device
 
-       
-        [Test]
-        public void Set_Workout_Done()
-        {
-            //T.1
 
+        [Test, Order(1)]
+        public void Test_Complete_Workout()
+        {
             if (platform == Platform.Android)
             {
-                app.Tap(e => e.Id("NoResourceEntry-39"));
-                app.Tap(e => e.Id("NoResourceEntry-47"));
-                app.WaitForElement("message");
-                Assert.IsTrue(app.Query(x => x.Id("message").Text("Workout set as done")).Any());
-
+                app.Tap(e => e.Text("Tu"));
+                app.Tap(e => e.Text("jogging"));
+                app.ScrollDownTo(e => e.Marked("MarkDoneButton"));
+                app.Tap(e => e.Marked("MarkDoneButton"));
+                app.Tap(e => e.Text("jogging"));
+                int markAsDoneButtons = app.Query(e => e.Button("Mark as Done")).Length;
+                Assert.AreEqual(0, markAsDoneButtons);
             }
-            //if IOS
             else
             {
                 return;
             }
         }
-
-
-
-
-
     }
 }
