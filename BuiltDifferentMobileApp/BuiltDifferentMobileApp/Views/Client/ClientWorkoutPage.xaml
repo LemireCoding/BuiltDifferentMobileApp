@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
              xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              xmlns:client="clr-namespace:BuiltDifferentMobileApp.ViewModels.Client"
              x:Class="BuiltDifferentMobileApp.Views.Client.ClientWorkoutPage"
              x:Name="TheWorkoutPageClient"

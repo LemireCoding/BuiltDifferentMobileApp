@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,79 +26,79 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -243,21 +243,27 @@
   </data>
   <data name="ApprovalDeniedBody" xml:space="preserve">
     <value>Sorry, your application has been denied</value>
+    <comment/>
   </data>
   <data name="ApprovalDeniedTitle" xml:space="preserve">
     <value>Your application has been denied</value>
+    <comment/>
   </data>
   <data name="ApprovalPassedBody" xml:space="preserve">
     <value>Now navigating to coach dashboard...</value>
+    <comment/>
   </data>
   <data name="ApprovalPassedTitle" xml:space="preserve">
     <value>Your application has been approved</value>
+    <comment/>
   </data>
   <data name="ApprovalPendingBody" xml:space="preserve">
     <value>Please wait until you have been approved or denied</value>
+    <comment/>
   </data>
   <data name="ApprovalPendingTitle" xml:space="preserve">
     <value>Your application is currently pending review</value>
+    <comment/>
   </data>
   <data name="AvailabilityLabel" xml:space="preserve">
     <value>Available for new clients?</value>
@@ -277,6 +283,7 @@
   </data>
   <data name="CheckApplicationStatusButton" xml:space="preserve">
     <value>Check Application Status</value>
+    <comment/>
   </data>
   <data name="ClientCoachCriteriaCoachingGenderF" xml:space="preserve">
     <value>Female</value>
@@ -304,6 +311,7 @@
   </data>
   <data name="ClientDashboardTitle" xml:space="preserve">
     <value>Board</value>
+    <comment/>
   </data>
   <data name="CoachAddMealCaloriesLabel" xml:space="preserve">
     <value> Calories</value>
@@ -355,6 +363,7 @@
   </data>
   <data name="CoachClientRequestAccept" xml:space="preserve">
     <value>Accept</value>
+    <comment/>
   </data>
   <data name="CoachDashboardBoard" xml:space="preserve">
     <value>Board</value>
@@ -386,9 +395,11 @@
   </data>
   <data name="CoachDescriptionHelpText" xml:space="preserve">
     <value>How would you describe yourself to clients?</value>
+    <comment/>
   </data>
   <data name="CoachDescriptionPlaceholder" xml:space="preserve">
     <value>I am a fun coach, always aspiring to...</value>
+    <comment/>
   </data>
   <data name="CoachMealsClientPlanAdd" xml:space="preserve">
     <value>Add</value>
@@ -436,9 +447,11 @@
   </data>
   <data name="CompleteAccountSetup" xml:space="preserve">
     <value>Complete Account Setup</value>
+    <comment/>
   </data>
   <data name="ConfirmCoachSignUpButton" xml:space="preserve">
     <value>Confirm Account Information</value>
+    <comment/>
   </data>
   <data name="ConfirmedPasswordPlaceholder" xml:space="preserve">
     <value>Confirm Password</value>
@@ -490,9 +503,11 @@
   </data>
   <data name="FemaleGender" xml:space="preserve">
     <value>Female</value>
+    <comment/>
   </data>
   <data name="FileNameTextStart" xml:space="preserve">
     <value>File name:</value>
+    <comment/>
   </data>
   <data name="FindACoachByCriteriaGenderLabel" xml:space="preserve">
     <value>Select a gender, if you have a prefered coach gender</value>
@@ -560,6 +575,7 @@
   </data>
   <data name="MaleGender" xml:space="preserve">
     <value>Male</value>
+    <comment/>
   </data>
   <data name="MealServiceLabel" xml:space="preserve">
     <value>Offer meal coaching</value>
@@ -567,6 +583,7 @@
   </data>
   <data name="MissingCertificationError" xml:space="preserve">
     <value>Please upload your certification.</value>
+    <comment/>
   </data>
   <data name="MissingInputs" xml:space="preserve">
     <value>Please fill all required fields.</value>
@@ -574,6 +591,7 @@
   </data>
   <data name="OtherGender" xml:space="preserve">
     <value>Other</value>
+    <comment/>
   </data>
   <data name="PasswordPlaceholder" xml:space="preserve">
     <value>Password</value>
@@ -597,15 +615,19 @@
   </data>
   <data name="PlanOffersHelpText" xml:space="preserve">
     <value>What do you want to provide coaching for?</value>
+    <comment/>
   </data>
   <data name="PleaseSelectAGender" xml:space="preserve">
     <value>Please select a gender</value>
+    <comment/>
   </data>
   <data name="PleaseSelectCertification" xml:space="preserve">
     <value>Please select your certification</value>
+    <comment/>
   </data>
   <data name="PricingError" xml:space="preserve">
     <value>Please enter a valid pricing.</value>
+    <comment/>
   </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Your Profile</value>
@@ -625,6 +647,7 @@
   </data>
   <data name="SelectPDFError" xml:space="preserve">
     <value>Invalid file type. Please select a PDF.</value>
+    <comment/>
   </data>
   <data name="SignUpLabel" xml:space="preserve">
     <value>Sign up</value>
@@ -632,6 +655,7 @@
   </data>
   <data name="SpecifyGenderError" xml:space="preserve">
     <value>Please specify your gender.</value>
+    <comment/>
   </data>
   <data name="StartWeightLabel" xml:space="preserve">
     <value>Start Weight</value>
@@ -647,6 +671,7 @@
   </data>
   <data name="UploadCertificationButton" xml:space="preserve">
     <value>Upload Certification (PDF)</value>
+    <comment/>
   </data>
   <data name="ViewModelErrorMessage" xml:space="preserve">
     <value>An error occured on the server. Please try saving again.</value>
@@ -675,5 +700,21 @@
   <data name="WorkoutServiceLabel" xml:space="preserve">
     <value>Offer workout coaching</value>
     <comment>3-Profile</comment>
+  </data>
+  <data name="NoVerifiedCoaches" xml:space="preserve">
+    <value>No verified coaches.</value>
+    <comment/>
+  </data>
+  <data name="CoachRequests" xml:space="preserve">
+    <value>Requests</value>
+    <comment/>
+  </data>
+  <data name="CoachRequestInfoTitle" xml:space="preserve">
+    <value>Coach Profile</value>
+    <comment/>
+  </data>
+  <data name="ApprovedCoachPageTitle" xml:space="preserve">
+    <value>Verified Coaches</value>
+    <comment/>
   </data>
 </root>

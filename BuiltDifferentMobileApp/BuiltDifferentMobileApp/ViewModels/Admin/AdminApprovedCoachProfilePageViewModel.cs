@@ -29,7 +29,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Admin {
         public AsyncCommand SetSuspendedStatusCommand { get; set; }
 
         public AdminApprovedCoachProfilePageViewModel(int coachId) {
-            Title = "Coach Profile";
             CoachId = coachId;
             Name = "";
             Gender = "";

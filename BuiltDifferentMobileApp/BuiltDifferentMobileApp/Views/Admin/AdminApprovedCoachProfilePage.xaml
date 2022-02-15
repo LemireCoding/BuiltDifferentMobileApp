@@ -4,7 +4,7 @@
              xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
              xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              x:Class="BuiltDifferentMobileApp.Views.Admin.AdminApprovedCoachProfilePage"
-             Title="{Binding Title}">
+             Title="{x:Static resource:AppResource.CoachRequestInfoTitle}">
 
     <ContentPage.Resources>
         <converters:BoolToSetAccountStatusButtonConverter x:Key="boolToSetAccountStatusButtonConverter" />
