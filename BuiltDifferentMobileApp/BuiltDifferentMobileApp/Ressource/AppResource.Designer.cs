@@ -1670,5 +1670,14 @@ namespace BuiltDifferentMobileApp.Ressource {
                 return ResourceManager.GetString("CoachCriterias", resourceCulture);
             }
         }
+        
+         /// <summary>
+        ///   Looks up a localized string similar to Your Requests.
+        /// </summary>
+        public static string Picture {
+            get {
+                return ResourceManager.GetString("Picture", resourceCulture);
+            }
+        }
     }
 }
