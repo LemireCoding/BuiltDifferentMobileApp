@@ -22,7 +22,7 @@ namespace BuiltDifferent.UITest
             this.platform = platform;
         }
 
-        [SetUp]
+        [OneTimeSetUp]
         public void BeforeEachTest()
         {
             app = AppInitializer.StartApp(platform);
@@ -49,36 +49,22 @@ namespace BuiltDifferent.UITest
             }
         }
 
-
-       
-
-
-        [Test]
-         public void View_Recipe()
-         {
-             //T.1
-
-             if (platform == Platform.Android)
-             {
-                 app.Tap(x => x.Marked("Meals"));
-                app.Tap(e => e.Marked("MealName"));
-                 app.Tap(e => e.Marked("viewRecipeButton"));
-                
-                 Assert.IsTrue(app.Query(x => x.Id("NoResourceEntry-57").Text("Pancakes")).Any());
-
-             }
-             //if IOS
-             else
-             {
-                 return;
-             }
-         }
-
-         
-
-
-
-
-
+        [Test, Order(1)]
+        public void Test_View_Recipe()
+        {
+            if (platform == Platform.Android)
+            {
+                app.Tap(e => e.Text("Meals"));
+                app.ScrollDown();
+                app.Tap(e => e.Text("Pancakes"));
+                app.Tap(e => e.Marked("viewRecipeButton"));
+                app.WaitForElement(x => x.Marked("MealTitleRecipe"));
+                Assert.IsTrue(app.Query(x => x.Marked("MealTitleRecipe").Text("Pancakes")).Any());
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 }

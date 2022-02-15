@@ -22,8 +22,7 @@
                     <Entry Text="{Binding ImageLink}" Placeholder="{x:Static resource:AppResource.CoachAddMealImageLabel}" Keyboard="Text"/>
                     <Label Text="Date"/>
                     <DatePicker MinimumDate="{x:Static sys:DateTime.Now}" Date="{Binding Day}" HorizontalOptions="Center"/>
-                    <Button AutomationId="SaveButton" Grid.Row="0" BorderColor="{StaticResource RedPrimary}" BorderWidth="1" FontAttributes="Bold" BackgroundColor="{StaticResource RedPrimary}" BorderRadius="35" TextColor="White" 
-                            HorizontalOptions="End" VerticalOptions="End" WidthRequest="70" HeightRequest="70" Margin="0,0,20,22" Command="{Binding SaveCommand}"/>
+                    <Button  AutomationId="SaveButton" Margin="10" Text="{x:Static resource:AppResource.SaveButton}" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SaveCommand}"/>
                 </StackLayout>
             </ScrollView>
         </Grid>

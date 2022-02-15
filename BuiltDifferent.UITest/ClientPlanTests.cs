@@ -9,16 +9,19 @@ using Xamarin.UITest;
 namespace BuiltDifferent.UITest {
     [TestFixture(Platform.Android)]
     //[TestFixture(Platform.iOS)]
-    public class ClientPlanTests {
+    public class ClientPlanTests
+    {
         IApp app;
         Platform platform;
 
-        public ClientPlanTests(Platform platform) {
+        public ClientPlanTests(Platform platform)
+        {
             this.platform = platform;
         }
 
         [OneTimeSetUp]
-        public void OneTimeSetUp() {
+        public void OneTimeSetUp()
+        {
             app = AppInitializer.StartApp(platform);
 
             app.WaitForElement(e => e.Marked("Login"));
@@ -36,47 +39,64 @@ namespace BuiltDifferent.UITest {
             app.WaitForElement(e => e.Marked("PreviousWeekButton"));
         }
 
+
         [Test, Order(1)]
-        public void Test_Complete_Workout() {
-            if(platform == Platform.Android) {
+        public void Test_Complete_Workout()
+        {
+            if (platform == Platform.Android)
+            {
+                app.Tap(x => x.Text("Tu"));
                 app.Tap(e => e.Text("jogging"));
-                app.Tap(e => e.Button("Mark as Done"));
+                app.ScrollDownTo(e => e.Marked("MarkDoneButton"));
+                app.Tap(e => e.Marked("MarkDoneButton"));
                 app.Tap(e => e.Text("jogging"));
                 int markAsDoneButtons = app.Query(e => e.Button("Mark as Done")).Length;
                 Assert.AreEqual(0, markAsDoneButtons);
-            } else {
+            }
+            else
+            {
                 return;
             }
         }
 
         [Test, Order(2)]
-        public void Test_Uncomplete_Workout() {
-            if(platform == Platform.Android) {
+        public void Test_Uncomplete_Workout()
+        {
+            if (platform == Platform.Android)
+            {
                 app.Tap(e => e.Button("Unmark"));
                 int markAsDoneButtons = app.Query(e => e.Text("Unmark")).Length;
                 Assert.AreEqual(0, markAsDoneButtons);
-            } else {
+            }
+            else
+            {
                 return;
             }
         }
 
         [Test, Order(3)]
-        public void Test_Week_Selector_Navigation() {
-            if(platform == Platform.Android) {
+        public void Test_Week_Selector_Navigation()
+        {
+            if (platform == Platform.Android)
+            {
                 app.Tap(e => e.Marked("PreviousWeekButton"));
                 app.Tap(e => e.Marked("PreviousWeekButton"));
                 app.Tap(e => e.Marked("PreviousWeekButton"));
                 app.Tap(e => e.Marked("NextWeekButton"));
                 app.Tap(e => e.Marked("NextWeekButton"));
                 app.Tap(e => e.Marked("NextWeekButton"));
-            } else {
+            }
+            else
+            {
                 return;
             }
         }
 
         [Test, Order(4)]
-        public void Test_Week_Selector_Loading_Workouts() {
-            if(platform == Platform.Android) {
+        public void Test_Week_Selector_Loading_Workouts()
+        {
+            if (platform == Platform.Android)
+            {
                 int joggingWorkoutsPrevious = app.Query(e => e.Text("jogging")).Length;
                 app.Tap(e => e.Marked("PreviousWeekButton"));
                 app.Tap(e => e.Marked("PreviousWeekButton"));
@@ -85,37 +105,47 @@ namespace BuiltDifferent.UITest {
                 int joggingWorkoutsAfter = app.Query(e => e.Text("jogging")).Length;
 
                 Assert.AreNotEqual(joggingWorkoutsPrevious, joggingWorkoutsAfter);
-            } else {
+            }
+            else
+            {
                 return;
             }
         }
 
         [Test, Order(5)]
-        public void Test_Uneaten_Meal() {
-            if(platform == Platform.Android) {
+        public void Test_Uneaten_Meal()
+        {
+            if (platform == Platform.Android)
+            {
                 app.Tap(e => e.Text("Meals"));
+                app.Tap(x => x.Text("Tu"));
                 app.ScrollDownTo(c => c.Text("Sandwich"));
                 app.Tap(e => e.Text("Pancakes"));
                 app.Tap(e => e.Text("Unmark"));
                 int unmarkButtons = app.Query(e => e.Text("Unmark")).Length;
 
                 Assert.AreEqual(0, unmarkButtons);
-            } else {
+            }
+            else
+            {
                 return;
             }
         }
 
         [Test, Order(6)]
-        public void Test_Eaten_Meal() {
-            if(platform == Platform.Android) {
+        public void Test_Eaten_Meal()
+        {
+            if (platform == Platform.Android)
+            {
                 app.Tap(e => e.Text("Eaten"));
                 int eatenButtons = app.Query(e => e.Text("Eaten")).Length;
 
                 Assert.AreEqual(0, eatenButtons);
-            } else {
+            }
+            else
+            {
                 return;
             }
         }
-
     }
 }

@@ -6,7 +6,7 @@
              x:Class="BuiltDifferentMobileApp.Views.Coach.EditWorkoutPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding GoToProfile}">
+        <ToolbarItem Command="{Binding GoToProfile}" AutomationId="Profile">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
             </ToolbarItem.IconImageSource>

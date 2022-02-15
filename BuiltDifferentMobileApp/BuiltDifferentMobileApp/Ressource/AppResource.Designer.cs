@@ -160,7 +160,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create Workout.
+        ///   Looks up a localized string similar to Add Workout.
         /// </summary>
         public static string AddWorkoutPageTitle {
             get {

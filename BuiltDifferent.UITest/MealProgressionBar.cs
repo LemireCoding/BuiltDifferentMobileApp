@@ -68,21 +68,18 @@ namespace BuiltDifferent.UITest
                 app.WaitForElement(x => x.Marked("DailyProgressText"));
                 string originalProgress = app.Query(x => x.Marked("DailyProgressText"))[0].Text;
                 app.Tap(e => e.Marked("mealItemTitle"));
-                app.ScrollDown();
+                app.ScrollDownTo(x => x.Marked("MarkEatenButton"));
                 app.WaitForElement(x => x.Marked("MarkEatenButton"));
                 app.Tap(e => e.Marked("MarkEatenButton"));
                 app.Tap(c => c.Class("AppCompatImageButton"));
 
                 app.Tap(e => e.Marked("Log out"));
 
-
                 LoginClient();
                 app.Tap(x => x.Marked("Meals"));
                 app.WaitForElement(x => x.Marked("DailyProgressText"));
                 string newProgress = app.Query(x => x.Marked("DailyProgressText"))[0].Text;
                 Assert.AreNotEqual(originalProgress, newProgress);
-
-
             }
             else return;
         }

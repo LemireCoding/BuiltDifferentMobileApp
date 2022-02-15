@@ -43,7 +43,7 @@
 
                 <StackLayout Grid.Row="1" Grid.Column="1">
                     <StackLayout Orientation="Vertical">
-                        <Image Source="{Binding PreviewPicture}" HeightRequest="175"/>
+                        <Image Source="{Binding PreviewPicture}" HeightRequest="175" AutomationId="ProfilePicturePreview"/>
                         <Button Text="Upload Profile Picture (png)" Command="{Binding UploadImageCommand}" IsEnabled="{Binding IsEnabled}" AutomationId="ProfilePicturePicker"/>
                     </StackLayout>
                 </StackLayout>
@@ -51,7 +51,7 @@
                     <StackLayout>
                         <Label Text="{x:Static resource:AppResource.FullNamePlaceholder}" />
                         <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}" >
-                            <Entry IsEnabled="{Binding IsEnabled}"  Text="{Binding Name}"/>
+                            <Entry IsEnabled="{Binding IsEnabled}"  Text="{Binding Name}" AutomationId="Name"/>
                         </Frame>
                         <Label Text="{x:Static resource:AppResource.StartWeightLabel}" />
                         <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">

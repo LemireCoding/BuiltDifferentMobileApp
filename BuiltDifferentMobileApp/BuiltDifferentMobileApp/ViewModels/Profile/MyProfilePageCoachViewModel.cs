@@ -147,13 +147,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             }
         }
 
-        private bool isEnabled;
-        public bool IsEnabled
-        {
-            get => isEnabled;
-            set => SetProperty(ref isEnabled, value);
-        }
-
         private int profilePictureId;
         public int ProfilePictureId
         {
@@ -171,6 +164,13 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
                 OnPropertyChanged(nameof(IsEnabled));
 
             }
+        }
+
+        private bool isEnabled;
+        public bool IsEnabled
+        {
+            get => isEnabled;
+            set => SetProperty(ref isEnabled, value);
         }
 
         public object PreviewPicture { get; set; }
@@ -200,8 +200,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             IsVerified = false;
             Description = "";
             Pricing = 0.0;
-            ProfilePictureId = 0;
             PayPalLink = "";
+            ProfilePictureId = 0;
 
             PreviewPicture = null;
             ProfilePicture = null;
@@ -234,7 +234,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             var userInfo = await networkService.GetAsync<Models.Coach>(APIConstants.GetProfileUri());
             if (userInfo == null)
             {
-                await Application.Current.MainPage.DisplayAlert("Could not load client's profile!", "Returning to previous page", "OK");
+                await Application.Current.MainPage.DisplayAlert("Could not load coach's profile!", "Returning to previous page", "OK");
                 await Shell.Current.GoToAsync("..");
                 IsBusy = false;
                 return;
@@ -347,12 +347,11 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
                 if (multipartFormContent == null)
                 {
                     IsBusy = false;
-                    return;
                 }
 
-                await networkService.PostAsyncHttpResponseMessage(APIConstants.PostUploadProfilePicture(), multipartFormContent, true);
+                var picture = await networkService.PostAsyncHttpResponseMessage(APIConstants.PostUploadProfilePicture(), multipartFormContent, true);
 
-                var profile = new CoachProfileDTO(Name, UserId, Type, IsAvailable, OffersMeal, OffersWorkout, CertificationId, Gender, IsVerified, Description, Pricing, ProfilePictureId, PayPalLink);
+                var profile = new CoachProfileDTO(Name, UserId, Type, IsAvailable, OffersMeal, OffersWorkout, CertificationId, Gender, IsVerified, Description, Pricing, PayPalLink);
 
                 if (profile == null)
                 {

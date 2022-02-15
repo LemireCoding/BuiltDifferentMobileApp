@@ -22,7 +22,7 @@ namespace BuiltDifferent.UITest
             this.platform = platform;
         }
 
-        [SetUp]
+        [OneTimeSetUp]
         public void BeforeEachTest()
         {
             app = AppInitializer.StartApp(platform);
@@ -54,6 +54,7 @@ namespace BuiltDifferent.UITest
         {
             if (platform == Platform.Android)
             {
+                app.WaitForElement(c => c.Marked("Client"));
                 app.SwipeRightToLeft(e => e.Marked("Client"));
                 app.WaitForElement(c => c.Marked("Cancel").Parent().Class("AlertDialogLayout"));
                 app.Tap("Cancel");
@@ -63,19 +64,21 @@ namespace BuiltDifferent.UITest
         }
 
         [Test, Order(2)]
-        public void Canceled_Client_Remove()
+        public void Client_Remove()
         {
             if (platform == Platform.Android)
             {
                 if (platform == Platform.Android)
                 {
-
+                    app.WaitForElement(c => c.Marked("Client"));
+                    app.Tap(x => x.Id("search_bar"));
+                    app.EnterText(e => e.Id("search_src_text"), "sam");
                     app.SwipeRightToLeft(e => e.Marked("Client"));
                     app.WaitForElement(c => c.Marked("Cancel").Parent().Class("AlertDialogLayout"));
                     app.Tap("Confirm");
                     app.WaitForElement(c => c.Marked("OK").Parent().Class("AlertDialogLayout"));
                     app.Tap("OK");
-                    Assert.IsFalse(app.Query(x => x.Marked("ClientName").Text("Bob Jones")).Any());
+                    Assert.IsFalse(app.Query(x => x.Marked("ClientName").Text("Coach Chloe")).Any());
                 }
                 else return;
             }

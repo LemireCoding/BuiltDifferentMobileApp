@@ -67,7 +67,11 @@ namespace BuiltDifferent.UITest {
 
                 app.EnterText(x => x.Marked("Description"), "COACH DESCRIPTION");
 
-                app.EnterText(x => x.Marked("CoachPricing"), "69.00");
+                app.EnterText(x => x.Marked("CoachPricing"), "10.00");
+
+                app.EnterText(x => x.Marked("PayPalLink"), "http://paypal.me.com");
+
+                app.Tap(x => x.Marked("OfferMeals"));
 
                 app.DismissKeyboard();
 
@@ -84,7 +88,17 @@ namespace BuiltDifferent.UITest {
         [Test, Order(3)]
         public void Test_Missing_Certification_Error() {
             if(platform == Platform.Android) {
-                app.EnterText(x => x.Marked("CustomGender"), "Coach");
+                app.Tap(x => x.Marked("GenderPicker"));
+
+                app.Tap(x => x.Text("Male"));
+
+                app.EnterText(x => x.Marked("Description"), "COACH DESCRIPTION");
+
+                app.EnterText(x => x.Marked("CoachPricing"), "10.00");
+
+                app.EnterText(x => x.Marked("PayPalLink"), "http://paypal.me.com");
+
+                app.Tap(x => x.Marked("OfferMeals"));
 
                 app.Tap(x => x.Marked("Submit"));
 

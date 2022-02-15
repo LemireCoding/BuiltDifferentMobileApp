@@ -22,7 +22,7 @@ namespace BuiltDifferent.UITest
             this.platform = platform;
         }
 
-        [SetUp]
+        [OneTimeSetUp]
         public void BeforeEachTest()
         {
             app = AppInitializer.StartApp(platform);
@@ -38,6 +38,9 @@ namespace BuiltDifferent.UITest
 
             app.WaitForElement(e => e.Marked("Login"));
             app.Tap(e => e.Marked("Login"));
+
+            app.WaitForElement(e => e.Marked("Profile"));
+            app.Tap(x => x.Marked("Profile"));
         }
 
         private void SaveScreenshot([CallerMemberName] string title = "", [CallerLineNumber] int lineNumber = -1)
@@ -52,20 +55,21 @@ namespace BuiltDifferent.UITest
         //will look at for IOS testing(will replicate what is seen on actual physical device
         //to find out tree and ids
 
-        [Test]
-        public void OpenRepl()
+        //[Test]
+        //public void OpenRepl()
+        //{
+        //    app.Repl();
+        //}
+
+        [Test, Order(1)]
+        public void edit_mode_off_on_Appearing()
         {
-            app.Repl();
-        }
-        public void navigate_to_profile()
-        {
-            //T.1.3
+             
 
             if (platform == Platform.Android)
             {
-                app.Tap(x => x.Marked("Profile"));
-                app.WaitForElement(x => x.Marked("Title"));
-                Assert.IsTrue(app.Query(x => x.Marked("Title").Text("Your Info")).Any());
+                app.WaitForElement("NameInput");
+                Assert.IsFalse(app.Query(x => x.Marked("NameInput")).FirstOrDefault().Enabled);
             }
             //if IOS
             else
@@ -74,67 +78,24 @@ namespace BuiltDifferent.UITest
             }
         }
 
-        [Test]
-        public void submit_for_update()
-        {
-            //T.1.3
-
-            if (platform == Platform.Android)
-            {
-                app.Tap(x => x.Marked("Profile"));
-                app.Tap(x => x.Marked("EditButton"));
-                app.Tap(x => x.Marked("NameInput"));
-                app.EnterText("Blah");
-                app.DismissKeyboard();
-                app.Tap(x => x.Marked("Submit"));
-                app.WaitForElement("message");
-                Assert.IsTrue(app.Query(x => x.Id("message").Text("Profile Saved")).Any());
-            }
-            //if IOS
-            else
-            {
-                return;
-            }
-        }
-
-        [Test]
-        public void submit_for_update_empty_field()
-        {
-            //T.1.3
-
-            if (platform == Platform.Android)
-            {
-                app.Tap(x => x.Marked("Profile"));
-                app.Tap(x => x.Marked("EditButton"));
-                app.Tap(x => x.Marked("NameInput"));
-                app.ClearText(x => x.Marked("Name_Container"));
-                app.Tap(x => x.Marked("Submit"));
-                app.WaitForElement("message");
-                Assert.IsTrue(app.Query(x => x.Id("message").Text("Please fill ALL of the fields")).Any());
-            }
-            //if IOS
-            else
-            {
-                return;
-            }
-        }
-
-        [Test]
+        [Test, Order(2)]
         public void submit_for_update_name_change()
         {
-            //T.1.3
+             
 
             if (platform == Platform.Android)
             {
-                app.Tap(x => x.Marked("Profile"));
                 app.Tap(x => x.Marked("EditButton"));
                 app.Tap(x => x.Marked("NameInput"));
-                app.ClearText(x => x.Marked("Name_Container"));
+                app.ClearText(x => x.Marked("NameInput"));
                 app.EnterText("Blahblah");
                 app.DismissKeyboard();
+                app.ScrollDownTo(x => x.Marked("Submit"));
                 app.Tap(x => x.Marked("Submit"));
                 app.WaitForElement("message");
                 app.Tap(x => x.Text("OK"));
+                app.Back();
+                app.Tap(x => x.Marked("Profile"));
                 Assert.IsTrue(app.Query(x => x.Marked("NameInput").Text("Blahblah")).Any());
             }
             //if IOS
@@ -144,15 +105,14 @@ namespace BuiltDifferent.UITest
             }
         }
 
-        [Test]
-        public void edit_mode_off_on_Appearing()
-        {
-            //T.1.3
 
+        [Test, Order(3)]
+        public void enter_edit_mode()
+        {
             if (platform == Platform.Android)
             {
-                app.Tap(x => x.Marked("Profile"));
-                Assert.IsFalse(app.Query(x => x.Marked("Name")).FirstOrDefault().Enabled);
+                app.Tap(x => x.Marked("EditButton"));
+                Assert.IsTrue(app.Query(x => x.Marked("NameInput")).FirstOrDefault().Enabled);
             }
             //if IOS
             else
@@ -161,16 +121,70 @@ namespace BuiltDifferent.UITest
             }
         }
 
-        [Test]
-        public void enter_edit_mode()
+        [Test, Order(4)]
+        public void submit_for_update()
         {
-            //T.1.3
+             
 
             if (platform == Platform.Android)
             {
-                app.Tap(x => x.Marked("Profile"));
+                app.Tap(x => x.Marked("NameInput"));
+                app.ClearText(x => x.Marked("NameInput"));
+                app.EnterText("Blah");
+                app.DismissKeyboard();
+                app.ScrollDownTo(x => x.Marked("Submit"));
+                app.Tap(x => x.Marked("Submit"));
+                app.WaitForElement("message");
+                Assert.IsTrue(app.Query(x => x.Id("message").Text("Profile Saved")).Any());
+                app.Tap("OK");
+            }
+            //if IOS
+            else
+            {
+                return;
+            }
+        }
+
+        // MUST MANUALLY SELECT Picture FOR THIS TEST
+        [Test, Order(5)]
+        public void Upload_Picture()
+        {
+            if (platform == Platform.Android)
+            {
                 app.Tap(x => x.Marked("EditButton"));
-                Assert.IsTrue(app.Query(x => x.Marked("Name")).FirstOrDefault().Enabled);
+                app.ScrollUpTo(x => x.Marked("ProfilePicturePicker"));
+                app.Tap(x => x.Marked("ProfilePicturePicker"));
+
+                app.ScrollDownTo(x => x.Marked("Submit"));
+                app.WaitForElement(x => x.Marked("Submit"));
+                app.Tap(x => x.Marked("Submit"));
+                app.ScrollUpTo(x => x.Marked("ProfilePicturePreview"));
+                var ProfilePicturePreview = app.Query(x => x.Marked("ProfilePicturePreview"));
+                Assert.IsNotEmpty(ProfilePicturePreview);
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        [Test, Order(6)]
+        public void submit_for_update_empty_field()
+        {
+
+
+            if (platform == Platform.Android)
+            {
+                app.Tap(x => x.Marked("EditButton"));
+                app.ScrollUpTo(x => x.Marked("NameInput"));
+                app.Tap(x => x.Marked("NameInput"));
+                app.ClearText(x => x.Marked("NameInput"));
+                app.DismissKeyboard();
+                app.ScrollDownTo(x => x.Marked("Submit"));
+                app.Tap(x => x.Marked("Submit"));
+                app.WaitForElement("message");
+                Assert.IsTrue(app.Query(x => x.Id("message").Text("Please fill ALL of the fields")).Any());
+                app.Tap("OK");
             }
             //if IOS
             else
