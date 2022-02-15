@@ -37,14 +37,14 @@
                         </StackLayout>
 
                         <StackLayout>
-                            <Label Text="Pricing" FontAttributes="Bold"/>
+                            <Label Text="{x:Static translate:AppResource.CoachSelectionPriceTitleLabel}" FontAttributes="Bold"/>
                             <Entry Text="{Binding Pricing}" Keyboard="Numeric" Placeholder="29.99" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
                                    AutomationId="CoachPricing" />
                         </StackLayout>
 
                         <StackLayout>
                             <StackLayout>
-                                <Label Text="PayPal Link" FontAttributes="Bold"/>
+                                <Label Text="{x:Static translate:AppResource.PayPalLink}" FontAttributes="Bold"/>
                                 <Entry Text="{Binding PayPalLink}" Keyboard="Text" Placeholder="https://paypal.me/username123" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}"
                                    AutomationId="PayPalLink" />
                             </StackLayout>

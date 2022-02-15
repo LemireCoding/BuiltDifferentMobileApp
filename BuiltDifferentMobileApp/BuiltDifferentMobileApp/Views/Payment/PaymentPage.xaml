@@ -22,21 +22,21 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="100" />
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Grid.Column="1" Text="Payment Info" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" AutomationId="Title"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="{x:Static resource:AppResource.PaymentInfo}" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" AutomationId="Title"/>
                 <StackLayout Grid.Row="1" Grid.Column="1">
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Coach: " FontSize="Medium" FontAttributes="Bold"/>
+                        <Label Text="{x:Static resource:AppResource.CoachName}" FontSize="Medium" FontAttributes="Bold"/>
                         <Label Text="{Binding CoachName}" FontSize="Body"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Client: " FontSize="Medium" FontAttributes="Bold"/>
+                        <Label Text="{x:Static resource:AppResource.ClientName}" FontSize="Medium" FontAttributes="Bold"/>
                         <Label Text="{Binding ClientName}" FontSize="Body"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Price: " FontSize="Medium" FontAttributes="Bold"/>
+                        <Label Text="{x:Static resource:AppResource.CoachSelectionPriceTitleLabel}" FontSize="Medium" FontAttributes="Bold"/>
                         <Label Text="{Binding Price, StringFormat='{0:C}'}" FontSize="Body"/>
                     </StackLayout>
-                    <Button Grid.Row="2" Grid.Column="1" BackgroundColor="{StaticResource RedSecondary}" CornerRadius="20" TextColor="White" Command="{Binding MakeAPaymentCommand}" Text="Make Payment" VerticalOptions="CenterAndExpand" AutomationId="PaymentButton"/>
+                    <Button Grid.Row="2" Grid.Column="1" BackgroundColor="{StaticResource RedSecondary}" CornerRadius="20" TextColor="White" Command="{Binding MakeAPaymentCommand}" Text="{x:Static resource:AppResource.MakePayment}" VerticalOptions="CenterAndExpand" AutomationId="PaymentButton"/>
                 </StackLayout>
             </Grid>
             

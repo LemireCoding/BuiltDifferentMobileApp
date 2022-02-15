@@ -4,7 +4,7 @@
              x:Class="BuiltDifferentMobileApp.Views.Coach.CoachSummaryReportPage"
              xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Coach"
              xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource" 
-             Title="Reports"
+             Title="{x:Static resource:AppResource.Reports}"
              x:Name="MyCoachSummaryReportPage">
     <ContentPage.Content>
         <RefreshView IsRefreshing="{Binding IsBusy}"
@@ -21,25 +21,25 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <StackLayout Grid.Row="0">
-                            <Label Text="Weekly Report" FontSize="Large" HorizontalOptions="CenterAndExpand" AutomationId="Title"/>
-                        </StackLayout>
+                            <StackLayout Grid.Row="0">
+                                <Label Text="{x:Static resource:AppResource.WeeklyReport}" FontSize="Large" HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
 
-                        <StackLayout Grid.Row="1" Orientation="Horizontal">
-                            <Label Text="Current Period:" FontAttributes="Bold" />
+                            <StackLayout Grid.Row="1" Orientation="Horizontal">
+                            <Label Text="{x:Static resource:AppResource.CurrentPeriod}" FontAttributes="Bold" />
                             <Label Text="{Binding coachReport.startDate, StringFormat='Start: {0:d/M/yyyy}'}"/>
                             <Label Text="{Binding coachReport.endDate, StringFormat='End: {0:d/M/yyyy}'}"/>
                         </StackLayout>
 
-                        <StackLayout Grid.Row="2" Orientation="Horizontal">
-                            <Label Text="Coach Name:"  FontAttributes="Bold"/>
-                            <Label Text="{Binding coachReport.coachName}"/>
-                        </StackLayout>
-
+                            <StackLayout Grid.Row="2" Orientation="Horizontal">
+                                <Label Text="{x:Static resource:AppResource.CoachName}"  FontAttributes="Bold"/>
+                                <Label Text="{Binding coachReport.coachName}"/>
+                            </StackLayout>
+                        
                         <StackLayout Grid.Row="3" Orientation="Horizontal">
-                            <Label Text="# of Clients:"  FontAttributes="Bold"/>
-                            <Label Text="{Binding coachReport.numberOfClients}" AutomationId="NumberOfClients"/>
-                        </StackLayout>
+                            <Label Text="{x:Static resource:AppResource.NumberOfClients}"  FontAttributes="Bold"/>
+                            <Label Text="{Binding coachReport.numberOfClients}"/>
+                          </StackLayout>
 
                         <StackLayout Grid.Row="4">
                             <Frame BackgroundColor="{StaticResource ExtraLightGrey}">
@@ -78,12 +78,11 @@
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
                                             <BoxView BackgroundColor="{StaticResource RedSecondary}" Grid.ColumnSpan="5"/>
-
-                                            <Label Grid.Column="0" Text="Picture" FontAttributes="Bold" TextColor="White" LineBreakMode="WordWrap"/>
-                                            <Label Grid.Column="1" Text="Client Name" FontAttributes="Bold" TextColor="White" LineBreakMode="WordWrap"/>
-                                            <Label Grid.Column="2" Text="BMI" FontAttributes="Bold" TextColor="White" LineBreakMode="WordWrap"/>
-                                            <Label Grid.Column="3" Text="Calories Consumed" FontAttributes="Bold" TextColor="White" LineBreakMode="WordWrap"/>
-                                            <Label Grid.Column="4" Text="Workouts Done" FontAttributes="Bold" TextColor="White" LineBreakMode="WordWrap"/>
+                                            <Label Grid.Column="0" Text="{x:Static resource:AppResource.Picture}" FontAttributes="Bold" TextColor="White" LineBreakMode="WordWrap"/>
+                                            <Label Grid.Column="1" Text="{x:Static resource:AppResource.ClientName}" FontAttributes="Bold" TextColor="White" LineBreakMode="WordWrap"/>
+                                            <Label Grid.Column="2" Text="{x:Static resource:AppResource.BMI}" FontAttributes="Bold" TextColor="White" LineBreakMode="WordWrap"/>
+                                            <Label Grid.Column="3" Text="{x:Static resource:AppResource.CaloriesConsumed}" FontAttributes="Bold" TextColor="White" LineBreakMode="WordWrap"/>
+                                            <Label Grid.Column="4" Text="{x:Static resource:AppResource.WorkoutsDone}" FontAttributes="Bold" TextColor="White" LineBreakMode="WordWrap" />
                                         </Grid>
                                     </CollectionView.Header>
                                 </CollectionView>

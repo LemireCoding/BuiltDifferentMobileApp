@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
-             x:Class="BuiltDifferentMobileApp.Views.Coach.EditMealPage">
+             x:Class="BuiltDifferentMobileApp.Views.Coach.EditMealPage"
+             Title="{x:Static resource:AppResource.EditMealPageTitle}">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>

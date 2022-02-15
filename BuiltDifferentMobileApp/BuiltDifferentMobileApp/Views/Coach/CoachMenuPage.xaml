@@ -4,7 +4,6 @@
              x:Class="BuiltDifferentMobileApp.Views.Coach.CoachMenuPage"
             xmlns:mypages="clr-namespace:BuiltDifferentMobileApp.Views.Coach;assembly=BuiltDifferentMobileApp"
             xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Coach"
-            BackgroundColor="#660708" BarBackgroundColor="#660708"
-            Title="{Binding Title}">
+            BackgroundColor="#660708" BarBackgroundColor="#660708">
 
 </TabbedPage>

@@ -2,13 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BuiltDifferentMobileApp.Views.Admin.AdminApprovedCoachesPage"
-             Title="{Binding Title}">
-    
+             xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
+             Title="{x:Static resource:AppResource.ApprovedCoachPageTitle}">
+             
     <ContentPage.Content>
         <RefreshView IsRefreshing="{Binding IsBusy}"
                      Command="{Binding RefreshCommand}">
             <StackLayout BackgroundColor="{StaticResource PageBackground}" Padding="0,12,0,0" Margin="0">
-                <Label Text="Requests" FontSize="26" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="{StaticResource DarkGrey}"/>
+                <Label Text="{x:Static resource:AppResource.CoachRequests}" FontSize="26" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="{StaticResource DarkGrey}"/>
 
                 <CollectionView ItemsSource="{Binding Coaches}"
                                 ItemSizingStrategy="MeasureAllItems"
@@ -17,7 +18,7 @@
                                 SelectionChangedCommand="{Binding CoachSelectedCommand}">
 
                     <CollectionView.EmptyView>
-                        <Label Text="No verified coaches." />
+                        <Label Text="{x:Static resource:AppResource.NoVerifiedCoaches}" />
                     </CollectionView.EmptyView>
 
                     <CollectionView.ItemTemplate>
