@@ -1679,5 +1679,14 @@ namespace BuiltDifferentMobileApp.Ressource {
                 return ResourceManager.GetString("Picture", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Requests.
+        /// </summary>
+        public static string BMI {
+            get {
+                return ResourceManager.GetString("BMI", resourceCulture);
+            }
+        }
     }
 }
