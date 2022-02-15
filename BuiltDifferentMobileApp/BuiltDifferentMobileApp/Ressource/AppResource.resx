@@ -793,4 +793,12 @@
     <value>PayPal Link</value>
     <comment/>
   </data>
+  <data name="PaymentInfo" xml:space="preserve">
+    <value>Payment Info</value>
+    <comment/>
+  </data>
+  <data name="MakePayment" xml:space="preserve">
+    <value>Make Payment</value>
+    <comment/>
+  </data>
 </root>
