@@ -7,7 +7,7 @@
              xmlns:client="clr-namespace:BuiltDifferentMobileApp.ViewModels.Client"
              x:Class="BuiltDifferentMobileApp.Views.Client.ClientWorkoutPage"
              x:Name="TheWorkoutPageClient"
-             Title="Workouts">
+             Title="{x:Static resource:AppResource.ClientCoachCriteriaCoachingTypesWorkouts}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:BoolToColorButtonWorkoutDoneConverter x:Key="boolToColorButtonWorkoutDoneConverter" />
@@ -93,26 +93,45 @@
                                                                         Text="{Binding isCompleted, Converter={StaticResource boolToTextButtonWorkoutDoneConverter}}"
                                                                         Command="{Binding Source={x:Reference TheWorkoutPageClient}, Path=BindingContext.MarkDone}" CommandParameter="{Binding .}"/>
 
-                                                                    <Label 
+                                                                        <Label
                                                                         Grid.Column="1"
                                                                         HorizontalTextAlignment="Start"
-                                                                        Text="{Binding sets, StringFormat='{0} Sets'} "
                                                                         FontAttributes="Bold"
-                                                                        FontSize="Medium"/>
-                                                                        <!-- ="{Binding Reps, StringFormat='Sets {0}'}" -->
-                                                                    <Label 
-                                                                        Grid.Column="2"
-                                                                        HorizontalTextAlignment="Start"
-                                                                        Text="{Binding reps, StringFormat='{0} Reps'} "
-                                                                        FontAttributes="Bold"
-                                                                        FontSize="Medium" />
+                                                                        FontSize="Medium">
+                                                                <Label.FormattedText>
+                                                                <FormattedString>
+                                                                <Span Text="{Binding sets}" />
+                                                                <Span Text="{x:Static resource:AppResource.AddWorkoutPageWorkoutSets}" />
+                                                                </FormattedString>
+                                                                </Label.FormattedText>
+                                                                </Label>
 
                                                                     <Label 
                                                                         Grid.Column="2"
                                                                         HorizontalTextAlignment="Start"
-                                                                        Text="{Binding restTime, StringFormat='{0} Rest (s)'} "
                                                                         FontAttributes="Bold"
-                                                                        FontSize="Medium" />
+                                                                        FontSize="Medium" >
+                                                                        <Label.FormattedText>
+                                                                <FormattedString>
+                                                                <Span Text="{Binding reps}" />
+                                                                <Span Text="{x:Static resource:AppResource.AddWorkoutPageWorkoutReps}" />
+                                                                </FormattedString>
+                                                                </Label.FormattedText>
+                                                                </Label>
+                                                                
+
+                                                                    <Label 
+                                                                        Grid.Column="2"
+                                                                        HorizontalTextAlignment="Start"
+                                                                        FontAttributes="Bold"
+                                                                        FontSize="Medium" >
+                                                                        <Label.FormattedText>
+                                                                <FormattedString>
+                                                                <Span Text="{Binding restTime}" />
+                                                                <Span Text="{x:Static resource:AppResource.AddWorkoutPageRestTime}" />
+                                                                </FormattedString>
+                                                                </Label.FormattedText>
+                                                                </Label>
 
                                                                 </StackLayout>
 
@@ -128,7 +147,7 @@
                                 <CollectionView.EmptyView>
                                     <StackLayout HorizontalOptions="Center">
                                         <Label 
-                                            Text="Wait for your Coach to add Workouts"
+                                            Text="{x:Static resource:AppResource.WaitForCoachAddWorkouts}"
                                             HorizontalTextAlignment="Center"
                                             Padding="20,10,10,10"
                                             TextColor="White" />

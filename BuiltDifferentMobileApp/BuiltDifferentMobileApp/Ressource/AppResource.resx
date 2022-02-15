@@ -301,11 +301,11 @@
     <value>Workouts and Meals</value>
     <comment>15-ClientCoachCriteriaPage</comment>
   </data>
-  <data name="ClientCoachCriteriaCoachingTypesMeals" xml:space="preserve">
+  <data name="ClientCoachCriteriaCoachingTypesWorkouts" xml:space="preserve">
     <value>Workouts</value>
     <comment>15-ClientCoachCriteriaPage</comment>
   </data>
-  <data name="ClientCoachCriteriaCoachingTypesWorkouts" xml:space="preserve">
+  <data name="ClientCoachCriteriaCoachingTypesMeals" xml:space="preserve">
     <value>Meals</value>
     <comment>15-ClientCoachCriteriaPage</comment>
   </data>
@@ -338,7 +338,7 @@
     <comment>7-AddMealPage</comment>
   </data>
   <data name="CoachAddMealRecipeLabel" xml:space="preserve">
-    <value>Type the ingredients and cook time.</value>
+    <value>Write the ingredients and cook time.</value>
     <comment>7-AddMealPage</comment>
   </data>
   <data name="CoachAddMealTitle" xml:space="preserve">
@@ -715,6 +715,26 @@
   </data>
   <data name="ApprovedCoachPageTitle" xml:space="preserve">
     <value>Verified Coaches</value>
+    <comment/>
+  </data>
+  <data name="WaitForCoachToAddMeals" xml:space="preserve">
+    <value>Wait for your coach to add a meal plan.</value>
+    <comment/>
+  </data>
+  <data name="ClientRequestSent" xml:space="preserve">
+    <value>Sent : </value>
+    <comment/>
+  </data>
+  <data name="ClientRequestApprovalDate" xml:space="preserve">
+    <value>Approved on : </value>
+    <comment/>
+  </data>
+  <data name="WaitForCoachAddWorkouts" xml:space="preserve">
+    <value>Wait for your coach to add a workout plan.</value>
+    <comment/>
+  </data>
+  <data name="Recipe" xml:space="preserve">
+    <value>Recipe</value>
     <comment/>
   </data>
 </root>

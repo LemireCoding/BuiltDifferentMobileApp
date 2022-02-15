@@ -63,17 +63,33 @@
                                                                         <ColumnDefinition Width="2*"/>
                                                                         <ColumnDefinition />
                                                                     </Grid.ColumnDefinitions>
-                                                                    <Label 
-                                                                        VerticalTextAlignment="Center"
+
+                                                                    <Label VerticalTextAlignment="Center"
                                                                         Grid.Row="0"
                                                                     Grid.Column="0" 
                                                                     Text="{Binding requestDate, StringFormat='Sent : {0}'}"
                                                                     FontAttributes="Bold"
                                                                     FontSize="Medium" 
-                                                                    TextColor="{StaticResource LightGrey}"/>
+                                                                    TextColor="{StaticResource LightGrey}" >
+                                                                <Label.FormattedText>
+                                                                <FormattedString>
+                                                                <Span Text="{Binding requestDate}" />
+                                                                <Span Text="{x:Static resource:AppResource.ClientRequestSent}" />
+                                                                </FormattedString>
+                                                                </Label.FormattedText>
+                                                                </Label>
+
                                                                     <Label   FontAttributes="Bold"
                                                                     FontSize="Medium" 
-                                                                    TextColor="{StaticResource LightGrey}" Grid.Row="1" Grid.Column="0"  IsVisible="False"  Text="{Binding approvalDate, StringFormat='Approved on : {0}'}">
+                                                                    TextColor="{StaticResource LightGrey}" 
+                                                                    Grid.Row="1" Grid.Column="0"  
+                                                                    IsVisible="False"  
+                                                                    <Label.FormattedText>
+                                                                <FormattedString>
+                                                                <Span Text="{Binding approvalDate}" />
+                                                                <Span Text="{x:Static resource:AppResource.ClientRequestApprovalDate}" />
+                                                                </FormattedString>
+                                                                </Label.FormattedText>
                                                                         <Label.Triggers>
                                                                             <DataTrigger TargetType="Label" Binding="{Binding status}" Value="APPROVED">
                                                                                 <Setter Property="IsVisible" Value="True"/>

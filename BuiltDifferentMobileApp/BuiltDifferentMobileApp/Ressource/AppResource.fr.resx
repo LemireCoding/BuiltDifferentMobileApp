@@ -281,11 +281,11 @@
     <value>Exercices et Repas</value>
     <comment>15-ClientCoachCriteriaPage</comment>
   </data>
-  <data name="ClientCoachCriteriaCoachingTypesMeals" xml:space="preserve">
+  <data name="ClientCoachCriteriaCoachingTypesWorkouts" xml:space="preserve">
     <value>Exercices</value>
     <comment>15-ClientCoachCriteriaPage</comment>
   </data>
-  <data name="ClientCoachCriteriaCoachingTypesWorkouts" xml:space="preserve">
+  <data name="ClientCoachCriteriaCoachingTypesMeals" xml:space="preserve">
     <value>Repas</value>
     <comment>15-ClientCoachCriteriaPage</comment>
   </data>
@@ -695,6 +695,26 @@
   </data>
   <data name="ApprovedCoachPageTitle" xml:space="preserve">
     <value>Entraîneur vérifié</value>
+    <comment/>
+  </data>
+  <data name="WaitForCoachToAddMeals" xml:space="preserve">
+    <value>Attendez que votre entraîneur ajoute un plan de repas.</value>
+    <comment/>
+  </data>
+  <data name="ClientRequestSent" xml:space="preserve">
+    <value>Envoyer : </value>
+    <comment/>
+  </data>
+  <data name="ClientRequestApprovalDate" xml:space="preserve">
+    <value>Approvée le : </value>
+    <comment/>
+  </data>
+  <data name="AWaitForCoachAddWorkouts" xml:space="preserve">
+    <value>Attendez que votre entraîneur ajoute un plan d'entraînement.</value>
+    <comment/>
+  </data>
+  <data name="Recipe" xml:space="preserve">
+    <value>Recette</value>
     <comment/>
   </data>
 </root>
