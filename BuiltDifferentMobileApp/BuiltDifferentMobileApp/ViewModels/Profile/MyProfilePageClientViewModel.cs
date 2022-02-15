@@ -91,7 +91,13 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             get => isEnabled;
             set => SetProperty(ref isEnabled, value);
         }
-        private int UserId;
+        private int userId;
+        public int UserId
+        {
+            get => userId;
+            set => SetProperty(ref userId, value);
+        }
+
         public object PreviewPicture { get; set; }
 
         public AsyncCommand SubmitCommand { get; }
