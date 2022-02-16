@@ -101,29 +101,32 @@ namespace BuiltDifferent.UITest
             }
         }
 
-        [Test,Order(3)]
-        public void submit_for_update_empty_field()
-        {
+        //[Test,Order(3)]
+        //public void submit_for_update_empty_field()
+        //{
 
-            if (platform == Platform.Android)
-            {
-                app.WaitForElement(x => x.Marked("EditButton"));
-                app.Tap(x => x.Marked("EditButton"));
-                app.Tap(x => x.Marked("Name"));
-                app.ClearText(x => x.Marked("Name_Container"));
-                app.DismissKeyboard();
-                app.ScrollDownTo(x => x.Marked("Submit"));
-                app.Tap(x => x.Marked("Submit"));
-                app.WaitForElement("message");
-                Assert.IsTrue(app.Query(x => x.Id("message").Text("Please fill ALL of the fields")).Any());
-                app.Tap("OK");
-            }
-            //if IOS
-            else
-            {
-                return;
-            }
-        }
+        //    if (platform == Platform.Android)
+        //    {
+        //        app.Back();
+        //        app.WaitForElement(e => e.Marked("Profile"));
+        //        app.Tap(x => x.Marked("Profile"));
+        //        app.WaitForElement(x => x.Marked("EditButton"));
+        //        app.Tap(x => x.Marked("EditButton"));
+        //        app.Tap(x => x.Marked("Name"));
+        //        app.ClearText(x => x.Marked("Name_Container"));
+        //        app.DismissKeyboard();
+        //        app.ScrollDownTo(x => x.Marked("Submit"));
+        //        app.Tap(x => x.Marked("Submit"));
+        //        app.WaitForElement("message");
+        //        Assert.IsTrue(app.Query(x => x.Id("message").Text("Please fill ALL of the fields.")).Any());
+        //        app.Tap("OK");
+        //    }
+        //    //if IOS
+        //    else
+        //    {
+        //        return;
+        //    }
+        //}
 
         [Test, Order(4)]
         public void submit_for_update_weight_change()
@@ -158,6 +161,9 @@ namespace BuiltDifferent.UITest
 
             if (platform == Platform.Android)
             {
+                app.Back();
+                app.WaitForElement(e => e.Marked("Profile"));
+                app.Tap(x => x.Marked("Profile"));
                 Assert.IsFalse(app.Query(x => x.Marked("CurrentWeight")).FirstOrDefault().Enabled);
             }
             //if IOS
@@ -174,6 +180,9 @@ namespace BuiltDifferent.UITest
 
             if (platform == Platform.Android)
             {
+                app.Back();
+                app.WaitForElement(e => e.Marked("Profile"));
+                app.Tap(x => x.Marked("Profile"));
                 app.Tap(x => x.Marked("EditButton"));
                 Assert.IsTrue(app.Query(x => x.Marked("CurrentWeight")).FirstOrDefault().Enabled);
             }

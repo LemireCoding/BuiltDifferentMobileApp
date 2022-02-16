@@ -129,7 +129,7 @@ namespace BuiltDifferent.UITest
 
             if (platform == Platform.Android)
             {
-                app.ScrollUpTo(c => c.Marked("MealNameField"));
+                app.Tap("AddButton");
                 app.Tap(x => x.Marked("MealNameField"));
                 app.EnterText("Test Meal Name");
                 app.DismissKeyboard();
@@ -139,6 +139,7 @@ namespace BuiltDifferent.UITest
                 app.Tap(x => x.Marked("SaveButton"));
                 app.WaitForElement("message");
                 app.Tap(x => x.Text("OK"));
+                app.WaitForElement(x => x.Marked("MealPageTitle"));
                 app.ScrollDownTo(x => x.Text("Test Meal Name"));
                 Assert.IsTrue(app.Query(x => x.Text("Test Meal Name")).Any());
             }

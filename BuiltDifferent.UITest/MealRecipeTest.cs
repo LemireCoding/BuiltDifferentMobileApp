@@ -55,8 +55,10 @@ namespace BuiltDifferent.UITest
             if (platform == Platform.Android)
             {
                 app.Tap(e => e.Text("Meals"));
-                app.ScrollDown();
+                app.Tap(x => x.Text("We"));
+                
                 app.Tap(e => e.Text("Pancakes"));
+                app.ScrollDownTo(x => x.Marked("viewRecipeButton"));
                 app.Tap(e => e.Marked("viewRecipeButton"));
                 app.WaitForElement(x => x.Marked("MealTitleRecipe"));
                 Assert.IsTrue(app.Query(x => x.Marked("MealTitleRecipe").Text("Pancakes")).Any());

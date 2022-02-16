@@ -57,13 +57,13 @@ namespace BuiltDifferent.UITest
             if (platform == Platform.Android)
             {
                 app.Tap(e => e.Text("Meals"));
-                app.Tap(e => e.Text("Tu"));
-                app.ScrollDownTo(c => c.Text("Sandwich"));
-                app.Tap(e => e.Text("Sandwich"));
+                app.Tap(e => e.Text("We"));
+                app.Tap(e => e.Marked("mealItemTitle"));
+                app.ScrollDownTo(x => x.Marked("MarkEatenButton"));
                 app.Tap(e => e.Text("Eaten"));
                 int unmarkButtons = app.Query(e => e.Text("Unmark")).Length;
 
-                Assert.AreEqual(1, unmarkButtons);
+                Assert.AreEqual(0, unmarkButtons);
             }
             else
             {

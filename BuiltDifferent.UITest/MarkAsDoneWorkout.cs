@@ -57,8 +57,8 @@ namespace BuiltDifferent.UITest
         {
             if (platform == Platform.Android)
             {
-                app.Tap(e => e.Text("Tu"));
-                app.Tap(e => e.Text("jogging"));
+                app.Tap(e => e.Text("We"));
+                app.Tap(e => e.Marked("workoutItemTitle"));
                 app.ScrollDownTo(e => e.Marked("MarkDoneButton"));
                 app.Tap(e => e.Marked("MarkDoneButton"));
                 app.Tap(e => e.Text("jogging"));
