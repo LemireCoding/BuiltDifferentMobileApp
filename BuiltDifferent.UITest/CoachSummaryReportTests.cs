@@ -41,15 +41,17 @@ namespace BuiltDifferent.UITest
             app.DismissKeyboard();
 
             app.Tap(e => e.Marked("Login"));
+
+            app.Tap(c => c.Class("AppCompatImageButton"));
+
+            app.Tap(e => e.Marked("CoachReports"));
         }
         [Test, Order(1)]
         public void Navigate_To_ReportsPage()
         {
             if (platform == Platform.Android)
             {
-                app.Tap(c => c.Class("AppCompatImageButton"));
-                app.Tap(e => e.Marked("CoachReports"));
-                app.WaitForElement("Title");
+                app.WaitForElement(x => x.Marked("Title"));
                 Assert.IsTrue(app.Query(x => x.Marked("Title").Text("Weekly Report")).Any());
             }
             else return;
@@ -60,8 +62,6 @@ namespace BuiltDifferent.UITest
         {
             if (platform == Platform.Android)
             {
-                app.Tap(c => c.Class("AppCompatImageButton"));
-                app.Tap(e => e.Marked("CoachReports"));
                 app.WaitForElement("NumberOfClients");
                 Assert.IsTrue(app.Query(x => x.Marked("NumberOfClients").Text("2")).Any());
             }
@@ -73,8 +73,6 @@ namespace BuiltDifferent.UITest
         {
             if (platform == Platform.Android)
             {
-                app.Tap(c => c.Class("AppCompatImageButton"));
-                app.Tap(e => e.Marked("CoachReports"));
                 app.WaitForElement("ClientName");
                 Assert.IsTrue(app.Query(x => x.Marked("ClientName").Text("Bob Jones")).Any());
             }
@@ -85,10 +83,8 @@ namespace BuiltDifferent.UITest
         {
             if (platform == Platform.Android)
             {
-                app.Tap(c => c.Class("AppCompatImageButton"));
-                app.Tap(e => e.Marked("CoachReports"));
                 app.WaitForElement("ClientBMI");
-                Assert.IsTrue(app.Query(x => x.Marked("ClientBMI").Text("0")).Any());
+                Assert.IsTrue(app.Query(x => x.Marked("ClientBMI").Text("22")).Any());
             }
             else return;
         }
@@ -97,8 +93,6 @@ namespace BuiltDifferent.UITest
         {
             if (platform == Platform.Android)
             {
-                app.Tap(c => c.Class("AppCompatImageButton"));
-                app.Tap(e => e.Marked("CoachReports"));
                 app.WaitForElement("ClientCalories");
                 Assert.IsTrue(app.Query(x => x.Marked("ClientCalories").Text("400")).Any());
             }

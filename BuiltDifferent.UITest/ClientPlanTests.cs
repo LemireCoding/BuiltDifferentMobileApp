@@ -45,7 +45,7 @@ namespace BuiltDifferent.UITest {
         {
             if (platform == Platform.Android)
             {
-                app.Tap(x => x.Text("Tu"));
+                app.Tap(x => x.Text("We"));
                 app.Tap(e => e.Text("jogging"));
                 app.ScrollDownTo(e => e.Marked("MarkDoneButton"));
                 app.Tap(e => e.Marked("MarkDoneButton"));
@@ -79,6 +79,7 @@ namespace BuiltDifferent.UITest {
         {
             if (platform == Platform.Android)
             {
+                app.ScrollUpTo(e => e.Marked("PreviousWeekButton"));
                 app.Tap(e => e.Marked("PreviousWeekButton"));
                 app.Tap(e => e.Marked("PreviousWeekButton"));
                 app.Tap(e => e.Marked("PreviousWeekButton"));
@@ -98,6 +99,7 @@ namespace BuiltDifferent.UITest {
             if (platform == Platform.Android)
             {
                 int joggingWorkoutsPrevious = app.Query(e => e.Text("jogging")).Length;
+                app.ScrollUpTo(e => e.Marked("PreviousWeekButton"));
                 app.Tap(e => e.Marked("PreviousWeekButton"));
                 app.Tap(e => e.Marked("PreviousWeekButton"));
                 app.Tap(e => e.Marked("Day0Button"));
@@ -118,7 +120,7 @@ namespace BuiltDifferent.UITest {
             if (platform == Platform.Android)
             {
                 app.Tap(e => e.Text("Meals"));
-                app.Tap(x => x.Text("Tu"));
+                app.Tap(x => x.Text("We"));
                 app.ScrollDownTo(c => c.Text("Sandwich"));
                 app.Tap(e => e.Text("Pancakes"));
                 app.Tap(e => e.Text("Unmark"));

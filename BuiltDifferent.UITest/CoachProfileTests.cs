@@ -158,6 +158,7 @@ namespace BuiltDifferent.UITest
                 app.ScrollDownTo(x => x.Marked("Submit"));
                 app.WaitForElement(x => x.Marked("Submit"));
                 app.Tap(x => x.Marked("Submit"));
+                app.Tap(x => x.Text("OK"));
                 app.ScrollUpTo(x => x.Marked("ProfilePicturePreview"));
                 var ProfilePicturePreview = app.Query(x => x.Marked("ProfilePicturePreview"));
                 Assert.IsNotEmpty(ProfilePicturePreview);

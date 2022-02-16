@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.UITest;
 
@@ -45,7 +46,6 @@ namespace BuiltDifferent.UITest
         [Test]
         public void navigate_to_forgot_Password_Page()
         {
-            //T.1.1
 
             if (platform == Platform.Android)
             {
@@ -65,7 +65,6 @@ namespace BuiltDifferent.UITest
         [Test]
         public void enter_valid_email()
         {
-            //T.1.1
 
             if (platform == Platform.Android)
             {
@@ -77,6 +76,7 @@ namespace BuiltDifferent.UITest
                 app.DismissKeyboard();
                 app.Tap(x => x.Marked("Submit"));
                 app.WaitForElement("SuccessMessage");
+                Thread.Sleep(4000);
                 Assert.IsTrue(app.Query(x => x.Marked("SuccessMessage").Text("Thank You! If you have signed up with us previously, we will be sending you an email shortly with a link to reset your password.")).Any());
             }
             //if IOS
@@ -89,7 +89,6 @@ namespace BuiltDifferent.UITest
         [Test]
         public void enter_invalid_email()
         {
-            //T.1.1
 
             if (platform == Platform.Android)
             {
@@ -130,7 +129,6 @@ namespace BuiltDifferent.UITest
         [Test]
         public void email_not_found()
         {
-            //T.1.1
 
             if (platform == Platform.Android)
             {
