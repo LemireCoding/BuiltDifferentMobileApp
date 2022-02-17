@@ -67,6 +67,7 @@
                                                                     <Label VerticalTextAlignment="Center"
                                                                         Grid.Row="0"
                                                                     Grid.Column="0" 
+                                                                           LineBreakMode="WordWrap"
                                                                     Text="{Binding requestDate, StringFormat='Sent : {0}'}"
                                                                     FontAttributes="Bold"
                                                                     FontSize="Medium" 
@@ -81,15 +82,16 @@
 
                                                                     <Label   FontAttributes="Bold"
                                                                     FontSize="Medium" 
+                                                                              LineBreakMode="WordWrap"
                                                                     TextColor="{StaticResource LightGrey}" 
                                                                     Grid.Row="1" Grid.Column="0"  
                                                                     IsVisible="False">
-                                                                    <Label.FormattedText>
-                                                                <FormattedString>
-                                                                <Span Text="{Binding approvalDate}" />
-                                                                <Span Text="{x:Static resource:AppResource.ClientRequestApprovalDate}" />
-                                                                </FormattedString>
-                                                                </Label.FormattedText>
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding approvalDate}" />
+                                                                                <Span Text="{x:Static resource:AppResource.ClientRequestApprovalDate}" />
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
                                                                         <Label.Triggers>
                                                                             <DataTrigger TargetType="Label" Binding="{Binding status}" Value="APPROVED">
                                                                                 <Setter Property="IsVisible" Value="True"/>
@@ -99,6 +101,7 @@
 
                                                                     <Label   FontAttributes="Bold"
                                                                     FontSize="Medium" 
+                                                                              LineBreakMode="WordWrap"
                                                                     TextColor="{StaticResource LightGrey}" Grid.Row="1" Grid.Column="0" IsVisible="False" Text="{Binding approvalDate, StringFormat='Denied on : {0}'}">
                                                                         <Label.Triggers>
                                                                             <DataTrigger TargetType="Label" Binding="{Binding status}" Value="DENIED">
