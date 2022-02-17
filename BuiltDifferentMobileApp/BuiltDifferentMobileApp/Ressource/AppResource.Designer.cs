@@ -331,6 +331,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apply for approval.
+        /// </summary>
+        public static string ApplyApproval {
+            get {
+                return ResourceManager.GetString("ApplyApproval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply to be a coach.
         /// </summary>
         public static string ApplyToBeACoach {
@@ -394,6 +403,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Verified Coaches.
+        /// </summary>
+        public static string ApprovedCoachPageTitle {
+            get {
+                return ResourceManager.GetString("ApprovedCoachPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available for new clients?.
         /// </summary>
         public static string AvailabilityLabel {
@@ -417,6 +435,24 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string BadRequest {
             get {
                 return ResourceManager.GetString("BadRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BMI.
+        /// </summary>
+        public static string BMI {
+            get {
+                return ResourceManager.GetString("BMI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calories Consumed.
+        /// </summary>
+        public static string CaloriesConsumed {
+            get {
+                return ResourceManager.GetString("CaloriesConsumed", resourceCulture);
             }
         }
         
@@ -475,7 +511,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Workouts.
+        ///   Looks up a localized string similar to Meals.
         /// </summary>
         public static string ClientCoachCriteriaCoachingTypesMeals {
             get {
@@ -484,11 +520,20 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Meals.
+        ///   Looks up a localized string similar to Workouts.
         /// </summary>
         public static string ClientCoachCriteriaCoachingTypesWorkouts {
             get {
                 return ResourceManager.GetString("ClientCoachCriteriaCoachingTypesWorkouts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client Dashboard.
+        /// </summary>
+        public static string ClientDashboard {
+            get {
+                return ResourceManager.GetString("ClientDashboard", resourceCulture);
             }
         }
         
@@ -498,6 +543,51 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string ClientDashboardTitle {
             get {
                 return ResourceManager.GetString("ClientDashboardTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client Name.
+        /// </summary>
+        public static string ClientName {
+            get {
+                return ResourceManager.GetString("ClientName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Approved on : .
+        /// </summary>
+        public static string ClientRequestApprovalDate {
+            get {
+                return ResourceManager.GetString("ClientRequestApprovalDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Denied :.
+        /// </summary>
+        public static string ClientRequestDeniedDate {
+            get {
+                return ResourceManager.GetString("ClientRequestDeniedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sent : .
+        /// </summary>
+        public static string ClientRequestSent {
+            get {
+                return ResourceManager.GetString("ClientRequestSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clients.
+        /// </summary>
+        public static string Clients {
+            get {
+                return ResourceManager.GetString("Clients", resourceCulture);
             }
         }
         
@@ -556,7 +646,7 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Type the ingredients and cook time..
+        ///   Looks up a localized string similar to Write the ingredients and cook time..
         /// </summary>
         public static string CoachAddMealRecipeLabel {
             get {
@@ -615,6 +705,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string CoachClientRequestAccept {
             get {
                 return ResourceManager.GetString("CoachClientRequestAccept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coach Search.
+        /// </summary>
+        public static string CoachCriterias {
+            get {
+                return ResourceManager.GetString("CoachCriterias", resourceCulture);
             }
         }
         
@@ -736,6 +835,33 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Coach Name: .
+        /// </summary>
+        public static string CoachName {
+            get {
+                return ResourceManager.GetString("CoachName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coach Profile.
+        /// </summary>
+        public static string CoachRequestInfoTitle {
+            get {
+                return ResourceManager.GetString("CoachRequestInfoTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requests.
+        /// </summary>
+        public static string CoachRequests {
+            get {
+                return ResourceManager.GetString("CoachRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available Coach List.
         /// </summary>
         public static string CoachSelectionAvalibleListLabel {
@@ -844,11 +970,38 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current Period: .
+        /// </summary>
+        public static string CurrentPeriod {
+            get {
+                return ResourceManager.GetString("CurrentPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current Weight.
         /// </summary>
         public static string CurrentWeightLabel {
             get {
                 return ResourceManager.GetString("CurrentWeightLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date requested: .
+        /// </summary>
+        public static string DateRequested {
+            get {
+                return ResourceManager.GetString("DateRequested", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
             }
         }
         
@@ -1096,6 +1249,24 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Log out.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make Payment.
+        /// </summary>
+        public static string MakePayment {
+            get {
+                return ResourceManager.GetString("MakePayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Male.
         /// </summary>
         public static string MaleGender {
@@ -1114,6 +1285,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Menu.
+        /// </summary>
+        public static string Menu {
+            get {
+                return ResourceManager.GetString("Menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please upload your certification..
         /// </summary>
         public static string MissingCertificationError {
@@ -1128,6 +1308,24 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string MissingInputs {
             get {
                 return ResourceManager.GetString("MissingInputs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No verified coaches..
+        /// </summary>
+        public static string NoVerifiedCoaches {
+            get {
+                return ResourceManager.GetString("NoVerifiedCoaches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # of Clients: .
+        /// </summary>
+        public static string NumberOfClients {
+            get {
+                return ResourceManager.GetString("NumberOfClients", resourceCulture);
             }
         }
         
@@ -1186,6 +1384,60 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Payment.
+        /// </summary>
+        public static string Payment {
+            get {
+                return ResourceManager.GetString("Payment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment Info.
+        /// </summary>
+        public static string PaymentInfo {
+            get {
+                return ResourceManager.GetString("PaymentInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PayPal Link.
+        /// </summary>
+        public static string PayPalLink {
+            get {
+                return ResourceManager.GetString("PayPalLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pending Coaches.
+        /// </summary>
+        public static string PendingCoaches {
+            get {
+                return ResourceManager.GetString("PendingCoaches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Picture.
+        /// </summary>
+        public static string Picture {
+            get {
+                return ResourceManager.GetString("Picture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plan.
+        /// </summary>
+        public static string Plan {
+            get {
+                return ResourceManager.GetString("Plan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to What do you want to provide coaching for?.
         /// </summary>
         public static string PlanOffersHelpText {
@@ -1231,6 +1483,24 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recipe.
+        /// </summary>
+        public static string Recipe {
+            get {
+                return ResourceManager.GetString("Recipe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report.
+        /// </summary>
+        public static string Reports {
+            get {
+                return ResourceManager.GetString("Reports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You Have Not Made Any Requests Yet.
         /// </summary>
         public static string RequestCenterNoItem {
@@ -1245,6 +1515,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         public static string RequestCenterTitle {
             get {
                 return ResourceManager.GetString("RequestCenterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requests.
+        /// </summary>
+        public static string Requests {
+            get {
+                return ResourceManager.GetString("Requests", resourceCulture);
             }
         }
         
@@ -1321,6 +1600,15 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Verified Coaches.
+        /// </summary>
+        public static string VerifiedCoaches {
+            get {
+                return ResourceManager.GetString("VerifiedCoaches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error occured on the server. Please try saving again..
         /// </summary>
         public static string ViewModelErrorMessage {
@@ -1375,6 +1663,42 @@ namespace BuiltDifferentMobileApp.Ressource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wait for your coach to add a workout plan..
+        /// </summary>
+        public static string WaitForCoachAddWorkouts {
+            get {
+                return ResourceManager.GetString("WaitForCoachAddWorkouts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wait for your coach to add a meal plan..
+        /// </summary>
+        public static string WaitForCoachToAddMeals {
+            get {
+                return ResourceManager.GetString("WaitForCoachToAddMeals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weekly Report.
+        /// </summary>
+        public static string WeeklyReport {
+            get {
+                return ResourceManager.GetString("WeeklyReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Workouts Done.
+        /// </summary>
+        public static string WorkoutsDone {
+            get {
+                return ResourceManager.GetString("WorkoutsDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offer workout coaching.
         /// </summary>
         public static string WorkoutServiceLabel {
@@ -1382,328 +1706,13 @@ namespace BuiltDifferentMobileApp.Ressource {
                 return ResourceManager.GetString("WorkoutServiceLabel", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string Clients {
-            get {
-                return ResourceManager.GetString("Clients", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string ApprovedCoachPageTitle {
-            get {
-                return ResourceManager.GetString("ApprovedCoachPageTitle", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string CoachRequestInfoTitle {
-            get {
-                return ResourceManager.GetString("CoachRequestInfoTitle", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string WaitForCoachToAddMeals {
-            get {
-                return ResourceManager.GetString("WaitForCoachToAddMeals", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string ClientRequestSent {
-            get {
-                return ResourceManager.GetString("ClientRequestSent", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string WaitForCoachAddWorkouts {
-            get {
-                return ResourceManager.GetString("WaitForCoachAddWorkouts", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string Recipe {
-            get {
-                return ResourceManager.GetString("Recipe", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string Plan {
-            get {
-                return ResourceManager.GetString("Plan", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string Delete {
-            get {
-                return ResourceManager.GetString("Delete", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string Reports {
-            get {
-                return ResourceManager.GetString("Reports", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string PayPalLink {
-            get {
-                return ResourceManager.GetString("PayPalLink", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string PaymentInfo {
-            get {
-                return ResourceManager.GetString("PaymentInfo", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string Requests {
-            get {
-                return ResourceManager.GetString("Requests", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string CoachRequests {
-            get {
-                return ResourceManager.GetString("CoachRequests", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string ClientRequestApprovalDate {
-            get {
-                return ResourceManager.GetString("ClientRequestApprovalDate", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string WeeklyReport {
-            get {
-                return ResourceManager.GetString("WeeklyReport", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string CoachName {
-            get {
-                return ResourceManager.GetString("CoachName", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string ApplyApproval {
-            get {
-                return ResourceManager.GetString("ApplyApproval", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string DateRequested {
-            get {
-                return ResourceManager.GetString("DateRequested", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string CurrentPeriod {
-            get {
-                return ResourceManager.GetString("CurrentPeriod", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string ClientName {
-            get {
-                return ResourceManager.GetString("ClientName", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string ClientDashboard {
-            get {
-                return ResourceManager.GetString("ClientDashboard", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string NoVerifiedCoaches {
-            get {
-                return ResourceManager.GetString("NoVerifiedCoaches", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string NumberOfClients {
-            get {
-                return ResourceManager.GetString("NumberOfClients", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string MakePayment {
-            get {
-                return ResourceManager.GetString("MakePayment", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string Logout {
-            get {
-                return ResourceManager.GetString("Logout", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string PendingCoaches {
-            get {
-                return ResourceManager.GetString("PendingCoaches", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string VerifiedCoaches {
-            get {
-                return ResourceManager.GetString("VerifiedCoaches", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string Menu {
-            get {
-                return ResourceManager.GetString("Menu", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to I am a fun coach, always aspiring to....
-        /// </summary>
-        public static string Payment {
-            get {
-                return ResourceManager.GetString("Payment", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Your Requests.
         /// </summary>
         public static string YourRequests {
             get {
                 return ResourceManager.GetString("YourRequests", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Your Requests.
-        /// </summary>
-        public static string CoachCriterias {
-            get {
-                return ResourceManager.GetString("CoachCriterias", resourceCulture);
-            }
-        }
-        
-         /// <summary>
-        ///   Looks up a localized string similar to Your Requests.
-        /// </summary>
-        public static string Picture {
-            get {
-                return ResourceManager.GetString("Picture", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your Requests.
-        /// </summary>
-        public static string BMI {
-            get {
-                return ResourceManager.GetString("BMI", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your Requests.
-        /// </summary>
-        public static string CaloriesConsumed {
-            get {
-                return ResourceManager.GetString("CaloriesConsumed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your Requests.
-        /// </summary>
-        public static string WorkoutsDone {
-            get {
-                return ResourceManager.GetString("WorkoutsDone", resourceCulture);
             }
         }
     }

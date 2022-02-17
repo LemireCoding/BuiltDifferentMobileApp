@@ -118,8 +118,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
 
                     if (httpCode == System.Net.HttpStatusCode.OK)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Request Sent Successfully", "Wait For your Coach to respond", "OK");
-                        await Shell.Current.GoToAsync($"{nameof(ClientRequestsCenterPage)}");
+                        await Application.Current.MainPage.DisplayAlert("Request Sent Successfully", "View the status of your request in the Request Center", "OK");
 
                     } else
                     {

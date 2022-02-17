@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!--
-    Microsoft ResX Schema
-
+  <!-- 
+    Microsoft ResX Schema 
+    
     Version 2.0
-
-    The primary goals of this format is to allow a simple XML format
-    that is mostly human readable. The generation and parsing of the
-    various data types are done through the TypeConverter classes
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
     associated with the data types.
-
+    
     Example:
-
+    
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,79 +26,79 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-
-    There are any number of "resheader" rows that contain simple
+                
+    There are any number of "resheader" rows that contain simple 
     name/value pairs.
-
-    Each data row contains a name, and value. The row also contains a
-    type or mimetype. Type corresponds to a .NET class that support
-    text/value conversion through the TypeConverter architecture.
-    Classes that don't support this are serialized and stored with the
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
     mimetype set.
-
-    The mimetype is used for serialized objects, and tells the
-    ResXResourceReader how to depersist the object. This is currently not
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
     extensible. For a given mimetype the value must be set accordingly:
-
-    Note - application/x-microsoft.net.object.binary.base64 is the format
-    that the ResXResourceWriter will generate, however the reader can
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
     read any of the formats listed below.
-
+    
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-
+    
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array
+    value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -223,27 +223,21 @@
   </data>
   <data name="ApprovalDeniedBody" xml:space="preserve">
     <value>Désolé, votre certification a été refusée</value>
-    <comment/>
   </data>
   <data name="ApprovalDeniedTitle" xml:space="preserve">
     <value>Votre certification a été refusée.</value>
-    <comment/>
   </data>
   <data name="ApprovalPassedBody" xml:space="preserve">
     <value>Passons maintenant au tableau de bord de l’entraîneur...</value>
-    <comment/>
   </data>
   <data name="ApprovalPassedTitle" xml:space="preserve">
     <value>Votre certification a été approuvée</value>
-    <comment/>
   </data>
   <data name="ApprovalPendingBody" xml:space="preserve">
     <value>Veuillez attendre d’avoir été approuvé ou refusé</value>
-    <comment/>
   </data>
   <data name="ApprovalPendingTitle" xml:space="preserve">
     <value>Votre certification est en attente d'examen</value>
-    <comment/>
   </data>
   <data name="AvailabilityLabel" xml:space="preserve">
     <value>Disponible pour de nouveaux clients?</value>
@@ -263,7 +257,6 @@
   </data>
   <data name="CheckApplicationStatusButton" xml:space="preserve">
     <value>Vérifier l’état de l’application</value>
-    <comment/>
   </data>
   <data name="ClientCoachCriteriaCoachingGenderF" xml:space="preserve">
     <value>Femme</value>
@@ -291,7 +284,6 @@
   </data>
   <data name="ClientDashboardTitle" xml:space="preserve">
     <value>Tableau</value>
-    <comment/>
   </data>
   <data name="CoachAddMealCaloriesLabel" xml:space="preserve">
     <value> calories</value>
@@ -343,7 +335,6 @@
   </data>
   <data name="CoachClientRequestAccept" xml:space="preserve">
     <value>Accepter</value>
-    <comment/>
   </data>
   <data name="CoachDashboardBoard" xml:space="preserve">
     <value>Plan</value>
@@ -375,11 +366,9 @@
   </data>
   <data name="CoachDescriptionHelpText" xml:space="preserve">
     <value>Comment vous décririez-vous aux clients?</value>
-    <comment/>
   </data>
   <data name="CoachDescriptionPlaceholder" xml:space="preserve">
     <value>Je suis un coach amusant, aspirant toujours à...</value>
-    <comment/>
   </data>
   <data name="CoachMealsClientPlanAdd" xml:space="preserve">
     <value>Ajouter</value>
@@ -427,11 +416,9 @@
   </data>
   <data name="CompleteAccountSetup" xml:space="preserve">
     <value>Terminer la configuration du compte</value>
-    <comment/>
   </data>
   <data name="ConfirmCoachSignUpButton" xml:space="preserve">
     <value>Confirmer</value>
-    <comment/>
   </data>
   <data name="ConfirmedPasswordPlaceholder" xml:space="preserve">
     <value>Confirmez le mot de passe</value>
@@ -483,11 +470,9 @@
   </data>
   <data name="FemaleGender" xml:space="preserve">
     <value>Femme</value>
-    <comment/>
   </data>
   <data name="FileNameTextStart" xml:space="preserve">
     <value>Nom du fichier:</value>
-    <comment/>
   </data>
   <data name="FindACoachByCriteriaGenderLabel" xml:space="preserve">
     <value>Sélectionnez un sexe, si vous avez une préférence pour le sexe de l'entaineur.</value>
@@ -559,7 +544,6 @@
   </data>
   <data name="MaleGender" xml:space="preserve">
     <value>Homme</value>
-    <comment/>
   </data>
   <data name="MealServiceLabel" xml:space="preserve">
     <value>Offre les plans de repas</value>
@@ -567,7 +551,6 @@
   </data>
   <data name="MissingCertificationError" xml:space="preserve">
     <value>Veuillez télécharger votre certification</value>
-    <comment/>
   </data>
   <data name="MissingInputs" xml:space="preserve">
     <value>Veuillez remplir tous les champs obligatoires.</value>
@@ -575,7 +558,6 @@
   </data>
   <data name="OtherGender" xml:space="preserve">
     <value>Autre</value>
-    <comment/>
   </data>
   <data name="PasswordPlaceholder" xml:space="preserve">
     <value>Mot de passe</value>
@@ -599,19 +581,15 @@
   </data>
   <data name="PlanOffersHelpText" xml:space="preserve">
     <value>À quoi voulez-vous fournir du coaching?</value>
-    <comment/>
   </data>
   <data name="PleaseSelectAGender" xml:space="preserve">
     <value>Veuillez sélectionner un sexe</value>
-    <comment/>
   </data>
   <data name="PleaseSelectCertification" xml:space="preserve">
     <value>Veuillez choisir votre certification</value>
-    <comment/>
   </data>
   <data name="PricingError" xml:space="preserve">
     <value>Veuillez entrer un prix valide.</value>
-    <comment/>
   </data>
   <data name="ProfileTitle" xml:space="preserve">
     <value>Votre profile</value>
@@ -631,7 +609,6 @@
   </data>
   <data name="SelectPDFError" xml:space="preserve">
     <value>Type de fichier non valide. Veuillez sélectionner un fichier PDF.</value>
-    <comment/>
   </data>
   <data name="SignUpLabel" xml:space="preserve">
     <value> S'inscrire!</value>
@@ -639,7 +616,6 @@
   </data>
   <data name="SpecifyGenderError" xml:space="preserve">
     <value>Veuillez préciser votre sexe</value>
-    <comment/>
   </data>
   <data name="StartWeightLabel" xml:space="preserve">
     <value>Mesure du poids initial</value>
@@ -655,7 +631,6 @@
   </data>
   <data name="UploadCertificationButton" xml:space="preserve">
     <value>Téléchargez votre certification (PDF)</value>
-    <comment/>
   </data>
   <data name="ViewModelErrorMessage" xml:space="preserve">
     <value>Une erreur s'est produite sur le serveur. Veuillez réessayer d'enregistrer de nouveau.</value>
@@ -687,142 +662,110 @@
   </data>
   <data name="NoVerifiedCoaches" xml:space="preserve">
     <value>Aucun entraîneur vérifié</value>
-    <comment/>
   </data>
   <data name="CoachRequests" xml:space="preserve">
     <value>Demandes</value>
-    <comment/>
   </data>
   <data name="CoachRequestInfoTitle" xml:space="preserve">
     <value>Profil de l'entraîneur</value>
-    <comment/>
   </data>
   <data name="ApprovedCoachPageTitle" xml:space="preserve">
     <value>Entraîneur vérifié</value>
-    <comment/>
   </data>
   <data name="WaitForCoachToAddMeals" xml:space="preserve">
     <value>Attendez que votre entraîneur ajoute un plan de repas.</value>
-    <comment/>
   </data>
   <data name="ClientRequestSent" xml:space="preserve">
     <value>Envoyer : </value>
-    <comment/>
   </data>
   <data name="ClientRequestApprovalDate" xml:space="preserve">
     <value>Approvée le : </value>
-    <comment/>
   </data>
   <data name="AWaitForCoachAddWorkouts" xml:space="preserve">
     <value>Attendez que votre entraîneur ajoute un plan d'entraînement.</value>
-    <comment/>
   </data>
   <data name="Recipe" xml:space="preserve">
     <value>Recette</value>
-    <comment/>
   </data>
   <data name="Plan" xml:space="preserve">
     <value>Plan</value>
-    <comment/>
   </data>
   <data name="DateRequested" xml:space="preserve">
     <value>Date de la demande: </value>
-    <comment/>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Supprimer</value>
-    <comment/>
   </data>
   <data name="Reports" xml:space="preserve">
     <value>Rapports</value>
-    <comment/>
   </data>
   <data name="WeeklyReport" xml:space="preserve">
     <value>Rapport hebdomadaire</value>
-    <comment/>
   </data>
   <data name="CurrentPeriod" xml:space="preserve">
     <value>Période actuelle: </value>
-    <comment/>
   </data>
   <data name="CoachName" xml:space="preserve">
     <value>Nom de l'entraîneur: </value>
-    <comment/>
   </data>
   <data name="NumberOfClients" xml:space="preserve">
     <value># de clients: </value>
-    <comment/>
   </data>
   <data name="Picture" xml:space="preserve">
     <value>Photo</value>
-    <comment/>
   </data>
   <data name="ClientName" xml:space="preserve">
     <value>Nom de client</value>
-    <comment/>
   </data>
   <data name="BMI" xml:space="preserve">
     <value>IMC</value>
-    <comment/>
   </data>
   <data name="CaloriesConsumed" xml:space="preserve">
     <value>Calories consommées</value>
-    <comment/>
   </data>
   <data name="WorkoutsDone" xml:space="preserve">
     <value>Entraînements effectués</value>
-    <comment/>
   </data>
   <data name="PayPalLink" xml:space="preserve">
     <value>Lien PayPal</value>
-    <comment/>
   </data>
   <data name="PaymentInfo" xml:space="preserve">
     <value>Facture</value>
-    <comment/>
   </data>
   <data name="MakePayment" xml:space="preserve">
     <value>Payer</value>
-    <comment/>
   </data>
   <data name="Clients" xml:space="preserve">
     <value>Clients</value>
-    <comment/>
   </data>
   <data name="Requests" xml:space="preserve">
     <value>Demandes de client</value>
-    <comment/>
   </data>
   <data name="ApplyApproval" xml:space="preserve">
     <value>Demande d'autorisation</value>
-    <comment/>
   </data>
   <data name="ClientDashboard" xml:space="preserve">
     <value>Tableau</value>
-    <comment/>
   </data>
   <data name="CoachCriterias" xml:space="preserve">
     <value>Trouver un entraîneur</value>
-    <comment/>
   </data>
   <data name="YourRequests" xml:space="preserve">
     <value>Vos demandes</value>
-    <comment/>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>Menu</value>
-    <comment/>
   </data>
   <data name="VerifiedCoaches" xml:space="preserve">
     <value>Entraîneurs vérifiés</value>
-    <comment/>
   </data>
   <data name="PendingCoaches" xml:space="preserve">
     <value>Entraîneurs en attente</value>
-    <comment/>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Déconnexion</value>
-    <comment/>
+  </data>
+  <data name="ClientRequestDeniedDate" xml:space="preserve">
+    <value>Refusé:</value>
   </data>
 </root>
