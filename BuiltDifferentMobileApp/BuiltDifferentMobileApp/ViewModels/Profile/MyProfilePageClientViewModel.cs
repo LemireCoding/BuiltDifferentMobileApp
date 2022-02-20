@@ -24,8 +24,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             set
             {
                 SetProperty(ref profilePicture, value);
-                OnPropertyChanged(nameof(IsEnabled));
-
             }
         }
 
@@ -36,10 +34,17 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             set
             {
                 SetProperty(ref name, value);
-                OnPropertyChanged(nameof(IsEnabled));
-
             }
         }
+
+        private string email;
+        public string Email {
+            get => email;
+            set {
+                SetProperty(ref email, value);
+            }
+        }
+
         public int startWeight;
         public int StartWeight
         {
@@ -56,8 +61,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             set
             {
                 SetProperty(ref currentWeight, value);
-                OnPropertyChanged(nameof(IsEnabled));
-
             }
         }
 
@@ -68,29 +71,15 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             set
             {
                 SetProperty(ref height, value);
-                OnPropertyChanged(nameof(IsEnabled));
-
             }
         }
 
-        private int profilePictureId;
-        public int ProfilePictureId
-        {
-            get => profilePictureId;
-            set
-            {
-                SetProperty(ref profilePictureId, value);
-                OnPropertyChanged(nameof(IsEnabled));
-
-            }
+        private bool editMode;
+        public bool EditMode {
+            get => editMode;
+            set => SetProperty(ref editMode, value);
         }
 
-        private bool isEnabled;
-        public bool IsEnabled
-        {
-            get => isEnabled;
-            set => SetProperty(ref isEnabled, value);
-        }
         private int userId;
         public int UserId
         {
@@ -98,11 +87,14 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             set => SetProperty(ref userId, value);
         }
 
-        public object PreviewPicture { get; set; }
+        private string logo;
+        public string Logo {
+            get => logo;
+            set => SetProperty(ref logo, value);
+        }
 
         public AsyncCommand SubmitCommand { get; }
         public AsyncCommand UploadImageCommand { get; }
-        public AsyncCommand EditProfileCommand { get; }
         public AsyncCommand GoBackCommand { get; }
 
         private IAccountService accountService = AccountService.Instance;
@@ -110,24 +102,24 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
 
         public MyProfilePageClientViewModel()
         {
+            Logo = APIConstants.GetLogo(false);
+
             var userInfo = (Models.Client)accountService.CurrentUser;
             Name = userInfo.name;
             UserId = userInfo.userId;
             StartWeight = userInfo.startWeight;
             CurrentWeight = userInfo.currentWeight;
-            ProfilePictureId = userInfo.profilePictureId;
             Height = userInfo.height;
+            Email = accountService.CurrentUserEmail;
 
             ProfilePicture = APIConstants.GetProfilePictureUri(UserId);
-            PreviewPicture = null;
             
             GetUserInfo();
 
-            IsEnabled = false;
+            EditMode = false;
 
             SubmitCommand = new AsyncCommand(Submit);
             UploadImageCommand = new AsyncCommand(Upload);
-            EditProfileCommand = new AsyncCommand(Edit);
             GoBackCommand = new AsyncCommand(GoBack);
         }
 
@@ -145,27 +137,6 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
                 UserId = userInfo.userId;
                 StartWeight = userInfo.startWeight;
                 CurrentWeight = userInfo.currentWeight;
-                ProfilePictureId = userInfo.profilePictureId;
-                Height = userInfo.height;
-            }
-        }
-
-        private async Task Edit()
-        {
-            if (!IsEnabled)
-            {
-                IsEnabled = true;
-            }
-            else
-            {
-                IsEnabled = false;
-
-                var userInfo = (Models.Client)accountService.CurrentUser;
-                Name = userInfo.name;
-                UserId = userInfo.userId;
-                StartWeight = userInfo.startWeight;
-                CurrentWeight = userInfo.currentWeight;
-                ProfilePictureId = userInfo.profilePictureId;
                 Height = userInfo.height;
             }
         }
@@ -229,9 +200,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
                 return;
             }
 
-            if (IsEnabled)
+            if (EditMode)
             {
-                IsEnabled = false;
+                EditMode = false;
 
                 var multipartFormContent = await GetMultiPartFormContent();
 

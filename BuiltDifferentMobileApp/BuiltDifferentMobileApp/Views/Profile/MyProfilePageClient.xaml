@@ -17,75 +17,179 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <ScrollView BackgroundColor="Black">
-            <StackLayout>
+        <Grid>
+            <ScrollView BackgroundColor="Black" Grid.Row="0"
+                        IsEnabled="{Binding EditMode, Converter={StaticResource boolToInvertedBoolConverter}}">
+                <StackLayout>
+                    <Grid RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="140"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="110"/>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Frame Grid.Row="1" CornerRadius="0" BackgroundColor="Black" Padding="6" Margin="0,2,0,0">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="8" Padding="0, 6">
+                                <StackLayout Orientation="Vertical" WidthRequest="75">
+                                    <Label Text="{Binding Height}" LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+                                    <Label Text="Height" LineBreakMode="TailTruncation" TextColor="Gray" FontSize="12" HorizontalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" WidthRequest="75">
+                                    <Label Text="{Binding StartWeight}" LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+                                    <Label Text="Start Weight" LineBreakMode="TailTruncation" FontSize="12" TextColor="Gray" HorizontalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" WidthRequest="75">
+                                    <Label Text="{Binding CurrentWeight}" LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+                                    <Label Text="Weight" LineBreakMode="TailTruncation" TextColor="Gray" FontSize="12" HorizontalOptions="Center"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+
+                        <Grid Grid.Row="2" Padding="22,4" BackgroundColor="Black">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="260" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+                                <Label Text="{Binding Name}" LineBreakMode="TailTruncation" TextColor="White" FontSize="Title" />
+                                <Label Text="{Binding Email}" LineBreakMode="TailTruncation" TextColor="Gray" FontSize="Subtitle" />
+                                <StackLayout Spacing="4" Orientation="Horizontal">
+                                    <Label Text="&#xf073;" FontFamily="FAS" TextColor="Gray" FontSize="Subtitle" VerticalTextAlignment="Center"/>
+                                    <Label Text="Joined XXXXXXXX XXXX" LineBreakMode="TailTruncation" TextColor="Gray" FontSize="Subtitle" />
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout Grid.Row="0" Grid.Column="1">
+                                <Button Text="Edit profile" TextTransform="None" HeightRequest="34" FontSize="12" WidthRequest="100" BackgroundColor="Transparent"
+                                        BorderWidth="1" BorderColor="Gray" CornerRadius="200" HorizontalOptions="End" Clicked="EditProfileButton_Clicked" />
+                            </StackLayout>
+                        </Grid>
+
+                        <!-- FUTURE OPTIONS
+                        <StackLayout Grid.Row="3" BackgroundColor="#3D3D3D" Spacing="0" Padding="0,10,0,0">
+                            <Label Text="APP SETTINGS" Margin="15,10" TextColor="Gray" />
+                            <Frame CornerRadius="0" BackgroundColor="#303030" Padding="16">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="AAAAAAA" TextColor="White" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center"/>
+                                    <Label Text="&#xf054;" FontFamily="FAS" TextColor="White" HorizontalOptions="EndAndExpand"  VerticalTextAlignment="Center"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame CornerRadius="0" BackgroundColor="#303030" Padding="16">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="AAAAAAA" TextColor="White" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center"/>
+                                    <Label Text="&#xf054;" FontFamily="FAS" TextColor="White" HorizontalOptions="EndAndExpand"  VerticalTextAlignment="Center"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        -->
+
+                        <StackLayout Grid.Row="4">
+                            <ff:CachedImage Source="{Binding Logo}" LoadingPlaceholder="BUILT_DIFFERENT.png"
+                                            Aspect="AspectFill" HeightRequest="250" />
+                        </StackLayout>
+
+                        <Grid Grid.Row="0" HeightRequest="120">
+                            <Image Source="" HeightRequest="120" Aspect="AspectFill"
+                                   BackgroundColor="{StaticResource RedPrimary}" />
+                            <Button Text="&#xf060;" FontFamily="FAS" TextColor="White" FontSize="16" Command="{Binding GoBackCommand}"
+                                    BackgroundColor="#303030" CornerRadius="200" HorizontalOptions="Start"
+                                    VerticalOptions="Start" WidthRequest="35" HeightRequest="35" Margin="18, 24"/>
+                        </Grid>
+
+                        <Frame Grid.Row="0" BackgroundColor="Black" HorizontalOptions="Start" VerticalOptions="End" IsClippedToBounds="True" 
+                               CornerRadius="200" Padding="2" Margin="20,0,0,-75">
+                            <Frame IsClippedToBounds="True" CornerRadius="200"
+                                   HeightRequest="120" WidthRequest="120" Padding="0">
+                                <ff:CachedImage Source="{Binding ProfilePicture}" LoadingPlaceholder="avatar_placeholder.png"
+                                                HeightRequest="175" WidthRequest="175" Aspect="AspectFill" AutomationId="ProfilePicturePreview" />
+                            </Frame>
+                        </Frame>
+
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+            <Frame x:Name="EditProfilePopup" HasShadow="True" VerticalOptions="Start" Grid.Row="0"
+                   AbsoluteLayout.LayoutBounds="0,1,1,0.3" AbsoluteLayout.LayoutFlags="All"
+                   TranslationY="800"
+                   BackgroundColor="#303030" CornerRadius="12" Margin="0,20,0,0" Padding="0"
+                   IsClippedToBounds="True" IsVisible="True">
                 <Grid RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="120"/>
+                        <RowDefinition Height="46"/>
+                        <RowDefinition Height="140"/>
                         <RowDefinition Height="80"/>
-                        <RowDefinition Height="80"/>
-                        <RowDefinition />
+                        <RowDefinition Height="110"/>
+                        <RowDefinition Height="400"/>
                     </Grid.RowDefinitions>
+                    
+                    <StackLayout Grid.Row="0" Orientation="Horizontal" BackgroundColor="Black" Padding="12">
+                        <Label Text="Cancel" LineBreakMode="TailTruncation" TextColor="White" FontSize="Subtitle" HorizontalOptions="StartAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CancelLabel_Tapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="Edit profile" LineBreakMode="TailTruncation" TextColor="White" FontAttributes="Bold" FontSize="Subtitle" HorizontalOptions="CenterAndExpand" />
+                        <Label Text="Save" LineBreakMode="TailTruncation" TextColor="White" FontAttributes="Bold" FontSize="Subtitle" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    
+                    <Grid Grid.Row="1" HeightRequest="120">
+                        <Image Source="" HeightRequest="120" Aspect="AspectFill" Grid.Row="0"
+                               BackgroundColor="{StaticResource RedPrimary}" />
+                        <Button Text="&#xf030;" FontFamily="FAS" Grid.Row="0" TextColor="#FFFFFF" FontSize="40"
+                                BackgroundColor="Transparent"/>
+                    </Grid>
 
-                    <Frame Grid.Row="1" CornerRadius="0" BackgroundColor="#303030" Padding="6" Margin="0,2,0,0">
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="8" Padding="0, 6">
-                            <StackLayout Orientation="Vertical" WidthRequest="75">
-                                <Label Text="{Binding Height}" LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
-                                <Label Text="Height" LineBreakMode="TailTruncation" TextColor="Gray" FontSize="12" HorizontalOptions="Center"/>
-                            </StackLayout>
-                            <StackLayout Orientation="Vertical" WidthRequest="75">
-                                <Label Text="{Binding StartWeight}" LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
-                                <Label Text="Start Weight" LineBreakMode="TailTruncation" FontSize="12" TextColor="Gray" HorizontalOptions="Center"/>
-                            </StackLayout>
-                            <StackLayout Orientation="Vertical" WidthRequest="75">
-                                <Label Text="{Binding CurrentWeight}" LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
-                                <Label Text="Weight" LineBreakMode="TailTruncation" TextColor="Gray" FontSize="12" HorizontalOptions="Center"/>
-                            </StackLayout>
+                    <Frame Grid.Row="2" CornerRadius="0" BackgroundColor="#303030" BorderColor="Transparent" Padding="6" Margin="0,2,0,0">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" Padding="0, 6">
+                            <Grid>
+                                <StackLayout Orientation="Vertical" WidthRequest="75">
+                                    <Label Text="{Binding Height}" LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+                                    <Label Text="Height" LineBreakMode="TailTruncation" TextColor="Gray" FontSize="12" HorizontalOptions="Center"/>
+                                </StackLayout>
+                                <Label Text="&#xf303;" FontFamily="FAS" FontSize="12" TextColor="Gray" HorizontalTextAlignment="End" Margin="0,0,12,0" />
+                                <Button BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
+                            </Grid>
+                            <Grid>
+                                <StackLayout Orientation="Vertical" WidthRequest="75">
+                                    <Label Text="{Binding StartWeight}" LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+                                    <Label Text="Start Weight" LineBreakMode="TailTruncation" FontSize="12" TextColor="Gray" HorizontalOptions="Center"/>
+                                </StackLayout>
+                                <Label Text="&#xf303;" FontFamily="FAS" FontSize="12" TextColor="Gray" HorizontalTextAlignment="End" Margin="0,0,12,0" />
+                                <Button BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
+                            </Grid>
+                            <Grid>
+                                <StackLayout Orientation="Vertical" WidthRequest="75">
+                                    <Label Text="{Binding CurrentWeight}" LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+                                    <Label Text="Weight" LineBreakMode="TailTruncation" TextColor="Gray" FontSize="12" HorizontalOptions="Center"/>
+                                </StackLayout>
+                                <Label Text="&#xf303;" FontFamily="FAS" FontSize="12" TextColor="Gray" HorizontalTextAlignment="End" Margin="0,0,12,0" />
+                                <Button BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
+                            </Grid>
                         </StackLayout>
                     </Frame>
-
-                    <Grid Grid.Row="2" Padding="22,4" BackgroundColor="#303030">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="260" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-
-                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical">
-                            <Label Text="{Binding Name}" LineBreakMode="TailTruncation" TextColor="White" FontSize="Title" />
-                            <StackLayout Spacing="4" Orientation="Horizontal">
-                                <Label Text="&#xf073;" FontFamily="FAS" TextColor="Gray" FontSize="Subtitle" VerticalTextAlignment="Center"/>
-                                <Label Text="Joined XXXXXXXX XXXX" LineBreakMode="TailTruncation" TextColor="Gray" FontSize="Subtitle" />
-                            </StackLayout>
-                        </StackLayout>
-                        <StackLayout Grid.Row="0" Grid.Column="1">
-                            <Button Text="Edit profile" TextTransform="None" HeightRequest="34" FontSize="12" WidthRequest="100" BackgroundColor="Transparent"
-                                    BorderWidth="1" BorderColor="Gray" CornerRadius="200" HorizontalOptions="End" />
-                        </StackLayout>
-                    </Grid>
 
                     <StackLayout Grid.Row="3">
-                        <Image Source="https://cdn.discordapp.com/attachments/909526212353880134/943159398514184232/BUILT_DIFFERENT.gif"
-                               HeightRequest="250" Aspect="AspectFill" IsAnimationPlaying="True" />
+                        <StackLayout Orientation="Horizontal" Spacing="16" Padding="26, 6">
+                            <Label Text="Name" FontSize="Subtitle" VerticalOptions="Center" TextColor="White" FontAttributes="Bold"/>
+                            <Entry Placeholder="Add your name" HorizontalOptions="FillAndExpand" PlaceholderColor="Gray" VerticalOptions="Center"/>
+                        </StackLayout>
                     </StackLayout>
 
-                    <Grid Grid.Row="0" HeightRequest="120">
-                        <Image Source="https://cdn.specialtyortho.com.au/wp-content/uploads/2015/03/banner-placeholder.jpg" HeightRequest="120" Aspect="AspectFill" />
-                        <Button Text="&#xf060;" FontFamily="FAS" TextColor="White" FontSize="16" Command="{Binding GoBackCommand}"
-                                BackgroundColor="#303030" CornerRadius="200" HorizontalOptions="Start"
-                                VerticalOptions="Start" WidthRequest="35" HeightRequest="35" Margin="4"/>
-                    </Grid>
-
-                    <Frame Grid.Row="0" BackgroundColor="Black" HorizontalOptions="Start" VerticalOptions="End" IsClippedToBounds="True" 
-                           CornerRadius="200" Padding="2" Margin="20,0,0,-75">
+                    <Frame Grid.Row="1" BackgroundColor="Black" HorizontalOptions="Start" VerticalOptions="End" IsClippedToBounds="True" 
+                               CornerRadius="200" Padding="2" Margin="20,0,0,-75">
                         <Frame IsClippedToBounds="True" CornerRadius="200"
-                               HeightRequest="120" WidthRequest="120" Padding="0">
-                            <ff:CachedImage Source="{Binding ProfilePicture}" LoadingPlaceholder="avatar_placeholder.png"
-                                            HeightRequest="175" WidthRequest="175" Aspect="AspectFill" AutomationId="ProfilePicturePreview" />
+                                   HeightRequest="120" WidthRequest="120" Padding="0">
+                            <Grid>
+                                <ff:CachedImage Source="{Binding ProfilePicture}" LoadingPlaceholder="avatar_placeholder.png"
+                                                HeightRequest="175" WidthRequest="175" Aspect="AspectFill" Grid.Row="0" />
+                                <Button Text="&#xf030;" FontFamily="FAS" Grid.Row="0" TextColor="#FFFFFF" FontSize="40"
+                                        BackgroundColor="Transparent"/>
+                            </Grid>
                         </Frame>
                     </Frame>
-
                 </Grid>
-            </StackLayout>
-        </ScrollView>
+            </Frame>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -25,5 +25,16 @@ namespace BuiltDifferentMobileApp.Views.Profile {
                 await ((MyProfilePageClientViewModel)BindingContext).GetUserInfo();
             }
         }
+
+        private async void EditProfileButton_Clicked(object sender, EventArgs e) {
+            ((MyProfilePageClientViewModel)BindingContext).EditMode = true;
+            EditProfilePopup.TranslateTo(0, 0, 200);
+        }
+
+        private async void CancelLabel_Tapped(object sender, EventArgs e) {
+            ((MyProfilePageClientViewModel)BindingContext).EditMode = false;
+            EditProfilePopup.TranslateTo(0, 800, 200);
+        }
+
     }
 }
