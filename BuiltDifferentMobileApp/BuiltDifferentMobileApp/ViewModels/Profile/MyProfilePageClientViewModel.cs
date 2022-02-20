@@ -103,6 +103,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
         public AsyncCommand SubmitCommand { get; }
         public AsyncCommand UploadImageCommand { get; }
         public AsyncCommand EditProfileCommand { get; }
+        public AsyncCommand GoBackCommand { get; }
 
         private IAccountService accountService = AccountService.Instance;
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
@@ -128,6 +129,11 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             SubmitCommand = new AsyncCommand(Submit);
             UploadImageCommand = new AsyncCommand(Upload);
             EditProfileCommand = new AsyncCommand(Edit);
+            GoBackCommand = new AsyncCommand(GoBack);
+        }
+
+        private async Task GoBack() {
+            await Shell.Current.GoToAsync("..");
         }
 
         private async Task GetUserInfo()

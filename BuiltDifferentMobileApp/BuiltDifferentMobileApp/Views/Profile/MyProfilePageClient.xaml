@@ -5,6 +5,7 @@
              xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
              xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              x:Class="BuiltDifferentMobileApp.Views.Profile.MyProfilePageClient"
+             Shell.NavBarIsVisible="False"
              Title="{x:Static resource:AppResource.ProfileTitle}">
 
     <ContentPage.Resources>
@@ -17,63 +18,76 @@
         <viewmodels:MyProfilePageClientViewModel />
     </ContentPage.BindingContext>
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Edit" Command="{Binding EditProfileCommand}" AutomationId="EditButton">
-            <ToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="FAS" Glyph="&#xf304;"/>
-            </ToolbarItem.IconImageSource>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
-
     <ContentPage.Content>
-        <ScrollView>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="50"/>
-                </Grid.ColumnDefinitions>
+        <ScrollView BackgroundColor="Black">
+            <StackLayout>
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="120"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="1" Text="{x:Static resource:AppResource.ProfileTitle}" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" AutomationId="Title"/>
+                    <Frame Grid.Row="1" CornerRadius="0" BackgroundColor="#303030" Padding="6" Margin="0,2,0,0">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="8" Padding="0, 6">
+                            <StackLayout Orientation="Vertical" WidthRequest="75">
+                                <Label Text="{Binding Height}" LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+                                <Label Text="Height" LineBreakMode="TailTruncation" TextColor="Gray" FontSize="12" HorizontalOptions="Center"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" WidthRequest="75">
+                                <Label Text="{Binding StartWeight}" LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+                                <Label Text="Start Weight" LineBreakMode="TailTruncation" FontSize="12" TextColor="Gray" HorizontalOptions="Center"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" WidthRequest="75">
+                                <Label Text="{Binding CurrentWeight}" LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+                                <Label Text="Weight" LineBreakMode="TailTruncation" TextColor="Gray" FontSize="12" HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
 
-                <StackLayout Grid.Row="1" Grid.Column="1">
-                    <StackLayout Orientation="Vertical">
-                        <Image Source="{Binding PreviewPicture}" HeightRequest="175" AutomationId="ProfilePicturePreview"/>
-                        <Button Text="Upload Profile Picture (png)" Command="{Binding UploadImageCommand}" IsEnabled="{Binding IsEnabled}" AutomationId="ProfilePicturePicker"/>
+                    <Grid Grid.Row="2" Padding="22,4" BackgroundColor="#303030">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+                            <Label Text="{Binding Name}" LineBreakMode="TailTruncation" TextColor="White" FontSize="Title" />
+                            <StackLayout Spacing="4" Orientation="Horizontal">
+                                <Label Text="&#xf073;" FontFamily="FAS" TextColor="Gray" FontSize="Subtitle" VerticalTextAlignment="Center"/>
+                                <Label Text="Joined OCTOBER 2022" LineBreakMode="TailTruncation" TextColor="Gray" FontSize="Subtitle" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Grid.Row="0" Grid.Column="1">
+                            <Button Text="Edit profile" TextTransform="None" HeightRequest="34" FontSize="12" WidthRequest="100" BackgroundColor="Transparent"
+                                    BorderWidth="1" BorderColor="Gray" CornerRadius="200" HorizontalOptions="End" />
+                        </StackLayout>
+                    </Grid>
+
+                    <StackLayout Grid.Row="3">
+                        <Image Source="https://cdn.discordapp.com/attachments/909526212353880134/943159398514184232/BUILT_DIFFERENT.gif"
+                               HeightRequest="250" Aspect="AspectFill" IsAnimationPlaying="True" />
                     </StackLayout>
-                </StackLayout>
-                <StackLayout Grid.Row="2" Grid.Column="1">
-                    <StackLayout>
-                        <Label Text="{x:Static resource:AppResource.FullNamePlaceholder}" />
-                        <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}" >
-                            <Entry IsEnabled="{Binding IsEnabled}"  Text="{Binding Name}" AutomationId="Name"/>
+
+                    <Grid Grid.Row="0" HeightRequest="120">
+                        <Image Source="https://cdn.specialtyortho.com.au/wp-content/uploads/2015/03/banner-placeholder.jpg" HeightRequest="120" Aspect="AspectFill" />
+                        <Button Text="&#xf060;" FontFamily="FAS" TextColor="White" FontSize="16" Command="{Binding GoBackCommand}"
+                                BackgroundColor="#303030" CornerRadius="200" HorizontalOptions="Start"
+                                VerticalOptions="Start" WidthRequest="30" HeightRequest="30" Margin="4"/>
+                    </Grid>
+
+                    <Frame Grid.Row="0" BackgroundColor="Black" HorizontalOptions="Start" VerticalOptions="End" IsClippedToBounds="True" 
+                           CornerRadius="200" Padding="2" Margin="20,0,0,-75">
+                        <Frame IsClippedToBounds="True" CornerRadius="200"
+                               HeightRequest="120" WidthRequest="120" Padding="0">
+                            <Image Source="{Binding PreviewPicture}" AutomationId="ProfilePicturePreview"
+                                   HeightRequest="175" WidthRequest="175" Aspect="AspectFill" />
                         </Frame>
-                        <Label Text="{x:Static resource:AppResource.StartWeightLabel}" />
-                        <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                            <Entry IsEnabled="False" Text="{Binding StartWeight}" Keyboard="Numeric"/>
-                        </Frame>
-                        <Label Text="{x:Static resource:AppResource.CurrentWeightLabel}" />
-                        <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                            <Entry IsEnabled="{Binding IsEnabled}" Text="{Binding CurrentWeight}" Keyboard="Numeric" AutomationId="CurrentWeight"/>
-                        </Frame>
-                        <Label Text="Height" />
-                        <Frame Padding="0" Margin="2" CornerRadius="6" BorderColor="{StaticResource LightGrey}">
-                            <Entry IsEnabled="{Binding IsEnabled}" Text="{Binding Height}" Keyboard="Numeric" AutomationId="Height"/>
-                        </Frame>
-                    </StackLayout>
-                </StackLayout>
-                <StackLayout Grid.Row="3" Grid.Column="1">
-                    <StackLayout>
-                        <Button  Margin="10" Text="{x:Static resource:AppResource.SaveButton}" BackgroundColor="{StaticResource RedExtra}" CornerRadius="8" Command="{Binding SubmitCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Submit"/>
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
+                    </Frame>
+
+                </Grid>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

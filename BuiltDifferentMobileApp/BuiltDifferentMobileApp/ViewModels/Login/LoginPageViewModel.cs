@@ -33,6 +33,12 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
             set => SetProperty(ref password, value);
         }
 
+        private string logo;
+        public string Logo {
+            get => logo;
+            set => SetProperty(ref logo, value);
+        }
+
         private string AccountNotFoundText = AppResource.AccountNotFoundText;
         private string IncorrectLoginText = AppResource.IncorrectLoginText;
         private string LoginAttempsExceededText = AppResource.LoginAttempsExceededText;
@@ -54,6 +60,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
             LoginCommand = new AsyncCommand(Login);
             RegisterCommand = new AsyncCommand(Register);
             ForgotPasswordCommand = new AsyncCommand(ForgotPassword);
+            Logo = APIConstants.GetLogo(true);
         }
 
         private async Task Login() {

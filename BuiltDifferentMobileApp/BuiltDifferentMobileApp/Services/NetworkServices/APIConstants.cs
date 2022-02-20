@@ -214,5 +214,9 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
             return $"{BaseAddress}/certifications?start={startDate.ToString("MM dd yyyy").Replace(' ', '-')}&end={endDate.ToString("MM dd yyyy").Replace(' ', '-')}";
         }
 
+        public static string GetLogo(bool loop = false) {
+            return loop ? $"{BaseAddress}/logo-loop" : $"{ BaseAddress}/logo";
+        }
+
     }
 }

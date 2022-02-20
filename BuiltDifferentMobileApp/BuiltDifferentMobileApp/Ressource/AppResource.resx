@@ -631,7 +631,7 @@
     <value>Invalid file type. Please select a PDF.</value>
   </data>
   <data name="SignUpLabel" xml:space="preserve">
-    <value>Sign up</value>
+    <value> Sign up</value>
     <comment>1-Login</comment>
   </data>
   <data name="SpecifyGenderError" xml:space="preserve">
