@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BuiltDifferentMobileApp.ViewModels.Profile;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,17 @@ namespace BuiltDifferentMobileApp.Views.Profile {
     public partial class MyProfilePageClient : ContentPage {
         public MyProfilePageClient() {
             InitializeComponent();
+            BindingContext = new MyProfilePageClientViewModel();
+        }
+
+        protected override async void OnAppearing() {
+            base.OnAppearing();
+
+            if(BindingContext == null) {
+                BindingContext = new MyProfilePageClientViewModel();
+            } else {
+                await ((MyProfilePageClientViewModel)BindingContext).GetUserInfo();
+            }
         }
     }
 }

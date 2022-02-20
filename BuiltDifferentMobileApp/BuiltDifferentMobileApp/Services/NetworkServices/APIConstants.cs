@@ -181,9 +181,10 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
         {
             return $"{BaseAddress}/profile/upload";
         }
-        public static string GetProfilePictureUri()
+
+        public static string GetProfilePictureUri(int userId = 0)
         {
-            return $"{BaseAddress}/profile/picture";
+            return userId == 0 ? $"{BaseAddress}/profile/picture" : $"{BaseAddress}/profile/picture/{userId}";
         }
 
         public static string UploadCertificationUri() {

@@ -4,8 +4,10 @@
              xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels.Profile" 
              xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
              xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="BuiltDifferentMobileApp.Views.Profile.MyProfilePageClient"
              Shell.NavBarIsVisible="False"
+             Shell.FlyoutBehavior="Disabled"
              Title="{x:Static resource:AppResource.ProfileTitle}">
 
     <ContentPage.Resources>
@@ -13,10 +15,6 @@
             <converters:BoolToInvertedBoolConverter x:Key="boolToInvertedBoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-
-    <ContentPage.BindingContext>
-        <viewmodels:MyProfilePageClientViewModel />
-    </ContentPage.BindingContext>
 
     <ContentPage.Content>
         <ScrollView BackgroundColor="Black">
@@ -56,7 +54,7 @@
                             <Label Text="{Binding Name}" LineBreakMode="TailTruncation" TextColor="White" FontSize="Title" />
                             <StackLayout Spacing="4" Orientation="Horizontal">
                                 <Label Text="&#xf073;" FontFamily="FAS" TextColor="Gray" FontSize="Subtitle" VerticalTextAlignment="Center"/>
-                                <Label Text="Joined OCTOBER 2022" LineBreakMode="TailTruncation" TextColor="Gray" FontSize="Subtitle" />
+                                <Label Text="Joined XXXXXXXX XXXX" LineBreakMode="TailTruncation" TextColor="Gray" FontSize="Subtitle" />
                             </StackLayout>
                         </StackLayout>
                         <StackLayout Grid.Row="0" Grid.Column="1">
@@ -74,15 +72,15 @@
                         <Image Source="https://cdn.specialtyortho.com.au/wp-content/uploads/2015/03/banner-placeholder.jpg" HeightRequest="120" Aspect="AspectFill" />
                         <Button Text="&#xf060;" FontFamily="FAS" TextColor="White" FontSize="16" Command="{Binding GoBackCommand}"
                                 BackgroundColor="#303030" CornerRadius="200" HorizontalOptions="Start"
-                                VerticalOptions="Start" WidthRequest="30" HeightRequest="30" Margin="4"/>
+                                VerticalOptions="Start" WidthRequest="35" HeightRequest="35" Margin="4"/>
                     </Grid>
 
                     <Frame Grid.Row="0" BackgroundColor="Black" HorizontalOptions="Start" VerticalOptions="End" IsClippedToBounds="True" 
                            CornerRadius="200" Padding="2" Margin="20,0,0,-75">
                         <Frame IsClippedToBounds="True" CornerRadius="200"
                                HeightRequest="120" WidthRequest="120" Padding="0">
-                            <Image Source="{Binding PreviewPicture}" AutomationId="ProfilePicturePreview"
-                                   HeightRequest="175" WidthRequest="175" Aspect="AspectFill" />
+                            <ff:CachedImage Source="{Binding ProfilePicture}" LoadingPlaceholder="avatar_placeholder.png"
+                                            HeightRequest="175" WidthRequest="175" Aspect="AspectFill" AutomationId="ProfilePicturePreview" />
                         </Frame>
                     </Frame>
 

@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels"
-             xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters" xmlns:login="clr-namespace:BuiltDifferentMobileApp.ViewModels.Login" x:DataType="login:LoginPageViewModel"
+             xmlns:converters="clr-namespace:BuiltDifferentMobileApp.Services.Converters"
+             xmlns:login="clr-namespace:BuiltDifferentMobileApp.ViewModels.Login"
+             x:DataType="login:LoginPageViewModel"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="BuiltDifferentMobileApp.Views.Login.LoginPage"
              xmlns:resource="clr-namespace:BuiltDifferentMobileApp.Ressource"
              Shell.TabBarIsVisible="False"
@@ -32,11 +35,8 @@
 
             <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Padding="0" VerticalOptions="End">
                 <Grid Margin="0,75,0,0">
-                    <!-- FALLBACK LOGO & GIF LOGO -->
-                    <Image Source="BUILT_DIFFERENT.png" IsAnimationPlaying="False" Grid.Row="0"
-                           Aspect="AspectFill" HeightRequest="800" />
-                    <Image Source="{Binding Logo}" IsAnimationPlaying="True" Grid.Row="0"
-                           Aspect="AspectFill" HeightRequest="800" />
+                    <ff:CachedImage Source="{Binding Logo}" LoadingPlaceholder="BUILT_DIFFERENT.png"
+                                    Aspect="AspectFill" HeightRequest="800" />
                 </Grid>
             </StackLayout>
 
@@ -57,8 +57,7 @@
 
             <StackLayout Grid.Row="2" Grid.Column="1" Padding="0" Margin="0">
                 <Button Text="{x:Static resource:AppResource.LoginButton}" TextTransform="None" CornerRadius="8" Command="{Binding LoginCommand}"
-                        IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="Login"
-                        BackgroundColor="{StaticResource RedPrimary}"/>
+                        AutomationId="Login" BackgroundColor="{StaticResource RedPrimary}"/>
                 <Label Text="{x:Static resource:AppResource.ForgotPasswordLabel}" HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="ForgotPassword">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />

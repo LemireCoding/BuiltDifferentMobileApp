@@ -64,6 +64,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Login {
         }
 
         private async Task Login() {
+            if(IsBusy) return;
+
             if(string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password)) {
                 ErrorText = MissingInputs;
                 return;

@@ -17,8 +17,8 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
 {
     public class MyProfilePageClientViewModel : ViewModelBase
     {
-        private FileResult profilePicture;
-        public FileResult ProfilePicture
+        private string profilePicture;
+        public string ProfilePicture
         {
             get => profilePicture;
             set
@@ -110,18 +110,17 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
 
         public MyProfilePageClientViewModel()
         {
-            Name = "";
-            StartWeight = 0;
-            UserId = 0;
-            StartWeight = 0;
-            CurrentWeight = 0;
-            Height = 0;
-            ProfilePictureId = 0;
+            var userInfo = (Models.Client)accountService.CurrentUser;
+            Name = userInfo.name;
+            UserId = userInfo.userId;
+            StartWeight = userInfo.startWeight;
+            CurrentWeight = userInfo.currentWeight;
+            ProfilePictureId = userInfo.profilePictureId;
+            Height = userInfo.height;
 
-            ProfilePicture = null;
+            ProfilePicture = APIConstants.GetProfilePictureUri(UserId);
             PreviewPicture = null;
             
-
             GetUserInfo();
 
             IsEnabled = false;
@@ -136,36 +135,18 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             await Shell.Current.GoToAsync("..");
         }
 
-        private async Task GetUserInfo()
-        {
-            Models.Client user = (Models.Client)accountService.CurrentUser;
-            var userInfo = await networkService.GetAsync<Models.Client>(APIConstants.GetProfileUri());
-            if (userInfo == null)
-            {
-                await Application.Current.MainPage.DisplayAlert("Could not load client's profile!", "Returning to previous page", "OK");
-                await Shell.Current.GoToAsync("..");
-                IsBusy = false;
-                return;
-            }
-            else
-            {
-                accountService.CurrentUser = userInfo;
+        public async Task GetUserInfo() {
+            await networkService.UpdateCurrentUser();
 
-                UserId = userInfo.id;
+            var userInfo = (Models.Client)accountService.CurrentUser;
+
+            if(userInfo != null) {
                 Name = userInfo.name;
                 UserId = userInfo.userId;
                 StartWeight = userInfo.startWeight;
                 CurrentWeight = userInfo.currentWeight;
                 ProfilePictureId = userInfo.profilePictureId;
                 Height = userInfo.height;
-
-                var pic = await networkService.GetStreamAsync(APIConstants.GetProfilePictureUri());
-                if (pic == null)
-                {
-                    return;
-                }
-                PreviewPicture = ImageSource.FromStream(() => pic);
-                OnPropertyChanged("PreviewPicture");
             }
         }
 
@@ -178,12 +159,20 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             else
             {
                 IsEnabled = false;
-                GetUserInfo();
+
+                var userInfo = (Models.Client)accountService.CurrentUser;
+                Name = userInfo.name;
+                UserId = userInfo.userId;
+                StartWeight = userInfo.startWeight;
+                CurrentWeight = userInfo.currentWeight;
+                ProfilePictureId = userInfo.profilePictureId;
+                Height = userInfo.height;
             }
         }
 
         private async Task Upload()
         {
+            /*
             var options = new MediaPickerOptions
             {
                 Title = "Please select your Profile Picture"
@@ -208,7 +197,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             catch (Exception)
             {
                 return;
-            }
+            }*/
         }
 
         private async Task<MultipartFormDataContent> GetMultiPartFormContent()
@@ -218,11 +207,11 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
                 MultipartFormDataContent formContent = new MultipartFormDataContent();
 
                 // Read picture contents & set MIME appopriately, image/*
-                StreamContent pictureContent = new StreamContent(await ProfilePicture.OpenReadAsync());
-                pictureContent.Headers.ContentType = new MediaTypeHeaderValue(ProfilePicture.ContentType);
+                //StreamContent pictureContent = new StreamContent(await ProfilePicture.OpenReadAsync());
+                //pictureContent.Headers.ContentType = new MediaTypeHeaderValue(ProfilePicture.ContentType);
 
                 // Add it to the form content as "profilePicture"
-                formContent.Add(pictureContent, "profilePicture", Guid.NewGuid().ToString());
+                //formContent.Add(pictureContent, "profilePicture", Guid.NewGuid().ToString());
 
                 return formContent;
             }
