@@ -58,7 +58,7 @@
             <StackLayout Grid.Row="2" Grid.Column="1" Padding="0" Margin="0">
                 <Button Text="{x:Static resource:AppResource.LoginButton}" TextTransform="None" CornerRadius="8" Command="{Binding LoginCommand}"
                         AutomationId="Login" BackgroundColor="{StaticResource RedPrimary}"/>
-                <Label Text="{x:Static resource:AppResource.ForgotPasswordLabel}" HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="ForgotPassword">
+                <Label Text="{x:Static resource:AppResource.ForgotPasswordLabel}" HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsBusy, Converter={StaticResource boolToInvertedBoolConverter}}" AutomationId="ForgotPassword" TextColor="Gray">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
                     </Label.GestureRecognizers>
