@@ -22,21 +22,22 @@ namespace BuiltDifferentMobileApp.Views.Client
         {
             base.OnAppearing();
 
-            Children.Clear();
+            if(Children.Count() == 0) {
+                var workoutPage = new ClientWorkoutPage {
+                    BindingContext = new ClientWorkoutViewModel()
+                };
 
-            var workoutPage = new ClientWorkoutPage
-            {
-                BindingContext = new ClientWorkoutViewModel()
-            };
+                var mealPage = new ClientMealPage {
+                    BindingContext = new ClientMealViewModel()
+                };
 
-            var mealPage = new ClientMealPage
-            {
-                BindingContext = new ClientMealViewModel()
-            };
-
-            Children.Add(workoutPage);
-            Children.Add(mealPage);
-     
+                Children.Add(workoutPage);
+                Children.Add(mealPage);
+            }
+            else if(Children.Count() == 2) {
+                Children[0].BindingContext = new ClientWorkoutViewModel();
+                Children[1].BindingContext = new ClientMealViewModel();
+            }
         }
     }
 }

@@ -17,15 +17,42 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
 {
     public class MyProfilePageClientViewModel : ViewModelBase
     {
-        private FileResult profilePicture;
-        public FileResult ProfilePicture
+        private string profilePicture;
+        public string ProfilePicture
         {
             get => profilePicture;
             set
             {
                 SetProperty(ref profilePicture, value);
-                OnPropertyChanged(nameof(IsEnabled));
+            }
+        }
 
+        private string bannerPicture;
+        public string BannerPicture {
+            get => bannerPicture;
+            set {
+                SetProperty(ref bannerPicture, value);
+            }
+        }
+
+        private FileResult ProfilePictureFile { get; set; }
+        private ImageSource previewProfilePicture;
+        public ImageSource PreviewProfilePicture
+        {
+            get => previewProfilePicture;
+            set {
+                SetProperty(ref previewProfilePicture, value);
+                FieldEdited = true;
+            }
+        }
+
+        private FileResult BannerPictureFile { get; set; }
+        private ImageSource previewBannerPicture;
+        public ImageSource PreviewBannerPicture {
+            get => previewBannerPicture;
+            set {
+                SetProperty(ref previewBannerPicture, value);
+                FieldEdited = true;
             }
         }
 
@@ -36,10 +63,26 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             set
             {
                 SetProperty(ref name, value);
-                OnPropertyChanged(nameof(IsEnabled));
-
             }
         }
+
+        private string editName;
+        public string EditName {
+            get => editName;
+            set {
+                SetProperty(ref editName, value);
+                FieldEdited = true;
+            }
+        }
+
+        private string email;
+        public string Email {
+            get => email;
+            set {
+                SetProperty(ref email, value);
+            }
+        }
+
         public int startWeight;
         public int StartWeight
         {
@@ -49,6 +92,7 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
                 SetProperty(ref startWeight, value);
             }
         }
+
         private int currentWeight;
         public int CurrentWeight
         {
@@ -56,8 +100,15 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             set
             {
                 SetProperty(ref currentWeight, value);
-                OnPropertyChanged(nameof(IsEnabled));
+            }
+        }
 
+        private int editCurrentWeight;
+        public int EditCurrentWeight {
+            get => editCurrentWeight;
+            set {
+                SetProperty(ref editCurrentWeight, value);
+                FieldEdited = true;
             }
         }
 
@@ -68,29 +119,30 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             set
             {
                 SetProperty(ref height, value);
-                OnPropertyChanged(nameof(IsEnabled));
-
             }
         }
 
-        private int profilePictureId;
-        public int ProfilePictureId
-        {
-            get => profilePictureId;
-            set
-            {
-                SetProperty(ref profilePictureId, value);
-                OnPropertyChanged(nameof(IsEnabled));
-
+        private double editHeight;
+        public double EditHeight {
+            get => editHeight;
+            set {
+                SetProperty(ref editHeight, value);
+                FieldEdited = true;
             }
         }
 
-        private bool isEnabled;
-        public bool IsEnabled
-        {
-            get => isEnabled;
-            set => SetProperty(ref isEnabled, value);
+        private bool editMode;
+        public bool EditMode {
+            get => editMode;
+            set => SetProperty(ref editMode, value);
         }
+
+        private bool fieldEdited;
+        public bool FieldEdited {
+            get => fieldEdited;
+            set => SetProperty(ref fieldEdited, value);
+        }
+
         private int userId;
         public int UserId
         {
@@ -98,106 +150,146 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             set => SetProperty(ref userId, value);
         }
 
-        public object PreviewPicture { get; set; }
+        private string logo;
+        public string Logo {
+            get => logo;
+            set => SetProperty(ref logo, value);
+        }
 
-        public AsyncCommand SubmitCommand { get; }
-        public AsyncCommand UploadImageCommand { get; }
-        public AsyncCommand EditProfileCommand { get; }
+        private string joinDate;
+        public string JoinDate {
+            get => joinDate;
+            set => SetProperty(ref joinDate, value);
+        }
+
+        public AsyncCommand<string> UploadImageCommand { get; }
+        public AsyncCommand GoBackCommand { get; }
+        public AsyncCommand<string> EditProfileHeaderCommand { get; }
+
+        public static readonly string HEIGHT_HEADER = "HEIGHT_HEADER";
+        public static readonly string WEIGHT_HEADER = "WEIGHT_HEADER";
+
+        public static readonly string PROFILE_PICTURE = "PROFILE_PICTURE";
+        public static readonly string BANNER_PICTURE = "BANNER_PICTURE";
 
         private IAccountService accountService = AccountService.Instance;
         private INetworkService<HttpResponseMessage> networkService = NetworkService<HttpResponseMessage>.Instance;
 
         public MyProfilePageClientViewModel()
         {
-            Name = "";
-            StartWeight = 0;
-            UserId = 0;
-            StartWeight = 0;
-            CurrentWeight = 0;
-            Height = 0;
-            ProfilePictureId = 0;
+            Logo = APIConstants.GetLogo(false);
 
-            ProfilePicture = null;
-            PreviewPicture = null;
+            var userInfo = (Models.Client)accountService.CurrentUser;
+            Name = userInfo.name;
+            UserId = userInfo.userId;
+            StartWeight = userInfo.startWeight;
+            CurrentWeight = userInfo.currentWeight;
+            Height = userInfo.height;
+            Email = accountService.CurrentUserEmail;
+            JoinDate = "";
+
+            EditName = Name;
+            EditHeight = Height;
+            EditCurrentWeight = CurrentWeight;
+            FieldEdited = false;
+
+            ProfilePicture = APIConstants.GetProfilePictureUri(UserId);
+            BannerPicture = APIConstants.GetProfileBannerPictureUri(UserId);
+
+            ProfilePictureFile = null;
+            BannerPictureFile = null;
+
+            EditMode = false;
+
+            UploadImageCommand = new AsyncCommand<string>(UploadImage);
+            GoBackCommand = new AsyncCommand(GoBack);
+            EditProfileHeaderCommand = new AsyncCommand<string>(EditProfileHeader);
             
-
-            GetUserInfo();
-
-            IsEnabled = false;
-
-            SubmitCommand = new AsyncCommand(Submit);
-            UploadImageCommand = new AsyncCommand(Upload);
-            EditProfileCommand = new AsyncCommand(Edit);
+            GetUserInfo(true);
         }
 
-        private async Task GetUserInfo()
-        {
-            Models.Client user = (Models.Client)accountService.CurrentUser;
-            var userInfo = await networkService.GetAsync<Models.Client>(APIConstants.GetProfileUri());
-            if (userInfo == null)
-            {
-                await Application.Current.MainPage.DisplayAlert("Could not load client's profile!", "Returning to previous page", "OK");
-                await Shell.Current.GoToAsync("..");
-                IsBusy = false;
-                return;
-            }
-            else
-            {
-                accountService.CurrentUser = userInfo;
+        private async Task GoBack() {
+            await Shell.Current.GoToAsync("..");
+        }
 
-                UserId = userInfo.id;
+        public async Task GetUserInfo(bool fromNetwork = true) {
+            if(fromNetwork) {
+                await networkService.UpdateCurrentUser();
+                JoinDate = $"Joined {(await networkService.GetAsync<UserJoinDate>(APIConstants.GetUserJoinDate(UserId))).joinDate.ToString("MMMM yyyy")}";
+            }
+
+            var userInfo = (Models.Client)accountService.CurrentUser;
+
+            if(userInfo != null) {
                 Name = userInfo.name;
                 UserId = userInfo.userId;
                 StartWeight = userInfo.startWeight;
                 CurrentWeight = userInfo.currentWeight;
-                ProfilePictureId = userInfo.profilePictureId;
                 Height = userInfo.height;
+            }
+        }
 
-                var pic = await networkService.GetStreamAsync(APIConstants.GetProfilePictureUri());
-                if (pic == null)
-                {
-                    return;
+        public void LoadEditInfo() {
+            EditName = Name;
+            EditHeight = Height;
+            EditCurrentWeight = CurrentWeight;
+            PreviewProfilePicture = ProfilePicture;
+            PreviewBannerPicture = BannerPicture;
+            ProfilePictureFile = null;
+            BannerPictureFile = null;
+            FieldEdited = false;
+        }
+
+        private async Task EditProfileHeader(string header) {
+            if(IsBusy) return;
+
+            string result = "";
+
+            if(header == HEIGHT_HEADER) {
+                result = await Application.Current.MainPage.DisplayPromptAsync(
+                    "Edit Height", "Please enter your updated height", initialValue: EditHeight.ToString(), maxLength: 6, keyboard: Keyboard.Numeric
+                );
+            }
+            else if(header == WEIGHT_HEADER) {
+                result = await Application.Current.MainPage.DisplayPromptAsync(
+                    "Edit Weight", "Please enter your updated weight", initialValue: EditCurrentWeight.ToString(), maxLength: 5, keyboard: Keyboard.Numeric
+                );
+            }
+
+            if(!string.IsNullOrEmpty(result)) {
+                if(header == HEIGHT_HEADER) {
+                    EditHeight = double.Parse(result);
                 }
-                PreviewPicture = ImageSource.FromStream(() => pic);
-                OnPropertyChanged("PreviewPicture");
+                else if(header == WEIGHT_HEADER) {
+                    EditCurrentWeight = Convert.ToInt32(Math.Round(Convert.ToDouble(result)));
+                }
             }
         }
 
-        private async Task Edit()
+        private async Task UploadImage(string type)
         {
-            if (!IsEnabled)
-            {
-                IsEnabled = true;
-            }
-            else
-            {
-                IsEnabled = false;
-                GetUserInfo();
-            }
-        }
+            if(IsBusy) return;
 
-        private async Task Upload()
-        {
-            var options = new MediaPickerOptions
-            {
-                Title = "Please select your Profile Picture"
+            var options = new MediaPickerOptions {
+                Title = type == PROFILE_PICTURE ? "Please select your profile picture" : "Please select your banner picture"
             };
 
             try
             {
                 var picture = await MediaPicker.PickPhotoAsync(options);
 
-                if (picture != null && picture.ContentType == "image/gif" || picture.ContentType == "image/png" || picture.ContentType == "image/jpeg" || picture.ContentType == "image/bmp" || picture.ContentType == "image/jpg")
+                if (picture != null)
                 {
                     var stream = await picture.OpenReadAsync();
 
-                    PreviewPicture = ImageSource.FromStream(() => stream);
-                    OnPropertyChanged("PreviewPicture");
-
-                    ProfilePicture = picture;
+                    if(type == PROFILE_PICTURE) {
+                        ProfilePictureFile = picture;
+                        PreviewProfilePicture = ImageSource.FromStream(() => stream);
+                    } else {
+                        BannerPictureFile = picture;
+                        PreviewBannerPicture = ImageSource.FromStream(() => stream);
+                    }
                 }
-                else
-                    await Application.Current.MainPage.DisplayAlert("Image format", "Please select a valid image. (jpg|jpeg|png|gif|bmp)", "OK");
             }
             catch (Exception)
             {
@@ -205,18 +297,25 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             }
         }
 
-        private async Task<MultipartFormDataContent> GetMultiPartFormContent()
+        private async Task<MultipartFormDataContent> GetMultiPartFormContent(bool isProfilePicture)
         {
             try
             {
                 MultipartFormDataContent formContent = new MultipartFormDataContent();
 
-                // Read picture contents & set MIME appopriately, image/*
-                StreamContent pictureContent = new StreamContent(await ProfilePicture.OpenReadAsync());
-                pictureContent.Headers.ContentType = new MediaTypeHeaderValue(ProfilePicture.ContentType);
+                StreamContent content;
+                if(isProfilePicture) {
+                    content = new StreamContent(await ProfilePictureFile.OpenReadAsync());
+                    content.Headers.ContentType = new MediaTypeHeaderValue(ProfilePictureFile.ContentType);
 
-                // Add it to the form content as "profilePicture"
-                formContent.Add(pictureContent, "profilePicture", Guid.NewGuid().ToString());
+                    formContent.Add(content, "profilePicture", Guid.NewGuid().ToString());
+                }
+                else {
+                    content = new StreamContent(await BannerPictureFile.OpenReadAsync());
+                    content.Headers.ContentType = new MediaTypeHeaderValue(BannerPictureFile.ContentType);
+
+                    formContent.Add(content, "bannerPicture", Guid.NewGuid().ToString());
+                }
 
                 return formContent;
             }
@@ -226,54 +325,36 @@ namespace BuiltDifferentMobileApp.ViewModels.Profile
             }
         }
 
-        private async Task Submit()
-        {
-            if (string.IsNullOrEmpty(Name) || CurrentWeight == 0)
-            {
-                await Application.Current.MainPage.DisplayAlert("Field Issue", "Please fill ALL of the fields. ", "OK");
-                return;
+        public async Task SubmitEditedFields() {
+            IsBusy = true;
+
+            if(ProfilePictureFile != null) {
+                var payload = await GetMultiPartFormContent(true);
+                if(payload != null) {
+                    await networkService.PostAsyncHttpResponseMessage(APIConstants.PostUploadProfilePicture(), payload, true);
+                    OnPropertyChanged(nameof(ProfilePicture));
+                }
             }
 
-            if (IsEnabled)
-            {
-                IsEnabled = false;
-
-                var multipartFormContent = await GetMultiPartFormContent();
-
-                if (multipartFormContent == null)
-                {
-                    IsBusy = false;
+            if(BannerPictureFile != null) {
+                var payload = await GetMultiPartFormContent(false);
+                if(payload != null) {
+                    await networkService.PostAsyncHttpResponseMessage(APIConstants.PostUploadProfileBannerPicture(), payload, true);
+                    OnPropertyChanged(nameof(BannerPicture));
                 }
-
-                var picture = await networkService.PostAsyncHttpResponseMessage(APIConstants.PostUploadProfilePicture(), multipartFormContent, true);
-
-                var profile = new ClientProfileDTO(Name, UserId, CurrentWeight, Height);
-               
-                if (profile == null)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Error", "Sorry! We are having an issue retrieving your profile. Please try again.", "OK");
-                }
-
-                var result = await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutProfileUri(), profile);
-                var httpCode = result.StatusCode;
-
-                if (httpCode == System.Net.HttpStatusCode.OK)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Success", "Profile Saved", "OK");
-                    await GetUserInfo();
-                }
-                else if (httpCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Error", "An error occurred on the server. Please try saving again.", "OK");
-                }
-                else if (httpCode == System.Net.HttpStatusCode.InternalServerError)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Error", "An error occurred on the server. Please try saving again.", "OK");
-                }
-                else return;
             }
-            else
-                return;
+
+            if(EditHeight != Height || EditCurrentWeight != CurrentWeight || EditName != Name) {
+                var profile = new ClientProfileDTO(EditName, UserId, EditCurrentWeight, EditHeight);
+                await networkService.PutAsync<HttpResponseMessage>(APIConstants.PutProfileUri(), profile);
+
+                ((Models.Client)accountService.CurrentUser).name = EditName;
+                ((Models.Client)accountService.CurrentUser).currentWeight = EditCurrentWeight;
+                ((Models.Client)accountService.CurrentUser).height = EditHeight;
+                await GetUserInfo(false);
+            }
+
+            IsBusy = false;
         }
     }
 }

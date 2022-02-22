@@ -16,6 +16,7 @@ namespace BuiltDifferentMobileApp.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
             LoadApplication(new App());
 
             Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 35, 35, 35));

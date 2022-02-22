@@ -179,11 +179,12 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
         public static string PostUploadProfilePicture()
         {
-            return $"{BaseAddress}/profile/upload";
+            return $"{BaseAddress}/profile/picture/upload";
         }
-        public static string GetProfilePictureUri()
+
+        public static string GetProfilePictureUri(int userId = 0)
         {
-            return $"{BaseAddress}/profile/picture";
+            return userId == 0 ? $"{BaseAddress}/profile/picture" : $"{BaseAddress}/profile/picture/{userId}";
         }
 
         public static string UploadCertificationUri() {
@@ -212,6 +213,22 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 
         public static string GetCertificationStatusesCreatedBetweenRange(DateTime startDate, DateTime endDate) {
             return $"{BaseAddress}/certifications?start={startDate.ToString("MM dd yyyy").Replace(' ', '-')}&end={endDate.ToString("MM dd yyyy").Replace(' ', '-')}";
+        }
+
+        public static string GetLogo(bool loop = false) {
+            return loop ? $"{BaseAddress}/logo-loop" : $"{ BaseAddress}/logo";
+        }
+
+        public static string PostUploadProfileBannerPicture() {
+            return $"{BaseAddress}/profile/banner/upload";
+        }
+
+        public static string GetProfileBannerPictureUri(int userId) {
+            return $"{BaseAddress}/profile/banner/{userId}";
+        }
+
+        public static string GetUserJoinDate(int userId) {
+            return $"{BaseAddress}/user/{userId}/join-date";
         }
 
     }
