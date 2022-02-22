@@ -8,10 +8,17 @@ namespace BuiltDifferentMobileApp.Services.NetworkServices
 {
     public static class APIConstants
     {
+#if DEBUG
+        public static readonly string PROTOCOL = "http";
         public static readonly string HOST = Device.RuntimePlatform == Device.Android ? "10.0.2.2" : "localhost";
-        private static readonly string PORT = "8080";
+        private static readonly string PORT = ":8080";
+#else
+        public static readonly string PROTOCOL = "https";
+        public static readonly string HOST = "built-different-api.herokuapp.com";
+        private static readonly string PORT = "";
+#endif
 
-        private static readonly string BaseAddress = $"http://{HOST}:{PORT}/api";
+        private static readonly string BaseAddress = $"{PROTOCOL}://{HOST}{PORT}/api";
 
 
         public static string GetAllRequestsByClient(int id)
