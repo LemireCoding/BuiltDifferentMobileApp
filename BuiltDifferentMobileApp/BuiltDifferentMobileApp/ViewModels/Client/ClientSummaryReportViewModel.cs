@@ -233,8 +233,9 @@ namespace BuiltDifferentMobileApp.ViewModels.Client
             } else
             {
                 StartWeight = (user.startWeight).ToString();
-                DifferenceInPds = (Int64.Parse(CurrentWeight) - Int64.Parse(StartWeight)).ToString();
                 CurrentWeight = (user.currentWeight).ToString();
+                DifferenceInPds = (Int64.Parse(CurrentWeight) - Int64.Parse(StartWeight)).ToString();
+               
 
                 double kg = user.currentWeight / 2.2046;
                 Bmi = String.Format("{0:0.00}", ((kg / user.height / user.height) * 10000));
