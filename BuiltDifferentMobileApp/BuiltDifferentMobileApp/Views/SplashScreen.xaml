@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:BuiltDifferentMobileApp.ViewModels"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="BuiltDifferentMobileApp.Views.SplashScreen"
+             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
+             Shell.FlyoutBehavior="Disabled">
+
+    <ContentPage.BindingContext>
+        <viewmodels:SplashScreenViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <Grid BackgroundColor="Black" Padding="50,100">
+            <ff:CachedImage Source="BUILT_DIFFERENT.png" Aspect="AspectFill" x:Name="Logo" Opacity="0" />
+            <Switch IsToggled="{Binding PageLoaded}" Toggled="PageLoaded" IsVisible="False" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:BuiltDifferentMobileApp.Views"
        xmlns:coachpages="clr-namespace:BuiltDifferentMobileApp.Views.Coach"
        xmlns:clientpages="clr-namespace:BuiltDifferentMobileApp.Views.Client"
        xmlns:adminpages="clr-namespace:BuiltDifferentMobileApp.Views.Admin"
@@ -88,6 +89,10 @@
     <!--
         LOGIN
     -->
+
+    <ShellItem Route="SplashScreen" FlyoutItemIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate views:SplashScreen}" />
+    </ShellItem>
 
     <ShellItem Route="LoginPage" FlyoutItemIsVisible="False">
         <ShellContent ContentTemplate="{DataTemplate loginpages:LoginPage}" />
